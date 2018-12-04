@@ -44,7 +44,6 @@ class StudentCreateAccount extends Component {
       email,
       password
     };
-    console.log(postFormStudent);
     axios.post("http://localhost:3001/trainee", postFormStudent).then(data =>
       this.setState({
         title: data.data.title,
@@ -56,6 +55,7 @@ class StudentCreateAccount extends Component {
   };
 
   render() {
+    const { open, title, content, button } = this.state;
     return (
       <div className="createForm">
         <form method="post" onSubmit={this.onSubmit}>
@@ -106,24 +106,24 @@ class StudentCreateAccount extends Component {
             className="buttonCreateForm"
             type="submit"
           >
-            S'inscrire
+            {`S'inscrire`}
           </Button>
         </form>
         <Dialog
-          open={this.state.open}
+          open={open}
           onClose={this.handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{this.state.title}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              {this.state.content}
+              {content}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
-              {this.state.button}
+              {button}
             </Button>
           </DialogActions>
         </Dialog>
