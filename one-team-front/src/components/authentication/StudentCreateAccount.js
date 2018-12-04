@@ -106,7 +106,7 @@ class StudentCreateAccount extends Component {
             className="buttonCreateForm"
             type="submit"
           >
-            S'inscrire
+            {`S'inscrire`}
           </Button>
         </form>
         <Dialog
