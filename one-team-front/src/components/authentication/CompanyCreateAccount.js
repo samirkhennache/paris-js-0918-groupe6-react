@@ -15,7 +15,7 @@ class CompanyCreateAccount extends Component {
     firstnameContact: null,
     lastnameContact: null,
     email: null,
-    phoneNumber: null,
+    phone: null,
     password: null,
     title: "",
     content: "",
@@ -39,7 +39,7 @@ class CompanyCreateAccount extends Component {
       firstnameContact,
       lastnameContact,
       email,
-      phoneNumber,
+      phone,
       password
     } = this.state;
     e.preventDefault();
@@ -48,7 +48,7 @@ class CompanyCreateAccount extends Component {
       firstnameContact,
       lastnameContact,
       email,
-      phoneNumber,
+      phone,
       password
     };
     console.log(postFormCompany);
@@ -110,7 +110,7 @@ class CompanyCreateAccount extends Component {
           <TextField
             type="text"
             className="textField"
-            name="phoneNumber"
+            name="phone"
             placeholder="Numéro de téléphone"
             onChange={this.onChange}
             margin="normal"
