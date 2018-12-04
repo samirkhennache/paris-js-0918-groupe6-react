@@ -1,33 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
-import { withStyles } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-
-const styles = theme => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    flexWrap: "wrap",
-    width: "calc(100px + 12em)",
-    margin: "auto"
-    // border: '1px solid black'
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
-  },
-  button: {
-    width: "calc(107px + 12em)",
-    margin: "15px auto 5px auto"
-  }
-});
+import "./authentication.css";
 
 class StudentCreateAccount extends Component {
   state = {
@@ -76,17 +56,12 @@ class StudentCreateAccount extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     return (
-      <div>
-        <form
-          method="post"
-          className={classes.container}
-          onSubmit={this.onSubmit}
-        >
+      <div className="createForm">
+        <form method="post" onSubmit={this.onSubmit}>
           <TextField
             type="text"
-            className={classes.textField}
+            className="textField"
             name="firstname"
             placeholder="Prénom"
             onChange={this.onChange}
@@ -96,7 +71,7 @@ class StudentCreateAccount extends Component {
           />
           <TextField
             type="text"
-            className={classes.textField}
+            className="textField"
             name="lastname"
             placeholder="Nom"
             onChange={this.onChange}
@@ -107,7 +82,7 @@ class StudentCreateAccount extends Component {
 
           <TextField
             type="email"
-            className={classes.textField}
+            className="textField"
             name="email"
             placeholder="Email"
             onChange={this.onChange}
@@ -118,7 +93,7 @@ class StudentCreateAccount extends Component {
 
           <TextField
             type="password"
-            className={classes.textField}
+            className="textField"
             name="password"
             placeholder="Mot de passe"
             onChange={this.onChange}
@@ -126,7 +101,11 @@ class StudentCreateAccount extends Component {
             variant="outlined"
             required
           />
-          <Button variant="contained" className={classes.button} type="submit">
+          <Button
+            variant="contained"
+            className="buttonCreateForm"
+            type="submit"
+          >
             S'inscrire
           </Button>
         </form>
@@ -153,8 +132,4 @@ class StudentCreateAccount extends Component {
   }
 }
 
-StudentCreateAccount.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(StudentCreateAccount);
+export default StudentCreateAccount;
