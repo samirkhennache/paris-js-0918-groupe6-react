@@ -22,14 +22,17 @@ class CompanyCreateAccount extends Component {
     button: "",
     open: false
   };
+
   handleClose = () => {
     this.setState({ open: false });
   };
+
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
+
   onSubmit = e => {
     const {
       companyName,
@@ -58,6 +61,7 @@ class CompanyCreateAccount extends Component {
       })
     );
   };
+
   render() {
     return (
       <div className="createForm">
