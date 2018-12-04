@@ -1,40 +1,12 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
+import Axios from "axios";
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Button from "@material-ui/core/Button";
-import Axios from "axios";
-
-const styles = theme => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    flexWrap: "wrap",
-    width: "calc(100px + 12em)",
-    margin: "auto"
-    // border: "1px solid black"
-  },
-  margin: {
-    margin: theme.spacing.unit
-  },
-  withoutLabel: {
-    marginTop: theme.spacing.unit * 3
-  },
-  textField: {
-    marginTop: theme.spacing.unit * 2,
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
-  },
-  button: {
-    marginTop: theme.spacing.unit * 3,
-    width: "calc(107px + 12em)",
-    margin: "15px auto 5px auto"
-  }
-});
+import "./authentication.css";
 
 class Connexion extends Component {
   state = {
@@ -54,7 +26,6 @@ class Connexion extends Component {
       email,
       password
     };
-    console.log(postDataLogin);
 
     Axios.post("http://localhost:3001/company/login", postDataLogin).then(
       data => console.log(data)
@@ -66,27 +37,22 @@ class Connexion extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { showPassword } = this.state;
     return (
-      <div>
-        <form
-          className={classes.container}
-          method="post"
-          onSubmit={this.handleOnSubmit}
-        >
+      <div className="createForm">
+        <form method="post" onSubmit={this.handleOnSubmit}>
           <TextField
             type="email"
-            className={classes.textField}
+            className="textField"
             name="email"
             label="Email"
             onChange={this.onChange}
-            margin="normal"
+            // margin="normal"
             variant="outlined"
             required
           />
           <TextField
-            className={classes.textField}
+            className="textField"
             variant="outlined"
             name="password"
             type={showPassword ? "text" : "password"}
@@ -107,7 +73,11 @@ class Connexion extends Component {
               )
             }}
           />
-          <Button variant="contained" className={classes.button} type="submit">
+          <Button
+            variant="contained"
+            className="buttonCreateForm"
+            type="submit"
+          >
             Se connecter
           </Button>
         </form>
@@ -115,8 +85,5 @@ class Connexion extends Component {
     );
   }
 }
-Connexion.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
-export default withStyles(styles)(Connexion);
+export default Connexion;
