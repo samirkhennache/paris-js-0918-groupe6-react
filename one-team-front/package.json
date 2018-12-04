@@ -10,6 +10,7 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
     "react": "^16.6.3",
+    "react-awesome-button": "^5.0.0",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
     "react-router": "^4.3.1",
@@ -32,6 +33,7 @@
       "prettier/react",
       "prettier/standard"
     ],
+    "parser": "babel-eslint",
     "rules": {
       "react/jsx-filename-extension": false,
       "react/prefer-stateless-function": false,
