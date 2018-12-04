@@ -32,6 +32,7 @@
       "prettier/react",
       "prettier/standard"
     ],
+    "parser": "babel-eslint",
     "rules": {
       "react/jsx-filename-extension": false,
       "react/prefer-stateless-function": false,
