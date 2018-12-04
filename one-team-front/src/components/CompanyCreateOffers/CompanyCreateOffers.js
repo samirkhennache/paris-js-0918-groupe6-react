@@ -1,5 +1,8 @@
 import React from "react";
 import "./CompanyCreateOffers.css";
+import Axios from "axios";
+
+const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
 
 const CompanyCreateOffers = class extends React.Component {
   state = {
@@ -11,6 +14,10 @@ const CompanyCreateOffers = class extends React.Component {
     intro: ""
   };
 
+  componentDidMount() {
+    // this.setState({});
+  }
+
   handlerOnChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -19,7 +26,19 @@ const CompanyCreateOffers = class extends React.Component {
 
   handlerOnSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    const { title, startDate, endDate, descritpion, town, intro } = this.state;
+    const postFormMission = {
+      titleMission: title,
+      dateStart: startDate,
+      dateEnd: endDate,
+      description: descritpion,
+      town,
+      intro,
+      companyId: 1,
+      levelStudyId: 1
+    };
+    // console.log(this.state);
+    Axios.post(API_ENDPOINT_MISSION, postFormMission);
   };
 
   render() {
