@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Connexion from "./components/authentication/Connexion";
+import ConnexionTrainee from "./components/authentication/ConnexionTrainee";
 import StudentCreateAccount from "./components/authentication/StudentCreateAccount";
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <StudentCreateAccount />
-        <Connexion />
+        <ConnexionTrainee />
       </div>
     );
   }
