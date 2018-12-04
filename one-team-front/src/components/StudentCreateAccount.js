@@ -35,15 +35,15 @@ class StudentCreateAccount extends Component {
     lastname: null,
     email: null,
     password: null,
-    openDialog: undefined,
     title: "",
     content: "",
     button: "",
     open: false
   };
-  handleClickOpen = () => {
-    this.setState({ open: true})
-  };
+
+  // handleClickOpen = () => {
+  //   this.setState({ open: true });
+  // };
 
   handleClose = () => {
     this.setState({ open: false });
@@ -54,13 +54,15 @@ class StudentCreateAccount extends Component {
       [e.target.name]: e.target.value
     });
   };
+
   onSubmit = e => {
+    const { firstname, lastname, email, password } = this.state;
     e.preventDefault();
     const postFormStudent = {
-      firstname: this.state.firstname,
-      lastname: this.state.lastname,
-      email: this.state.email,
-      password: this.state.password
+      firstname,
+      lastname,
+      email,
+      password
     };
     console.log(postFormStudent);
     axios.post("http://localhost:3001/trainee", postFormStudent).then(data =>
@@ -72,6 +74,7 @@ class StudentCreateAccount extends Component {
       })
     );
   };
+
   render() {
     const { classes } = this.props;
     return (
