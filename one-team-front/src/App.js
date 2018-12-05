@@ -12,6 +12,8 @@ class App extends Component {
     return (
       <div className="App">
         <CompanyOffers />
+        {/* <StudentCreateAccount />
+        <ConnexionTrainee /> */}
         STUDENT
         <StudentCreateAccount />
         <ConnexionTrainee />

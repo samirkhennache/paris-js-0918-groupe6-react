@@ -4,8 +4,19 @@ import "./Button.css";
 
 class CompanyOfferManage extends Component {
   render() {
+    const { titleMissions, start, end, descrip } = this.props;
     return (
       <div>
+        <div>
+          {titleMissions}
+          <br />
+          {start}
+          <br />
+          {end}
+          <br />
+          {descrip}
+        </div>
+
         <AwesomeButton type="primary" className="aws-btn edit">
           Modifier
         </AwesomeButton>
@@ -18,6 +29,7 @@ class CompanyOfferManage extends Component {
         <AwesomeButton type="primary" className="aws-btn validate">
           Valider ma team
         </AwesomeButton>
+        <hr align="center" width="90%" color="midnightblue" size="1" />
       </div>
     );
   }
