@@ -23,18 +23,17 @@ class CompanyOfferList extends Component {
     console.log(missions);
     return (
       <div>
-        <CompanyOfferManage />
         {!isLoaded ? (
           <p> loading.. </p>
         ) : (
-          missions.map(e => (
-            <div>
-              <h2> {e.titleMission}</h2>
-              <h3>
-                {" "}
-                {e.dateStart} - {e.dateEnd}
-              </h3>
-              <p> {e.description}</p>
+          missions.map((e, index) => (
+            <div key={index}>
+              <CompanyOfferManage
+                titleMissions={e.titleMission}
+                start={e.dateStart}
+                end={e.dateEnd}
+                descrip={e.description}
+              />
             </div>
           ))
         )}
