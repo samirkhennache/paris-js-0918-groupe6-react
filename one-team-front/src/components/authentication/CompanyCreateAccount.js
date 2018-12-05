@@ -12,40 +12,43 @@ import "./authentication.css";
 class CompanyCreateAccount extends Component {
   state = {
     companyName: null,
-    firstname: null,
-    lastname: null,
+    firstnameContact: null,
+    lastnameContact: null,
     email: null,
-    phoneNumber: null,
+    phone: null,
     password: null,
     title: "",
     content: "",
     button: "",
     open: false
   };
+
   handleClose = () => {
     this.setState({ open: false });
   };
+
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
+
   onSubmit = e => {
     const {
       companyName,
-      firstname,
-      lastname,
+      firstnameContact,
+      lastnameContact,
       email,
-      phoneNumber,
+      phone,
       password
     } = this.state;
     e.preventDefault();
     const postFormCompany = {
       companyName,
-      firstname,
-      lastname,
+      firstnameContact,
+      lastnameContact,
       email,
-      phoneNumber,
+      phone,
       password
     };
     console.log(postFormCompany);
@@ -58,6 +61,7 @@ class CompanyCreateAccount extends Component {
       })
     );
   };
+
   render() {
     return (
       <div className="createForm">
@@ -75,7 +79,7 @@ class CompanyCreateAccount extends Component {
           <TextField
             type="text"
             className="textField"
-            name="firstname"
+            name="firstnameContact"
             placeholder="Prénom"
             onChange={this.onChange}
             margin="normal"
@@ -85,7 +89,7 @@ class CompanyCreateAccount extends Component {
           <TextField
             type="text"
             className="textField"
-            name="lastname"
+            name="lastnameContact"
             placeholder="Nom"
             onChange={this.onChange}
             margin="normal"
@@ -106,7 +110,7 @@ class CompanyCreateAccount extends Component {
           <TextField
             type="text"
             className="textField"
-            name="phoneNumber"
+            name="phone"
             placeholder="Numéro de téléphone"
             onChange={this.onChange}
             margin="normal"
