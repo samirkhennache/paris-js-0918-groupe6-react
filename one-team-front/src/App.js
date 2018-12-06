@@ -7,11 +7,13 @@ import ConnexionTrainee from "./components/authentication/ConnexionTrainee";
 import StudentCreateAccount from "./components/authentication/StudentCreateAccount";
 import ConnexionCompany from "./components/authentication/ConnexionCompany";
 import CompanyCreateAccount from "./components/authentication/CompanyCreateAccount";
+import Search from "./components/search/Search";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <Search />
         <CompanyOffers />
         STUDENT
         <StudentCreateAccount />
