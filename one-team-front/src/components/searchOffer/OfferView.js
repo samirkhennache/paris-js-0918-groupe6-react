@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import CompanyOfferManage from "./CompanyOfferManage";
+import { AwesomeButton } from "react-awesome-button";
+import "./Button.css";
+import "./OffersStud.css";
 
-class CompanyOfferList extends Component {
+class OfferView extends Component {
   state = {
     missions: [],
     isLoaded: false
@@ -28,12 +30,13 @@ class CompanyOfferList extends Component {
         ) : (
           missions.map((e, index) => (
             <div key={index}>
-              <CompanyOfferManage
-                titleMissions={e.titleMission}
-                start={e.dateStart}
-                end={e.dateEnd}
-                descrip={e.description}
-              />
+              <h3> {e.titleMission} </h3>
+              <p> {e.dateStart} </p>
+              <p> {e.dateEnd} </p>
+              <p> {e.description} </p>
+              <AwesomeButton type="primary" className="aws-btn remove">
+                Postuler
+              </AwesomeButton>
             </div>
           ))
         )}
@@ -42,4 +45,4 @@ class CompanyOfferList extends Component {
   }
 }
 
-export default CompanyOfferList;
+export default OfferView;
