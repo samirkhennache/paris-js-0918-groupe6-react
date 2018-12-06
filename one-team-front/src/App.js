@@ -10,17 +10,17 @@ import CompanyCreateAccount from "./components/authentication/CompanyCreateAccou
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <CompanyOffers />
-        {/* <StudentCreateAccount />
-        <ConnexionTrainee /> */}
+      // <div className="App">
+      <CompanyOffers />
+      /* <StudentCreateAccount />
+        <ConnexionTrainee /> 
         STUDENT
         <StudentCreateAccount />
         <ConnexionTrainee />
         COMPANY
         <CompanyCreateAccount />
         <ConnexionCompany />
-      </div>
+      </div>*/
     );
   }
 }
