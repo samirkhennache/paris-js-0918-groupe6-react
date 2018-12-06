@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import "./App.css";
 // import StudentCreateAccount from "./components/StudentCreateAccount";
-import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
+import CompanyOffers from "./components/companyOffers/CompanyOffers";
 import ConnexionTrainee from "./components/authentication/ConnexionTrainee";
 import StudentCreateAccount from "./components/authentication/StudentCreateAccount";
 import ConnexionCompany from "./components/authentication/ConnexionCompany";
 import CompanyCreateAccount from "./components/authentication/CompanyCreateAccount";
+import StudentOfferList from "./components/searchOffer/StudentOfferList";
 
 class App extends Component {
   render() {
     return (
       // <div className="App">
-      <CompanyOffers />
+      <StudentOfferList />
       /* <StudentCreateAccount />
         <ConnexionTrainee /> 
         STUDENT
