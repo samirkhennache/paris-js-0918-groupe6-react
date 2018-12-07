@@ -11,7 +11,9 @@ const CompanyCreateOffers = class extends React.Component {
     endDate: new Date().toLocaleDateString(),
     descritpion: "",
     town: "",
-    intro: ""
+    intro: "",
+    companyId: 1,
+    levelStudyId: 1
   };
 
   componentDidMount() {
@@ -24,9 +26,23 @@ const CompanyCreateOffers = class extends React.Component {
     });
   };
 
+  handlerOnChangeLevelStudy = event => {
+    this.setState({
+      levelStudyId: event.target.value
+    });
+  };
+
   handlerOnSubmit = event => {
     event.preventDefault();
-    const { title, startDate, endDate, descritpion, town, intro } = this.state;
+    const {
+      title,
+      startDate,
+      endDate,
+      descritpion,
+      town,
+      intro,
+      levelStudyId
+    } = this.state;
     const postFormMission = {
       titleMission: title,
       dateStart: startDate,
@@ -35,7 +51,7 @@ const CompanyCreateOffers = class extends React.Component {
       town,
       intro,
       companyId: 1,
-      levelStudyId: 1
+      levelStudyId
     };
     // console.log(this.state);
     Axios.post(API_ENDPOINT_MISSION, postFormMission);
@@ -93,6 +109,14 @@ const CompanyCreateOffers = class extends React.Component {
             onChange={this.handlerOnChange}
             required
           />
+          <select
+            name="levelStudyId"
+            required
+            onChange={this.handlerOnChangeLevelStudy}
+          >
+            <option value="1">Bac + 1</option>
+            <option value="2">Bac + 2</option>
+          </select>
           <input type="submit" className="submit" />
         </form>
         <p>cette offre sera publiée après validation</p>
