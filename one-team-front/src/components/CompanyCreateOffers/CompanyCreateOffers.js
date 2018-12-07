@@ -5,24 +5,15 @@ import Axios from "axios";
 const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
 
 const CompanyCreateOffers = class extends React.Component {
-  state = {
-    title: "",
-    startDate: new Date().toLocaleDateString(),
-    endDate: new Date().toLocaleDateString(),
-    descritpion: "",
-    town: "",
-    intro: "",
-    companyId: 1,
-    levelStudyId: 1
-  };
-
-  componentDidMount() {
-    // this.setState({});
-  }
+  state = this.defaultState();
 
   handlerOnChange = event => {
-    this.setState({
+    const updateMission = {
+      ...this.state.mission,
       [event.target.name]: event.target.value
+    };
+    this.setState({
+      mission: updateMission
     });
   };
 
@@ -34,31 +25,43 @@ const CompanyCreateOffers = class extends React.Component {
 
   handlerOnSubmit = event => {
     event.preventDefault();
-    const {
-      title,
-      startDate,
-      endDate,
-      descritpion,
-      town,
-      intro,
-      levelStudyId
-    } = this.state;
+    const { mission } = this.state;
     const postFormMission = {
-      titleMission: title,
-      dateStart: startDate,
-      dateEnd: endDate,
-      description: descritpion,
-      town,
-      intro,
+      titleMission: mission.title,
+      dateStart: mission.startDate,
+      dateEnd: mission.endDate,
+      description: mission.descritpion,
+      town: mission.town,
+      intro: mission.intro,
       companyId: 1,
-      levelStudyId
+      levelStudyId: mission.levelStudyId
     };
-    // console.log(this.state);
-    Axios.post(API_ENDPOINT_MISSION, postFormMission);
+    // console.log(this.state.mission);
+    // console.log(this.postFormMission);
+    Axios.post(API_ENDPOINT_MISSION, postFormMission); //.then(
+    //   this.setState({ mission: this.defaultState() }, () =>
+    //     console.log(this.state.mission)
+    //   )
+    // );
   };
 
+  defaultState() {
+    return {
+      mission: {
+        title: "",
+        startDate: new Date().toLocaleDateString(),
+        endDate: new Date().toLocaleDateString(),
+        descritpion: "",
+        town: "",
+        intro: "",
+        companyId: 1,
+        levelStudyId: 1
+      }
+    };
+  }
+
   render() {
-    const { title, startDate, endDate, descritpion, town, intro } = this.state;
+    const { mission } = this.state;
     return (
       <div className="CompanyCreateOffers">
         <p>Je crée une mission</p>
@@ -70,48 +73,49 @@ const CompanyCreateOffers = class extends React.Component {
           <input
             placeholder="Titre de la mission de stage"
             name="title"
-            value={title}
+            value={mission.title}
             onChange={this.handlerOnChange}
             required
           />
           <input
             placeholder="Date de début"
             name="startDate"
-            value={startDate}
+            value={mission.startDate}
             onChange={this.handlerOnChange}
             required
           />
           <input
             placeholder="Date de fin"
             name="endDate"
-            value={endDate}
+            value={mission.endDate}
             onChange={this.handlerOnChange}
             required
           />
           <input
             placeholder="Ville"
             name="town"
-            value={town}
+            value={mission.town}
             onChange={this.handlerOnChange}
             required
           />
           <textarea
             placeholder="Introduction"
             name="intro"
-            value={intro}
+            value={mission.intro}
             onChange={this.handlerOnChange}
             required
           />
           <textarea
             placeholder="Description"
             name="descritpion"
-            value={descritpion}
+            value={mission.descritpion}
             onChange={this.handlerOnChange}
             required
           />
           <select
             name="levelStudyId"
             required
+            value={mission.levelStudyId}
             onChange={this.handlerOnChangeLevelStudy}
           >
             <option value="1">Bac + 1</option>

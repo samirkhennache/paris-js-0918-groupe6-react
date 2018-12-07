@@ -1,0 +1,38 @@
+.aws-btn {
+  --button-default-height: 51px;
+  --button-default-font-size: 15px;
+  --button-default-border-radius: 6px;
+  --button-horizontal-padding: 50px;
+  --button-raise-level: 5px;
+  --button-hover-pressure: 1;
+  --transform-speed: 0.175s;
+  --button-primary-color: #18329e;
+  --button-primary-color-dark: #18329e;
+  --button-primary-color-light: #ffffff;
+  --button-primary-color-hover: #18329e;
+  --button-primary-color-active: #18329e;
+  --button-primary-border: none;
+  /* --button-secondary-color: #f2f6f9;
+  --button-secondary-color-dark: #1360a4;
+  --button-secondary-color-light: #1e88e5;
+  --button-secondary-color-hover: #e1eaf1;
+  --button-secondary-border: 2px solid #1e88e5;
+  --button-anchor-color: #0e4f88;
+  --button-anchor-color-dark: #072743;
+  --button-anchor-color-light: #ffffff;
+  --button-anchor-color-hover: #0d4a7f;
+  --button-anchor-border: none; */
+}
+
+.edit {
+  margin-top: 10%;
+}
+
+.remove {
+  margin-top: 1%;
+  --button-horizontal-padding: 43px;
+}
+
+.validate {
+  margin-top: 20%;
+}
