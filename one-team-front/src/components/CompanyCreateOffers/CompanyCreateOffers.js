@@ -7,25 +7,37 @@ const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
 const CompanyCreateOffers = class extends React.Component {
   state = this.defaultState();
 
+  componentDidMount() {
+    const { mission } = this.props;
+    if (mission && mission.id) {
+      this.setState({ mission, isEditMode: true });
+    }
+  }
+
   handlerOnChange = event => {
-    const updateMission = {
-      ...this.state.mission,
-      [event.target.name]: event.target.value
-    };
-    this.setState({
-      mission: updateMission
-    });
+    const { name, value } = event.target;
+    this.setState(previousState => ({
+      mission: {
+        ...previousState.mission,
+        [name]: value
+      }
+    }));
+    // console.log(this.state);
   };
 
   handlerOnChangeLevelStudy = event => {
-    this.setState({
-      levelStudyId: event.target.value
-    });
+    const { value } = event.target;
+    this.setState(previousState => ({
+      mission: {
+        ...previousState.mission,
+        levelStudyId: value
+      }
+    }));
   };
 
   handlerOnSubmit = event => {
     event.preventDefault();
-    const { mission } = this.state;
+    const { mission, isEditMode } = this.state;
     const postFormMission = {
       titleMission: mission.title,
       dateStart: mission.startDate,
@@ -38,7 +50,19 @@ const CompanyCreateOffers = class extends React.Component {
     };
     // console.log(this.state.mission);
     // console.log(this.postFormMission);
-    Axios.post(API_ENDPOINT_MISSION, postFormMission); //.then(
+
+    if (!isEditMode) {
+      Axios.post(API_ENDPOINT_MISSION, postFormMission).then(
+        window.alert("Ajout ok")
+      );
+    } else {
+      Axios.put(`${API_ENDPOINT_MISSION}${mission.id}`, postFormMission).then(
+        window.alert("Modification ok")
+      );
+    }
+
+    //
+    // .then(
     //   this.setState({ mission: this.defaultState() }, () =>
     //     console.log(this.state.mission)
     //   )
@@ -56,15 +80,16 @@ const CompanyCreateOffers = class extends React.Component {
         intro: "",
         companyId: 1,
         levelStudyId: 1
-      }
+      },
+      isEditMode: false
     };
   }
 
   render() {
-    const { mission } = this.state;
+    const { mission, isEditMode } = this.state;
     return (
       <div className="CompanyCreateOffers">
-        <p>Je crée une mission</p>
+        <p>{isEditMode ? "Je modifie une mission" : "Je crée une mission"}</p>
         <form
           method="post"
           onSubmit={this.handlerOnSubmit}
@@ -121,9 +146,11 @@ const CompanyCreateOffers = class extends React.Component {
             <option value="1">Bac + 1</option>
             <option value="2">Bac + 2</option>
           </select>
-          <input type="submit" className="submit" />
+          <button type="submit" className="submit">
+            {isEditMode ? "Modifier" : "Créer"}
+          </button>
         </form>
-        <p>cette offre sera publiée après validation</p>
+        <p>{isEditMode ? "" : "Cette offre sera publiée après validation"}</p>
       </div>
     );
   }

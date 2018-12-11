@@ -11,9 +11,22 @@ import StudentOfferList from "./components/searchOffer/StudentOfferList";
 
 class App extends Component {
   render() {
+    const editMission = {
+      title: "titi",
+      startDate: new Date().toLocaleDateString(),
+      endDate: new Date().toLocaleDateString(),
+      descritpion: "",
+      town: "",
+      intro: "",
+      companyId: 1,
+      levelStudyId: 1,
+      id: 1
+    };
+
     return (
       // <div className="App">
-      <CompanyCreateOffers />
+      <CompanyCreateOffers mission={editMission} />
+      // <CompanyCreateOffers />
       /* <StudentCreateAccount />
       <StudentOfferList />
       <ConnexionTrainee />
