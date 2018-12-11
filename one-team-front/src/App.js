@@ -7,7 +7,7 @@ import ConnexionTrainee from "./components/authentication/ConnexionTrainee";
 import StudentCreateAccount from "./components/authentication/StudentCreateAccount";
 import ConnexionCompany from "./components/authentication/ConnexionCompany";
 import CompanyCreateAccount from "./components/authentication/CompanyCreateAccount";
-import Search from "./components/search/Search";
+import Search from "./components/search/Search2";
 
 class App extends Component {
   render() {
