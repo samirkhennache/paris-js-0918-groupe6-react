@@ -14,31 +14,31 @@ import SearchOffer from "./components/searchOffer/SearchOffer";
 
 class App extends Component {
   render() {
-    const editMission = {
-      title: "titi",
-      startDate: new Date().toLocaleDateString(),
-      endDate: new Date().toLocaleDateString(),
-      descritpion: "",
-      town: "",
-      intro: "",
-      companyId: 1,
-      levelStudyId: 1,
-      id: 1
-    };
+    // const editMission = {
+    //   title: "titi",
+    //   startDate: new Date().toLocaleDateString(),
+    //   endDate: new Date().toLocaleDateString(),
+    //   descritpion: "",
+    //   town: "",
+    //   intro: "",
+    //   companyId: 1,
+    //   levelStudyId: 1,
+    //   id: 1
+    // };
 
     return (
       <div className="App">
         <SearchOffer />
         {/* <CompanyCreateOffers mission={editMission} />
         <CompanyCreateOffers />
-        <CompanyOfferList mission={editMission} />
+        <CompanyOfferList mission={editMission} /> */}
         <StudentCreateAccount />
         <StudentOfferList />
         <ConnexionTrainee />
         STUDENT
         <StudentCreateAccount />
-        <ConnexionTrainee /> */}
-        {/* COMPANY
+        <ConnexionTrainee />
+        COMPANY
         <CompanyCreateAccount />
         <ConnexionCompany /> */}
       </div>

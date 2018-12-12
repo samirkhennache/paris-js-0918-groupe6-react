@@ -52,8 +52,9 @@ const CompanyCreateOffers = class extends React.Component {
     // console.log(this.postFormMission);
 
     if (!isEditMode) {
-      Axios.post(API_ENDPOINT_MISSION, postFormMission).then(
-        window.alert("Ajout ok")
+      Axios.post(API_ENDPOINT_MISSION, postFormMission).then(res => console.log(res)
+
+        // window.alert("Ajout ok")
       );
     } else {
       Axios.put(`${API_ENDPOINT_MISSION}${mission.id}`, postFormMission).then(
