@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import OfferView from "./OfferView";
+import {OfferView,FULL} from "../offerView";
 
 class StudentOfferList extends Component {
   state = {
@@ -27,6 +27,7 @@ class StudentOfferList extends Component {
         ) : (
           missions.map(element => (
             <OfferView
+              size ={FULL}
               key={`${element.id}-${element.titleMission}`}
               missionId={element.id}
               titleMission={element.titleMission}

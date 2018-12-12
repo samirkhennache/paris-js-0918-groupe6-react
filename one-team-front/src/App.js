@@ -9,6 +9,7 @@ import ConnexionCompany from "./components/authentication/ConnexionCompany";
 import CompanyCreateAccount from "./components/authentication/CompanyCreateAccount";
 import StudentOfferList from "./components/searchOffer/StudentOfferList";
 import CompanyOfferList from "./components/CompanyOffers/CompanyOfferList";
+import StudentApplicationList from "./components/studentApplication/StudentApplicationList";
 
 
 class App extends Component {
@@ -39,6 +40,7 @@ class App extends Component {
         COMPANY
         <CompanyCreateAccount />
         <ConnexionCompany />
+        <StudentApplicationList />
       </div>
     );
   }
