@@ -4,7 +4,7 @@ import "./App.css";
 import Home from "./components/home/home";
 import searchOffer from "./components/searchOffer/SearchOffer";
 import TraineeApplications from "./components/traineeApplications/TraineeApplications";
-import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
+import CompanyOffers from "./components/companyOffers/CompanyOffers";
 
 class App extends Component {
   render() {
