@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CompanyCreateOffers from "./components/CompanyCreateOffers";
 import "./App.css";
 // import StudentCreateAccount from "./components/StudentCreateAccount";
 import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
@@ -7,9 +8,23 @@ import StudentCreateAccount from "./components/authentication/StudentCreateAccou
 import ConnexionCompany from "./components/authentication/ConnexionCompany";
 import CompanyCreateAccount from "./components/authentication/CompanyCreateAccount";
 import StudentOfferList from "./components/searchOffer/StudentOfferList";
+import CompanyOfferList from "./components/CompanyOffers/CompanyOfferList";
+
 
 class App extends Component {
   render() {
+    // const editMission = {
+    //   title: "titi",
+    //   startDate: new Date().toLocaleDateString(),
+    //   endDate: new Date().toLocaleDateString(),
+    //   descritpion: "",
+    //   town: "",
+    //   intro: "",
+    //   companyId: 1,
+    //   levelStudyId: 1,
+    //   id: 1
+    // };
+
     return (
       <div className="App">
         <StudentOfferList />
@@ -21,6 +36,10 @@ class App extends Component {
         COMPANY
         <CompanyCreateAccount />
         <ConnexionCompany />
+        <CompanyCreateOffers />
+        <CompanyOfferList />
+        <CompanyOffers />
+        
       </div>
     );
   }

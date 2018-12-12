@@ -20,8 +20,9 @@ class OfferView extends Component {
 
     axios.post("http://localhost:3001/application", {
       missionId,
-      traineeId: 1
-    });
+      traineeId: 2
+    }).then(res =>console.log(res)
+    );
   };
 
   render() {
