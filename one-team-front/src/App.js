@@ -27,8 +27,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <StudentOfferList />
+        {/* <CompanyCreateOffers mission={editMission} />
+        <CompanyCreateOffers />
+        <CompanyOfferList mission={editMission} /> */}
         <StudentCreateAccount />
+        <StudentOfferList />
         <ConnexionTrainee />
         STUDENT
         <StudentCreateAccount />
@@ -36,10 +39,6 @@ class App extends Component {
         COMPANY
         <CompanyCreateAccount />
         <ConnexionCompany />
-        <CompanyCreateOffers />
-        <CompanyOfferList />
-        <CompanyOffers />
-        
       </div>
     );
   }

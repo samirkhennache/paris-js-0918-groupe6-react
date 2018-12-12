@@ -41,16 +41,19 @@ class ConnexionTrainee extends Component {
       password
     };
 
-    Axios.post("http://localhost:3001/company/login", postDataLogin).then(
-      data =>
-        this.setState({
-          passwordVerified: data.data.passwordVerified,
-          title: data.data.title,
-          content: data.data.content,
-          button: data.data.button,
-          open: data.data.openDialog
-        })
-    );
+    Axios.post("http://localhost:3001/company/login", postDataLogin)
+      .then(
+        data => console.log(data)
+        // data =>
+        //   this.setState({
+        //     passwordVerified: data.data.passwordVerified,
+        //     title: data.data.title,
+        //     content: data.data.content,
+        //     button: data.data.button,
+        //     open: data.data.openDialog
+        //   })
+      )
+      .catch(err => console.log(err.response.data.message));
   };
 
   handleClickShowPassword = () => {
