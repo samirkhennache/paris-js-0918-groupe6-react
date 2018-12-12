@@ -51,14 +51,15 @@ class CompanyCreateAccount extends Component {
       phone,
       password
     };
-    console.log(postFormCompany);
-    axios.post("http://localhost:3001/company", postFormCompany).then(data =>
-      this.setState({
-        title: data.data.title,
-        content: data.data.content,
-        button: data.data.button,
-        open: data.data.openDialog
-      })
+    // console.log(postFormCompany);
+    axios.post("http://localhost:3001/company", postFormCompany).then(
+      data => console.log(data)
+      // this.setState({
+      //   title: data.data.title,
+      //   content: data.data.content,
+      //   button: data.data.button,
+      //   open: data.data.openDialog
+      // })
     );
   };
 
