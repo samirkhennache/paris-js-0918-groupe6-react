@@ -17,6 +17,9 @@ class CompanyCreateAccount extends Component {
     email: null,
     phone: null,
     password: null,
+    isActived: true,
+    createdAt: null,
+    updatedAt: null,
     title: "",
     content: "",
     button: "",
@@ -27,43 +30,56 @@ class CompanyCreateAccount extends Component {
     this.setState({ open: false });
   };
 
-  onChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
   onSubmit = e => {
-    const {
-      companyName,
-      firstnameContact,
-      lastnameContact,
-      email,
-      phone,
-      password
-    } = this.state;
     e.preventDefault();
     const postFormCompany = {
-      companyName,
-      firstnameContact,
-      lastnameContact,
-      email,
-      phone,
-      password
+      companyName: e.target.companyName.value,
+      firstnameContact: e.target.firstnameContact.value,
+      lastnameContact: e.target.lastnameContact.value,
+      email: e.target.email.value,
+      phone: e.target.phone.value,
+      password: e.target.password.value
     };
-    // console.log(postFormCompany);
-    axios.post("http://localhost:3001/company", postFormCompany).then(
-      data => console.log(data)
-      // this.setState({
-      //   title: data.data.title,
-      //   content: data.data.content,
-      //   button: data.data.button,
-      //   open: data.data.openDialog
-      // })
-    );
+    axios
+      .post("http://localhost:3001/company", postFormCompany)
+      .then(result => {
+        const {
+          companyName,
+          firstnameContact,
+          lastnameContact,
+          email,
+          phone,
+          password,
+          isActived,
+          createdAt,
+          updatedAt
+        } = result.data;
+        this.setState({
+          companyName,
+          firstnameContact,
+          lastnameContact,
+          email,
+          phone,
+          password,
+          isActived,
+          createdAt,
+          updatedAt
+        });
+      })
+      .catch(error => {
+        if (error.response.status === 401) {
+          this.setState({
+            open: true,
+            title: `user already exists`,
+            content: `Cette adresse mail existe déjà, connectez-vous!`,
+            button: `Se connecter`
+          });
+        }
+      });
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="createForm">
         <form method="post" onSubmit={this.onSubmit}>
@@ -72,7 +88,6 @@ class CompanyCreateAccount extends Component {
             className="textField"
             name="companyName"
             placeholder="Nom de l'entreprise"
-            onChange={this.onChange}
             margin="normal"
             variant="outlined"
             required
@@ -82,7 +97,6 @@ class CompanyCreateAccount extends Component {
             className="textField"
             name="firstnameContact"
             placeholder="Prénom"
-            onChange={this.onChange}
             margin="normal"
             variant="outlined"
             required
@@ -92,7 +106,6 @@ class CompanyCreateAccount extends Component {
             className="textField"
             name="lastnameContact"
             placeholder="Nom"
-            onChange={this.onChange}
             margin="normal"
             variant="outlined"
             required
@@ -103,7 +116,6 @@ class CompanyCreateAccount extends Component {
             className="textField"
             name="email"
             placeholder="Email"
-            onChange={this.onChange}
             margin="normal"
             variant="outlined"
             required
@@ -113,7 +125,6 @@ class CompanyCreateAccount extends Component {
             className="textField"
             name="phone"
             placeholder="Numéro de téléphone"
-            onChange={this.onChange}
             margin="normal"
             variant="outlined"
             required
@@ -124,7 +135,6 @@ class CompanyCreateAccount extends Component {
             className="textField"
             name="password"
             placeholder="Mot de passe"
-            onChange={this.onChange}
             margin="normal"
             variant="outlined"
             required
