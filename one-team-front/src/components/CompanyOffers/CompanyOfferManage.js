@@ -4,7 +4,7 @@ import axios from "axios";
 import { AwesomeButton } from "react-awesome-button";
 
 import Modal from "./Modal";
-import CompanyCreateOffers from "../CompanyCreateOffers/CompanyCreateOffers";
+import CompanyCreateOffers from "../companyOffers/CompanyCreateOffers/CompanyCreateOffers";
 
 import "./Button.css";
 

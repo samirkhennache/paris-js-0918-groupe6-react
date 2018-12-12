@@ -7,7 +7,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import "./authentication.css";
+import "../authentication.css";
 
 class CompanyCreateAccount extends Component {
   state = {
@@ -51,14 +51,15 @@ class CompanyCreateAccount extends Component {
       phone,
       password
     };
-    console.log(postFormCompany);
-    axios.post("http://localhost:3001/company", postFormCompany).then(data =>
-      this.setState({
-        title: data.data.title,
-        content: data.data.content,
-        button: data.data.button,
-        open: data.data.openDialog
-      })
+    // console.log(postFormCompany);
+    axios.post("http://localhost:3001/company", postFormCompany).then(
+      data => console.log(data)
+      // this.setState({
+      //   title: data.data.title,
+      //   content: data.data.content,
+      //   button: data.data.button,
+      //   open: data.data.openDialog
+      // })
     );
   };
 

@@ -11,7 +11,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import "./authentication.css";
+import "../authentication.css";
 
 class ConnexionTrainee extends Component {
   state = {
@@ -41,16 +41,19 @@ class ConnexionTrainee extends Component {
       password
     };
 
-    Axios.post("http://localhost:3001/trainee/login", postDataLogin).then(
-      data =>
-        this.setState({
-          passwordVerified: data.data.passwordVerified,
-          title: data.data.title,
-          content: data.data.content,
-          button: data.data.button,
-          open: data.data.openDialog
-        })
-    );
+    Axios.post("http://localhost:3001/company/login", postDataLogin)
+      .then(
+        data => console.log(data)
+        // data =>
+        //   this.setState({
+        //     passwordVerified: data.data.passwordVerified,
+        //     title: data.data.title,
+        //     content: data.data.content,
+        //     button: data.data.button,
+        //     open: data.data.openDialog
+        //   })
+      )
+      .catch(err => console.log(err.response.data.message));
   };
 
   handleClickShowPassword = () => {
@@ -58,7 +61,7 @@ class ConnexionTrainee extends Component {
   };
 
   render() {
-    const { passwordVerified, open } = this.state
+    const { passwordVerified, open } = this.state;
     const { showPassword } = this.state;
     return (
       <div className="createForm">

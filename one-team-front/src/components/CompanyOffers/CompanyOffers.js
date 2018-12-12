@@ -3,7 +3,7 @@ import { AwesomeButton } from "react-awesome-button";
 
 import CompanyOfferList from "./CompanyOfferList";
 import Modal from "./Modal";
-import CompanyCreateOffers from "../CompanyCreateOffers/CompanyCreateOffers";
+import CompanyCreateOffers from "../companyOffers/CompanyCreateOffers/CompanyCreateOffers";
 
 import "./Button.css";
 import "./Modal.css";
@@ -24,6 +24,17 @@ class CompanyOffers extends Component {
   };
 
   render() {
+    const editMission = {
+      titleMission: "titi",
+      dateStart: new Date().toLocaleDateString(),
+      dateEnd: new Date().toLocaleDateString(),
+      description: "",
+      town: "",
+      intro: "",
+      companyId: 1,
+      LevelStudyId: 1,
+      id: 1
+    };
     return (
       <div className="mesMissions">
         <h1 className="titleMission"> Mes missions </h1>
@@ -35,11 +46,10 @@ class CompanyOffers extends Component {
           Ajouter
         </AwesomeButton>
         <br />
-        <CompanyOfferList />
-        <br />
         <Modal onClose={this.showModal} show={this.state.show}>
           <CompanyCreateOffers />
         </Modal>
+        <CompanyOfferList mission={editMission} />
       </div>
     );
   }
