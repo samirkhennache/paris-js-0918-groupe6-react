@@ -33,6 +33,7 @@ class CompanyOfferList extends Component {
                 start={e.dateStart}
                 end={e.dateEnd}
                 descrip={e.description}
+                idMission={e.id}
               />
             </div>
           ))

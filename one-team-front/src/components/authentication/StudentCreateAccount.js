@@ -21,10 +21,6 @@ class StudentCreateAccount extends Component {
     open: false
   };
 
-  // handleClickOpen = () => {
-  //   this.setState({ open: true });
-  // };
-
   handleClose = () => {
     this.setState({ open: false });
   };
@@ -44,14 +40,19 @@ class StudentCreateAccount extends Component {
       email,
       password
     };
-    axios.post("http://localhost:3001/trainee", postFormStudent).then(data =>
-      this.setState({
-        title: data.data.title,
-        content: data.data.content,
-        button: data.data.button,
-        open: data.data.openDialog
-      })
-    );
+    axios
+      .post("http://localhost:3001/trainee", postFormStudent)
+      .then(data => console.log(`good ${data}`))
+      .catch(error => {
+        if (error.response.status === 400) {
+          this.setState({
+            open: true,
+            title: `user already exists`,
+            content: `Cette adresse mail existe déjà, connectez-vous!`,
+            button: `Se connecter`
+          });
+        }
+      });
   };
 
   render() {
