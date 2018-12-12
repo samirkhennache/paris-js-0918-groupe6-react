@@ -75,7 +75,7 @@ class Search extends Component {
   //   return missions;
   // // };
 
-  filterMission = mission => {
+  filterMission = mission  => {
     const { missions, search } = this.state;
     missions.filter(
       m => m.titleMission.toLowerCase().indexOf(search.toLowerCase()) !== -1
