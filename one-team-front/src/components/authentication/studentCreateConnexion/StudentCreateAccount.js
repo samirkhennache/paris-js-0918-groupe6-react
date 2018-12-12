@@ -34,6 +34,7 @@ class StudentCreateAccount extends Component {
   onSubmit = e => {
     const { firstname, lastname, email, password } = this.state;
     const { props } = this;
+
     e.preventDefault();
     const postFormStudent = {
       firstname,
