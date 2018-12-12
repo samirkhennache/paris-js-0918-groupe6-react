@@ -26,9 +26,10 @@ class App extends Component {
 
     return (
       // <div className="App">
-      <CompanyCreateOffers mission={editMission} />
+      // <CompanyCreateOffers mission={editMission} />
       // <CompanyCreateOffers />
       // <CompanyOfferList mission={editMission} />
+      <CompanyOffers />
       /* <StudentCreateAccount />
       <StudentOfferList />
       <ConnexionTrainee />
