@@ -1,44 +1,22 @@
 import React, { Component } from "react";
-import CompanyCreateOffers from "./components/CompanyCreateOffers";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
-// import StudentCreateAccount from "./components/StudentCreateAccount";
+import Home from "./components/home/home";
+import searchOffer from "./components/searchOffer/SearchOffer";
+import TraineeApplications from "./components/traineeApplications/TraineeApplications";
 import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
-import ConnexionTrainee from "./components/authentication/ConnexionTrainee";
-import StudentCreateAccount from "./components/authentication/StudentCreateAccount";
-import ConnexionCompany from "./components/authentication/ConnexionCompany";
-import CompanyCreateAccount from "./components/authentication/CompanyCreateAccount";
-import StudentOfferList from "./components/searchOffer/StudentOfferList";
-import CompanyOfferList from "./components/CompanyOffers/CompanyOfferList";
-
 
 class App extends Component {
   render() {
-    // const editMission = {
-    //   title: "titi",
-    //   startDate: new Date().toLocaleDateString(),
-    //   endDate: new Date().toLocaleDateString(),
-    //   descritpion: "",
-    //   town: "",
-    //   intro: "",
-    //   companyId: 1,
-    //   levelStudyId: 1,
-    //   id: 1
-    // };
-
+    console.log(this.props);
     return (
       <div className="App">
-        {/* <CompanyCreateOffers mission={editMission} />
-        <CompanyCreateOffers />
-        <CompanyOfferList mission={editMission} /> */}
-        <StudentCreateAccount />
-        <StudentOfferList />
-        <ConnexionTrainee />
-        STUDENT
-        <StudentCreateAccount />
-        <ConnexionTrainee />
-        COMPANY
-        <CompanyCreateAccount />
-        <ConnexionCompany />
+        <Switch>
+          <Route exact path="/" render={props => <Home {...props} />} />
+          <Route path="/search-offers" component={searchOffer} />
+          <Route path="/my-applications" component={TraineeApplications} />
+          <Route path="/company-offers" component={CompanyOffers} />
+        </Switch>
       </div>
     );
   }
