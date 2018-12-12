@@ -25,20 +25,20 @@ class App extends Component {
     };
 
     return (
-      // <div className="App">
-      <CompanyCreateOffers mission={editMission} />
-      // <CompanyCreateOffers />
-      // <CompanyOfferList mission={editMission} />
-      /* <StudentCreateAccount />
-      <StudentOfferList />
-      <ConnexionTrainee />
+      <div className="App">
+        {/* <CompanyCreateOffers mission={editMission} />
+        <CompanyCreateOffers />
+        <CompanyOfferList mission={editMission} />
+        <StudentCreateAccount />
+        <StudentOfferList />
+        <ConnexionTrainee />
         STUDENT
         <StudentCreateAccount />
-        <ConnexionTrainee />
+        <ConnexionTrainee /> */}
         COMPANY
         <CompanyCreateAccount />
         <ConnexionCompany />
-      </div> */
+      </div>
     );
   }
 }
