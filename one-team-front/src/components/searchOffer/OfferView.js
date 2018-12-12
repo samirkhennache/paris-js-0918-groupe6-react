@@ -18,11 +18,12 @@ class OfferView extends Component {
   handleClick = () => {
     const { missionId } = this.state;
 
-    axios.post("http://localhost:3001/application", {
-      missionId,
-      traineeId: 2
-    }).then(res =>console.log(res)
-    );
+    axios
+      .post("http://localhost:3001/application", {
+        missionId,
+        traineeId: 2
+      })
+      .then(res => console.log(res));
   };
 
   render() {
