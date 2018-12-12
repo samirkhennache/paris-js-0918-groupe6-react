@@ -8,12 +8,9 @@ import ConnexionTrainee from "./components/authentication/ConnexionTrainee";
 import StudentCreateAccount from "./components/authentication/StudentCreateAccount";
 import ConnexionCompany from "./components/authentication/ConnexionCompany";
 import CompanyCreateAccount from "./components/authentication/CompanyCreateAccount";
-<<<<<<< HEAD
-import Search from "./components/search/Search2";
-=======
 import StudentOfferList from "./components/searchOffer/StudentOfferList";
 import CompanyOfferList from "./components/CompanyOffers/CompanyOfferList";
->>>>>>> 6086597d3b3283647c8db0d72f03b7ed0d647bc7
+import SearchOffer from "./components/searchOffer/SearchOffer";
 
 class App extends Component {
   render() {
@@ -31,24 +28,19 @@ class App extends Component {
 
     return (
       <div className="App">
-<<<<<<< HEAD
-        <Search />
-        <CompanyOffers />
-        STUDENT
-=======
+        <SearchOffer />
         {/* <CompanyCreateOffers mission={editMission} />
         <CompanyCreateOffers />
         <CompanyOfferList mission={editMission} />
->>>>>>> 6086597d3b3283647c8db0d72f03b7ed0d647bc7
         <StudentCreateAccount />
         <StudentOfferList />
         <ConnexionTrainee />
         STUDENT
         <StudentCreateAccount />
         <ConnexionTrainee /> */}
-        COMPANY
+        {/* COMPANY
         <CompanyCreateAccount />
-        <ConnexionCompany />
+        <ConnexionCompany /> */}
       </div>
     );
   }
