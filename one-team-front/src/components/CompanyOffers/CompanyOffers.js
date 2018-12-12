@@ -9,7 +9,8 @@ class CompanyOffers extends Component {
   render() {
     return (
       <div className="mesMissions">
-        <h1 className="titleMission"> Mes missions </h1>
+      <h3>Page gestion des offres company</h3>
+        <h1 className="titleMission"> Mes offres </h1>
         <AwesomeButton type="primary" className="aws-btn add">
           Ajouter
         </AwesomeButton>

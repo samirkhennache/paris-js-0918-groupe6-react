@@ -7,15 +7,13 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import "./authentication.css";
+import "../authentication.css";
 
-class CompanyCreateAccount extends Component {
+class StudentCreateAccount extends Component {
   state = {
-    companyName: null,
-    firstnameContact: null,
-    lastnameContact: null,
+    firstname: null,
+    lastname: null,
     email: null,
-    phone: null,
     password: null,
     title: "",
     content: "",
@@ -34,52 +32,41 @@ class CompanyCreateAccount extends Component {
   };
 
   onSubmit = e => {
-    const {
-      companyName,
-      firstnameContact,
-      lastnameContact,
-      email,
-      phone,
-      password
-    } = this.state;
+    const { firstname, lastname, email, password } = this.state;
+    const { props } = this;
     e.preventDefault();
-    const postFormCompany = {
-      companyName,
-      firstnameContact,
-      lastnameContact,
+    const postFormStudent = {
+      firstname,
+      lastname,
       email,
-      phone,
       password
     };
-    console.log(postFormCompany);
-    axios.post("http://localhost:3001/company", postFormCompany).then(data =>
-      this.setState({
-        title: data.data.title,
-        content: data.data.content,
-        button: data.data.button,
-        open: data.data.openDialog
+    axios
+      .post("http://localhost:3001/trainee", postFormStudent)
+      .then(() => {
+        props.history.push("/search-offers");
       })
-    );
+      .catch(error => {
+        if (error.response.status === 400) {
+          this.setState({
+            open: true,
+            title: `user already exists`,
+            content: `Cette adresse mail existe déjà, connectez-vous!`,
+            button: `Se connecter`
+          });
+        }
+      });
   };
 
   render() {
+    const { open, title, content, button } = this.state;
     return (
       <div className="createForm">
         <form method="post" onSubmit={this.onSubmit}>
           <TextField
             type="text"
             className="textField"
-            name="companyName"
-            placeholder="Nom de l'entreprise"
-            onChange={this.onChange}
-            margin="normal"
-            variant="outlined"
-            required
-          />
-          <TextField
-            type="text"
-            className="textField"
-            name="firstnameContact"
+            name="firstname"
             placeholder="Prénom"
             onChange={this.onChange}
             margin="normal"
@@ -89,7 +76,7 @@ class CompanyCreateAccount extends Component {
           <TextField
             type="text"
             className="textField"
-            name="lastnameContact"
+            name="lastname"
             placeholder="Nom"
             onChange={this.onChange}
             margin="normal"
@@ -102,16 +89,6 @@ class CompanyCreateAccount extends Component {
             className="textField"
             name="email"
             placeholder="Email"
-            onChange={this.onChange}
-            margin="normal"
-            variant="outlined"
-            required
-          />
-          <TextField
-            type="text"
-            className="textField"
-            name="phone"
-            placeholder="Numéro de téléphone"
             onChange={this.onChange}
             margin="normal"
             variant="outlined"
@@ -133,24 +110,24 @@ class CompanyCreateAccount extends Component {
             className="buttonCreateForm"
             type="submit"
           >
-            S'inscrire
+            {`S'inscrire`}
           </Button>
         </form>
         <Dialog
-          open={this.state.open}
+          open={open}
           onClose={this.handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{this.state.title}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              {this.state.content}
+              {content}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
-              {this.state.button}
+              {button}
             </Button>
           </DialogActions>
         </Dialog>
@@ -159,4 +136,4 @@ class CompanyCreateAccount extends Component {
   }
 }
 
-export default CompanyCreateAccount;
+export default StudentCreateAccount;
