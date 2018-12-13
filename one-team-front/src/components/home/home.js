@@ -4,37 +4,50 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import TraineeCreateConnexion from "../authentication/studentCreateConnexion/TraineeCreateConnexion";
+import CompanyCreateConnexion from "../authentication/companyCreateConnexion/CompanyCreateConnexion";
 
 class Home extends Component {
   state = {
-    open: false,
+    openTrainee: false,
+    openCompany: false,
     button: "fermer"
   };
 
-  openConnexion = () => {
+  traineeOpenConnexion = () => {
     this.setState({
-      open: true
+      openTrainee: true
     });
-    console.log("openConnexion");
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
+  companyOpenConnexion = () => {
+    this.setState({
+      openCompany: true
+    });
+  };
+
+  handleCloseTrainee = () => {
+    this.setState({ openTrainee: false });
+  };
+
+  handleCloseCompany = () => {
+    this.setState({ openCompany: false });
   };
 
   render() {
-    const { open, button } = this.state;
-    console.log(this.props);
+    const { openTrainee, openCompany, button } = this.state;
     return (
       <div>
         <h3>Page acceuil générale</h3>
-        <button type="button" onClick={this.openConnexion}>
+        <button type="button" onClick={this.traineeOpenConnexion}>
           Trouver un stage
         </button>
-        <button type="button">Déposer une offre</button>
+        <button type="button" onClick={this.companyOpenConnexion}>
+          Déposer une offre
+        </button>
+        {/* DIALOG TRAINEE ---------------------------------------- */}
         <Dialog
-          open={open}
-          onClose={this.handleClose}
+          open={openTrainee}
+          onClose={this.handleCloseTrainee}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
@@ -42,7 +55,23 @@ class Home extends Component {
             <TraineeCreateConnexion {...this.props} />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleCloseTrainee} color="primary">
+              {button}
+            </Button>
+          </DialogActions>
+        </Dialog>
+        {/* DIALOG COMPANY -----------------------------------------*/}
+        <Dialog
+          open={openCompany}
+          onClose={this.handleCloseCompany}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogContent>
+            <CompanyCreateConnexion {...this.props} />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCloseCompany} color="primary">
               {button}
             </Button>
           </DialogActions>
