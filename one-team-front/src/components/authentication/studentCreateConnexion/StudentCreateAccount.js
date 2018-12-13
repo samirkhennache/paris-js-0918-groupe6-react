@@ -55,6 +55,13 @@ class StudentCreateAccount extends Component {
             content: `Cette adresse mail existe déjà, connectez-vous!`,
             button: `Se connecter`
           });
+        } else {
+          this.setState({
+            open: true,
+            title: `Oups une erreur s'est produite`,
+            content: `Veuillez recommencer s'il-vous-plait`,
+            button: `Fermer`
+          });
         }
       });
   };

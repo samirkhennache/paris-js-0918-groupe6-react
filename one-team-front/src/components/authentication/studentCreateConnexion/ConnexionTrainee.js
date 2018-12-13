@@ -35,13 +35,16 @@ class ConnexionTrainee extends Component {
   handleOnSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
+    const { props } = this;
     const postDataLogin = {
       email,
       password
     };
 
     Axios.post("http://localhost:3001/trainee/login", postDataLogin)
-      .then(data => console.log(`good ${data}`))
+      .then(() => {
+        props.history.push("/search-offers");
+      })
       .catch(error => {
         if (error.response.status === 401) {
           this.setState({
