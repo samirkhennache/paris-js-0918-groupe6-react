@@ -43,7 +43,7 @@ class ConnexionTrainee extends Component {
 
     Axios.post("http://localhost:3001/trainee/login", postDataLogin)
       .then(() => {
-        props.history.push("/search-offers");
+        props.history.push("/trainee");
       })
       .catch(error => {
         if (error.response.status === 401) {
