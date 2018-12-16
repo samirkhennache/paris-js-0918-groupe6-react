@@ -45,7 +45,7 @@ class StudentCreateAccount extends Component {
     axios
       .post("http://localhost:3001/trainee", postFormStudent)
       .then(() => {
-        props.history.push("/search-offers");
+        props.history.push("/trainee");
       })
       .catch(error => {
         if (error.response.status === 400) {
