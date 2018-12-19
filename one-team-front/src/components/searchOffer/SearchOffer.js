@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import StudentOfferList from "./StudentOfferList";
-import OfferView from "./OfferView";
+// import OfferView from "./OfferView";
 
 class SearchOffer extends Component {
   render() {
@@ -8,7 +8,6 @@ class SearchOffer extends Component {
       <div>
         <h3>Page Trainee Search Offer</h3>
         <StudentOfferList />
-        <OfferView />
       </div>
     );
   }
