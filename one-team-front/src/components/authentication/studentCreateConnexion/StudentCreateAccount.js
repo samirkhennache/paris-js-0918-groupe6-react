@@ -7,7 +7,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import "./authentication.css";
+import "../authentication.css";
 
 class StudentCreateAccount extends Component {
   state = {
@@ -33,6 +33,8 @@ class StudentCreateAccount extends Component {
 
   onSubmit = e => {
     const { firstname, lastname, email, password } = this.state;
+    const { props } = this;
+
     e.preventDefault();
     const postFormStudent = {
       firstname,
@@ -42,7 +44,9 @@ class StudentCreateAccount extends Component {
     };
     axios
       .post("http://localhost:3001/trainee", postFormStudent)
-      .then(data => console.log(`good ${data}`))
+      .then(() => {
+        props.history.push("/trainee");
+      })
       .catch(error => {
         if (error.response.status === 400) {
           this.setState({
@@ -50,6 +54,13 @@ class StudentCreateAccount extends Component {
             title: `user already exists`,
             content: `Cette adresse mail existe déjà, connectez-vous!`,
             button: `Se connecter`
+          });
+        } else {
+          this.setState({
+            open: true,
+            title: `Oups une erreur s'est produite`,
+            content: `Veuillez recommencer s'il-vous-plait`,
+            button: `Fermer`
           });
         }
       });

@@ -11,11 +11,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import "./authentication.css";
+import "../authentication.css";
 
 class ConnexionTrainee extends Component {
   state = {
     showPassword: false,
+    passwordVerified: false,
     title: "",
     content: "",
     button: "",
@@ -34,23 +35,27 @@ class ConnexionTrainee extends Component {
 
   handleOnSubmit = e => {
     e.preventDefault();
+    const { props } = this;
     const { email, password } = this.state;
     const postDataLogin = {
       email,
       password
     };
 
-    Axios.post("http://localhost:3001/trainee/login", postDataLogin)
-      .then(data => console.log(`good ${data}`))
+    Axios.post("http://localhost:3001/company/login", postDataLogin)
+      .then(() => {
+        props.history.push("/company-offers");
+      })
       .catch(error => {
-        if (error.response.status === 401) {
+        console.log(error.response.data.message);
+        if (error.response.status === 404) {
           this.setState({
             open: true,
             title: `user doesn't exists`,
             content: `Cette adresse mail n'est pas reconnue, essayer de nouveau ou bien crééz votre compte :)`,
             button: `Créer un compte`
           });
-        } else if (error.response.status === 404) {
+        } else if (error.response.status === 401) {
           this.setState({
             open: true,
             title: `false password`,
@@ -73,7 +78,7 @@ class ConnexionTrainee extends Component {
   };
 
   render() {
-    const { open, title, content, button } = this.state;
+    const { passwordVerified, open, title, content, button } = this.state;
     const { showPassword } = this.state;
     return (
       <div className="createForm">
