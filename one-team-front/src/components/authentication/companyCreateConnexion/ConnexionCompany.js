@@ -44,7 +44,7 @@ class ConnexionTrainee extends Component {
 
     Axios.post("http://localhost:3001/company/login", postDataLogin)
       .then(() => {
-        props.history.push("/company-offers");
+        props.history.push("/company/:id");
       })
       .catch(error => {
         console.log(error.response.data.message);
