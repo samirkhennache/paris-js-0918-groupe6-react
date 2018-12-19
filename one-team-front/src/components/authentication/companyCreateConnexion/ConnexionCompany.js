@@ -35,6 +35,7 @@ class ConnexionTrainee extends Component {
 
   handleOnSubmit = e => {
     e.preventDefault();
+    const { props } = this;
     const { email, password } = this.state;
     const postDataLogin = {
       email,
@@ -42,18 +43,34 @@ class ConnexionTrainee extends Component {
     };
 
     Axios.post("http://localhost:3001/company/login", postDataLogin)
-      .then(
-        data => console.log(data)
-        // data =>
-        //   this.setState({
-        //     passwordVerified: data.data.passwordVerified,
-        //     title: data.data.title,
-        //     content: data.data.content,
-        //     button: data.data.button,
-        //     open: data.data.openDialog
-        //   })
-      )
-      .catch(err => console.log(err.response.data.message));
+      .then(() => {
+        props.history.push("/company-offers");
+      })
+      .catch(error => {
+        console.log(error.response.data.message);
+        if (error.response.status === 404) {
+          this.setState({
+            open: true,
+            title: `user doesn't exists`,
+            content: `Cette adresse mail n'est pas reconnue, essayer de nouveau ou bien crééz votre compte :)`,
+            button: `Créer un compte`
+          });
+        } else if (error.response.status === 401) {
+          this.setState({
+            open: true,
+            title: `false password`,
+            content: `erreur lors de la saisie du mot de passe`,
+            button: `Fermer`
+          });
+        } else {
+          this.setState({
+            open: true,
+            title: error.response.status,
+            content: `erreur inconnue, veuillez recommencez`,
+            button: `Fermer`
+          });
+        }
+      });
   };
 
   handleClickShowPassword = () => {
@@ -61,7 +78,7 @@ class ConnexionTrainee extends Component {
   };
 
   render() {
-    const { passwordVerified, open } = this.state;
+    const { passwordVerified, open, title, content, button } = this.state;
     const { showPassword } = this.state;
     return (
       <div className="createForm">
@@ -112,15 +129,15 @@ class ConnexionTrainee extends Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{this.state.title}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              {this.state.content}
+              {content}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
-              {this.state.button}
+              {button}
             </Button>
           </DialogActions>
         </Dialog>

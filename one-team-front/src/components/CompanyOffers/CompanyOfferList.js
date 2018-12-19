@@ -20,7 +20,9 @@ class CompanyOfferList extends Component {
 
   render() {
     const { missions, isLoaded } = this.state;
-    console.log(missions);
+    const { mission } = this.props;
+
+    console.log("3", this.props);
     return (
       <div>
         {!isLoaded ? (
@@ -29,6 +31,7 @@ class CompanyOfferList extends Component {
           missions.map((e, index) => (
             <div key={index}>
               <CompanyOfferManage
+                modifMission={e}
                 titleMissions={e.titleMission}
                 start={e.dateStart}
                 end={e.dateEnd}

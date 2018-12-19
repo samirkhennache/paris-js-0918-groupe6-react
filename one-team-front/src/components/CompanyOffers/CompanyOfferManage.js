@@ -1,10 +1,19 @@
 import React, { Component } from "react";
-import { AwesomeButton } from "react-awesome-button";
-import "./Button.css";
+
 import axios from "axios";
+import { AwesomeButton } from "react-awesome-button";
+
+import Modal from "./Modal";
+import CompanyCreateOffers from "../CompanyOffers/CompanyCreateOffers/CompanyCreateOffers";
+
+import "./Button.css";
 
 class CompanyOfferManage extends Component {
-  deleteData = e => {
+  state = {
+    show: false
+  };
+
+  deleteData = () => {
     const { idMission } = this.props;
     const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
     axios
@@ -12,10 +21,20 @@ class CompanyOfferManage extends Component {
       .then(alert("Mission supprimé"));
   };
 
+  showModal = () => {
+    this.setState({
+      ...this.state,
+      show: !this.state.show
+    });
+  };
+
   render() {
-    const { titleMissions, start, end, descrip } = this.props;
+    const { titleMissions, start, end, descrip, modifMission } = this.props;
+    console.log("1", modifMission);
+
     return (
       <div>
+        {/* ***** FICHE MISSION ***** */}
         <div>
           {titleMissions}
           <br />
@@ -25,8 +44,12 @@ class CompanyOfferManage extends Component {
           <br />
           {descrip}
         </div>
-
-        <AwesomeButton type="primary" className="aws-btn edit">
+        {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
+        <AwesomeButton
+          type="primary"
+          className="aws-btn edit"
+          action={this.showModal}
+        >
           Modifier
         </AwesomeButton>
         <br />
@@ -37,8 +60,13 @@ class CompanyOfferManage extends Component {
         >
           Supprimer
         </AwesomeButton>
+
+        <Modal onClose={this.showModal} show={this.state.show}>
+          <CompanyCreateOffers mission={modifMission} />
+        </Modal>
         <br />
         <hr align="center" width="50%" color="midnightblue" size="1" />
+        {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
         <AwesomeButton type="primary" className="aws-btn validate">
           Valider ma team
         </AwesomeButton>

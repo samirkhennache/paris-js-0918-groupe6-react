@@ -52,7 +52,8 @@ const CompanyCreateOffers = class extends React.Component {
     // console.log(this.postFormMission);
 
     if (!isEditMode) {
-      Axios.post(API_ENDPOINT_MISSION, postFormMission).then(res => console.log(res)
+      Axios.post(API_ENDPOINT_MISSION, postFormMission).then(
+        res => console.log(res)
 
         // window.alert("Ajout ok")
       );
@@ -73,14 +74,14 @@ const CompanyCreateOffers = class extends React.Component {
   defaultState() {
     return {
       mission: {
-        title: "",
-        startDate: new Date().toLocaleDateString(),
-        endDate: new Date().toLocaleDateString(),
-        descritpion: "",
+        titleMission: "",
+        dateStart: new Date().toLocaleDateString(),
+        dateEnd: new Date().toLocaleDateString(),
+        description: "",
         town: "",
         intro: "",
-        companyId: 1,
-        levelStudyId: 1
+        CompanyId: 1,
+        LevelStudyId: 1
       },
       isEditMode: false
     };
@@ -99,21 +100,21 @@ const CompanyCreateOffers = class extends React.Component {
           <input
             placeholder="Titre de la mission de stage"
             name="title"
-            value={mission.title}
+            value={mission.titleMission}
             onChange={this.handlerOnChange}
             required
           />
           <input
             placeholder="Date de début"
             name="startDate"
-            value={mission.startDate}
+            value={mission.dateStart}
             onChange={this.handlerOnChange}
             required
           />
           <input
             placeholder="Date de fin"
             name="endDate"
-            value={mission.endDate}
+            value={mission.dateEnd}
             onChange={this.handlerOnChange}
             required
           />
@@ -134,14 +135,14 @@ const CompanyCreateOffers = class extends React.Component {
           <textarea
             placeholder="Description"
             name="descritpion"
-            value={mission.descritpion}
+            value={mission.description}
             onChange={this.handlerOnChange}
             required
           />
           <select
             name="levelStudyId"
             required
-            value={mission.levelStudyId}
+            value={mission.LevelStudyId}
             onChange={this.handlerOnChangeLevelStudy}
           >
             <option value="1">Bac + 1</option>

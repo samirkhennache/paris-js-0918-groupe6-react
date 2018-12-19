@@ -1,32 +1,54 @@
 import React, { Component } from "react";
 import { AwesomeButton } from "react-awesome-button";
-import "react-awesome-button/dist/styles.css";
+
 import CompanyOfferList from "./CompanyOfferList";
-import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
+import Modal from "./Modal";
+import CompanyCreateOffers from "../CompanyOffers/CompanyCreateOffers/CompanyCreateOffers";
+
 import "./Button.css";
+import "./Modal.css";
 import "./Missions.css";
 
+import "react-awesome-button/dist/styles.css";
+
 class CompanyOffers extends Component {
+  state = {
+    show: false
+  };
+
+  showModal = () => {
+    this.setState({
+      ...this.state,
+      show: !this.state.show
+    });
+  };
+
   render() {
     const editMission = {
-      title: "titi",
-      startDate: new Date().toLocaleDateString(),
-      endDate: new Date().toLocaleDateString(),
-      descritpion: "",
+      titleMission: "titi",
+      dateStart: new Date().toLocaleDateString(),
+      dateEnd: new Date().toLocaleDateString(),
+      description: "",
       town: "",
       intro: "",
       companyId: 1,
-      levelStudyId: 1,
+      LevelStudyId: 1,
       id: 1
     };
     return (
       <div className="mesMissions">
-        <h3>Page gestion des offres company</h3>
-        <h1 className="titleMission"> Mes offres </h1>
-        <AwesomeButton type="primary" className="aws-btn add">
+        <h1 className="titleMission"> Mes missions </h1>
+        <AwesomeButton
+          type="primary"
+          className="aws-btn add"
+          action={this.showModal}
+        >
           Ajouter
         </AwesomeButton>
-        <CompanyCreateOffers mission={editMission} />
+        <br />
+        <Modal onClose={this.showModal} show={this.state.show}>
+          <CompanyCreateOffers />
+        </Modal>
         <CompanyOfferList mission={editMission} />
       </div>
     );

@@ -34,6 +34,7 @@ class StudentCreateAccount extends Component {
   onSubmit = e => {
     const { firstname, lastname, email, password } = this.state;
     const { props } = this;
+
     e.preventDefault();
     const postFormStudent = {
       firstname,
@@ -44,7 +45,7 @@ class StudentCreateAccount extends Component {
     axios
       .post("http://localhost:3001/trainee", postFormStudent)
       .then(() => {
-        props.history.push("/search-offers");
+        props.history.push("/trainee");
       })
       .catch(error => {
         if (error.response.status === 400) {
@@ -53,6 +54,13 @@ class StudentCreateAccount extends Component {
             title: `user already exists`,
             content: `Cette adresse mail existe déjà, connectez-vous!`,
             button: `Se connecter`
+          });
+        } else {
+          this.setState({
+            open: true,
+            title: `Oups une erreur s'est produite`,
+            content: `Veuillez recommencer s'il-vous-plait`,
+            button: `Fermer`
           });
         }
       });
