@@ -8,7 +8,7 @@ class SearchOffer extends Component {
       <div>
         <h3>Page Trainee Search Offer</h3>
         <StudentOfferList />
-        <OfferView />
+        {/* <OfferView /> */}
       </div>
     );
   }

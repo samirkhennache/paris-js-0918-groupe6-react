@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { AwesomeButton } from "react-awesome-button";
 import "./Button.css";
 
-
 class OfferView extends Component {
   state = {
     missionId: null
@@ -12,79 +11,82 @@ class OfferView extends Component {
 
   componentDidMount() {
     const { missionId } = this.props;
-    this.setState({ missionId });
+    this.setState({
+      missionId
+    });
   }
 
   handleClickApplicate = () => {
     const { missionId } = this.state;
 
-    axios.post("http://localhost:3001/application", {
-      missionId,
-      traineeId: 2
-    }).then(res =>console.log(res)
-    );
+    axios
+      .post("http://localhost:3001/application", {
+        missionId,
+        traineeId: 2
+      })
+      .then(res => console.log(res));
   };
 
   render() {
-    const {size, titleMission, dateStart, dateEnd,statusAppli,description,company} = this.props;
+    const {
+      size,
+      titleMission,
+      dateStart,
+      dateEnd,
+      statusAppli,
+      description,
+      company
+    } = this.props;
 
     switch (size) {
-      case "SMALL":{
+      case "SMALL": {
         return (
           <div className="OfferView">
-            <h3> {titleMission} </h3>
-            <p>{company}</p>
-            <p> {dateStart} </p>
-            <p> {dateEnd} </p>
-            {statusAppli&&<p>en cours</p>}
+            <h3> {titleMission} </h3> <p> {company} </p> <p> {dateStart} </p>{" "}
+            <p> {dateEnd} </p> {statusAppli && <p> en cours </p>}{" "}
             <AwesomeButton
               type="primary"
               className="aws-btn remove"
               action={this.handleClick}
             >
-              En savoir plus
-            </AwesomeButton>
+              En savoir plus{" "}
+            </AwesomeButton>{" "}
           </div>
         );
       }
-      case "MIDDLE":{
+      case "MIDDLE": {
         return (
           <div className="OfferView">
-            <h3> {titleMission} </h3>
-            <p> {dateStart} </p>
-            <p> {dateEnd} </p>
-            <p> {description} </p>
+            <h3> {titleMission} </h3> <p> {dateStart} </p> <p> {dateEnd} </p>{" "}
+            <p> {description} </p>{" "}
             <AwesomeButton
               type="primary"
               className="aws-btn remove"
               action={this.handleClick}
             >
-              Postuler
-            </AwesomeButton>
+              Postuler{" "}
+            </AwesomeButton>{" "}
           </div>
         );
       }
-      case "FULL":{
+      case "FULL": {
         return (
           <div className="OfferView">
-            <h3> {titleMission} </h3>
-            <p> {dateStart} </p>
-            <p> {dateEnd} </p>
-            <p> {description} </p>
+            <h3> {titleMission} </h3> <p> {dateStart} </p> <p> {dateEnd} </p>{" "}
+            <p> {description} </p>{" "}
             <AwesomeButton
               type="primary"
               className="aws-btn remove"
               action={this.handleClickApplicate}
             >
-              Postuler
-            </AwesomeButton>
+              Postuler{" "}
+            </AwesomeButton>{" "}
           </div>
         );
       }
       default:
         break;
     }
-
   }
 }
 OfferView.propTypes = {

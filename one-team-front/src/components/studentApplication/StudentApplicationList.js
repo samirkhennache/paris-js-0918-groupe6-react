@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import {OfferView,SMALL} from "../offerView";
-
+import { OfferView, SMALL } from "../offerView";
 
 class StudentApplicationList extends Component {
   state = {
@@ -18,6 +17,7 @@ class StudentApplicationList extends Component {
       });
     });
   }
+
   render() {
     const { applications, isLoaded } = this.state;
     return (
@@ -25,20 +25,21 @@ class StudentApplicationList extends Component {
         {!isLoaded ? (
           <p> loading.. </p>
         ) : (
-            applications.map(element => (
+          applications.map(element => (
             // <div></div>
             <OfferView
-              size ={SMALL}
+              size={SMALL}
               key={`${element.Mission.id}-${element.Mission.titleMission}`}
               missionId={element.Mission.id}
               titleMission={element.Mission.titleMission}
-              company ={element.Mission.Company.companyName}
+              company={element.Mission.Company.companyName}
               dateStart={element.Mission.dateStart}
               dateEnd={element.Mission.dateEnd}
-              statusAppli ={element.statusAppli}
+              statusAppli={element.statusAppli}
             />
           ))
         )}
+        test
       </div>
     );
   }
