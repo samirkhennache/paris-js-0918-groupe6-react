@@ -7,14 +7,19 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import "./authentication.css";
+import "../authentication.css";
 
-class StudentCreateAccount extends Component {
+class CompanyCreateAccount extends Component {
   state = {
-    firstname: null,
-    lastname: null,
+    companyName: null,
+    firstnameContact: null,
+    lastnameContact: null,
     email: null,
+    phone: null,
     password: null,
+    isActived: true,
+    createdAt: null,
+    updatedAt: null,
     title: "",
     content: "",
     button: "",
@@ -25,31 +30,58 @@ class StudentCreateAccount extends Component {
     this.setState({ open: false });
   };
 
-  onChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
   onSubmit = e => {
-    const { firstname, lastname, email, password } = this.state;
     e.preventDefault();
-    const postFormStudent = {
-      firstname,
-      lastname,
-      email,
-      password
+    const { props } = this;
+    const postFormCompany = {
+      companyName: e.target.companyName.value,
+      firstnameContact: e.target.firstnameContact.value,
+      lastnameContact: e.target.lastnameContact.value,
+      email: e.target.email.value,
+      phone: e.target.phone.value,
+      password: e.target.password.value
     };
     axios
-      .post("http://localhost:3001/trainee", postFormStudent)
-      .then(data => console.log(`good ${data}`))
+      .post("http://localhost:3001/company", postFormCompany)
+      .then(result => {
+        props.history.push("/company-offers");
+        const {
+          companyName,
+          firstnameContact,
+          lastnameContact,
+          email,
+          phone,
+          password,
+          isActived,
+          createdAt,
+          updatedAt
+        } = result.data;
+        this.setState({
+          companyName,
+          firstnameContact,
+          lastnameContact,
+          email,
+          phone,
+          password,
+          isActived,
+          createdAt,
+          updatedAt,
+        });
+      })
       .catch(error => {
-        if (error.response.status === 400) {
+        if (error.response.status === 401) {
           this.setState({
             open: true,
             title: `user already exists`,
             content: `Cette adresse mail existe déjà, connectez-vous!`,
             button: `Se connecter`
+          });
+        } else {
+          this.setState({
+            open: true,
+            title: `Oups une erreur s'est produite`,
+            content: `Veuillez recommencer s'il-vous-plait`,
+            button: `Fermer`
           });
         }
       });
@@ -63,9 +95,8 @@ class StudentCreateAccount extends Component {
           <TextField
             type="text"
             className="textField"
-            name="firstname"
-            placeholder="Prénom"
-            onChange={this.onChange}
+            name="companyName"
+            placeholder="Nom de l'entreprise"
             margin="normal"
             variant="outlined"
             required
@@ -73,9 +104,17 @@ class StudentCreateAccount extends Component {
           <TextField
             type="text"
             className="textField"
-            name="lastname"
+            name="firstnameContact"
+            placeholder="Prénom"
+            margin="normal"
+            variant="outlined"
+            required
+          />
+          <TextField
+            type="text"
+            className="textField"
+            name="lastnameContact"
             placeholder="Nom"
-            onChange={this.onChange}
             margin="normal"
             variant="outlined"
             required
@@ -86,7 +125,15 @@ class StudentCreateAccount extends Component {
             className="textField"
             name="email"
             placeholder="Email"
-            onChange={this.onChange}
+            margin="normal"
+            variant="outlined"
+            required
+          />
+          <TextField
+            type="text"
+            className="textField"
+            name="phone"
+            placeholder="Numéro de téléphone"
             margin="normal"
             variant="outlined"
             required
@@ -97,7 +144,6 @@ class StudentCreateAccount extends Component {
             className="textField"
             name="password"
             placeholder="Mot de passe"
-            onChange={this.onChange}
             margin="normal"
             variant="outlined"
             required
@@ -107,7 +153,7 @@ class StudentCreateAccount extends Component {
             className="buttonCreateForm"
             type="submit"
           >
-            {`S'inscrire`}
+            S'inscrire
           </Button>
         </form>
         <Dialog
@@ -133,4 +179,4 @@ class StudentCreateAccount extends Component {
   }
 }
 
-export default StudentCreateAccount;
+export default CompanyCreateAccount;

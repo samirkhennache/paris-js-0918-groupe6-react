@@ -19,7 +19,7 @@ class FindOffers extends Component {
     event.preventDefault();
     const { search, town } = this.state;
     const url = `http://localhost:3001/mission?search=${search}&town=${town}`;
-    axios.ger(url).then(res => {
+    axios.get(url).then(res => {
       this.setState({ result: res.data, isLoad: true });
     });
   };
@@ -45,6 +45,11 @@ class FindOffers extends Component {
           />
           <button type="submit">Submit</button>
         </form>
+        {!isLoad ? (
+          <p>Loading ...</p>
+        ) : (
+          result.map(e => <div key={e.id}>{e.titleMission}</div>)
+        )}
       </div>
     );
   }
