@@ -5,6 +5,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import TraineeCreateConnexion from "../authentication/studentCreateConnexion/TraineeCreateConnexion";
 import CompanyCreateConnexion from "../authentication/companyCreateConnexion/CompanyCreateConnexion";
+import TraineeHome from "./traineePart/TraineeHome";
+import "./home.css";
 
 class Home extends Component {
   state = {
@@ -44,6 +46,8 @@ class Home extends Component {
         <button type="button" onClick={this.companyOpenConnexion}>
           Déposer une offre
         </button>
+
+        <TraineeHome />
         {/* DIALOG TRAINEE ---------------------------------------- */}
         <Dialog
           open={openTrainee}
