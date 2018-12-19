@@ -10,7 +10,6 @@ class StudentApplicationList extends Component {
 
   componentDidMount() {
     axios.get("http://localhost:3001/application").then(res => {
-      console.log("mes application", res.data);
       this.setState({
         applications: res.data,
         isLoaded: true
@@ -39,7 +38,6 @@ class StudentApplicationList extends Component {
             />
           ))
         )}
-        test
       </div>
     );
   }

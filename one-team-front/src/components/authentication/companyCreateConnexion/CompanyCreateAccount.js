@@ -44,7 +44,7 @@ class CompanyCreateAccount extends Component {
     axios
       .post("http://localhost:3001/company", postFormCompany)
       .then(result => {
-        props.history.push("/company-offers");
+        props.history.push("/company/:id");
         const {
           companyName,
           firstnameContact,

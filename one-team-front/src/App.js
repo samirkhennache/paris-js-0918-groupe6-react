@@ -41,14 +41,14 @@ const Trainee = ({ match }) => {
 };
 // COMPANY ROUTER -------------------------------------------------------------
 const Company = ({ match }) => {
-  const Missions = props => <Link to={match.url} {...props} />;
-  const Params = props => <Link to={`${match.url}/my-params`} {...props} />;
+  const Missions = props => <Link to={`${match.url}/:id`} {...props} />;
+  const Params = props => <Link to={`${match.url}/:id/my-params`} {...props} />;
   return (
     <div>
       <NavBar missions={Missions} params={Params} routeName={match.url} />
       <Switch>
-        <Route exact path={match.url} component={CompanyOffers} />
-        <Route exact path={`${match.url}/my-params`} component={Param} />
+        <Route exact path={`${match.url}/:id`} component={CompanyOffers} />
+        <Route exact path={`${match.url}/:id/my-params`} component={Param} />
       </Switch>
     </div>
   );

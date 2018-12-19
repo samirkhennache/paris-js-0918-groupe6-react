@@ -39,10 +39,10 @@ const CompanyCreateOffers = class extends React.Component {
     event.preventDefault();
     const { mission, isEditMode } = this.state;
     const postFormMission = {
-      titleMission: mission.title,
-      dateStart: mission.startDate,
-      dateEnd: mission.endDate,
-      description: mission.descritpion,
+      titleMission: mission.titleMission,
+      dateStart: mission.dateStart,
+      dateEnd: mission.dateEnd,
+      description: mission.description,
       town: mission.town,
       intro: mission.intro,
       companyId: 1,
@@ -99,21 +99,21 @@ const CompanyCreateOffers = class extends React.Component {
         >
           <input
             placeholder="Titre de la mission de stage"
-            name="title"
+            name="titleMission"
             value={mission.titleMission}
             onChange={this.handlerOnChange}
             required
           />
           <input
             placeholder="Date de début"
-            name="startDate"
+            name="dateStart"
             value={mission.dateStart}
             onChange={this.handlerOnChange}
             required
           />
           <input
             placeholder="Date de fin"
-            name="endDate"
+            name="dateEnd"
             value={mission.dateEnd}
             onChange={this.handlerOnChange}
             required
@@ -134,13 +134,13 @@ const CompanyCreateOffers = class extends React.Component {
           />
           <textarea
             placeholder="Description"
-            name="descritpion"
+            name="description"
             value={mission.description}
             onChange={this.handlerOnChange}
             required
           />
           <select
-            name="levelStudyId"
+            name="LevelStudyId"
             required
             value={mission.LevelStudyId}
             onChange={this.handlerOnChangeLevelStudy}
