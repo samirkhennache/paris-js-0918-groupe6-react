@@ -4,7 +4,11 @@ import "./App.css";
 import HomeDefault from "./components/home/home";
 import searchOffer from "./components/searchOffer/SearchOffer";
 import TraineeApplications from "./components/traineeApplications/TraineeApplications";
+<<<<<<< HEAD
 import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
+=======
+import CompanyOffers from "./components/companyOffers/CompanyOffers";
+>>>>>>> 133d1805aff2c7eecf028f410ea23649216b49b8
 import Param from "./Param";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
