@@ -3,7 +3,7 @@ import { AwesomeButton } from "react-awesome-button";
 
 import CompanyOfferList from "./CompanyOfferList";
 import Modal from "./Modal";
-import CompanyCreateOffers from "../CompanyOffers/CompanyCreateOffers/CompanyCreateOffers";
+import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import "./Button.css";
 import "./Modal.css";
 import "./Missions.css";
