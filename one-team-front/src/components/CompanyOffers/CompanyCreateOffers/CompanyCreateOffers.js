@@ -1,6 +1,7 @@
 import React from "react";
 import "./CompanyCreateOffers.css";
 import Axios from "axios";
+import { connect } from "react-redux";
 
 const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
 
@@ -45,17 +46,16 @@ const CompanyCreateOffers = class extends React.Component {
       description: mission.description,
       town: mission.town,
       intro: mission.intro,
-      companyId: 1,
+      companyId: mission.CompanyId,
       levelStudyId: mission.levelStudyId
     };
     // console.log(this.state.mission);
-    // console.log(this.postFormMission);
 
     if (!isEditMode) {
       Axios.post(API_ENDPOINT_MISSION, postFormMission).then(
-        res => console.log(res)
+        // res => console.log(res)
 
-        // window.alert("Ajout ok")
+        window.alert("Ajout ok")
       );
     } else {
       Axios.put(`${API_ENDPOINT_MISSION}${mission.id}`, postFormMission).then(
@@ -72,6 +72,8 @@ const CompanyCreateOffers = class extends React.Component {
   };
 
   defaultState() {
+    const { idCompany } = this.props;
+
     return {
       mission: {
         titleMission: "",
@@ -80,7 +82,7 @@ const CompanyCreateOffers = class extends React.Component {
         description: "",
         town: "",
         intro: "",
-        CompanyId: 1,
+        CompanyId: idCompany,
         LevelStudyId: 1
       },
       isEditMode: false
@@ -158,4 +160,10 @@ const CompanyCreateOffers = class extends React.Component {
   }
 };
 
-export default CompanyCreateOffers;
+const mapStateToProps = state => {
+  return {
+    idCompany: state.company.id
+  };
+};
+
+export default connect(mapStateToProps)(CompanyCreateOffers);
