@@ -48,7 +48,7 @@ class ConnexionCompany extends Component {
     Axios.post("http://localhost:3001/company/login", postDataLogin)
       .then(result => {
         props.selectCompany(result.data.id);
-         props.history.push("/company");
+        props.history.push("/company");
       })
       .catch(error => {
         console.log(error.response.data.message);
