@@ -54,6 +54,8 @@ const CompanyCreateOffers = class extends React.Component {
     if (!isEditMode) {
       Axios.post(API_ENDPOINT_MISSION, postFormMission).then(
         // res => console.log(res)
+        // console.log(postFormMission);
+
 
         window.alert("Ajout ok")
       );
@@ -147,8 +149,8 @@ const CompanyCreateOffers = class extends React.Component {
             value={mission.LevelStudyId}
             onChange={this.handlerOnChangeLevelStudy}
           >
-            <option value="1">Bac + 1</option>
-            <option value="2">Bac + 2</option>
+            <option value={1}>Bac + 1</option>
+            <option value={2}>Bac + 2</option>
           </select>
           <button type="submit" className="submit">
             {isEditMode ? "Modifier" : "Créer"}
