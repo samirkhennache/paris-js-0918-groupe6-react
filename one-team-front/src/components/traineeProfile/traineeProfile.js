@@ -58,7 +58,7 @@ class traineeProfile extends Component {
       return (
         <div>
           <h1>Complète ton profile</h1>
-          <img src={this.state.data.pictures} alt="profile image" />
+          <img src={this.state.data.pictures} alt="profile 2" />
           <div className="createForm">
             <form method="post" onSubmit={this.onSubmit}>
               <TextField
