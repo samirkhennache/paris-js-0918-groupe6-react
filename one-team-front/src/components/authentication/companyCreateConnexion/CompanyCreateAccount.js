@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -7,6 +9,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { selectCompany } from "../../../actions/getIdAction";
 import "../authentication.css";
 
 class CompanyCreateAccount extends Component {
@@ -44,7 +47,9 @@ class CompanyCreateAccount extends Component {
     axios
       .post("http://localhost:3001/company", postFormCompany)
       .then(result => {
-        props.history.push("/company/:id");
+        props.selectCompany(result.data.id);
+
+        props.history.push(`/company/${result.data.id}`);
         const {
           companyName,
           firstnameContact,
@@ -65,7 +70,7 @@ class CompanyCreateAccount extends Component {
           password,
           isActived,
           createdAt,
-          updatedAt,
+          updatedAt
         });
       })
       .catch(error => {
@@ -178,5 +183,14 @@ class CompanyCreateAccount extends Component {
     );
   }
 }
-
-export default CompanyCreateAccount;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      selectCompany
+    },
+    dispatch
+  );
+export default connect(
+  null,
+  mapDispatchToProps
+)(CompanyCreateAccount);

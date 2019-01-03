@@ -4,7 +4,8 @@ import "./App.css";
 import HomeDefault from "./components/home/home";
 import searchOffer from "./components/searchOffer/SearchOffer";
 import TraineeApplications from "./components/traineeApplications/TraineeApplications";
-import CompanyOffers from "./components/companyOffers/CompanyOffers";
+import TraineeProfile from "./components/traineeProfile/traineeProfile";
+import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
 import Param from "./Param";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
@@ -26,10 +27,16 @@ const Trainee = ({ match }) => {
   const MyOffers = props => (
     <Link to={`${match.url}/applications`} {...props} />
   );
+  const MyProfile = props => <Link to={`${match.url}/profile`} {...props} />;
 
   return (
     <div>
-      <NavBar search={Search} myOffers={MyOffers} routeName={match.url} />
+      <NavBar
+        search={Search}
+        myOffers={MyOffers}
+        myProfile={MyProfile}
+        routeName={match.url}
+      />
       <Switch>
         <Route exact path={match.url} component={searchOffer} />
         <Route
@@ -37,6 +44,7 @@ const Trainee = ({ match }) => {
           path={`${match.url}/applications`}
           component={TraineeApplications}
         />
+        <Route exact path={`${match.url}/profile`} component={TraineeProfile} />
       </Switch>
     </div>
   );
