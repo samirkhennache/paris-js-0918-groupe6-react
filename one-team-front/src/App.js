@@ -5,7 +5,7 @@ import HomeDefault from "./components/home/home";
 import searchOffer from "./components/searchOffer/SearchOffer";
 import TraineeApplications from "./components/traineeApplications/TraineeApplications";
 import TraineeProfile from "./components/traineeProfile/traineeProfile";
-import CompanyOffers from "./components/companyOffers/CompanyOffers";
+import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
 import Param from "./Param";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
