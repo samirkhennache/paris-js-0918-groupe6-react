@@ -4,10 +4,12 @@ import "./App.css";
 import HomeDefault from "./components/home/home";
 import searchOffer from "./components/searchOffer/SearchOffer";
 import TraineeApplications from "./components/traineeApplications/TraineeApplications";
-import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
+import CompanyOffers from "./components/companyOffers/CompanyOffers";
 import Param from "./Param";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
+import OnePage from "./components/home/OnePage";
+import PartieEntreprise from "./components/home/PartieEntreprise";
 
 // HOME ROUTER -------------------------------------------------------------
 const Home = ({ match }) => (
@@ -58,12 +60,13 @@ const Company = ({ match }) => {
 class App extends Component {
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/trainee" component={Trainee} />
-        <Route path="/company" component={Company} />
-        <Route path="/*" component={Page404} />
-      </Switch>
+      // <Switch>
+      //   <Route exact path="/" component={Home} />
+      //   <Route path="/trainee" component={Trainee} />
+      //   <Route path="/company" component={Company} />
+      //   <Route path="/*" component={Page404} />
+      // </Switch>
+      <OnePage />
     );
   }
 }
