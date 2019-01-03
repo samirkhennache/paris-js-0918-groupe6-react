@@ -1,15 +1,22 @@
+.recruteurs {
+  font-weight: 900;
+  color: white;
+  letter-spacing: 0.1cm;
+}
+
 .Invitez {
   background-color: #494642;
   position: relative;
   top: 0;
   bottom: 0;
   /* height: 100vh; */
-  padding: 5%;
+  margin: auto !important;
+  max-width: 100% !important;
+  padding: 10% !important;
 }
-@media (max-width: 574px) {
-  .Invitez {
-    height: 170vh;
-  }
+
+.Marge {
+  padding: 5%;
 }
 
 .ColInvitez {
@@ -21,11 +28,35 @@
   }
 }
 
+.Imgtypes {
+  width: 60%;
+  height: auto;
+  margin: auto;
+  margin-top: 5%;
+}
+@media (max-width: 768px) {
+  .Imgtypes {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: -20%;
+  }
+}
+
 .InvitezTitre {
   color: #ff8900;
   padding: 5%;
   margin: 0;
   font-size: 30px;
+  font-weight: 200;
+}
+
+.Exemple {
+  color: #ff8900;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 200;
 }
 
 .InvitezImg {
@@ -41,8 +72,9 @@
 .Cocreez {
   color: #ff8900;
   font-size: 30px;
-  margin-top: 17%;
-  margin-bottom: 14%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  font-weight: 200;
 }
 
 .confiance {
@@ -56,7 +88,6 @@
 
 .confiance2 {
   text-align: center;
-  margin-bottom: 5%;
 }
 
 .logoClient {
@@ -65,7 +96,7 @@
 }
 
 .buttonMission {
-  margin: 5% !important;
+  margin: 2% !important;
   background-color: #ff8900 !important;
   color: white !important;
   width: 40% !important;

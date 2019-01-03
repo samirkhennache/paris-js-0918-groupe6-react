@@ -14,8 +14,9 @@ import "./PartieEntreprise.css";
 export default class PartieEntreprise extends Component {
   render() {
     return (
-      <div className="Invitez">
-        <Container>
+      <div>
+        <Container className="Invitez">
+          <h2 className="recruteurs"> Pour les recruteurs </h2>
           <Row>
             <Col sm={6} className="ColInvitez">
               <h2 className="InvitezTitre">
@@ -26,7 +27,11 @@ export default class PartieEntreprise extends Component {
                 approche des sujets complexes de l'expérience digitale des
                 millenials, de l'énergie créative du team-working.
               </p>
-              <img src={invitez} className="InvitezImg" />
+              <img
+                src={invitez}
+                className="InvitezImg"
+                alt="étudiants_avec_logo"
+              />
             </Col>
             <Col sm={6}>
               <h2 className="Cocreez">Co-créez</h2>
@@ -35,8 +40,19 @@ export default class PartieEntreprise extends Component {
                 l'agilité naturelle des digital natives pour faire émerger des
                 concepts innovants.
               </p>
-              <img src={invitez2} className="InvitezImg" />
+              <img
+                src={invitez2}
+                className="InvitezImg"
+                alt="etudiantsAvecLogo"
+              />
             </Col>
+          </Row>
+        </Container>
+        <Container>
+          <h2 className="Exemple">Exemples</h2>
+          <Row>
+            {/* Missions types  */}
+            <img src={types} className="Imgtypes" alt="types" />
           </Row>
           <Row>
             <Col sm={12}>
@@ -48,34 +64,29 @@ export default class PartieEntreprise extends Component {
               </h3>
             </Col>
           </Row>
-          <h2 className="confiance2"> Il nous font confiance !</h2>
+
           <Row>
-            <Col sm={3}>
-              <img src={sncf} className="logoClient" />
+            <Col sm={3} s={8}>
+              <img src={sncf} className="logoClient" alt="SncfEntreprise1" />
             </Col>
-            <Col sm={3}>
-              <img src={engie} className="logoClient" />
+            <Col sm={3} s={8}>
+              <img src={engie} className="logoClient" alt="EngieEntreprise2" />
             </Col>
-            <Col sm={3}>
-              <img src={laposte} className="logoClient" />
+            <Col sm={3} s={8}>
+              <img
+                src={laposte}
+                className="logoClient"
+                alt="laPosteEntreprise"
+              />
             </Col>
-            <Col sm={3}>
-              <img src={vinci} className="logoClient" />
+            <Col sm={3} s={8}>
+              <img src={vinci} className="logoClient" alt="VinciEntreprise" />
             </Col>
           </Row>
+          <h2 className="confiance2"> Il nous font confiance !</h2>
           <Button variant="contained" className="buttonMission">
             Créer une mission
           </Button>
-          <Row>
-            <Col sm={6}>
-              {/* Missions types  */}
-              <img src={types} className="InvitezImg" />
-            </Col>
-            <Col sm={6}>
-              {/* Processus de sélection */}
-              <img src={processus} className="InvitezImg" />
-            </Col>
-          </Row>
         </Container>
       </div>
     );

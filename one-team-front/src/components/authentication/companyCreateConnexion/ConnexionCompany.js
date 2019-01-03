@@ -82,7 +82,7 @@ class ConnexionCompany extends Component {
   };
 
   render() {
-    const { passwordVerified, open, title, content, button } = this.state;
+    const { open, title, content, button } = this.state;
     const { showPassword } = this.state;
     return (
       <div className="createForm">
