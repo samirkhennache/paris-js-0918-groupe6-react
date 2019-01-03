@@ -9,7 +9,7 @@ class SearchOffer extends Component {
     return (
       <div>
         <h3> Page Trainee Search Offer </h3> <FindOffers />
-        <StudentApplicationList />
+        {/* <StudentApplicationList /> */}
         <StudentOfferList />
       </div>
     );
