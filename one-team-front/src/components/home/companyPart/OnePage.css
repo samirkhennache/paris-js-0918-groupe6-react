@@ -9,7 +9,7 @@
   top: 0;
   bottom: 0;
   height: 100vh;
-  z-index: -500;
+  z-index: 0;
 }
 
 .Header-overlay {
@@ -45,7 +45,6 @@
   margin-top: 17%;
   color: white;
   font-size: 50px;
-  border: 1px solid black;
 }
 @media (max-width: 768px) {
   .textCentral {
@@ -55,9 +54,7 @@
     font-size: 30px;
   }
 }
-.home-buttons {
-  border: 1px solid red;
-}
+
 .buttonConnexion {
   width: 20%;
   background-color: #ff8900 !important;

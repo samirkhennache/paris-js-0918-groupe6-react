@@ -51,24 +51,22 @@ export default class OnePage extends Component {
             <h1 className="textCentral">
               La 1ère plateforme de teams <br /> d'étudiants-stagiaires
             </h1>
-            <div className="home-buttons">
-              <Button
-                variant="contained"
-                className="buttonConnexion"
-                onClick={this.companyOpenConnexion}
-              >
-                Déposer une offre de stage
-              </Button>
-            </div>
-            <div className="home-buttons">
-              <Button
-                variant="contained"
-                className="buttonConnexion2"
-                onClick={this.traineeOpenConnexion}
-              >
-                Postuler à une offre
-              </Button>
-            </div>
+
+            <Button
+              variant="contained"
+              className="buttonConnexion"
+              onClick={this.companyOpenConnexion}
+            >
+              Déposer une offre de stage
+            </Button>
+
+            <Button
+              variant="contained"
+              className="buttonConnexion2"
+              onClick={this.traineeOpenConnexion}
+            >
+              Postuler à une offre
+            </Button>
           </div>
         </div>
         {/* DIALOG TRAINEE ---------------------------------------- */}
