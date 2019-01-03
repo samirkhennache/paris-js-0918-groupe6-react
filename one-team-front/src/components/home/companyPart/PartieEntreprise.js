@@ -14,8 +14,9 @@ import "./PartieEntreprise.css";
 export default class PartieEntreprise extends Component {
   render() {
     return (
-      <div className="Invitez">
-        <Container>
+      <div>
+        <Container className="Invitez">
+          <h2 className="recruteurs"> Pour les recruteurs </h2>
           <Row>
             <Col sm={6} className="ColInvitez">
               <h2 className="InvitezTitre">
@@ -46,6 +47,8 @@ export default class PartieEntreprise extends Component {
               />
             </Col>
           </Row>
+        </Container>
+        <Container>
           <Row>
             <Col sm={12}>
               <h3 className="confiance">
@@ -79,14 +82,8 @@ export default class PartieEntreprise extends Component {
             Créer une mission
           </Button>
           <Row>
-            <Col sm={6}>
-              {/* Missions types  */}
-              <img src={types} className="InvitezImg" alt="types" />
-            </Col>
-            <Col sm={6}>
-              {/* Processus de sélection */}
-              <img src={processus} className="InvitezImg" alt="processus" />
-            </Col>
+            {/* Missions types  */}
+            <img src={types} className="InvitezImg" alt="types" />
           </Row>
         </Container>
       </div>
