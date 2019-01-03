@@ -3,7 +3,7 @@
   position: relative;
   top: 0;
   bottom: 0;
-  height: 100vh;
+  /* height: 100vh; */
   padding: 5%;
 }
 @media (max-width: 574px) {

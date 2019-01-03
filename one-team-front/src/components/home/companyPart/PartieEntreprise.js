@@ -26,7 +26,11 @@ export default class PartieEntreprise extends Component {
                 approche des sujets complexes de l'expérience digitale des
                 millenials, de l'énergie créative du team-working.
               </p>
-              <img src={invitez} className="InvitezImg" />
+              <img
+                src={invitez}
+                className="InvitezImg"
+                alt="étudiants_avec_logo"
+              />
             </Col>
             <Col sm={6}>
               <h2 className="Cocreez">Co-créez</h2>
@@ -35,7 +39,11 @@ export default class PartieEntreprise extends Component {
                 l'agilité naturelle des digital natives pour faire émerger des
                 concepts innovants.
               </p>
-              <img src={invitez2} className="InvitezImg" />
+              <img
+                src={invitez2}
+                className="InvitezImg"
+                alt="etudiantsAvecLogo"
+              />
             </Col>
           </Row>
           <Row>
@@ -51,16 +59,20 @@ export default class PartieEntreprise extends Component {
           <h2 className="confiance2"> Il nous font confiance !</h2>
           <Row>
             <Col sm={3}>
-              <img src={sncf} className="logoClient" />
+              <img src={sncf} className="logoClient" alt="SncfEntreprise1" />
             </Col>
             <Col sm={3}>
-              <img src={engie} className="logoClient" />
+              <img src={engie} className="logoClient" alt="EngieEntreprise2" />
             </Col>
             <Col sm={3}>
-              <img src={laposte} className="logoClient" />
+              <img
+                src={laposte}
+                className="logoClient"
+                alt="laPosteEntreprise"
+              />
             </Col>
             <Col sm={3}>
-              <img src={vinci} className="logoClient" />
+              <img src={vinci} className="logoClient" alt="VinciEntreprise" />
             </Col>
           </Row>
           <Button variant="contained" className="buttonMission">
@@ -69,11 +81,11 @@ export default class PartieEntreprise extends Component {
           <Row>
             <Col sm={6}>
               {/* Missions types  */}
-              <img src={types} className="InvitezImg" />
+              <img src={types} className="InvitezImg" alt="types" />
             </Col>
             <Col sm={6}>
               {/* Processus de sélection */}
-              <img src={processus} className="InvitezImg" />
+              <img src={processus} className="InvitezImg" alt="processus" />
             </Col>
           </Row>
         </Container>

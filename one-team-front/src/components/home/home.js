@@ -7,8 +7,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <OnePage />
-        {/* <TraineeHome /> */}
+        <OnePage {...this.props} />
+        <TraineeHome />
       </div>
     );
   }

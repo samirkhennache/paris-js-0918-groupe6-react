@@ -20,7 +20,7 @@ class CompanyOfferList extends Component {
 
   render() {
     const { missions, isLoaded } = this.state;
-    const { mission } = this.props;
+    // const { mission } = this.props;
 
     console.log("3", this.props);
     return (

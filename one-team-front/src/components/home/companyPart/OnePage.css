@@ -1,6 +1,3 @@
-.div-block {
-  z-index: -5000;
-}
 .Header {
   background-image: url("../../../img/Onepage.jpg");
   background-size: cover;
@@ -19,13 +16,16 @@
   bottom: 0;
   height: 100%;
   width: 100%;
-  z-index: -1000;
+  z-index: -5;
 }
 
 .logo {
   width: 324px;
   height: 100px;
   transform: translate(-10%, 10%);
+  position: absolute;
+  left: 70px;
+  right: 70px;
 }
 
 .connexion {
@@ -54,7 +54,6 @@
     font-size: 30px;
   }
 }
-
 .buttonConnexion {
   width: 20%;
   background-color: #ff8900 !important;
