@@ -1,18 +1,15 @@
 import React, { Component } from "react";
-
 import { Container, Row, Col } from "react-grid-system";
-
-import invitez from "../../img/Invitez.png";
-import invitez2 from "../../img/Invitez2.png";
-import vinci from "../../img/vinci.png";
-import engie from "../../img/engie.png";
-import laposte from "../../img/laposte.png";
-import sncf from "../../img/sncf.png";
-import processus from "../../img/processus.png";
-import types from "../../img/missionType.png";
-
-import "./PartieEntreprise.css";
 import Button from "@material-ui/core/Button";
+import invitez from "../../../img/Invitez.png";
+import invitez2 from "../../../img/Invitez2.png";
+import vinci from "../../../img/vinci.png";
+import engie from "../../../img/engie.png";
+import laposte from "../../../img/laposte.png";
+import sncf from "../../../img/sncf.png";
+import processus from "../../../img/processus.png";
+import types from "../../../img/missionType.png";
+import "./PartieEntreprise.css";
 
 export default class PartieEntreprise extends Component {
   render() {

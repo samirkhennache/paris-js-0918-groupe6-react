@@ -9,13 +9,12 @@ import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
 import Param from "./Param";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
-import OnePage from "./components/home/OnePage";
-import PartieEntreprise from "./components/home/PartieEntreprise";
+import OnePage from "./components/home/companyPart/OnePage";
+import PartieEntreprise from "./components/home/companyPart/PartieEntreprise";
 
 // HOME ROUTER -------------------------------------------------------------
 const Home = ({ match }) => (
   <div>
-    <NavBar />
     <Switch>
       <Route path={match.url} component={HomeDefault} />
     </Switch>
@@ -68,13 +67,12 @@ const Company = ({ match }) => {
 class App extends Component {
   render() {
     return (
-      // <Switch>
-      //   <Route exact path="/" component={Home} />
-      //   <Route path="/trainee" component={Trainee} />
-      //   <Route path="/company" component={Company} />
-      //   <Route path="/*" component={Page404} />
-      // </Switch>
-      <OnePage />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/trainee" component={Trainee} />
+        <Route path="/company" component={Company} />
+        <Route path="/*" component={Page404} />
+      </Switch>
     );
   }
 }
