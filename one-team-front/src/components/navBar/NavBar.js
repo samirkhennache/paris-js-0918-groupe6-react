@@ -22,7 +22,15 @@ const styles = {
 };
 
 const ButtonAppBar = props => {
-  const { classes, search, myOffers, missions, params, routeName } = props;
+  const {
+    classes,
+    search,
+    myOffers,
+    myProfile,
+    missions,
+    params,
+    routeName
+  } = props;
   return (
     <MuiThemeProvider theme={theme}>
       <div className={classes.root}>
@@ -32,15 +40,16 @@ const ButtonAppBar = props => {
               <OpenMenuBurger
                 openSearch={search}
                 openMyOffers={myOffers}
+                openTraineeProfile={myProfile}
                 openMissions={missions}
                 openParams={params}
                 routeName={routeName}
                 className="border"
               />
             )}
-            <div className="logo border">
+            <div className="logo-pages border">
               <NavLink to="/">
-                <div className="logo-element">ONE TEAM</div>
+                <div className="logo-pages-element">ONE TEAM</div>
               </NavLink>
             </div>
           </Toolbar>

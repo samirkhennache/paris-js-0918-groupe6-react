@@ -1,0 +1,13 @@
+.rules-item {
+    margin: 25px 25px;
+}
+.rules-bloc {
+    padding: 0 calc(5px + 10vw);
+}
+.rules-line {
+    height: 1px;
+    width: 30px;
+    background-color: black;
+    padding: 0;
+    margin: 55px 0 0 0;
+}

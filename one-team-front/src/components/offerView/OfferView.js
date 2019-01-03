@@ -6,7 +6,8 @@ import "./Button.css";
 
 class OfferView extends Component {
   state = {
-    missionId: null
+    missionId: null,
+    seeMore: false
   };
 
   componentDidMount() {
@@ -15,6 +16,13 @@ class OfferView extends Component {
       missionId
     });
   }
+
+  handleClickSeemore = () => {
+    const { seeMore } = this.state;
+    this.setState({
+      seeMore: !seeMore
+    });
+  };
 
   handleClickApplicate = () => {
     const { missionId } = this.state;
@@ -37,50 +45,55 @@ class OfferView extends Component {
       description,
       company
     } = this.props;
-
+    const { seeMore } = this.state;
     switch (size) {
       case "SMALL": {
         return (
           <div className="OfferView">
-            <h3> {titleMission} </h3> <p> {company} </p> <p> {dateStart} </p>{" "}
-            <p> {dateEnd} </p> {statusAppli && <p> en cours </p>}{" "}
+            <h3> {titleMission} </h3> <p> {company} </p> <p> {dateStart} </p>
+            <p> {dateEnd} </p> {statusAppli && <p> en cours </p>}
+            {seeMore && (
+              <div>
+                <p> {description} </p>
+              </div>
+            )}
             <AwesomeButton
               type="primary"
               className="aws-btn remove"
-              action={this.handleClick}
+              action={this.handleClickSeemore}
             >
-              En savoir plus{" "}
-            </AwesomeButton>{" "}
+              {seeMore ? "Voir moins" : "En savoir plus"}
+            </AwesomeButton>
           </div>
         );
       }
       case "MIDDLE": {
         return (
           <div className="OfferView">
-            <h3> {titleMission} </h3> <p> {dateStart} </p> <p> {dateEnd} </p>{" "}
-            <p> {description} </p>{" "}
+            <h3> {titleMission} </h3> <p> {dateStart} </p> <p> {dateEnd} </p>
+            <p> {description} </p>
             <AwesomeButton
               type="primary"
               className="aws-btn remove"
               action={this.handleClick}
             >
-              Postuler{" "}
-            </AwesomeButton>{" "}
+              Postuler
+            </AwesomeButton>
           </div>
         );
       }
       case "FULL": {
         return (
           <div className="OfferView">
-            <h3> {titleMission} </h3> <p> {dateStart} </p> <p> {dateEnd} </p>{" "}
-            <p> {description} </p>{" "}
+            <h3> {titleMission} </h3> <p> {dateStart} </p> <p> {dateEnd} </p>
+            <p> {description} </p>
             <AwesomeButton
               type="primary"
               className="aws-btn remove"
               action={this.handleClickApplicate}
             >
-              Postuler{" "}
-            </AwesomeButton>{" "}
+              Postuler
+            </AwesomeButton>
           </div>
         );
       }

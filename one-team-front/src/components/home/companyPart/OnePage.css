@@ -1,0 +1,87 @@
+.Header {
+  background-image: url("../../../img/Onepage.jpg");
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  z-index: 0;
+}
+
+.Header-overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -5;
+}
+
+.logo {
+  width: 324px;
+  height: 100px;
+  transform: translate(-10%, 10%);
+  position: absolute;
+  left: 70px;
+  right: 70px;
+}
+@media (max-width: 574px) {
+  .logo {
+    width: 162px;
+    height: 50px;
+    margin: auto;
+  }
+}
+
+.connexion {
+  color: white;
+  float: right;
+  font-size: 20px;
+  margin-right: 5%;
+  margin-top: 3%;
+}
+@media (max-width: 768px) {
+  .connexion {
+    display: none;
+  }
+}
+
+.textCentral {
+  margin-top: 17%;
+  color: white;
+  font-size: 50px;
+}
+@media (max-width: 768px) {
+  .textCentral {
+    margin-top: 57%;
+    margin-right: 5%;
+    margin-left: 5%;
+    font-size: 30px;
+  }
+}
+.buttonConnexion {
+  width: 23%;
+  background-color: #ff8900 !important;
+  color: white !important;
+}
+@media (max-width: 768px) {
+  .buttonConnexion {
+    width: 70%;
+  }
+}
+
+.buttonConnexion2 {
+  width: 20%;
+  background-color: #ff8900 !important;
+  color: white !important;
+  margin-left: 2% !important;
+}
+@media (max-width: 768px) {
+  .buttonConnexion2 {
+    width: 70%;
+    margin-top: 2% !important;
+    margin-right: 2% !important;
+  }
+}

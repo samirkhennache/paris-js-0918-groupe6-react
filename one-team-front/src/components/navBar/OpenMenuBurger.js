@@ -23,8 +23,6 @@ class OpenMenuBurger extends React.Component {
     right: false
   };
 
-
-
   toggleDrawer = (side, open) => () => {
     this.setState({
       [side]: open
@@ -36,6 +34,7 @@ class OpenMenuBurger extends React.Component {
       classes,
       openSearch,
       openMyOffers,
+      openTraineeProfile,
       openMissions,
       openParams,
       routeName
@@ -48,6 +47,9 @@ class OpenMenuBurger extends React.Component {
         </ListItem>
         <ListItem component={openMyOffers} button>
           Mes offres
+        </ListItem>
+        <ListItem component={openTraineeProfile} button>
+          Profil
         </ListItem>
       </div>
     );
