@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { AwesomeButton } from "react-awesome-button";
+import ModalOffer from "./ModalOffer";
+import { openModal } from "../../actions/offerViewActions";
 import "./Button.css";
 
 class OfferView extends Component {
@@ -10,7 +14,7 @@ class OfferView extends Component {
     seeMore: false
   };
 
-  componentDidMount() {
+  componentDidMount () {
     const { missionId } = this.props;
     this.setState({
       missionId
@@ -18,9 +22,9 @@ class OfferView extends Component {
   }
 
   handleClickSeemore = () => {
-    const { seeMore } = this.state;
+    this.props.openModal(this.props.open);
     this.setState({
-      seeMore: !seeMore
+      seeMore: !this.state.seeMore
     });
   };
 
@@ -35,7 +39,7 @@ class OfferView extends Component {
       .then(res => console.log(res));
   };
 
-  render() {
+  render () {
     const {
       size,
       titleMission,
@@ -52,17 +56,13 @@ class OfferView extends Component {
           <div className="OfferView">
             <h3> {titleMission} </h3> <p> {company} </p> <p> {dateStart} </p>
             <p> {dateEnd} </p> {statusAppli && <p> en cours </p>}
-            {seeMore && (
-              <div>
-                <p> {description} </p>
-              </div>
-            )}
+            <ModalOffer />
             <AwesomeButton
               type="primary"
               className="aws-btn remove"
               action={this.handleClickSeemore}
             >
-              {seeMore ? "Voir moins" : "En savoir plus"}
+              En savoir plus
             </AwesomeButton>
           </div>
         );
@@ -82,21 +82,6 @@ class OfferView extends Component {
           </div>
         );
       }
-      case "FULL": {
-        return (
-          <div className="OfferView">
-            <h3> {titleMission} </h3> <p> {dateStart} </p> <p> {dateEnd} </p>
-            <p> {description} </p>
-            <AwesomeButton
-              type="primary"
-              className="aws-btn remove"
-              action={this.handleClickApplicate}
-            >
-              Postuler
-            </AwesomeButton>
-          </div>
-        );
-      }
       default:
         break;
     }
@@ -109,4 +94,17 @@ OfferView.propTypes = {
   dateEnd: PropTypes.instanceOf(Date).isRequired,
   description: PropTypes.string.isRequired
 };
-export default OfferView;
+const mapStateToProps = state => ({
+  open: state.offerViewModal.openModal
+});
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      openModal
+    },
+    dispatch
+  );
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(OfferView);
