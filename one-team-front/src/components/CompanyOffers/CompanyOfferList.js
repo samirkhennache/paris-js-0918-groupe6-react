@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 import CompanyOfferManage from "./CompanyOfferManage";
 
 class CompanyOfferList extends Component {
@@ -9,10 +10,12 @@ class CompanyOfferList extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:3001/mission").then(res => {
-      console.log(res.data);
+    const { idCompany } = this.props;
+
+    axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
+      // console.log("data", res.data);
       this.setState({
-        missions: res.data,
+        missions: res.data.Missions,
         isLoaded: true
       });
     });
@@ -20,9 +23,7 @@ class CompanyOfferList extends Component {
 
   render() {
     const { missions, isLoaded } = this.state;
-    // const { mission } = this.props;
 
-    console.log("3", this.props);
     return (
       <div>
         {!isLoaded ? (
@@ -46,4 +47,10 @@ class CompanyOfferList extends Component {
   }
 }
 
-export default CompanyOfferList;
+const mapStateToProps = state => {
+  return {
+    idCompany: state.company.id
+  };
+};
+
+export default connect(mapStateToProps)(CompanyOfferList);

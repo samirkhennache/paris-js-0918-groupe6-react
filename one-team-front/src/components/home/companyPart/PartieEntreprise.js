@@ -49,6 +49,11 @@ export default class PartieEntreprise extends Component {
           </Row>
         </Container>
         <Container>
+          <h2 className="Exemple">Exemples</h2>
+          <Row>
+            {/* Missions types  */}
+            <img src={types} className="Imgtypes" alt="types" />
+          </Row>
           <Row>
             <Col sm={12}>
               <h3 className="confiance">
@@ -59,32 +64,29 @@ export default class PartieEntreprise extends Component {
               </h3>
             </Col>
           </Row>
-          <h2 className="confiance2"> Il nous font confiance !</h2>
+
           <Row>
-            <Col sm={3}>
+            <Col sm={3} s={8}>
               <img src={sncf} className="logoClient" alt="SncfEntreprise1" />
             </Col>
-            <Col sm={3}>
+            <Col sm={3} s={8}>
               <img src={engie} className="logoClient" alt="EngieEntreprise2" />
             </Col>
-            <Col sm={3}>
+            <Col sm={3} s={8}>
               <img
                 src={laposte}
                 className="logoClient"
                 alt="laPosteEntreprise"
               />
             </Col>
-            <Col sm={3}>
+            <Col sm={3} s={8}>
               <img src={vinci} className="logoClient" alt="VinciEntreprise" />
             </Col>
           </Row>
+          <h2 className="confiance2"> Il nous font confiance !</h2>
           <Button variant="contained" className="buttonMission">
             Créer une mission
           </Button>
-          <Row>
-            {/* Missions types  */}
-            <img src={types} className="InvitezImg" alt="types" />
-          </Row>
         </Container>
       </div>
     );
