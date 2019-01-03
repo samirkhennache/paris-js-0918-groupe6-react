@@ -13,7 +13,6 @@ import Page404 from "./components/Page404";
 // HOME ROUTER -------------------------------------------------------------
 const Home = ({ match }) => (
   <div>
-    <NavBar />
     <Switch>
       <Route path={match.url} component={HomeDefault} />
     </Switch>

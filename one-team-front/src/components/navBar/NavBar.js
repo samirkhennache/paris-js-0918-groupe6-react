@@ -47,9 +47,9 @@ const ButtonAppBar = props => {
                 className="border"
               />
             )}
-            <div className="logo border">
+            <div className="logo-pages border">
               <NavLink to="/">
-                <div className="logo-element">ONE TEAM</div>
+                <div className="logo-pages-element">ONE TEAM</div>
               </NavLink>
             </div>
           </Toolbar>
