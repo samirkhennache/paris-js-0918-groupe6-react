@@ -1,44 +1,83 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import axios from "axios";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import { closeModal, openModal } from "../../actions/offerViewActions";
+import { AwesomeButton } from "react-awesome-button";
+import { FULL } from "./constants";
+import OfferView from "./OfferView";
+import { selectStudent } from "../../actions/getIdAction";
 
 class ModalOffer extends Component {
   state = {
-    open: true
+    open: false,
+    missionId: null
   };
+
+  componentDidMount() {
+    const { missionId } = this.props;
+    this.setState({
+      missionId
+    });
+  }
 
   handleClose = () => {
     this.setState({ open: false });
-    this.props.openModal(this.props.open);
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClickApplicate = () => {
+    const { missionId } = this.state;
+    const { traineeId } = this.props;
+    this.setState({ open: false });
+    axios
+      .post("http://localhost:3001/application", {
+        missionId,
+        traineeId
+      })
+      .then(res => console.log(res));
   };
 
   render() {
+    const { open } = this.state;
+    const { size, titleMission, missionId } = this.props;
     return (
       <div className="ModalOffer">
+        <OfferView
+          key={`${missionId}-${titleMission}`}
+          {...this.props}
+          size={size}
+        />
+        <AwesomeButton
+          type="primary"
+          className="aws-btn remove"
+          action={this.handleOpen}
+        >
+          En savoir plus
+        </AwesomeButton>
         <Dialog
-          open={this.props.open}
-          // onClose={this.handleClose}
+          open={open}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
+          onClose={this.handleClose}
         >
-          <DialogTitle id="alert-dialog-title">
-            Use Google's location service?
-          </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Let Google help apps determine location. This means sending
-              anonymous location data to Google, even when no apps are running.
+              <OfferView
+                key={`${missionId}-${titleMission}`}
+                {...this.props}
+                size={FULL}
+              />
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClickApplicate} color="primary">
               postuler
             </Button>
           </DialogActions>
@@ -47,18 +86,8 @@ class ModalOffer extends Component {
     );
   }
 }
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      closeModal,
-      openModal
-    },
-    dispatch
-  );
+
 const mapStateToProps = state => ({
-  open: state.offerViewModal.openModal
+  id_student: state.student.id
 });
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ModalOffer);
+export default connect(mapStateToProps)(ModalOffer);

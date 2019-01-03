@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { OfferView, SMALL } from "../offerView";
+import { SMALL } from "../offerView";
+import ModalOffer from "../offerView/ModalOffer";
 
 class StudentApplicationList extends Component {
   state = {
@@ -25,8 +26,7 @@ class StudentApplicationList extends Component {
           <p> loading.. </p>
         ) : (
           applications.map(element => (
-            // <div></div>
-            <OfferView
+            <ModalOffer
               size={SMALL}
               key={`${element.Mission.id}-${element.Mission.titleMission}`}
               missionId={element.Mission.id}

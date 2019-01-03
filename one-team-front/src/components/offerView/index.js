@@ -1,15 +1,4 @@
-import OfferView from './OfferView'
-import {
+import OfferView from "./OfferView";
+import { SMALL, MIDDLE, FULL } from "./constants";
 
-    SMALL,
-    MIDDLE,
-    FULL
-}
-from './constants'
-
-export {
-    OfferView,
-    SMALL,
-    MIDDLE,
-    FULL
-}
+export { OfferView, SMALL, MIDDLE, FULL };

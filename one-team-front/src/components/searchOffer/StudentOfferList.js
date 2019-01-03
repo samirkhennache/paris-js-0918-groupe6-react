@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { OfferView, FULL } from "../offerView";
+import { MIDDLE } from "../offerView";
+import ModalOffer from "../offerView/ModalOffer";
 
 class StudentOfferList extends Component {
   state = {
@@ -25,11 +26,12 @@ class StudentOfferList extends Component {
           <p> loading.. </p>
         ) : (
           missions.map(element => (
-            <OfferView
-              size={FULL}
+            <ModalOffer
+              size={MIDDLE}
               key={`${element.id}-${element.titleMission}`}
               missionId={element.id}
               titleMission={element.titleMission}
+              company={element.Mission.Company.companyName}
               dateStart={element.dateStart}
               dateEnd={element.dateEnd}
               description={element.description}

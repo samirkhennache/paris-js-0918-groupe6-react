@@ -9,7 +9,7 @@ class CompanyOfferList extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:3001/mission").then(res => {
+    axios.get("http://localhost:3001/mission/").then(res => {
       console.log(res.data);
       this.setState({
         missions: res.data,
