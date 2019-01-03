@@ -8,6 +8,7 @@ import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
 import Param from "./Param";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
+import CompanyApplications from "./components/CompanyApplication/CompanyApplications";
 
 // HOME ROUTER -------------------------------------------------------------
 const Home = ({ match }) => (
@@ -43,12 +44,23 @@ const Trainee = ({ match }) => {
 const Company = ({ match }) => {
   const Missions = props => <Link to={`${match.url}/:id`} {...props} />;
   const Params = props => <Link to={`${match.url}/:id/my-params`} {...props} />;
+  const Candidats = props => <Link to={`${match.url}/mytrainees`} {...props} />;
   return (
     <div>
-      <NavBar missions={Missions} params={Params} routeName={match.url} />
+      <NavBar
+        missions={Missions}
+        params={Params}
+        candidats={Candidats}
+        routeName={match.url}
+      />
       <Switch>
         <Route exact path={`${match.url}/:id`} component={CompanyOffers} />
         <Route exact path={`${match.url}/:id/my-params`} component={Param} />
+        <Route
+          exact
+          path={`${match.url}/:id/mytrainees`}
+          component={CompanyApplications}
+        />
       </Switch>
     </div>
   );

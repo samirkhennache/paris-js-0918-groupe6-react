@@ -22,7 +22,15 @@ const styles = {
 };
 
 const ButtonAppBar = props => {
-  const { classes, search, myOffers, missions, params, routeName } = props;
+  const {
+    classes,
+    candidats,
+    search,
+    myOffers,
+    missions,
+    params,
+    routeName
+  } = props;
   return (
     <MuiThemeProvider theme={theme}>
       <div className={classes.root}>
@@ -33,6 +41,7 @@ const ButtonAppBar = props => {
                 openSearch={search}
                 openMyOffers={myOffers}
                 openMissions={missions}
+                openCandidats={candidats}
                 openParams={params}
                 routeName={routeName}
                 className="border"
