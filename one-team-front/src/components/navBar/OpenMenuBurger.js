@@ -34,6 +34,7 @@ class OpenMenuBurger extends React.Component {
       classes,
       openSearch,
       openMyOffers,
+      openTraineeProfile,
       openMissions,
       openCandidats,
       openParams,
@@ -47,6 +48,9 @@ class OpenMenuBurger extends React.Component {
         </ListItem>
         <ListItem component={openMyOffers} button>
           Mes offres
+        </ListItem>
+        <ListItem component={openTraineeProfile} button>
+          Profil
         </ListItem>
       </div>
     );

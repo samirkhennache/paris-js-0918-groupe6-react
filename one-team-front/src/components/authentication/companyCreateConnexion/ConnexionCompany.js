@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import Axios from "axios";
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -12,8 +14,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import "../authentication.css";
+import { selectCompany } from "../../../actions/getIdAction";
 
-class ConnexionTrainee extends Component {
+class ConnexionCompany extends Component {
   state = {
     showPassword: false,
     passwordVerified: false,
@@ -43,8 +46,9 @@ class ConnexionTrainee extends Component {
     };
 
     Axios.post("http://localhost:3001/company/login", postDataLogin)
-      .then(() => {
-        props.history.push("/company-offers");
+      .then(result => {
+        props.selectCompany(result.data.id);
+        props.history.push("/company");
       })
       .catch(error => {
         console.log(error.response.data.message);
@@ -146,4 +150,14 @@ class ConnexionTrainee extends Component {
   }
 }
 
-export default ConnexionTrainee;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      selectCompany
+    },
+    dispatch
+  );
+export default connect(
+  null,
+  mapDispatchToProps
+)(ConnexionCompany);

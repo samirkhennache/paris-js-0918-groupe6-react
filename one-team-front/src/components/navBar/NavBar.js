@@ -24,9 +24,9 @@ const styles = {
 const ButtonAppBar = props => {
   const {
     classes,
-    candidats,
     search,
     myOffers,
+    myProfile,
     missions,
     params,
     routeName
@@ -40,16 +40,17 @@ const ButtonAppBar = props => {
               <OpenMenuBurger
                 openSearch={search}
                 openMyOffers={myOffers}
+                openTraineeProfile={myProfile}
                 openMissions={missions}
-                openCandidats={candidats}
+                // openCandidats={candidats}
                 openParams={params}
                 routeName={routeName}
                 className="border"
               />
             )}
-            <div className="logo border">
+            <div className="logo-pages border">
               <NavLink to="/">
-                <div className="logo-element">ONE TEAM</div>
+                <div className="logo-pages-element">ONE TEAM</div>
               </NavLink>
             </div>
           </Toolbar>

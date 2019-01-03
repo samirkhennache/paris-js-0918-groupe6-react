@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import Axios from "axios";
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -11,6 +13,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { selectStudent } from "../../../actions/getIdAction";
+
 import "../authentication.css";
 
 class ConnexionTrainee extends Component {
@@ -42,7 +46,8 @@ class ConnexionTrainee extends Component {
     };
 
     Axios.post("http://localhost:3001/trainee/login", postDataLogin)
-      .then(() => {
+      .then(result => {
+        props.selectStudent(result.data.id);
         props.history.push("/trainee");
       })
       .catch(error => {
@@ -143,5 +148,14 @@ class ConnexionTrainee extends Component {
     );
   }
 }
-
-export default ConnexionTrainee;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      selectStudent
+    },
+    dispatch
+  );
+export default connect(
+  null,
+  mapDispatchToProps
+)(ConnexionTrainee);
