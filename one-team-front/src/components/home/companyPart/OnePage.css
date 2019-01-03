@@ -1,6 +1,3 @@
-.div-block {
-  z-index: -5000;
-}
 .Header {
   background-image: url("../../../img/Onepage.jpg");
   background-size: cover;
@@ -9,7 +6,7 @@
   top: 0;
   bottom: 0;
   height: 100vh;
-  z-index: -500;
+  z-index: 0;
 }
 
 .Header-overlay {
@@ -19,13 +16,16 @@
   bottom: 0;
   height: 100%;
   width: 100%;
-  z-index: -1000;
+  z-index: -5;
 }
 
 .logo {
   width: 324px;
   height: 100px;
   transform: translate(-10%, 10%);
+  position: absolute;
+  left: 70px;
+  right: 70px;
 }
 
 .connexion {
@@ -45,7 +45,6 @@
   margin-top: 17%;
   color: white;
   font-size: 50px;
-  border: 1px solid black;
 }
 @media (max-width: 768px) {
   .textCentral {
@@ -54,9 +53,6 @@
     margin-left: 5%;
     font-size: 30px;
   }
-}
-.home-buttons {
-  border: 1px solid red;
 }
 .buttonConnexion {
   width: 20%;

@@ -9,8 +9,6 @@ import CompanyOffers from "./components/CompanyOffers/CompanyOffers";
 import Param from "./Param";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
-import OnePage from "./components/home/companyPart/OnePage";
-import PartieEntreprise from "./components/home/companyPart/PartieEntreprise";
 
 // HOME ROUTER -------------------------------------------------------------
 const Home = ({ match }) => (
