@@ -27,6 +27,13 @@
   left: 70px;
   right: 70px;
 }
+@media (max-width: 574px) {
+  .logo {
+    width: 162px;
+    height: 50px;
+    margin: auto;
+  }
+}
 
 .connexion {
   color: white;
@@ -55,7 +62,7 @@
   }
 }
 .buttonConnexion {
-  width: 20%;
+  width: 23%;
   background-color: #ff8900 !important;
   color: white !important;
 }

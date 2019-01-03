@@ -43,9 +43,9 @@ export default class OnePage extends Component {
       <div className="div-block">
         <div className="Header">
           <div className="Header-overlay">
-            <img className="logo" src={logo} />
+            <img className="logo" src={logo} alt="logoOneTeam" />
             <p className="connexion">
-              <span>Se connecter </span>|<span> S'inscrire</span>
+              <span> Espace Entreprise </span>|<span> Espace Etudiants </span>
             </p>
 
             <h1 className="textCentral">
