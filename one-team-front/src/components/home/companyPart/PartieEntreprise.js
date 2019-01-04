@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import { Container, Row, Col } from "react-grid-system";
+
 import Button from "@material-ui/core/Button";
 import invitez from "../../../img/Invitez.png";
 import invitez2 from "../../../img/Invitez2.png";
@@ -16,7 +18,11 @@ export default class PartieEntreprise extends Component {
     return (
       <div>
         <Container className="Invitez">
-          <h2 className="recruteurs"> Pour les recruteurs </h2>
+          <h2 className="recruteurs" id="section1">
+            {" "}
+            Pour les recruteurs{" "}
+          </h2>
+
           <Row>
             <Col sm={6} className="ColInvitez">
               <h2 className="InvitezTitre">
