@@ -1,5 +1,65 @@
 h2 {
-    font-size: calc(20px + 1vw);
-    padding: 30px 0 30px 0;
-    margin: 0 5px;
+  font-size: calc(20px + 1vw);
+  padding: 30px 0 30px 0;
+  margin: 0 5px;
+}
+/********************** TEAM ************************/
+.logo-team {
+  width: calc(90px + 30vw);
+  margin-bottom: 20px;
+}
+.white-color {
+  color: white;
+}
+.h2-team {
+    padding: 5px;
+}
+.teamOneTeam {
+  background-color: #494642;
+  padding: 30px 0;
+  margin: 0;
+}
+.img-team {
+    width: 100%;
+}
+.name-team {
+    margin: 5px 0;
+    color: white;
+}
+.team-item {
+    margin: 20px 40px;
+}
+.team-block {
+    padding: 0 calc(10px + 10vw);
+}
+
+/********************* CONTACT *********************/
+.contact-home {
+  background-color: #b2aa9e;
+  padding: 15px 0;
+  margin: 0;
+}
+
+.social-media {
+  margin: 10px;
+}
+.nav-footer {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+.nav-footer li {
+  list-style-type: none;
+  margin: 5px 10px;
+  padding: 0;
+}
+.nav-footer a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.nav-footer a:hover {
+  color: #ff8900;
 }
