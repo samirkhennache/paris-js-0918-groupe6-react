@@ -9,6 +9,9 @@ const CompanyCreateOffers = class extends React.Component {
   state = this.defaultState();
 
   componentDidMount() {
+    Axios.get("http://localhost:3001/paradata/levelstudies").then(res => {
+      this.setState({ idLoaded: true, levelstudies: res.data });
+    });
     const { mission } = this.props;
     if (mission && mission.id) {
       this.setState({ mission, isEditMode: true });
@@ -23,7 +26,6 @@ const CompanyCreateOffers = class extends React.Component {
         [name]: value
       }
     }));
-    // console.log(this.state);
   };
 
   handlerOnChangeLevelStudy = event => {
@@ -31,7 +33,7 @@ const CompanyCreateOffers = class extends React.Component {
     this.setState(previousState => ({
       mission: {
         ...previousState.mission,
-        levelStudyId: value
+        LevelStudyId: value
       }
     }));
   };
@@ -46,16 +48,15 @@ const CompanyCreateOffers = class extends React.Component {
       description: mission.description,
       town: mission.town,
       intro: mission.intro,
-      companyId: mission.CompanyId,
-      levelStudyId: mission.levelStudyId
+      CompanyId: mission.CompanyId,
+      LevelStudyId: Number(mission.LevelStudyId)
     };
     // console.log(this.state.mission);
+    console.log("postFormMission", postFormMission);
 
     if (!isEditMode) {
       Axios.post(API_ENDPOINT_MISSION, postFormMission).then(
         // res => console.log(res)
-        // console.log(postFormMission);
-
 
         window.alert("Ajout ok")
       );
@@ -87,12 +88,13 @@ const CompanyCreateOffers = class extends React.Component {
         CompanyId: idCompany,
         LevelStudyId: 1
       },
-      isEditMode: false
+      isEditMode: false,
+      idLoaded: false
     };
   }
 
   render() {
-    const { mission, isEditMode } = this.state;
+    const { mission, isEditMode, idLoaded, levelstudies } = this.state;
     return (
       <div className="CompanyCreateOffers">
         <p>{isEditMode ? "Je modifie une mission" : "Je crée une mission"}</p>
@@ -149,8 +151,13 @@ const CompanyCreateOffers = class extends React.Component {
             value={mission.LevelStudyId}
             onChange={this.handlerOnChangeLevelStudy}
           >
-            <option value={1}>Bac + 1</option>
-            <option value={2}>Bac + 2</option>
+            {idLoaded
+              ? levelstudies.map(element => (
+                  <option key={element.id} value={element.id}>
+                    {element.label}
+                  </option>
+                ))
+              : "loading..."}
           </select>
           <button type="submit" className="submit">
             {isEditMode ? "Modifier" : "Créer"}

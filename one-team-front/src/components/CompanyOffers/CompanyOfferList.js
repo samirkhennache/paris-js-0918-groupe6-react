@@ -11,7 +11,6 @@ class CompanyOfferList extends Component {
 
   componentDidMount() {
     const { idCompany } = this.props;
-
     axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
       // console.log("data", res.data);
       this.setState({
@@ -47,10 +46,8 @@ class CompanyOfferList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    idCompany: state.company.id
-  };
-};
+const mapStateToProps = state => ({
+  idCompany: state.company.id
+});
 
 export default connect(mapStateToProps)(CompanyOfferList);
