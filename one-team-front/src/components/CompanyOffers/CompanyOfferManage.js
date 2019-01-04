@@ -30,7 +30,7 @@ class CompanyOfferManage extends Component {
 
   render() {
     const { titleMissions, start, end, descrip, modifMission } = this.props;
-    console.log("1", modifMission);
+    // console.log("1", modifMission);
 
     return (
       <div>
