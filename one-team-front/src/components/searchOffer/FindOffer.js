@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import ModalOffer from "../offerView/ModalOffer";
+import { MIDDLE } from "../offerView";
 
 class FindOffers extends Component {
   state = {
@@ -20,12 +22,12 @@ class FindOffers extends Component {
     const { search, town } = this.state;
     const url = `http://localhost:3001/mission?search=${search}&town=${town}`;
     axios.get(url).then(res => {
-      this.setState({ result: res.data, isLoad: true });
+      this.setState({ result: res.data });
     });
   };
 
   render() {
-    const { result, isLoad } = this.state;
+    const { result } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -45,11 +47,18 @@ class FindOffers extends Component {
           />
           <button type="submit">Submit</button>
         </form>
-        {!isLoad ? (
-          <p>Loading ...</p>
-        ) : (
-          result.map(e => <div key={e.id}>{e.titleMission}</div>)
-        )}
+        {result.map(element => (
+          <ModalOffer
+            size={MIDDLE}
+            key={`${element.id}-${element.titleMission}`}
+            missionId={element.id}
+            titleMission={element.titleMission}
+            company={element.Company.companyName}
+            dateStart={element.dateStart}
+            dateEnd={element.dateEnd}
+            description={element.description}
+          />
+        ))}
       </div>
     );
   }

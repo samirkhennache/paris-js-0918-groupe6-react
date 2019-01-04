@@ -8,7 +8,6 @@ import CompanyOfferManage from "./CompanyOfferManage";
 import "./Button.css";
 import "./Modal.css";
 import "./Missions.css";
-
 import "react-awesome-button/dist/styles.css";
 
 class CompanyOffers extends Component {
