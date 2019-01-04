@@ -131,6 +131,6 @@ class ModalOffer extends Component {
 }
 
 const mapStateToProps = state => ({
-  id_student: state.student.id
+  traineeId: state.student.id
 });
 export default connect(mapStateToProps)(ModalOffer);

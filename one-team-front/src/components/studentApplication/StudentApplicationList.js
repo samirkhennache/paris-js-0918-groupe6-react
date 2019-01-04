@@ -10,16 +10,15 @@ class StudentApplicationList extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:3001/application").then(res => {
-      this.setState({
-        applications: res.data,
-        isLoaded: true
-      });
+    axios.get(`http://localhost:3001/trainee/${13}/application`).then(res => {
+      this.setState({ applications: res.data, isLoaded: true });
     });
   }
 
   render() {
     const { applications, isLoaded } = this.state;
+    console.log("applications ", applications);
+
     return (
       <div>
         {!isLoaded ? (
