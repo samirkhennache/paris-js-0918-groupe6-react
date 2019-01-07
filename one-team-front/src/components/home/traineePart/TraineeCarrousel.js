@@ -102,7 +102,7 @@ class TraineeCarrousel extends React.Component {
               className={classes.carrousel}
             >
               {tutorialSteps.map((element, index) => (
-                <div key={index}>
+                <div key={index} id="section2">
                   <img
                     className={classes.img}
                     src={element.imgPath}
