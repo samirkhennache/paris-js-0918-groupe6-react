@@ -8,9 +8,10 @@ class SearchOffer extends Component {
   render() {
     return (
       <div>
-        <h3> Page Trainee Search Offer </h3> <FindOffers />
+        <h3> Page Trainee Search Offer </h3>
+        <FindOffers {...this.props} />
         {/* <StudentApplicationList /> */}
-        <StudentOfferList />
+        <StudentOfferList {...this.props} />
       </div>
     );
   }

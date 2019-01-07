@@ -29,7 +29,7 @@ class GoodReasonsStudents extends Component {
               développement
             </p>
           </div>
-          <ButtonStudent />
+          <ButtonStudent {...this.props} />
         </div>
       </div>
     );

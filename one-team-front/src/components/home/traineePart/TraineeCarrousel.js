@@ -10,6 +10,7 @@ import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import amber from "@material-ui/core/colors/amber";
 import slide1 from "../../../img/students/slide1.png";
+import "../companyPart/PartieEntreprise.css";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -94,6 +95,13 @@ class TraineeCarrousel extends React.Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
+          <h2
+            className="recruteurs"
+            id="section2"
+            style={{ marginBottom: 50, marginTop: 20 }}
+          >
+            Pour les étudiants
+          </h2>
           <div className={classes.bloc}>
             <AutoPlaySwipeableViews
               onChangeIndex={this.handleStepChange}
@@ -102,7 +110,7 @@ class TraineeCarrousel extends React.Component {
               className={classes.carrousel}
             >
               {tutorialSteps.map((element, index) => (
-                <div key={index} id="section2">
+                <div key={index}>
                   <img
                     className={classes.img}
                     src={element.imgPath}

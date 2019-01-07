@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button";
 
 import TraineeCreateConnexion from "../../authentication/studentCreateConnexion/TraineeCreateConnexion";
 import CompanyCreateConnexion from "../../authentication/companyCreateConnexion/CompanyCreateConnexion";
-import PartieEntreprise from "./PartieEntreprise";
 
 import logo from "../../../img/Logo.png";
 import "./OnePage.css";
@@ -43,6 +42,8 @@ export default class OnePage extends Component {
 
   render() {
     const { openTrainee, openCompany, button } = this.state;
+    console.log(this.props, "props onepage");
+
     return (
       // Header //
       <div className="div-block">
@@ -58,8 +59,8 @@ export default class OnePage extends Component {
                 offset={-70}
                 duration={500}
               >
-                <a href="" className="titleduO">
-                  Espace Entreprise
+                <a href="#section1" className="titleduO">
+                  Pour les recruteurs
                 </a>
               </Link>
               &nbsp;|&nbsp;
@@ -71,8 +72,8 @@ export default class OnePage extends Component {
                 offset={-70}
                 duration={500}
               >
-                <a href="" className="titleduO">
-                  Espace Etudiants
+                <a href="#section2" className="titleduO">
+                  Pour les étudiants
                 </a>
               </Link>
             </p>
@@ -130,7 +131,7 @@ export default class OnePage extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-        <PartieEntreprise />
+        {/* <PartieEntreprise {...this.props} /> */}
       </div>
     );
   }

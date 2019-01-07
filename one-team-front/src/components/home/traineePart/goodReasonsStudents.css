@@ -1,23 +1,23 @@
 .good-reasons {
-    background-color: #472830;
-    margin: 30px 0;
+  background-color: #494642;
+  margin: 30px 0;
 }
-.bloc-good-reasons{
-    padding-bottom: 40px;
+.bloc-good-reasons {
+  padding-bottom: 40px;
 }
-.h2-good-reasons{
-    color: white;
+.h2-good-reasons {
+  color: white;
 }
 .good-reason-solo {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 70%;
-    margin: 5px auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 70%;
+  margin: 5px auto;
 }
 .good-reason-solo p {
-    margin: 20px;
-    font-size: calc(10px + 1vw);
-    color: rgb(35, 148, 188);
-    text-align: left;
+  margin: 20px;
+  font-size: calc(10px + 1vw);
+  color: rgb(35, 148, 188);
+  text-align: left;
 }

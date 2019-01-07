@@ -48,10 +48,10 @@ class ConnexionCompany extends Component {
     Axios.post("http://localhost:3001/company/login", postDataLogin)
       .then(result => {
         props.selectCompany(result.data.id);
+        sessionStorage.setItem("token", result.data.id);
         props.history.push("/company");
       })
       .catch(error => {
-        console.log(error.response.data.message);
         if (error.response.status === 404) {
           this.setState({
             open: true,

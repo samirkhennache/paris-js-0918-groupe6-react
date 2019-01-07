@@ -79,6 +79,8 @@
 
 .confiance {
   margin: 10%;
+  font-weight: 300;
+  line-height: 1cm;
 }
 @media (max-width: 768px) {
   .confiance {
@@ -100,6 +102,9 @@
   background-color: #ff8900 !important;
   color: white !important;
   width: 40% !important;
+  font-size: 17px !important;
+  font-weight: 900 !important;
+  text-transform: initial !important;
 }
 @media (max-width: 574px) {
   .buttonMission {

@@ -9,18 +9,39 @@ import vinci from "../../../img/vinci.png";
 import engie from "../../../img/engie.png";
 import laposte from "../../../img/laposte.png";
 import sncf from "../../../img/sncf.png";
-import processus from "../../../img/processus.png";
 import types from "../../../img/missionType.png";
 import "./PartieEntreprise.css";
 
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+
+import CompanyCreateConnexion from "../../authentication/companyCreateConnexion/CompanyCreateConnexion";
+
 export default class PartieEntreprise extends Component {
+  state = {
+    openCompany: false,
+    button: "fermer"
+  };
+
+  companyOpenConnexion = () => {
+    this.setState({
+      openCompany: true
+    });
+  };
+
+  handleCloseCompany = () => {
+    this.setState({ openCompany: false });
+  };
   render() {
+    const { openCompany, button } = this.state;
+    console.log(this.props, "props Entreprise");
+
     return (
       <div>
         <Container className="Invitez">
           <h2 className="recruteurs" id="section1">
-            {" "}
-            Pour les recruteurs{" "}
+            Pour les recruteurs
           </h2>
 
           <Row>
@@ -55,7 +76,11 @@ export default class PartieEntreprise extends Component {
           </Row>
         </Container>
         <Container>
-          <h2 className="Exemple">Exemples</h2>
+          <h2 className="Exemple">Des exemples</h2>
+          <img
+            src="https://img.icons8.com/color/30/ffffff/chevron-down.png"
+            alt="chevron_bas"
+          />
           <Row>
             {/* Missions types  */}
             <img src={types} className="Imgtypes" alt="types" />
@@ -64,9 +89,10 @@ export default class PartieEntreprise extends Component {
             <Col sm={12}>
               <h3 className="confiance">
                 Nous offrons aux entreprises en recherche d'innovation un
-                service inédit de recrutement d'équipes de 3 ou 4 étudiants
-                pluridisciplinaires, inscrits dans les meilleures écoles
-                d'ingénieurs, de commerce, de développement web ou de design.
+                service inédit de recrutement <br /> Des équipes de 3 ou 4
+                étudiants pluridisciplinaires, inscrits dans les meilleures
+                écoles d'ingénieurs, de commerce, de développement web ou de
+                design.
               </h3>
             </Col>
           </Row>
@@ -90,10 +116,31 @@ export default class PartieEntreprise extends Component {
             </Col>
           </Row>
           <h2 className="confiance2"> Il nous font confiance !</h2>
-          <Button variant="contained" className="buttonMission">
+          <Button
+            variant="contained"
+            className="buttonMission"
+            onClick={this.companyOpenConnexion}
+          >
             Créer une mission
           </Button>
         </Container>
+
+        {/* DIALOG COMPANY -----------------------------------------*/}
+        <Dialog
+          open={openCompany}
+          onClose={this.handleCloseCompany}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogContent>
+            <CompanyCreateConnexion {...this.props} />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCloseCompany} color="primary">
+              {button}
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }

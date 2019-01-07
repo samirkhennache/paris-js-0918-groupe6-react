@@ -28,6 +28,7 @@ class FindOffers extends Component {
 
   render() {
     const { result } = this.state;
+    console.log(result);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -57,6 +58,7 @@ class FindOffers extends Component {
             dateStart={element.dateStart}
             dateEnd={element.dateEnd}
             description={element.description}
+            {...this.props}
           />
         ))}
       </div>

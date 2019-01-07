@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import OpenMenuBurger from "./OpenMenuBurger";
 import "./navBar.css";
+import logoOneTeam from "../../img/Logo.png";
 
 const styles = {
   root: {
@@ -51,7 +52,9 @@ const ButtonAppBar = props => {
             )}
             <div className="logo-pages border">
               <NavLink to="/">
-                <div className="logo-pages-element">ONE TEAM</div>
+                <div className="logo-pages-element">
+                  <img src={logoOneTeam} width="200" alt="Notre logo" />
+                </div>
               </NavLink>
             </div>
           </Toolbar>
@@ -64,7 +67,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiToolbar: {
       root: {
-        backgroundColor: "white"
+        backgroundColor: "#494642"
       }
     }
   }
