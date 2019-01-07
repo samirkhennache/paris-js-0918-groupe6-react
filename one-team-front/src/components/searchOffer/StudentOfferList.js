@@ -33,7 +33,7 @@ class StudentOfferList extends Component {
               key={`${element.id}-${element.titleMission}`}
               missionId={element.id}
               titleMission={element.titleMission}
-              company={element.Mission.Company.companyName}
+              company={element.Company.companyName}
               dateStart={element.dateStart}
               dateEnd={element.dateEnd}
               description={element.description}

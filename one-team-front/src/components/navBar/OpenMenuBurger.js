@@ -36,6 +36,7 @@ class OpenMenuBurger extends React.Component {
       openMyOffers,
       openTraineeProfile,
       openMissions,
+      openCandidats,
       openParams,
       routeName
     } = this.props;
@@ -57,6 +58,9 @@ class OpenMenuBurger extends React.Component {
       <div className={classes.list}>
         <ListItem component={openMissions} button>
           Mes missions
+        </ListItem>
+        <ListItem component={openCandidats} button>
+          Mes Candidats
         </ListItem>
         <ListItem component={openParams} button>
           Mes params

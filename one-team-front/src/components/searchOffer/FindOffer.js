@@ -28,6 +28,7 @@ class FindOffers extends Component {
 
   render() {
     const { result } = this.state;
+    console.log(result);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
