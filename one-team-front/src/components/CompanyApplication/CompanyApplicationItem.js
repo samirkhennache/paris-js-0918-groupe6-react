@@ -21,6 +21,7 @@ const CompanyApplicationItem = ({ trainee }) => (
               {name.Trainee.address} - {name.Trainee.postalCode}{" "}
               {name.Trainee.town}
             </li>
+            <button>Ajouter</button> - <button>Refuser</button>
           </ul>
         ))}
       </p>

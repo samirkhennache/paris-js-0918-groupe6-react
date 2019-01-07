@@ -49,7 +49,7 @@ const Trainee = ({ match }) => {
 };
 // COMPANY ROUTER -------------------------------------------------------------
 const Company = ({ match }) => {
-  const Missions = props => <Link to={`${match.url}/:id`} {...props} />;
+  const Missions = props => <Link to={`${match.url}`} {...props} />;
   const Params = props => <Link to={`${match.url}/:id/my-params`} {...props} />;
   const Candidats = props => <Link to={`${match.url}/mytrainees`} {...props} />;
   return (
@@ -61,11 +61,11 @@ const Company = ({ match }) => {
         routeName={match.url}
       />
       <Switch>
-        <Route exact path={`${match.url}/:id`} component={CompanyOffers} />
+        <Route exact path={`${match.url}`} component={CompanyOffers} />
         <Route exact path={`${match.url}/:id/my-params`} component={Param} />
         <Route
           exact
-          path={`${match.url}/:id/mytrainees`}
+          path={`${match.url}/mytrainees`}
           component={CompanyApplications}
         />
       </Switch>
