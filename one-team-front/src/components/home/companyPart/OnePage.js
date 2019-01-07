@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button";
 
 import TraineeCreateConnexion from "../../authentication/studentCreateConnexion/TraineeCreateConnexion";
 import CompanyCreateConnexion from "../../authentication/companyCreateConnexion/CompanyCreateConnexion";
-import PartieEntreprise from "./PartieEntreprise";
 
 import logo from "../../../img/Logo.png";
 import "./OnePage.css";
@@ -60,7 +59,7 @@ export default class OnePage extends Component {
                 offset={-70}
                 duration={500}
               >
-                <a href="" className="titleduO">
+                <a href="#section1" className="titleduO">
                   Pour les recruteurs
                 </a>
               </Link>
@@ -73,7 +72,7 @@ export default class OnePage extends Component {
                 offset={-70}
                 duration={500}
               >
-                <a href="" className="titleduO">
+                <a href="#section2" className="titleduO">
                   Pour les étudiants
                 </a>
               </Link>

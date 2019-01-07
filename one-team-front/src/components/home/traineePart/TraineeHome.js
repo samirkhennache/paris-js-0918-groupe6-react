@@ -12,7 +12,7 @@ class TraineeHome extends Component {
       <div>
         <TraineeCarrousel />
         <TraineeOffers />
-        <GoodReasonsStudents />
+        <GoodReasonsStudents {...this.props} />
         <Cursus />
       </div>
     );

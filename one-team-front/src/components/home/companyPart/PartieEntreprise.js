@@ -16,7 +16,6 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 
-import TraineeCreateConnexion from "../../authentication/studentCreateConnexion/TraineeCreateConnexion";
 import CompanyCreateConnexion from "../../authentication/companyCreateConnexion/CompanyCreateConnexion";
 
 export default class PartieEntreprise extends Component {
@@ -77,7 +76,11 @@ export default class PartieEntreprise extends Component {
           </Row>
         </Container>
         <Container>
-          <h2 className="Exemple">Exemples</h2>
+          <h2 className="Exemple">Des exemples</h2>
+          <img
+            src="https://img.icons8.com/color/30/ffffff/chevron-down.png"
+            alt="chevron_bas"
+          />
           <Row>
             {/* Missions types  */}
             <img src={types} className="Imgtypes" alt="types" />
@@ -86,9 +89,10 @@ export default class PartieEntreprise extends Component {
             <Col sm={12}>
               <h3 className="confiance">
                 Nous offrons aux entreprises en recherche d'innovation un
-                service inédit de recrutement d'équipes de 3 ou 4 étudiants
-                pluridisciplinaires, inscrits dans les meilleures écoles
-                d'ingénieurs, de commerce, de développement web ou de design.
+                service inédit de recrutement <br /> Des équipes de 3 ou 4
+                étudiants pluridisciplinaires, inscrits dans les meilleures
+                écoles d'ingénieurs, de commerce, de développement web ou de
+                design.
               </h3>
             </Col>
           </Row>

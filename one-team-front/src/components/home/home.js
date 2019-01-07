@@ -12,7 +12,7 @@ class Home extends Component {
       <div>
         <OnePage {...this.props} />
         <PartieEntreprise {...this.props} />
-        <TraineeHome />
+        <TraineeHome {...this.props} />
         <TeamOneTeam />
         <Contact />
       </div>

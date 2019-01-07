@@ -20,8 +20,6 @@ class StudentOfferList extends Component {
 
   render() {
     const { missions, isLoaded } = this.state;
-    console.log("messions ", missions);
-
     return (
       <div>
         {!isLoaded ? (
@@ -37,6 +35,7 @@ class StudentOfferList extends Component {
               dateStart={element.dateStart}
               dateEnd={element.dateEnd}
               description={element.description}
+              {...this.props}
             />
           ))
         )}
