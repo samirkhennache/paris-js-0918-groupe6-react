@@ -130,7 +130,7 @@ export default class OnePage extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-        <PartieEntreprise />
+        <PartieEntreprise {...this.props} />
       </div>
     );
   }

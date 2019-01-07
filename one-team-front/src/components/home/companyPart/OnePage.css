@@ -63,9 +63,12 @@
 }
 .buttonConnexion {
   width: 23%;
+  height: 10%;
   background-color: #ff8900 !important;
   color: white !important;
   text-transform: initial !important;
+  font-size: 17px !important;
+  font-weight: 900 !important;
 }
 @media (max-width: 768px) {
   .buttonConnexion {
@@ -75,10 +78,13 @@
 
 .buttonConnexion2 {
   width: 20%;
+  height: 10%;
   background-color: #ff8900 !important;
   color: white !important;
   margin-left: 2% !important;
   text-transform: initial !important;
+  font-size: 17px !important;
+  font-weight: 900 !important;
 }
 @media (max-width: 768px) {
   .buttonConnexion2 {

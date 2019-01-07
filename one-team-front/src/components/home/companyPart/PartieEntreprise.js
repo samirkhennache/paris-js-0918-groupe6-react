@@ -88,7 +88,11 @@ export default class PartieEntreprise extends Component {
             </Col>
           </Row>
           <h2 className="confiance2"> Il nous font confiance !</h2>
-          <Button variant="contained" className="buttonMission">
+          <Button
+            variant="contained"
+            className="buttonMission"
+            onClick={this.companyOpenConnexion}
+          >
             Créer une mission
           </Button>
         </Container>
