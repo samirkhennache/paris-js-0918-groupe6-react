@@ -67,7 +67,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiToolbar: {
       root: {
-        backgroundColor: "white"
+        backgroundColor: "#494642"
       }
     }
   }
