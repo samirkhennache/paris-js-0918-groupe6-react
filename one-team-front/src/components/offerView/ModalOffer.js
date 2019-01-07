@@ -14,6 +14,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import OfferView from "./OfferView";
 import { FULL } from "./constants";
+import ModalConfimation from "./ModalConfirmation";
 
 const DialogTitle = withStyles(theme => ({
   root: {
@@ -47,7 +48,8 @@ const DialogTitle = withStyles(theme => ({
 class ModalOffer extends Component {
   state = {
     open: false,
-    missionId: null
+    missionId: null,
+    openToConfirm: false
   };
 
   componentDidMount() {
@@ -58,7 +60,7 @@ class ModalOffer extends Component {
   }
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, openToConfirm: false });
   };
 
   handleOpen = () => {
@@ -67,19 +69,35 @@ class ModalOffer extends Component {
 
   handleClickApplicate = () => {
     const { missionId } = this.state;
-    const { traineeId } = this.props;
+    //const { traineeId } = this.props;
+    const traineeId = sessionStorage.getItem("token");
     this.setState({ open: false });
     axios
       .post("http://localhost:3001/application", {
         missionId,
         traineeId
       })
-      .then(res => console.log(res));
+      .then(res => {
+        if (res.status === 200)
+          this.setState({
+            openToConfirm: true,
+            content: `votre candidature a bien été envoyée`
+          });
+      })
+      .catch(error => {
+        if (error.response.status === 404) {
+          this.setState({
+            openToConfirm: true,
+            content: `Vous avez déjà posluter à cette offre`
+          });
+        }
+      });
   };
 
   render() {
-    const { open } = this.state;
+    const { open, content, openToConfirm } = this.state;
     const { size, titleMission, missionId } = this.props;
+
     return (
       <div className="ModalOffer">
         <OfferView
@@ -125,6 +143,12 @@ class ModalOffer extends Component {
             )}
           </DialogActions>
         </Dialog>
+        <ModalConfimation
+          openConfirmation={openToConfirm}
+          content={content}
+          close={this.handleClose}
+          {...this.props}
+        />
       </div>
     );
   }

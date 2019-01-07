@@ -49,7 +49,7 @@ class StudentCreateAccount extends Component {
       .post("http://localhost:3001/trainee", postFormStudent)
       .then(result => {
         props.selectStudent(result.data.id);
-
+        sessionStorage.setItem("token", result.data.id);
         props.history.push("/trainee");
       })
       .catch(error => {

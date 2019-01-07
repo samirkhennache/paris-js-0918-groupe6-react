@@ -1,6 +1,6 @@
 import React from "react";
 import facebook from "../../img/facebook.png";
-import instagram from "../../img/instagram.png";
+// import instagram from "../../img/instagram.png";
 import twitter from "../../img/twitter.png";
 
 const Contact = () => (

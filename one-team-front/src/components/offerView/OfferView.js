@@ -13,8 +13,6 @@ const OfferView = props => {
     description,
     company
   } = props;
-  console.log("size ", size);
-
   switch (size) {
     case "SMALL": {
       return (

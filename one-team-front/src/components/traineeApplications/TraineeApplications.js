@@ -6,7 +6,7 @@ class TraineeApplications extends Component {
     return (
       <div>
         <h3>Page récap des candidatures de l'étudiant</h3>
-        <StudentApplicationList />
+        <StudentApplicationList {...this.props} />
       </div>
     );
   }
