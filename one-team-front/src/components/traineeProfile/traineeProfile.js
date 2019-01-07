@@ -3,7 +3,7 @@ import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-class traineeProfile extends Component {
+class TraineeProfile extends Component {
   state = {
     id: 1,
     lastname: "",
@@ -153,4 +153,4 @@ class traineeProfile extends Component {
   }
 }
 
-export default traineeProfile;
+export default TraineeProfile;
