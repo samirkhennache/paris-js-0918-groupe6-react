@@ -18,8 +18,8 @@ class CompanyOffers extends Component {
   };
 
   componentDidMount() {
-    const { idCompany } = this.props;
-
+    // const { idCompany } = this.props;
+    const idCompany = sessionStorage.getItem("token");
     axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
       // console.log("data", res.data);
       this.setState({
@@ -93,10 +93,8 @@ class CompanyOffers extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
+const mapStateToProps = state => ({
     idCompany: state.company.id
-  };
-};
+  });
 
 export default connect(mapStateToProps)(CompanyOffers);
