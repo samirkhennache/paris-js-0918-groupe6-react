@@ -79,6 +79,8 @@
 
 .confiance {
   margin: 10%;
+  font-weight: 300;
+  line-height: 1cm;
 }
 @media (max-width: 768px) {
   .confiance {
