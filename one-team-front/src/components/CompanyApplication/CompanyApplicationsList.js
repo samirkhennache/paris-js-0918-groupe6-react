@@ -5,12 +5,13 @@ import CompanyApplicationItem from "./CompanyApplicationItem";
 class CompanyApplicationsList extends Component {
   state = {
     trainee: [],
+    id: "",
     isLoaded: false
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:3001/application/1/mytrainee")
+      .get(`http://localhost:3001/application/${this.state.id}/mytrainee`)
       .then(res => this.setState({ trainee: res.data, isLoaded: true }));
   }
 
@@ -18,7 +19,6 @@ class CompanyApplicationsList extends Component {
     console.log(this.state);
     return (
       <div>
-        <h1>CompanyApplicationsList</h1>
         {this.state.isLoaded && (
           <CompanyApplicationItem trainee={this.state.trainee} />
         )}
