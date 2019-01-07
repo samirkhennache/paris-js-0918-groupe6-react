@@ -9,7 +9,6 @@ import vinci from "../../../img/vinci.png";
 import engie from "../../../img/engie.png";
 import laposte from "../../../img/laposte.png";
 import sncf from "../../../img/sncf.png";
-import processus from "../../../img/processus.png";
 import types from "../../../img/missionType.png";
 import "./PartieEntreprise.css";
 
@@ -19,8 +18,7 @@ export default class PartieEntreprise extends Component {
       <div>
         <Container className="Invitez">
           <h2 className="recruteurs" id="section1">
-            {" "}
-            Pour les recruteurs{" "}
+            Pour les recruteurs
           </h2>
 
           <Row>

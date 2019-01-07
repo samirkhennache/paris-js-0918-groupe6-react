@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -59,7 +59,7 @@ export default class OnePage extends Component {
                 duration={500}
               >
                 <a href="" className="titleduO">
-                  Espace Entreprise
+                  Pour les recruteurs
                 </a>
               </Link>
               &nbsp;|&nbsp;
@@ -72,7 +72,7 @@ export default class OnePage extends Component {
                 duration={500}
               >
                 <a href="" className="titleduO">
-                  Espace Etudiants
+                  Pour les étudiants
                 </a>
               </Link>
             </p>
