@@ -12,8 +12,32 @@ import sncf from "../../../img/sncf.png";
 import types from "../../../img/missionType.png";
 import "./PartieEntreprise.css";
 
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+
+import TraineeCreateConnexion from "../../authentication/studentCreateConnexion/TraineeCreateConnexion";
+import CompanyCreateConnexion from "../../authentication/companyCreateConnexion/CompanyCreateConnexion";
+
 export default class PartieEntreprise extends Component {
+  state = {
+    openCompany: false,
+    button: "fermer"
+  };
+
+  companyOpenConnexion = () => {
+    this.setState({
+      openCompany: true
+    });
+  };
+
+  handleCloseCompany = () => {
+    this.setState({ openCompany: false });
+  };
   render() {
+    const { openCompany, button } = this.state;
+    console.log(this.props, "props Entreprise");
+
     return (
       <div>
         <Container className="Invitez">
@@ -96,6 +120,23 @@ export default class PartieEntreprise extends Component {
             Créer une mission
           </Button>
         </Container>
+
+        {/* DIALOG COMPANY -----------------------------------------*/}
+        <Dialog
+          open={openCompany}
+          onClose={this.handleCloseCompany}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogContent>
+            <CompanyCreateConnexion {...this.props} />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCloseCompany} color="primary">
+              {button}
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }

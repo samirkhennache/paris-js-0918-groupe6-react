@@ -43,6 +43,8 @@ export default class OnePage extends Component {
 
   render() {
     const { openTrainee, openCompany, button } = this.state;
+    console.log(this.props, "props onepage");
+
     return (
       // Header //
       <div className="div-block">
@@ -130,7 +132,7 @@ export default class OnePage extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-        <PartieEntreprise {...this.props} />
+        {/* <PartieEntreprise {...this.props} /> */}
       </div>
     );
   }
