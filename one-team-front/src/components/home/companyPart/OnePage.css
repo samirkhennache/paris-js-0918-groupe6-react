@@ -65,6 +65,7 @@
   width: 23%;
   background-color: #ff8900 !important;
   color: white !important;
+  text-transform: initial !important;
 }
 @media (max-width: 768px) {
   .buttonConnexion {
@@ -77,6 +78,7 @@
   background-color: #ff8900 !important;
   color: white !important;
   margin-left: 2% !important;
+  text-transform: initial !important;
 }
 @media (max-width: 768px) {
   .buttonConnexion2 {
@@ -84,4 +86,13 @@
     margin-top: 2% !important;
     margin-right: 2% !important;
   }
+}
+
+.titleduO {
+  text-decoration: none;
+  color: white;
+}
+
+.titleduO:hover {
+  background: black;
 }

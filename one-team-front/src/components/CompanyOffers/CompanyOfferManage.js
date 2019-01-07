@@ -29,20 +29,25 @@ class CompanyOfferManage extends Component {
   };
 
   render() {
-    const { titleMissions, start, end, descrip, modifMission } = this.props;
-    console.log("1", modifMission);
+    const {
+      titleMission,
+      dateStart,
+      dateEnd,
+      description,
+      modifMission
+    } = this.props;
 
     return (
       <div>
         {/* ***** FICHE MISSION ***** */}
         <div>
-          {titleMissions}
+          {titleMission}
           <br />
-          {start}
+          {dateStart}
           <br />
-          {end}
+          {dateEnd}
           <br />
-          {descrip}
+          {description}
         </div>
         {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
         <AwesomeButton
@@ -62,7 +67,10 @@ class CompanyOfferManage extends Component {
         </AwesomeButton>
 
         <Modal onClose={this.showModal} show={this.state.show}>
-          <CompanyCreateOffers mission={modifMission} />
+          <CompanyCreateOffers
+            mission={modifMission}
+            handlerUpdateMission={this.props.handlerUpdateMission}
+          />
         </Modal>
         <br />
         <hr align="center" width="50%" color="midnightblue" size="1" />

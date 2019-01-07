@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { OfferView, SMALL } from "../offerView";
+import { SMALL } from "../offerView";
+import ModalOffer from "../offerView/ModalOffer";
 
 class StudentApplicationList extends Component {
   state = {
@@ -9,24 +10,22 @@ class StudentApplicationList extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:3001/application").then(res => {
-      this.setState({
-        applications: res.data,
-        isLoaded: true
-      });
+    axios.get(`http://localhost:3001/trainee/${13}/application`).then(res => {
+      this.setState({ applications: res.data, isLoaded: true });
     });
   }
 
   render() {
     const { applications, isLoaded } = this.state;
+    console.log("applications ", applications);
+
     return (
       <div>
         {!isLoaded ? (
           <p> loading.. </p>
         ) : (
           applications.map(element => (
-            // <div></div>
-            <OfferView
+            <ModalOffer
               size={SMALL}
               key={`${element.Mission.id}-${element.Mission.titleMission}`}
               missionId={element.Mission.id}
