@@ -30,6 +30,7 @@ const ButtonAppBar = props => {
     myProfile,
     missions,
     params,
+    candidats,
     routeName
   } = props;
   return (
@@ -43,6 +44,7 @@ const ButtonAppBar = props => {
                 openMyOffers={myOffers}
                 openTraineeProfile={myProfile}
                 openMissions={missions}
+                openCandidats={candidats}
                 openParams={params}
                 routeName={routeName}
                 className="border"

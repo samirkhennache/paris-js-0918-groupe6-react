@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
 import { SMALL } from "../offerView";
 import ModalOffer from "../offerView/ModalOffer";
@@ -10,9 +11,12 @@ class StudentApplicationList extends Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/trainee/${13}/application`).then(res => {
-      this.setState({ applications: res.data, isLoaded: true });
-    });
+    const { idStudent } = this.props;
+    axios
+      .get(`http://localhost:3001/trainee/${idStudent}/application`)
+      .then(res => {
+        this.setState({ applications: res.data, isLoaded: true });
+      });
   }
 
   render() {
@@ -41,5 +45,8 @@ class StudentApplicationList extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  idStudent: state.student.id
+});
 
-export default StudentApplicationList;
+export default connect(mapStateToProps)(StudentApplicationList);
