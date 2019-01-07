@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import "./App.css";
 import HomeDefault from "./components/home/home";
-import searchOffer from "./components/searchOffer/SearchOffer";
+import SearchOffer from "./components/searchOffer/SearchOffer";
 import TraineeApplications from "./components/traineeApplications/TraineeApplications";
 import TraineeProfile from "./components/traineeProfile/traineeProfile";
 import CompanyOffers from "./components/companyOffers/CompanyOffers";
@@ -36,7 +36,11 @@ const Trainee = ({ match }) => {
         routeName={match.url}
       />
       <Switch>
-        <Route exact path={match.url} component={searchOffer} />
+        <Route
+          exact
+          path={match.url}
+          render={props => <SearchOffer {...props} />}
+        />
         <Route
           exact
           path={`${match.url}/applications`}

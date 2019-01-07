@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { SMALL } from "../offerView";
 import ModalOffer from "../offerView/ModalOffer";
+import { SMALL } from "../offerView";
 
 class StudentApplicationList extends Component {
   state = {
@@ -11,9 +11,10 @@ class StudentApplicationList extends Component {
   };
 
   componentDidMount() {
-    const { idStudent } = this.props;
+    // const { traineeId } = this.props;
+    const traineeId = sessionStorage.getItem("token");
     axios
-      .get(`http://localhost:3001/trainee/${idStudent}/application`)
+      .get(`http://localhost:3001/trainee/${traineeId}/application`)
       .then(res => {
         this.setState({ applications: res.data, isLoaded: true });
       });
@@ -21,8 +22,6 @@ class StudentApplicationList extends Component {
 
   render() {
     const { applications, isLoaded } = this.state;
-    console.log("applications ", applications);
-
     return (
       <div>
         {!isLoaded ? (
@@ -38,6 +37,7 @@ class StudentApplicationList extends Component {
               dateStart={element.Mission.dateStart}
               dateEnd={element.Mission.dateEnd}
               statusAppli={element.statusAppli}
+              {...this.props}
             />
           ))
         )}
@@ -46,7 +46,6 @@ class StudentApplicationList extends Component {
   }
 }
 const mapStateToProps = state => ({
-  idStudent: state.student.id
+  traineeId: state.student.id
 });
-
 export default connect(mapStateToProps)(StudentApplicationList);
