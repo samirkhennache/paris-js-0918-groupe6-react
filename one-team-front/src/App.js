@@ -10,6 +10,8 @@ import Param from "./Param";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
 import CompanyApplications from "./components/CompanyApplication/CompanyApplications";
+import OffersCompletedList from "./components/admin/OffersCompletedList";
+import { OfferView } from "./components/offerView";
 
 // HOME ROUTER -------------------------------------------------------------
 const Home = ({ match }) => (
@@ -77,6 +79,36 @@ const Company = ({ match }) => {
   );
 };
 
+// ADMIN ROUTER -------------------------------------------------------------
+
+const Admin = ({ match }) => {
+  const Missions = props => <Link to={`${match.url}/`} {...props} />;
+  const LesValidations = props => (
+    <Link to={`${match.url}/validations`} {...props} />
+  );
+  const Candidats = props => <Link to={`${match.url}/team`} {...props} />;
+  return (
+    <div>
+      <NavBar
+        candidats={Candidats}
+        missions={Missions}
+        validations={LesValidations}
+        routeName={match.url}
+      />
+      <Switch>
+        <Route exact path={`${match.url}`} component={OffersCompletedList} />
+        <Route
+          exact
+          path={`${match.url}/validations`}
+          component={CompanyOffers}
+        />
+        <Route exact path={`${match.url}/missions`} component={SearchOffer} />
+        <Route exact path={`${match.url}/team`} component={OfferView} />
+      </Switch>
+    </div>
+  );
+};
+
 // CLASS APP -------------------------------------------------------------
 class App extends Component {
   render() {
@@ -85,6 +117,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/trainee" component={Trainee} />
         <Route path="/company" component={Company} />
+        <Route path="/salutadmin" component={Admin} />
         <Route path="/*" component={Page404} />
       </Switch>
     );

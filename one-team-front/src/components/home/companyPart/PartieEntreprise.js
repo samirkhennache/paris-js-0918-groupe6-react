@@ -16,7 +16,6 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 
-import TraineeCreateConnexion from "../../authentication/studentCreateConnexion/TraineeCreateConnexion";
 import CompanyCreateConnexion from "../../authentication/companyCreateConnexion/CompanyCreateConnexion";
 
 export default class PartieEntreprise extends Component {
@@ -78,7 +77,10 @@ export default class PartieEntreprise extends Component {
         </Container>
         <Container>
           <h2 className="Exemple">Des exemples</h2>
-          <img src="https://img.icons8.com/color/30/ffffff/chevron-down.png" />
+          <img
+            src="https://img.icons8.com/color/30/ffffff/chevron-down.png"
+            alt="chevron_bas"
+          />
           <Row>
             {/* Missions types  */}
             <img src={types} className="Imgtypes" alt="types" />
