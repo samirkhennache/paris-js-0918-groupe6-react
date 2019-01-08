@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 
 class traineeProfile extends Component {
   state = {
-    id: 1,
+    id: 9,
     lastname: "",
     firstname: "",
     email: "",
@@ -13,7 +13,8 @@ class traineeProfile extends Component {
     phone: "",
     address: "",
     town: "",
-    postalCode: ""
+    postalCode: "",
+    selectedFile: null
   };
 
   componentDidMount() {
@@ -51,37 +52,74 @@ class traineeProfile extends Component {
       });
   };
 
+  uploadPhoto = () => {
+    console.log(this.state.selectedFile);
+    const formData = new FormData();
+    formData.append(
+      "avatar",
+      this.state.selectedFile,
+      this.state.selectedFile.name
+    );
+    axios.post(
+      `http://localhost:3001/trainee/uploadphoto/${this.state.id}`,
+      formData
+    );
+  };
+
+  fileChangedHandler = event => {
+    this.setState({ selectedFile: event.target.files[0] });
+    console.log("okkkkk");
+  };
+
   render() {
     console.log(this.state.data);
     if (this.state.data == null) {
       return <div>Loading</div>;
-    }
-    return (
-      <div>
-        <h1>Complète ton profile</h1>
-        <img src={this.state.data.pictures} alt="profile 2" />
-        <div className="createForm">
-          <form method="post" onSubmit={this.onSubmit}>
-            <TextField
-              type="text"
-              className="textField"
-              name="firstname"
-              placeholder="Prénom"
-              defaultValue={this.state.data.firstname}
-              margin="normal"
-              variant="outlined"
-              required
+    } else {
+      return (
+        <div>
+          <h1>Complète ton profile</h1>
+          {this.state.data.pictures !== null ? (
+            <img
+              src={`http://localhost:3001/${this.state.data.pictures}`}
+              width="100"
+              height="100"
+              alt="Photo Profile"
             />
-            <TextField
-              type="text"
-              className="textField"
-              name="lastname"
-              placeholder="Nom"
-              defaultValue={this.state.data.lastname}
-              margin="normal"
-              variant="outlined"
-              required
+          ) : (
+            <img
+              src="http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+              width="100"
+              height="100"
+              alt="Photo Profile"
             />
+          )}
+          <form onSubmit={this.uploadPhoto}>
+            <input type="file" onChange={this.fileChangedHandler} />
+            <button> Envoyer </button>
+          </form>
+          <div className="createForm">
+            <form method="post" onSubmit={this.onSubmit}>
+              <TextField
+                type="text"
+                className="textField"
+                name="firstname"
+                placeholder="Prénom"
+                defaultValue={this.state.data.firstname}
+                margin="normal"
+                variant="outlined"
+                required
+              />
+              <TextField
+                type="text"
+                className="textField"
+                name="lastname"
+                placeholder="Nom"
+                defaultValue={this.state.data.lastname}
+                margin="normal"
+                variant="outlined"
+                required
+              />
 
             <TextField
               disabled
