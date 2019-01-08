@@ -51,6 +51,12 @@ class CompanyOffers extends Component {
     });
   };
 
+  handlerDeleteMission = idMission => {
+    this.setState({
+      missions: [...this.state.missions.filter(e => e.id !== idMission)]
+    });
+  };
+
   render() {
     const { missions, isLoaded } = this.state;
     return (
@@ -83,6 +89,7 @@ class CompanyOffers extends Component {
                   description={e.description}
                   idMission={e.id}
                   handlerUpdateMission={this.handlerUpdateMission}
+                  handlerDeleteMission={this.handlerDeleteMission}
                 />
               </div>
             ))
@@ -94,7 +101,7 @@ class CompanyOffers extends Component {
 }
 
 const mapStateToProps = state => ({
-    idCompany: state.company.id
-  });
+  idCompany: state.company.id
+});
 
 export default connect(mapStateToProps)(CompanyOffers);
