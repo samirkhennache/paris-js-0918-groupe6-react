@@ -16,6 +16,7 @@ class traineeProfile extends Component {
     postalCode: "",
     selectedFile: null
   };
+
   componentDidMount() {
     axios
       .post("http://localhost:3001/trainee/profile", { id: this.state.id })
@@ -120,74 +121,73 @@ class traineeProfile extends Component {
                 required
               />
 
-              <TextField
-                disabled
-                type="email"
-                className="textField"
-                name="email"
-                placeholder="Email"
-                defaultValue={this.state.data.email}
-                margin="normal"
-                variant="outlined"
-                required
-              />
+            <TextField
+              disabled
+              type="email"
+              className="textField"
+              name="email"
+              placeholder="Email"
+              defaultValue={this.state.data.email}
+              margin="normal"
+              variant="outlined"
+              required
+            />
 
-              <TextField
-                type="password"
-                className="textField"
-                name="password"
-                placeholder="Mot de passe"
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                type="text"
-                className="textField"
-                name="phone"
-                placeholder="Phone"
-                defaultValue={this.state.data.phone}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                type="text"
-                className="textField"
-                name="address"
-                placeholder="Adress"
-                defaultValue={this.state.data.address}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                type="text"
-                className="textField"
-                name="town"
-                placeholder="Ville"
-                defaultValue={this.state.data.town}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                type="text"
-                className="textField"
-                name="postalCode"
-                placeholder="Postal Code"
-                defaultValue={this.state.data.postalCode}
-                margin="normal"
-                variant="outlined"
-              />
-              <Button
-                variant="contained"
-                className="buttonCreateForm"
-                type="submit"
-              >
-                {`Enregistrer`}
-              </Button>
-            </form>
-          </div>
+            <TextField
+              type="password"
+              className="textField"
+              name="password"
+              placeholder="Mot de passe"
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              type="text"
+              className="textField"
+              name="phone"
+              placeholder="Phone"
+              defaultValue={this.state.data.phone}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              type="text"
+              className="textField"
+              name="address"
+              placeholder="Adress"
+              defaultValue={this.state.data.address}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              type="text"
+              className="textField"
+              name="town"
+              placeholder="Ville"
+              defaultValue={this.state.data.town}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              type="text"
+              className="textField"
+              name="postalCode"
+              placeholder="Postal Code"
+              defaultValue={this.state.data.postalCode}
+              margin="normal"
+              variant="outlined"
+            />
+            <Button
+              variant="contained"
+              className="buttonCreateForm"
+              type="submit"
+            >
+              {`Enregistrer`}
+            </Button>
+          </form>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 

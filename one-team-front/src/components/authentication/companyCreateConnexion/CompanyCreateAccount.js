@@ -48,8 +48,8 @@ class CompanyCreateAccount extends Component {
       .post("http://localhost:3001/company", postFormCompany)
       .then(result => {
         props.selectCompany(result.data.id);
-
-        props.history.push(`/company/${result.data.id}`);
+        sessionStorage.setItem("token", result.data.id);
+        props.history.push(`/company`);
         const {
           companyName,
           firstnameContact,

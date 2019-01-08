@@ -1,13 +1,17 @@
 import React, { Component } from "react";
+
+import { Link } from "react-scroll";
+
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
+
 import TraineeCreateConnexion from "../../authentication/studentCreateConnexion/TraineeCreateConnexion";
 import CompanyCreateConnexion from "../../authentication/companyCreateConnexion/CompanyCreateConnexion";
+
 import logo from "../../../img/Logo.png";
 import "./OnePage.css";
-import PartieEntreprise from "./PartieEntreprise";
 
 export default class OnePage extends Component {
   state = {
@@ -38,6 +42,8 @@ export default class OnePage extends Component {
 
   render() {
     const { openTrainee, openCompany, button } = this.state;
+    console.log(this.props, "props onepage");
+
     return (
       // Header //
       <div className="div-block">
@@ -45,7 +51,31 @@ export default class OnePage extends Component {
           <div className="Header-overlay">
             <img className="logo" src={logo} alt="logoOneTeam" />
             <p className="connexion">
-              <span> Espace Entreprise </span>|<span> Espace Etudiants </span>
+              <Link
+                activeClass="active"
+                to="section1"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                <a href="#section1" className="titleduO">
+                  Pour les recruteurs
+                </a>
+              </Link>
+              &nbsp;|&nbsp;
+              <Link
+                activeClass="active"
+                to="section2"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                <a href="#section2" className="titleduO">
+                  Pour les étudiants
+                </a>
+              </Link>
             </p>
 
             <h1 className="textCentral">
@@ -101,7 +131,7 @@ export default class OnePage extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-        <PartieEntreprise />
+        {/* <PartieEntreprise {...this.props} /> */}
       </div>
     );
   }

@@ -4,13 +4,15 @@ import OnePage from "./companyPart/OnePage";
 import Contact from "./Contact";
 import "./home.css";
 import TeamOneTeam from "./TeamOneTeam";
+import PartieEntreprise from "./companyPart/PartieEntreprise";
 
 class Home extends Component {
   render() {
     return (
       <div>
         <OnePage {...this.props} />
-        <TraineeHome />
+        <PartieEntreprise {...this.props} />
+        <TraineeHome {...this.props} />
         <TeamOneTeam />
         <Contact />
       </div>
