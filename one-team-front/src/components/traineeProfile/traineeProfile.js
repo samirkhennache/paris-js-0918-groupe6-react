@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 class traineeProfile extends Component {
   state = {
     // id: 9,
+    image: "",
     lastname: "",
     firstname: "",
     email: "",
@@ -54,7 +55,8 @@ class traineeProfile extends Component {
       });
   };
 
-  uploadPhoto = () => {
+  uploadPhoto = e => {
+    e.preventDefault();
     const id = sessionStorage.getItem("token");
     console.log(this.state.selectedFile);
     const formData = new FormData();
@@ -67,6 +69,15 @@ class traineeProfile extends Component {
   };
 
   fileChangedHandler = event => {
+    const fr = new FileReader();
+
+    fr.onload = a => {
+      this.setState({ image: a.currentTarget.result });
+    };
+    fr.readAsDataURL(document.querySelector('input[type="file"]').files[0]);
+
+    // console.log("images ", test);
+
     this.setState({ selectedFile: event.target.files[0] });
     console.log("okkkkk");
   };
@@ -80,15 +91,29 @@ class traineeProfile extends Component {
       <div>
         <h1>Complète ton profile</h1>
         {this.state.data.pictures !== null ? (
-          <img
-            src={`http://localhost:3001/${this.state.data.pictures}`}
-            width="100"
-            height="100"
-            alt=" Profile"
-          />
+          <div>
+            <img
+              src={
+                this.state.image ||
+                `http://localhost:3001/${this.state.data.pictures}`
+              }
+              width="100"
+              height="100"
+              alt=" Profile"
+            />
+            {/* <img
+              src={this.state.image}
+              width="100"
+              height="100"
+              alt=" Profile"
+            /> */}
+          </div>
         ) : (
           <img
-            src="http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+            src={
+              this.state.image ||
+              "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+            }
             width="100"
             height="100"
             alt=" default Profile"
