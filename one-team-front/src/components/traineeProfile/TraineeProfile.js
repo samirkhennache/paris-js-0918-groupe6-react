@@ -6,25 +6,15 @@ import "./traineeProfile.css";
 
 class TraineeProfile extends Component {
   state = {
-    // id: 9,
-    image: "",
-    lastname: "",
-    firstname: "",
-    email: "",
-    pictures: "",
-    phone: "",
-    address: "",
-    town: "",
-    postalCode: "",
     selectedFile: null
   };
 
   componentDidMount() {
     const id = sessionStorage.getItem("token");
     axios
-      .get(`http://localhost:3001/trainee/profile/`, { params: { id } })
+      .get(`http://localhost:3001/trainee/profile/${id}`)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           data: response.data
         });
@@ -60,14 +50,16 @@ class TraineeProfile extends Component {
   uploadPhoto = () => {
     // e.preventDefault();
     const id = sessionStorage.getItem("token");
-    console.log(this.state.selectedFile);
-    const formData = new FormData();
-    formData.append(
-      "avatar",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-    axios.post(`http://localhost:3001/trainee/uploadphoto/${id}`, formData);
+    if (this.state.selectedFile !== null) {
+      console.log("uploadphoto", this.state.selectedFile);
+      const formData = new FormData();
+      formData.append(
+        "avatar",
+        this.state.selectedFile,
+        this.state.selectedFile.name
+      );
+      axios.post(`http://localhost:3001/trainee/uploadphoto/${id}`, formData);
+    }
   };
 
   fileChangedHandler = event => {
@@ -83,7 +75,7 @@ class TraineeProfile extends Component {
   };
 
   render() {
-    console.log(this.state.data);
+    // console.log(this.state.data);
     if (this.state.data == null) {
       return <div>Loading</div>;
     }
