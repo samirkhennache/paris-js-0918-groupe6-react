@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import "./traineeProfile.css";
 
-class traineeProfile extends Component {
+class TraineeProfile extends Component {
   state = {
     // id: 9,
     image: "",
@@ -215,4 +215,5 @@ class traineeProfile extends Component {
     );
   }
 }
-export default traineeProfile;
+
+export default TraineeProfile;
