@@ -1,7 +1,6 @@
 import React from "react";
 import "./CompanyCreateOffers.css";
 import Axios from "axios";
-import { connect } from "react-redux";
 
 const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
 
@@ -78,7 +77,7 @@ const CompanyCreateOffers = class extends React.Component {
   };
 
   defaultState() {
-    const { idCompany } = this.props;
+    const idCompany = sessionStorage.getItem("token");
 
     return {
       mission: {
@@ -172,10 +171,4 @@ const CompanyCreateOffers = class extends React.Component {
   }
 };
 
-const mapStateToProps = state => {
-  return {
-    idCompany: state.company.id
-  };
-};
-
-export default connect(mapStateToProps)(CompanyCreateOffers);
+export default CompanyCreateOffers;
