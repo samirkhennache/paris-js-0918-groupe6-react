@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import CompanyApplicationItem from "./CompanyApplicationItem";
 import { connect } from "react-redux";
+import CompanyApplicationItem from "./CompanyApplicationItem";
 
 class CompanyApplicationsList extends Component {
   state = {
@@ -11,7 +11,8 @@ class CompanyApplicationsList extends Component {
   };
 
   componentDidMount() {
-    const { idCompany } = this.props;
+    //const { idCompany } = this.props;
+    const idCompany = sessionStorage.getItem("token");
     console.log(idCompany);
     axios
       .get(`http://localhost:3001/application/${this.state.id}/mytrainee`)
@@ -30,10 +31,8 @@ class CompanyApplicationsList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    idCompany: state.company.id
-  };
-};
+const mapStateToProps = state => ({
+  idCompany: state.company.id
+});
 
 export default connect(mapStateToProps)(CompanyApplicationsList);

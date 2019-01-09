@@ -49,7 +49,7 @@ class CompanyCreateAccount extends Component {
       .then(result => {
         props.selectCompany(result.data.id);
         sessionStorage.setItem("token", result.data.id);
-        props.history.push(`/company/${result.data.id}`);
+        props.history.push(`/company`);
         const {
           companyName,
           firstnameContact,

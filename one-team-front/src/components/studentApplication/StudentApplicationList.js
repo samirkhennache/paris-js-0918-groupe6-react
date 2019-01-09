@@ -37,6 +37,7 @@ class StudentApplicationList extends Component {
               dateStart={element.Mission.dateStart}
               dateEnd={element.Mission.dateEnd}
               statusAppli={element.statusAppli}
+              description={element.Mission.description}
               {...this.props}
             />
           ))

@@ -18,7 +18,10 @@ class CompanyOfferManage extends Component {
     const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
     axios
       .delete(`${API_ENDPOINT_MISSION}${idMission}`, this.state)
-      .then(alert("Mission supprimé"));
+      .then(res => {
+        alert("Mission supprimé");
+        this.props.handlerDeleteMission(idMission);
+      });
   };
 
   showModal = () => {

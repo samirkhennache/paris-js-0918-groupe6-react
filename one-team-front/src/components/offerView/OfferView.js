@@ -17,8 +17,10 @@ const OfferView = props => {
     case "SMALL": {
       return (
         <div className="OfferView">
-          <h3> {titleMission} </h3> <p> {company} </p> <p> {dateStart} </p>
-          <p> {dateEnd} </p> {statusAppli && <p> en cours </p>}
+          <h3> {titleMission} </h3> <p> {company} </p>{" "}
+          <p> début: {new Date(dateStart).toLocaleDateString()} </p>
+          <p> fin: {new Date(dateEnd).toLocaleDateString()} </p>{" "}
+          {statusAppli && <p> en cours </p>}
           {/* <ModalOffer /> */}
         </div>
       );
@@ -28,8 +30,8 @@ const OfferView = props => {
         <div className="OfferView">
           <h3> {titleMission} </h3>
           <h4>{company}</h4>
-          <p> {dateStart} </p>
-          <p> {dateEnd} </p>
+          <p> début: {new Date(dateStart).toLocaleDateString()} </p>
+          <p> fin: {new Date(dateEnd).toLocaleDateString()} </p>
           <p> {description} </p>
         </div>
       );
@@ -39,8 +41,8 @@ const OfferView = props => {
         <div className="OfferView">
           <h3> {titleMission} </h3>
           <h4>{company}</h4>
-          <p> {dateStart} </p>
-          <p> {dateEnd} </p>
+          <p> début: {new Date(dateStart).toLocaleDateString()} </p>
+          <p> fin: {new Date(dateEnd).toLocaleDateString()} </p>
           <p> {description} </p>
         </div>
       );
