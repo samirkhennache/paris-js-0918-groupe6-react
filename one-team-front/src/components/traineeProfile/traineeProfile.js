@@ -22,7 +22,7 @@ class traineeProfile extends Component {
   componentDidMount() {
     const id = sessionStorage.getItem("token");
     axios
-      .post("http://localhost:3001/trainee/profile", { id })
+      .get(`http://localhost:3001/trainee/profile/`, { params: { id } })
       .then(response => {
         console.log(response);
         this.setState({
