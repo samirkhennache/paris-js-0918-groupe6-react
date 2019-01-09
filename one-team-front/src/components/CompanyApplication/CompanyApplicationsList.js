@@ -4,6 +4,7 @@ import axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import StudentApplication from "./StudentApplication";
 import { SMALL } from "./studentConstant";
+import "./ViewStudent.css";
 
 class CompanyApplicationsList extends Component {
   state = {
@@ -21,18 +22,22 @@ class CompanyApplicationsList extends Component {
       .then(res => this.setState({ trainee: res.data, isLoaded: true }));
   }
 
+  compareMissions = (a, b) => {
+    return a - b;
+  };
+
   render() {
     const { trainee, isLoaded } = this.state;
     console.log(trainee.data);
     return (
-      <div >
+      <div>
         {isLoaded &&
-          trainee.data.map(element => (
+          trainee.data.sort(this.compareMissions).map(element => (
             <div>
               <Typography variant="h2" component="h3">
                 {element.titleMission}
               </Typography>
-              <div >
+              <div className="blocList">
                 {element.dataApplications.map(e => (
                   <StudentApplication
                     firstname={e.Trainee.firstname}

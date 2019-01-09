@@ -1,27 +1,14 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-// import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import StudentView from "./StudentView";
 import StudentProfilView from "./StudentProfilView";
 
 const styles = theme => ({
   row: {
     // display: "flex",
-    // flexDirection: "row",
     // justifyContent: "center",
-    // border: "1px solid black",
-    width: "400px"
-  },
-  studentApp: {
-    border: "1px solid green"
+    // margin: "15px"
   }
 });
 
@@ -45,13 +32,11 @@ class StudentApplication extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.row}>
-        <div className={classes.studentApp}>
-          <StudentView {...this.props} open={open} />
-          <Button
-            onClick={this.clickStudentSmall}
-            variant="contained"
-            color="primary"
-          >
+        <div>
+          <div onClick={ () => this.clickStudentSmall()}>
+            <StudentView {...this.props} open={open} />
+          </div>
+          <Button variant="contained" color="primary">
             Ajouter
           </Button>
           <Button variant="contained" color="secondary">
@@ -183,7 +168,8 @@ export default withStyles(styles)(StudentApplication);
 
 // export default withStyles(styles)(StudentApplication);
 
-// ******************* COMPOSANT STATELESS
+// ******************* COMPOSANT STATELESS DE BASE PAR MOHAMMED
+
 // const addStudentTeam = id => {
 //   console.log("addStudent", props.trainee.data);
 //   const { trainee } = props;

@@ -4,34 +4,32 @@ import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
   row: {
-    // display: "flex",
-    // flexDirection: "row",
-    // justifyContent: "center",
     border: "1px solid black"
   },
-  root: {
+  paper: {
     ...theme.mixins.gutters(),
     padding: "0",
-    // paddingTop: theme.spacing.unit * 2,
-    // paddingBottom: theme.spacing.unit * 2,
-    // border: "1px solid green",
-    margin: "10px",
-    width: "250px",
-    height: "310px"
+    margin: "15px",
+    width: "250px"
+  },
+  paperFull: {
+    ...theme.mixins.gutters(),
+    padding: "0",
+    margin: "15px",
+    width: "500px"
   },
   list: {
     listStyle: "none",
-    padding: "0",
-    textAlign: "center",
-
+    padding: "10px",
+    textAlign: "center"
   },
   image: {
     borderRadius: "100%",
     height: "150px",
     width: "150px",
-    padding: "10px 0"
+    padding: "10px"
   },
-  adress: {
+  address: {
     margin: "10px"
   }
 });
@@ -49,15 +47,15 @@ const StudentView = props => {
   switch (size) {
     case "SMALL": {
       return (
-        <div >
-          <Paper classeName="blocList"  elevation={2}>
+        <div>
+          <Paper className={classes.paper} elevation={2}>
             <ul className={classes.list}>
               <li>
                 <img className={classes.image} src={pictures} alt="" />
               </li>
               <li>{firstname}</li>
               <li className={classes.address}>
-                {address} - {postalCode} - {town}
+                {address} - {postalCode} {town}
               </li>
             </ul>
           </Paper>
@@ -66,15 +64,15 @@ const StudentView = props => {
     }
     case "FULL_RESTRICTED": {
       return (
-        <div className={classes.row}>
-          <Paper className={classes.root} elevation={2}>
+        <div>
+          <Paper className={classes.paperFull} elevation={2}>
             <ul className={classes.list}>
               <li>
                 <img className={classes.image} src={pictures} alt="" />
               </li>
               <li>{firstname}</li>
               <li className={classes.address}>
-                {address} - {postalCode} - {town}
+                {address} - {postalCode} {town}
               </li>
             </ul>
           </Paper>
@@ -83,15 +81,15 @@ const StudentView = props => {
     }
     case "FULL": {
       return (
-        <div className={classes.row}>
-          <Paper className={classes.root} elevation={2}>
+        <div>
+          <Paper className={classes.paperFull} elevation={2}>
             <ul className={classes.list}>
               <li>
                 <img className={classes.image} src={pictures} alt="" />
               </li>
               <li>{firstname}</li>
               <li className={classes.address}>
-                {address} - {postalCode} - {town}
+                {address} - {postalCode} {town}
               </li>
             </ul>
           </Paper>
