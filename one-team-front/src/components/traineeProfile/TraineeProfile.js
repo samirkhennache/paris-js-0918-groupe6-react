@@ -2,21 +2,22 @@ import React, { Component } from "react";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import StudentView from "../CompanyApplication/StudentView";
+import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
 import "./traineeProfile.css";
 
 class TraineeProfile extends Component {
   state = {
-    // id: 9,
-    image: "",
-    lastname: "",
-    firstname: "",
-    email: "",
-    pictures: "",
-    phone: "",
-    address: "",
-    town: "",
-    postalCode: "",
-    selectedFile: null
+    // image: "",
+    // lastname: "",
+    // firstname: "",
+    // email: "",
+    // pictures: "",
+    // phone: "",
+    // address: "",
+    // town: "",
+    // postalCode: "",
+    // selectedFile: null
   };
 
   componentDidMount() {
@@ -35,14 +36,14 @@ class TraineeProfile extends Component {
   }
 
   onSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     // const { id } = this.state;
     const id = sessionStorage.getItem("token");
     axios
       .put("http://localhost:3001/trainee/profile", {
         id,
-        lastname: e.target.lastname.value,
         firstname: e.target.firstname.value,
+        lastname: e.target.lastname.value,
         phone: e.target.phone.value,
         address: e.target.address.value,
         town: e.target.town.value,
@@ -84,6 +85,7 @@ class TraineeProfile extends Component {
 
   render() {
     console.log(this.state.data);
+    const { data } = this.state;
     if (this.state.data == null) {
       return <div>Loading</div>;
     }
@@ -130,7 +132,7 @@ class TraineeProfile extends Component {
               className="textField"
               name="firstname"
               placeholder="Prénom"
-              defaultValue={this.state.data.firstname}
+              defaultValue={data.firstname}
               margin="normal"
               variant="outlined"
               required
@@ -140,7 +142,7 @@ class TraineeProfile extends Component {
               className="textField"
               name="lastname"
               placeholder="Nom"
-              defaultValue={this.state.data.lastname}
+              defaultValue={data.lastname}
               margin="normal"
               variant="outlined"
               required
@@ -152,7 +154,7 @@ class TraineeProfile extends Component {
               className="textField"
               name="email"
               placeholder="Email"
-              defaultValue={this.state.data.email}
+              defaultValue={data.email}
               margin="normal"
               variant="outlined"
               required
@@ -171,7 +173,7 @@ class TraineeProfile extends Component {
               className="textField"
               name="phone"
               placeholder="Phone"
-              defaultValue={this.state.data.phone}
+              defaultValue={data.phone}
               margin="normal"
               variant="outlined"
             />
@@ -180,7 +182,7 @@ class TraineeProfile extends Component {
               className="textField"
               name="address"
               placeholder="Adress"
-              defaultValue={this.state.data.address}
+              defaultValue={data.address}
               margin="normal"
               variant="outlined"
             />
@@ -189,7 +191,7 @@ class TraineeProfile extends Component {
               className="textField"
               name="town"
               placeholder="Ville"
-              defaultValue={this.state.data.town}
+              defaultValue={data.town}
               margin="normal"
               variant="outlined"
             />
@@ -198,7 +200,7 @@ class TraineeProfile extends Component {
               className="textField"
               name="postalCode"
               placeholder="Postal Code"
-              defaultValue={this.state.data.postalCode}
+              defaultValue={data.postalCode}
               margin="normal"
               variant="outlined"
             />
@@ -211,6 +213,14 @@ class TraineeProfile extends Component {
             </Button>
           </form>
         </div>
+        <StudentView
+          firstname={data.firstname}
+          address={data.address}
+          postalCode={data.postalCode}
+          town={data.town}
+          pictures={`http://localhost:3001/${data.pictures}`}
+          size={FULL_RESTRICTED}
+        />
       </div>
     );
   }
