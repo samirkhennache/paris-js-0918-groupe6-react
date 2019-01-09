@@ -5,7 +5,9 @@ export default class OfferCompletedItem extends Component {
   render() {
     return (
       <div>
-        <CompanyOffers />
+        <div className="offersForAdmin">
+          <CompanyOffers />
+        </div>
       </div>
     );
   }

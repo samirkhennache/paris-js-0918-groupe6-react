@@ -47,7 +47,7 @@ const CompanyApplicationItem = props => {
     <div>
       {/* {console.log("trainee", trainee)} */}
       {trainee.data.sort(compareMissions).map((
-        e //console.log("e", e.dataApplications)
+        e // console.log("e", e.dataApplications)
       ) => (
         <p key={e.mission_id}>
           <Typography variant="h2" component="h3">

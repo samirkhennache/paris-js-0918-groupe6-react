@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import TraineeProfile from "./traineeProfile";
-import StudentProfilView from "./StudentProfilView";
+import TraineeProfile from "./TraineeProfile";
 
 class Profil extends Component {
   state = {};
@@ -9,7 +8,6 @@ class Profil extends Component {
     return (
       <div>
         <TraineeProfile />
-        <StudentProfilView />
       </div>
     );
   }

@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import "./traineeProfile.css";
 
 class TraineeProfile extends Component {
   state = {
-    id: 1,
+    // id: 9,
+    image: "",
     lastname: "",
     firstname: "",
     email: "",
@@ -13,12 +15,14 @@ class TraineeProfile extends Component {
     phone: "",
     address: "",
     town: "",
-    postalCode: ""
+    postalCode: "",
+    selectedFile: null
   };
 
   componentDidMount() {
+    const id = sessionStorage.getItem("token");
     axios
-      .post("http://localhost:3001/trainee/profile", { id: this.state.id })
+      .post("http://localhost:3001/trainee/profile", { id })
       .then(response => {
         console.log(response);
         this.setState({
@@ -32,7 +36,8 @@ class TraineeProfile extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { id } = this.state;
+    // const { id } = this.state;
+    const id = sessionStorage.getItem("token");
     axios
       .put("http://localhost:3001/trainee/profile", {
         id,
@@ -49,6 +54,32 @@ class TraineeProfile extends Component {
       .catch(error => {
         console.log(error.response);
       });
+    this.uploadPhoto();
+  };
+
+  uploadPhoto = () => {
+    // e.preventDefault();
+    const id = sessionStorage.getItem("token");
+    console.log(this.state.selectedFile);
+    const formData = new FormData();
+    formData.append(
+      "avatar",
+      this.state.selectedFile,
+      this.state.selectedFile.name
+    );
+    axios.post(`http://localhost:3001/trainee/uploadphoto/${id}`, formData);
+  };
+
+  fileChangedHandler = event => {
+    const fr = new FileReader();
+
+    fr.onload = a => {
+      this.setState({ image: a.currentTarget.result });
+    };
+    fr.readAsDataURL(document.querySelector('input[type="file"]').files[0]);
+
+    this.setState({ selectedFile: event.target.files[0] });
+    console.log("okkkkk");
   };
 
   render() {
@@ -59,9 +90,41 @@ class TraineeProfile extends Component {
     return (
       <div>
         <h1>Complète ton profile</h1>
-        <img src={this.state.data.pictures} alt="profile 2" />
         <div className="createForm">
-          <form method="post" onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit}>
+            <div>
+              <label for="file-input">
+                {this.state.data.pictures !== null ? (
+                  <div>
+                    <img
+                      src={
+                        this.state.image ||
+                        `http://localhost:3001/${this.state.data.pictures}`
+                      }
+                      width="100"
+                      height="100"
+                      alt=" Profile"
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={
+                      this.state.image ||
+                      "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+                    }
+                    width="100"
+                    height="100"
+                    alt=" default Profile"
+                  />
+                )}
+              </label>
+              <input
+                id="file-input"
+                type="file"
+                onChange={this.fileChangedHandler}
+                hidden
+              />
+            </div>
             <TextField
               type="text"
               className="textField"

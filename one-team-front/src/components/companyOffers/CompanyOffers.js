@@ -18,8 +18,8 @@ class CompanyOffers extends Component {
   };
 
   componentDidMount() {
-    const { idCompany } = this.props;
-
+    // const { idCompany } = this.props;
+    const idCompany = sessionStorage.getItem("token");
     axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
       // console.log("data", res.data);
       this.setState({
@@ -48,6 +48,12 @@ class CompanyOffers extends Component {
         ...this.state.missions.filter(e => e.id !== updateMission.id),
         updateMission
       ].sort((a, b) => a.id - b.id)
+    });
+  };
+
+  handlerDeleteMission = idMission => {
+    this.setState({
+      missions: [...this.state.missions.filter(e => e.id !== idMission)]
     });
   };
 
@@ -83,6 +89,7 @@ class CompanyOffers extends Component {
                   description={e.description}
                   idMission={e.id}
                   handlerUpdateMission={this.handlerUpdateMission}
+                  handlerDeleteMission={this.handlerDeleteMission}
                 />
               </div>
             ))
@@ -93,10 +100,8 @@ class CompanyOffers extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    idCompany: state.company.id
-  };
-};
+const mapStateToProps = state => ({
+  idCompany: state.company.id
+});
 
 export default connect(mapStateToProps)(CompanyOffers);
