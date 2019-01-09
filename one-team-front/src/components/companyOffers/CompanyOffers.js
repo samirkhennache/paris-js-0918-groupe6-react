@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { AwesomeButton } from "react-awesome-button";
-import { connect } from "react-redux";
 import axios from "axios";
 import Modal from "./Modal";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
@@ -18,8 +17,9 @@ class CompanyOffers extends Component {
   };
 
   componentDidMount() {
-    // const { idCompany } = this.props;
     const idCompany = sessionStorage.getItem("token");
+    // console.log("idCompany", idCompany);
+
     axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
       // console.log("data", res.data);
       this.setState({
@@ -62,6 +62,7 @@ class CompanyOffers extends Component {
     return (
       <div className="mesMissions">
         <h1 className="titleMission"> Mes missions </h1>
+        <p>Nombre de missions: {missions.length}</p>
         <AwesomeButton
           type="primary"
           className="aws-btn add"
@@ -80,18 +81,17 @@ class CompanyOffers extends Component {
             <p> loading.. </p>
           ) : (
             missions.map((e, index) => (
-              <div key={index}>
-                <CompanyOfferManage
-                  modifMission={e}
-                  titleMission={e.titleMission}
-                  dateStart={new Date(e.dateStart).toLocaleDateString()}
-                  dateEnd={new Date(e.dateEnd).toLocaleDateString()}
-                  description={e.description}
-                  idMission={e.id}
-                  handlerUpdateMission={this.handlerUpdateMission}
-                  handlerDeleteMission={this.handlerDeleteMission}
-                />
-              </div>
+              <CompanyOfferManage
+                key={index}
+                modifMission={e}
+                titleMission={e.titleMission}
+                dateStart={new Date(e.dateStart).toLocaleDateString()}
+                dateEnd={new Date(e.dateEnd).toLocaleDateString()}
+                description={e.description}
+                idMission={e.id}
+                handlerUpdateMission={this.handlerUpdateMission}
+                handlerDeleteMission={this.handlerDeleteMission}
+              />
             ))
           )}
         </div>
@@ -100,8 +100,4 @@ class CompanyOffers extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  idCompany: state.company.id
-});
-
-export default connect(mapStateToProps)(CompanyOffers);
+export default CompanyOffers;
