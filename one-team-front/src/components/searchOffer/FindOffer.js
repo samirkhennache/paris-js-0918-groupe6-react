@@ -39,7 +39,7 @@ class FindOffers extends Component {
     console.log(result);
     return (
       <div>
-        <p>{count} stages pour votre recherche</p>
+        <p>{count || "x"} stages pour votre recherche</p>
         <form onSubmit={this.handleSubmit}>
           <input
             name="search"
