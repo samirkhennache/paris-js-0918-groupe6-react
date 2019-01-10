@@ -67,7 +67,6 @@ const Company = ({ match }) => {
       />
       <Switch>
         <Route exact path={`${match.url}`} component={CompanyOffers} />
-        <Route exact path={`${match.url}/:id/my-params`} component={Param} />
         <Route
           exact
           path={`${match.url}/mytrainees`}
@@ -81,6 +80,7 @@ const Company = ({ match }) => {
 // ADMIN ROUTER -------------------------------------------------------------
 
 const Admin = ({ match }) => {
+  const modeSelect = "SELECT";
   const Missions = props => <Link to={`${match.url}/`} {...props} />;
   return (
     <div>
@@ -90,7 +90,7 @@ const Admin = ({ match }) => {
         <Route
           exact
           path={`${match.url}/missions`}
-          render={props => <CompanyOffers {...props} />}
+          render={props => <CompanyApplications {...props} />}
         />
       </Switch>
     </div>

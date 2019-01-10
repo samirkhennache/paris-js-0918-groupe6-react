@@ -6,6 +6,9 @@ import StudentApplication from "./StudentApplication";
 import { SMALL } from "./studentConstant";
 import "./ViewStudent.css";
 
+const modeSelect = "SELECT";
+const modeRefuse = "REFUSE";
+
 class CompanyApplicationsList extends Component {
   state = {
     trainee: [],
@@ -14,11 +17,11 @@ class CompanyApplicationsList extends Component {
   };
 
   componentDidMount() {
-    //const { idCompany } = this.props;
+    const { mode } = this.props;
     const idCompany = sessionStorage.getItem("token");
-    console.log(idCompany);
+    console.log("idcompany", idCompany);
     axios
-      .get(`http://localhost:3001/application/${this.state.id}/mytrainee`)
+      .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
       .then(res => this.setState({ trainee: res.data, isLoaded: true }));
   }
 
@@ -46,6 +49,10 @@ class CompanyApplicationsList extends Component {
                     address={e.Trainee.address}
                     postalCode={e.Trainee.postalCode}
                     size={SMALL}
+                    missionId={element.mission_id}
+                    traineeId={e.Trainee.id}
+                    modeSelect={modeSelect}
+                    modeRefuse={modeRefuse}
                   />
                 ))}
               </div>

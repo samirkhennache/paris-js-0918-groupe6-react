@@ -1,16 +1,10 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
+// import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import StudentView from "./StudentView";
 import StudentProfilView from "./StudentProfilView";
-
-const styles = theme => ({
-  row: {
-    // display: "flex",
-    // justifyContent: "center",
-    // margin: "15px"
-  }
-});
+import axios from "axios";
+import { get } from "https";
 
 class StudentApplication extends Component {
   state = {
@@ -26,20 +20,61 @@ class StudentApplication extends Component {
     this.setState({ open: false });
   };
 
+  selectStudent = mode => {
+    const { missionId, traineeId } = this.props;
+    console.log("onclick", missionId, traineeId, mode);
+    axios
+      .put(`http://localhost:3001/application`, {
+        missionId,
+        traineeId,
+        mode
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
+
+  refuseStudent = mode => {
+    const { missionId, traineeId } = this.props;
+    console.log("onclick", missionId, traineeId, mode);
+    axios
+      .put(`http://localhost:3001/application`, {
+        missionId,
+        traineeId,
+        mode
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
+
   render() {
-    console.log("render");
     const { open } = this.state;
-    const { classes } = this.props;
+    const { classes, modeSelect, modeRefuse } = this.props;
     return (
-      <div className={classes.row}>
+      <div>
         <div>
-          <div onClick={ () => this.clickStudentSmall()}>
+          <div onClick={() => this.clickStudentSmall()}>
             <StudentView {...this.props} open={open} />
           </div>
-          <Button variant="contained" color="primary">
+          <Button
+            onClick={() => this.selectStudent(modeSelect)}
+            variant="contained"
+            color="primary"
+          >
             Ajouter
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button
+            onClick={() => this.refuseStudent(modeRefuse)}
+            variant="contained"
+            color="secondary"
+          >
             Refuser
           </Button>
           <StudentProfilView
@@ -53,7 +88,7 @@ class StudentApplication extends Component {
   }
 }
 
-export default withStyles(styles)(StudentApplication);
+export default StudentApplication;
 
 // ******************** COMPOSANT CLASS MATERIAL UI
 // const styles = theme => ({
