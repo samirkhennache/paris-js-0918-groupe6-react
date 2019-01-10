@@ -7,7 +7,7 @@ export default class OfferCompletedItem extends Component {
     return (
       <div className="offersForAdmin" style={{ height: 641 }}>
         <div className="miniMarge">
-          <ConnexionTrainee />
+          <ConnexionTrainee {...this.props} />
         </div>
       </div>
     );
