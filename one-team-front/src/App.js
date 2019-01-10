@@ -4,7 +4,7 @@ import "./App.css";
 import HomeDefault from "./components/home/home";
 import SearchOffer from "./components/searchOffer/SearchOffer";
 import TraineeApplications from "./components/traineeApplications/TraineeApplications";
-import TraineeProfile from "./components/traineeProfile/traineeProfile";
+import Profil from "./components/traineeProfile/Profil";
 import CompanyOffers from "./components/companyOffers/CompanyOffers";
 import Param from "./Param";
 import NavBar from "./components/navBar/NavBar";
@@ -47,7 +47,7 @@ const Trainee = ({ match }) => {
           path={`${match.url}/applications`}
           component={TraineeApplications}
         />
-        <Route exact path={`${match.url}/profile`} component={TraineeProfile} />
+        <Route exact path={`${match.url}/profile`} component={Profil} />
       </Switch>
     </div>
   );
