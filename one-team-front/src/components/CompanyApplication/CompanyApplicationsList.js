@@ -31,6 +31,7 @@ class CompanyApplicationsList extends Component {
 
   render() {
     const { trainee, isLoaded } = this.state;
+    const { mode } = this.props;
     console.log(trainee.data);
     return (
       <div>
@@ -53,6 +54,7 @@ class CompanyApplicationsList extends Component {
                     traineeId={e.Trainee.id}
                     modeSelect={modeSelect}
                     modeRefuse={modeRefuse}
+                    mode={mode}
                   />
                 ))}
               </div>

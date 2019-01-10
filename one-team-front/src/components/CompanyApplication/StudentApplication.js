@@ -56,35 +56,65 @@ class StudentApplication extends Component {
 
   render() {
     const { open } = this.state;
-    const { classes, modeSelect, modeRefuse } = this.props;
-    return (
-      <div>
-        <div>
-          <div onClick={() => this.clickStudentSmall()}>
-            <StudentView {...this.props} open={open} />
+    const { mode, modeSelect, modeRefuse } = this.props;
+
+    switch (mode) {
+      case "APPLICATION": {
+        return (
+          <div>
+            <div>
+              <div onClick={() => this.clickStudentSmall()}>
+                <StudentView {...this.props} open={open} />
+              </div>
+              <Button
+                onClick={() => this.selectStudent(modeSelect)}
+                variant="contained"
+                color="primary"
+              >
+                Ajouter
+              </Button>
+              <Button
+                onClick={() => this.refuseStudent(modeRefuse)}
+                variant="contained"
+                color="secondary"
+              >
+                Refuser
+              </Button>
+              <StudentProfilView
+                {...this.props}
+                open={open}
+                close={this.clickClose}
+              />
+            </div>
           </div>
-          <Button
-            onClick={() => this.selectStudent(modeSelect)}
-            variant="contained"
-            color="primary"
-          >
-            Ajouter
-          </Button>
-          <Button
-            onClick={() => this.refuseStudent(modeRefuse)}
-            variant="contained"
-            color="secondary"
-          >
-            Refuser
-          </Button>
-          <StudentProfilView
-            {...this.props}
-            open={open}
-            close={this.clickClose}
-          />
-        </div>
-      </div>
-    );
+        );
+      }
+      case "SELECT": {
+        return (
+          <div>
+            <div>
+              <div onClick={() => this.clickStudentSmall()}>
+                <StudentView {...this.props} open={open} />
+              </div>
+              <Button
+                onClick={() => this.refuseStudent(modeRefuse)}
+                variant="contained"
+                color="secondary"
+              >
+                Refuser
+              </Button>
+              <StudentProfilView
+                {...this.props}
+                open={open}
+                close={this.clickClose}
+              />
+            </div>
+          </div>
+        );
+      }
+      default:
+        break;
+    }
   }
 }
 

@@ -13,11 +13,13 @@ class CompanyOffers extends Component {
   state = {
     show: false,
     missions: [],
-    isLoaded: false
+    isLoaded: false,
+
   };
 
   componentDidMount() {
     const idCompany = sessionStorage.getItem("token");
+    const mode = "SELECT";
     // console.log("idCompany", idCompany);
 
     axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
@@ -27,6 +29,9 @@ class CompanyOffers extends Component {
         isLoaded: true
       });
     });
+    axios
+      .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
+      .then(res => this.setState({ trainee: res.data, isLoaded: true }));
   }
 
   showModal = () => {
@@ -58,7 +63,7 @@ class CompanyOffers extends Component {
   };
 
   render() {
-    const { missions, isLoaded } = this.state;
+    const { missions, isLoaded, trainee } = this.state;
     return (
       <div className="mesMissions">
         <h1 className="titleMission"> Mes missions </h1>
@@ -91,6 +96,7 @@ class CompanyOffers extends Component {
                 idMission={e.id}
                 handlerUpdateMission={this.handlerUpdateMission}
                 handlerDeleteMission={this.handlerDeleteMission}
+                trainee={trainee}
               />
             ))
           )}

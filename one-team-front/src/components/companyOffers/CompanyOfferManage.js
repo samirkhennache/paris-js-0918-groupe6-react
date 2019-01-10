@@ -79,7 +79,7 @@ class CompanyOfferManage extends Component {
         <br />
         <hr align="center" width="50%" color="midnightblue" size="1" />
         {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
-        <Team />
+        <Team {...this.props} />
         <AwesomeButton type="primary" className="aws-btn validate">
           Valider ma team
         </AwesomeButton>

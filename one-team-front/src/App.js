@@ -6,7 +6,6 @@ import SearchOffer from "./components/searchOffer/SearchOffer";
 import TraineeApplications from "./components/traineeApplications/TraineeApplications";
 import Profil from "./components/traineeProfile/Profil";
 import CompanyOffers from "./components/companyOffers/CompanyOffers";
-import Param from "./Param";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
 import CompanyApplications from "./components/CompanyApplication/CompanyApplications";
@@ -80,7 +79,6 @@ const Company = ({ match }) => {
 // ADMIN ROUTER -------------------------------------------------------------
 
 const Admin = ({ match }) => {
-  const modeSelect = "SELECT";
   const Missions = props => <Link to={`${match.url}/`} {...props} />;
   return (
     <div>
