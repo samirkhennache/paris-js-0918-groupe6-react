@@ -86,7 +86,11 @@ const Admin = ({ match }) => {
       <NavBar missions={Missions} routeName={match.url} />
       <Switch>
         <Route exact path={`${match.url}`} component={OfferCompletedItem} />
-        <Route exact path={`${match.url}/missions`} component={CompanyOffers} />
+        <Route
+          exact
+          path={`${match.url}/missions`}
+          render={props => <CompanyOffers {...props} />}
+        />
       </Switch>
     </div>
   );

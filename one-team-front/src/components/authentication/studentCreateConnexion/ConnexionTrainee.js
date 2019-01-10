@@ -23,7 +23,8 @@ class ConnexionTrainee extends Component {
     title: "",
     content: "",
     button: "",
-    open: false
+    open: false,
+    isAdmin: false
   };
 
   handleClose = () => {
@@ -49,7 +50,13 @@ class ConnexionTrainee extends Component {
       .then(result => {
         props.selectStudent(result.data.id);
         sessionStorage.setItem("token", result.data.id);
-        props.history.push("/trainee");
+        console.log("admin", this.props.location.pathname);
+
+        if (this.props.location.pathname === `/salutadmin`) {
+          this.props.history.push("/salutadmin/missions");
+        } else {
+          props.history.push("/trainee");
+        }
       })
       .catch(error => {
         if (error.response.status === 401) {
