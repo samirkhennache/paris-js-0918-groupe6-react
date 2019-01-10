@@ -67,7 +67,6 @@ const Company = ({ match }) => {
       />
       <Switch>
         <Route exact path={`${match.url}`} component={CompanyOffers} />
-        <Route exact path={`${match.url}/:id/my-params`} component={Param} />
         <Route
           exact
           path={`${match.url}/mytrainees`}
