@@ -26,11 +26,20 @@ class FindOffers extends Component {
     });
   };
 
+  componentDidMount() {
+    const url = "http://localhost:3001/mission/getcount";
+    axios.get(url).then(res => {
+      console.log("res", res);
+      this.setState({ ...this.state, count: res.data.count });
+    });
+  }
+
   render() {
-    const { result } = this.state;
+    const { result, count } = this.state;
     console.log(result);
     return (
       <div>
+        <p>{count} stages pour votre recherche</p>
         <form onSubmit={this.handleSubmit}>
           <input
             name="search"
