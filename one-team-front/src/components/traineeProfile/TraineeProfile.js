@@ -16,6 +16,7 @@ class TraineeProfile extends Component {
     axios
       .get(`http://localhost:3001/trainee/profile/${id}`)
       .then(response => {
+        // console.log(response);
         this.setState({
           data: response.data
         });
