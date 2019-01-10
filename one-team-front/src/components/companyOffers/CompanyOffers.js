@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { AwesomeButton } from "react-awesome-button";
 import axios from "axios";
-import Modal from "./Modal";
-import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
+// import Modal from "./Modal";
 import CompanyOfferManage from "./CompanyOfferManage";
+import CompanyCreateOffers from "./CompanyCreateOffers";
 import "./Button.css";
-import "./Modal.css";
+// import "./Modal.css";
 import "./Missions.css";
 import "react-awesome-button/dist/styles.css";
 
@@ -76,11 +76,11 @@ class CompanyOffers extends Component {
           Ajouter
         </AwesomeButton>
         <br />
-        <Modal onClose={this.showModal} show={this.state.show}>
-          <CompanyCreateOffers
-            handlerCreateMission={this.handlerCreateMission}
-          />
-        </Modal>
+        <CompanyCreateOffers
+          open={this.state.show}
+          onClose={this.showModal}
+          handlerCreateMission={this.handlerCreateMission}
+        />
         <div>
           {!isLoaded ? (
             <p> loading.. </p>
