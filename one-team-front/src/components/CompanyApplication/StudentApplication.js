@@ -1,18 +1,10 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
+// import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import StudentView from "./StudentView";
 import StudentProfilView from "./StudentProfilView";
 import axios from "axios";
 import { get } from "https";
-
-const styles = theme => ({
-  row: {
-    // display: "flex",
-    // justifyContent: "center",
-    // margin: "15px"
-  }
-});
 
 class StudentApplication extends Component {
   state = {
@@ -66,7 +58,7 @@ class StudentApplication extends Component {
     const { open } = this.state;
     const { classes, modeSelect, modeRefuse } = this.props;
     return (
-      <div className={classes.row}>
+      <div>
         <div>
           <div onClick={() => this.clickStudentSmall()}>
             <StudentView {...this.props} open={open} />
@@ -96,7 +88,7 @@ class StudentApplication extends Component {
   }
 }
 
-export default withStyles(styles)(StudentApplication);
+export default StudentApplication;
 
 // ******************** COMPOSANT CLASS MATERIAL UI
 // const styles = theme => ({

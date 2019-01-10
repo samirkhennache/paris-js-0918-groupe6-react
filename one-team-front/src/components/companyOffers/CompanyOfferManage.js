@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import axios from "axios";
 import { AwesomeButton } from "react-awesome-button";
+import Team from "./Team";
 
 import Modal from "./Modal";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
@@ -78,6 +79,7 @@ class CompanyOfferManage extends Component {
         <br />
         <hr align="center" width="50%" color="midnightblue" size="1" />
         {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
+        <Team />
         <AwesomeButton type="primary" className="aws-btn validate">
           Valider ma team
         </AwesomeButton>
