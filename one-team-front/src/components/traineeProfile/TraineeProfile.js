@@ -76,7 +76,22 @@ class TraineeProfile extends Component {
     console.log("okkkkk");
   };
 
+  date() {
+    const date = new Date();
+    let day = date.getDate();
+    if (day < 10) {
+      day = "0" + day;
+    }
+    let month = date.getMonth() + 1;
+    if (month < 10) {
+      month = "0" + month;
+    }
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
+  }
+
   render() {
+    console.log(this.date());
     const { data } = this.state;
     if (this.state.data == null) {
       return <div>Loading</div>;
@@ -152,14 +167,14 @@ class TraineeProfile extends Component {
               required
             />
 
-            <TextField
+            {/* <TextField
               type="password"
               className="textField"
               name="password"
               placeholder="Mot de passe"
               margin="normal"
               variant="outlined"
-            />
+            /> */}
             <TextField
               type="text"
               className="textField"
@@ -196,6 +211,39 @@ class TraineeProfile extends Component {
               margin="normal"
               variant="outlined"
             />
+            <TextField
+              type="text"
+              multiline
+              className="textField"
+              name="Descriptions"
+              placeholder="Descriptions"
+              defaultValue={data.postalCode}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              id="date"
+              label="Debut stage"
+              type="date"
+              defaultValue={this.date()}
+              InputLabelProps={{
+                shrink: true
+              }}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              id="date"
+              label="Fin stage"
+              type="date"
+              defaultValue={this.date()}
+              InputLabelProps={{
+                shrink: true
+              }}
+              margin="normal"
+              variant="outlined"
+            />
+
             <Button
               variant="contained"
               className="buttonCreateForm"
