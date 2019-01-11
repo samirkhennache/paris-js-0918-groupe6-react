@@ -13,8 +13,7 @@ class CompanyOffers extends Component {
   state = {
     show: false,
     missions: [],
-    isLoaded: false,
-
+    isLoaded: false
   };
 
   componentDidMount() {
@@ -64,6 +63,7 @@ class CompanyOffers extends Component {
 
   render() {
     const { missions, isLoaded, trainee } = this.state;
+    console.log("prudence", trainee);
     return (
       <div className="mesMissions">
         <h1 className="titleMission"> Mes missions </h1>
