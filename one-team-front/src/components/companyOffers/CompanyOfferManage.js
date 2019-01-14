@@ -133,6 +133,7 @@ class CompanyOfferManage extends Component {
           open={this.state.show}
           onClose={this.showModal}
           handlerUpdateMission={this.props.handlerUpdateMission}
+          modifMission={modifMission}
         />
         <br />
         <hr align="center" width="50%" color="midnightblue" size="1" />

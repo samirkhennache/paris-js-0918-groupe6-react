@@ -5,7 +5,7 @@ import HomeDefault from "./components/home/home";
 import SearchOffer from "./components/searchOffer/SearchOffer";
 import TraineeApplications from "./components/traineeApplications/TraineeApplications";
 import Profil from "./components/traineeProfile/Profil";
-import CompanyOffers from "./components/companyOffers/CompanyOffers";
+import CompanyOffersRoute from "./components/companyOffers/CompanyOffersRoute";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
 import CompanyApplications from "./components/CompanyApplication/CompanyApplications";
@@ -65,7 +65,7 @@ const Company = ({ match }) => {
         routeName={match.url}
       />
       <Switch>
-        <Route exact path={`${match.url}`} component={CompanyOffers} />
+        <Route exact path={`${match.url}`} component={CompanyOffersRoute} />
         <Route
           exact
           path={`${match.url}/mytrainees`}

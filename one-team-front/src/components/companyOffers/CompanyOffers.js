@@ -9,34 +9,27 @@ import "./Button.css";
 import "./Missions.css";
 import "react-awesome-button/dist/styles.css";
 
+// const idCompany = sessionStorage.getItem("token");
+// const mode = "SELECT";
+
 class CompanyOffers extends Component {
   state = {
     show: false,
-    missions: [],
-    isLoaded: false
+    missions: []
   };
 
   componentDidMount() {
-    const idCompany = sessionStorage.getItem("token");
-    const mode = "SELECT";
-    // console.log("idCompany", idCompany);
-
-    axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
-      // console.log("data", res.data);
-      this.setState({
-        missions: res.data.Missions.sort((a, b) => a - b),
-        isLoaded: true
-      });
+    const { missions } = this.props;
+    this.setState({
+      missions
     });
-    axios
-      .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
-      .then(res => this.setState({ trainee: res.data, isLoaded: true }));
   }
 
   showModal = () => {
+    const { show } = this.state;
     this.setState({
       ...this.state,
-      show: !this.state.show
+      show: !show
     });
   };
 
@@ -62,8 +55,7 @@ class CompanyOffers extends Component {
   };
 
   render() {
-    const { missions, isLoaded, trainee } = this.state;
-    console.log("prudence", trainee);
+    const { missions } = this.state;
     return (
       <div className="mesMissions">
         <h1 className="titleMission"> Mes missions </h1>
@@ -82,24 +74,20 @@ class CompanyOffers extends Component {
           handlerCreateMission={this.handlerCreateMission}
         />
         <div>
-          {!isLoaded ? (
-            <p> loading.. </p>
-          ) : (
-            missions.map((e, index) => (
-              <CompanyOfferManage
-                key={index}
-                modifMission={e}
-                titleMission={e.titleMission}
-                dateStart={new Date(e.dateStart).toLocaleDateString()}
-                dateEnd={new Date(e.dateEnd).toLocaleDateString()}
-                description={e.description}
-                idMission={e.id}
-                handlerUpdateMission={this.handlerUpdateMission}
-                handlerDeleteMission={this.handlerDeleteMission}
-                trainee={trainee}
-              />
-            ))
-          )}
+          {missions.map((e, index) => (
+            <CompanyOfferManage
+              key={index}
+              modifMission={e}
+              titleMission={e.titleMission}
+              dateStart={new Date(e.dateStart).toLocaleDateString()}
+              dateEnd={new Date(e.dateEnd).toLocaleDateString()}
+              description={e.description}
+              idMission={e.id}
+              handlerUpdateMission={this.handlerUpdateMission}
+              handlerDeleteMission={this.handlerDeleteMission}
+              {...this.props}
+            />
+          ))}
         </div>
       </div>
     );
