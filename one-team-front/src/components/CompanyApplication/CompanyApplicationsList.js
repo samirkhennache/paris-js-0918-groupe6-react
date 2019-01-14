@@ -6,9 +6,6 @@ import StudentApplication from "./StudentApplication";
 import { SMALL } from "./studentConstant";
 import "./ViewStudent.css";
 
-const modeSelect = "SELECT";
-const modeRefuse = "REFUSE";
-
 class CompanyApplicationsList extends Component {
   state = {
     trainee: [],
@@ -31,8 +28,7 @@ class CompanyApplicationsList extends Component {
 
   render() {
     const { trainee, isLoaded } = this.state;
-    const { mode } = this.props;
-    console.log(trainee.data);
+    const { mode, modeRefuse, modeSelect, size } = this.props;
     return (
       <div>
         {isLoaded &&
@@ -55,6 +51,7 @@ class CompanyApplicationsList extends Component {
                     modeSelect={modeSelect}
                     modeRefuse={modeRefuse}
                     mode={mode}
+                    {...this.props}
                   />
                 ))}
               </div>

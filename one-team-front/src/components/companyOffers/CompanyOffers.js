@@ -56,41 +56,82 @@ class CompanyOffers extends Component {
 
   render() {
     const { missions } = this.state;
-    return (
-      <div className="mesMissions">
-        <h1 className="titleMission"> Mes missions </h1>
-        <p>Nombre de missions: {missions.length}</p>
-        <AwesomeButton
-          type="primary"
-          className="aws-btn add"
-          action={this.showModal}
-        >
-          Ajouter
-        </AwesomeButton>
-        <br />
-        <CompanyCreateOffers
-          open={this.state.show}
-          onClose={this.showModal}
-          handlerCreateMission={this.handlerCreateMission}
-        />
-        <div>
-          {missions.map((e, index) => (
-            <CompanyOfferManage
-              key={index}
-              modifMission={e}
-              titleMission={e.titleMission}
-              dateStart={new Date(e.dateStart).toLocaleDateString()}
-              dateEnd={new Date(e.dateEnd).toLocaleDateString()}
-              description={e.description}
-              idMission={e.id}
-              handlerUpdateMission={this.handlerUpdateMission}
-              handlerDeleteMission={this.handlerDeleteMission}
-              {...this.props}
+    const { part, company } = this.props;
+
+    switch (part) {
+      case "COMPANY": {
+        return (
+          <div className="mesMissions">
+            <h1 className="titleMission"> Mes missions </h1>
+            <p>Nombre de missions: {missions.length}</p>
+            <AwesomeButton
+              type="primary"
+              className="aws-btn add"
+              action={this.showModal}
+            >
+              Ajouter
+            </AwesomeButton>
+            <br />
+            <CompanyCreateOffers
+              open={this.state.show}
+              onClose={this.showModal}
+              handlerCreateMission={this.handlerCreateMission}
+              missions={missions}
             />
-          ))}
-        </div>
-      </div>
-    );
+            <div>
+              {missions.map((e, index) => (
+                <CompanyOfferManage
+                  key={index}
+                  modifMission={e}
+                  titleMission={e.titleMission}
+                  dateStart={new Date(e.dateStart).toLocaleDateString()}
+                  dateEnd={new Date(e.dateEnd).toLocaleDateString()}
+                  description={e.description}
+                  idMission={e.id}
+                  handlerUpdateMission={this.handlerUpdateMission}
+                  handlerDeleteMission={this.handlerDeleteMission}
+                  {...this.props}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      }
+      case "ADMIN": {
+        return (
+          <div>
+            <div>
+              <h2>Teams validées</h2>
+              <h3>Entreprise : {company.companyName}</h3>
+              <h4>Nom de famille</h4>
+              <p>{company.lastnameContact}</p>
+              <h4>Prénom</h4>
+              <p>{company.firstnameContact}</p>
+              <h4>Numéro de téléphone</h4>
+              <p>{company.phone}</p>
+            </div>
+            <div>
+              {missions.map((e, index) => (
+                <CompanyOfferManage
+                  key={index}
+                  modifMission={e}
+                  titleMission={e.titleMission}
+                  dateStart={new Date(e.dateStart).toLocaleDateString()}
+                  dateEnd={new Date(e.dateEnd).toLocaleDateString()}
+                  description={e.description}
+                  idMission={e.id}
+                  handlerUpdateMission={this.handlerUpdateMission}
+                  handlerDeleteMission={this.handlerDeleteMission}
+                  {...this.props}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      }
+      default:
+        break;
+    }
   }
 }
 

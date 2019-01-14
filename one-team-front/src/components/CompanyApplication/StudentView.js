@@ -49,6 +49,7 @@ const StudentView = props => {
       return (
         <div>
           <Paper className={classes.paper} elevation={2}>
+            <p>Size SMALL</p>
             <ul className={classes.list}>
               <li>
                 <img className={classes.image} src={pictures} alt="" />
@@ -66,6 +67,7 @@ const StudentView = props => {
       return (
         <div>
           <Paper className={classes.paperFull} elevation={2}>
+            <p>Size FULL_RESTRICTED</p>
             <ul className={classes.list}>
               <li>
                 <img className={classes.image} src={pictures} alt="" />
@@ -83,6 +85,7 @@ const StudentView = props => {
       return (
         <div>
           <Paper className={classes.paperFull} elevation={2}>
+            <p>Size FULL</p>
             <ul className={classes.list}>
               <li>
                 <img className={classes.image} src={pictures} alt="" />

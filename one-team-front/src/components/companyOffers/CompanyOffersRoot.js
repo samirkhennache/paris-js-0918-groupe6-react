@@ -3,18 +3,20 @@ import axios from "axios";
 import CompanyOffers from "./CompanyOffers";
 
 const idCompany = sessionStorage.getItem("token");
-const mode = "SELECT";
 
-class CompanyOffersRoute extends Component {
+class CompanyOffersRoot extends Component {
   state = {
     isLoaded: false
   };
 
   componentDidMount() {
+    const { mode } = this.props;
+
     axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
-      // console.log("data", res.data);
+      console.log("data", res.data);
       this.setState({
         missions: res.data.Missions.sort((a, b) => a - b),
+        company: res.data,
         isLoaded: true
       });
     });
@@ -28,17 +30,26 @@ class CompanyOffersRoute extends Component {
   }
 
   render() {
-    const { missions, isLoaded, trainee } = this.state;
+    const { missions, isLoaded, trainee, company } = this.state;
+    const { mode, part, modeRefuse, size } = this.props;
     return (
       <div>
         {!isLoaded ? (
           "loading"
         ) : (
-          <CompanyOffers trainee={trainee} missions={missions} />
+          <CompanyOffers
+            trainee={trainee}
+            missions={missions}
+            mode={mode}
+            part={part}
+            company={company}
+            size={size}
+            modeRefuse={modeRefuse}
+          />
         )}
       </div>
     );
   }
 }
 
-export default CompanyOffersRoute;
+export default CompanyOffersRoot;

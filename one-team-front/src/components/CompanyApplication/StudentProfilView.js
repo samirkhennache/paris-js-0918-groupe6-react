@@ -22,7 +22,7 @@ class StudentProfilView extends Component {
   };
 
   render() {
-    const { classes, open } = this.props;
+    const { classes, open, size } = this.props;
     return (
       <div>
         <Dialog
@@ -34,7 +34,7 @@ class StudentProfilView extends Component {
           <DialogTitle id="customized-dialog-title" />
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              <StudentView {...this.props} size={FULL} />
+              <StudentView {...this.props} size={size} />
             </DialogContentText>
           </DialogContent>
           <DialogActions>
