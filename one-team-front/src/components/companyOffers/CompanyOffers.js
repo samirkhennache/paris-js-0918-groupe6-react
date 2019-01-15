@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { AwesomeButton } from "react-awesome-button";
-import axios from "axios";
 // import Modal from "./Modal";
 import CompanyOfferManage from "./CompanyOfferManage";
 import CompanyCreateOffers from "./CompanyCreateOffers";
@@ -56,6 +55,7 @@ class CompanyOffers extends Component {
 
   render() {
     const { missions } = this.state;
+
     return (
       <div className="mesMissions">
         <h1 className="titleMission"> Mes missions </h1>
@@ -72,6 +72,7 @@ class CompanyOffers extends Component {
           open={this.state.show}
           onClose={this.showModal}
           handlerCreateMission={this.handlerCreateMission}
+          missions={missions}
         />
         <div>
           {missions.map((e, index) => (

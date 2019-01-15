@@ -112,6 +112,7 @@ class ModalOffer extends Component {
         >
           {size === "SMALL" ? "Consulter" : "En savoir plus"}
         </AwesomeButton>
+        {/* //////////////////////////////////////////////////// */}
         <Dialog
           open={open}
           aria-labelledby="alert-dialog-title"

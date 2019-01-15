@@ -28,7 +28,6 @@ class CompanyOfferManage extends Component {
     axios
       .delete(`${API_ENDPOINT_MISSION}${idMission}`, this.state)
       .then(res => {
-        alert("Mission supprimé");
         this.props.handlerDeleteMission(idMission);
       });
   };
