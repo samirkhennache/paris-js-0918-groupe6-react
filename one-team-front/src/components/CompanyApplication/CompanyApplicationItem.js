@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import StudentProfilStamp from "./StudentProfilStamp";
 
 const styles = theme => ({
   row: {
@@ -45,7 +46,7 @@ const CompanyApplicationItem = props => {
   const { classes, trainee } = props;
   return (
     <div>
-      {/* {console.log("trainee", trainee)} */}
+      {console.log("trainee", trainee)}
       {trainee.data.sort(compareMissions).map((
         e // console.log("e", e.dataApplications)
       ) => (
@@ -55,11 +56,12 @@ const CompanyApplicationItem = props => {
           </Typography>
           <div className={classes.row}>
             {e.dataApplications.map(name => (
-              <Paper className={classes.root} elevation={2}>
+              <Paper key={name.TraineId} className={classes.root} elevation={2}>
                 <ul className={classes.list}>
-                  {/* <li>{name.trainee.lastname}</li> */}
+                  {/* <li>{name.trainee.lastname}</li>
                   <li>
-                    <img
+                    <imgdataApplications: Array(2)
+
                       className={classes.image}
                       src={name.Trainee.pictures}
                       alt=""
@@ -71,7 +73,8 @@ const CompanyApplicationItem = props => {
                     {" "}
                     {name.Trainee.address} - {name.Trainee.postalCode}{" "}
                     {name.Trainee.town}
-                  </li>
+                  </li> */}
+                  <StudentProfilStamp trainee={e.dataApplications} />
                   <Button variant="contained" color="primary">
                     Ajouter
                   </Button>{" "}

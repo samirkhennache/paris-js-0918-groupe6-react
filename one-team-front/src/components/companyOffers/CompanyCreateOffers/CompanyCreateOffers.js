@@ -2,6 +2,7 @@ import React from "react";
 import "./CompanyCreateOffers.css";
 import Axios from "axios";
 import { connect } from "react-redux";
+import { TextField } from "@material-ui/core";
 
 const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
 
@@ -106,47 +107,65 @@ const CompanyCreateOffers = class extends React.Component {
           onSubmit={this.handlerOnSubmit}
           className="container"
         >
-          <input
+          <TextField
             placeholder="Titre de la mission de stage"
             name="titleMission"
             value={mission.titleMission}
             onChange={this.handlerOnChange}
+            margin="normal"
+            variant="outlined"
             required
           />
-          <input
+          <TextField
             placeholder="Date de début"
             name="dateStart"
             value={mission.dateStart}
             onChange={this.handlerOnChange}
+            margin="normal"
+            variant="outlined"
             required
           />
-          <input
+          <TextField
             placeholder="Date de fin"
             name="dateEnd"
             value={mission.dateEnd}
             onChange={this.handlerOnChange}
+            margin="normal"
+            variant="outlined"
             required
           />
-          <input
+          <TextField
             placeholder="Ville"
             name="town"
             value={mission.town}
             onChange={this.handlerOnChange}
+            margin="normal"
+            variant="outlined"
             required
           />
-          <textarea
+          <TextField
             placeholder="Introduction"
             name="intro"
             value={mission.intro}
             onChange={this.handlerOnChange}
             required
+            multiline
+            rows="2"
+            margin="normal"
+            variant="outlined"
+            fullWidth
           />
-          <textarea
+          <TextField
             placeholder="Description"
             name="description"
             value={mission.description}
             onChange={this.handlerOnChange}
             required
+            multiline
+            rows="5"
+            margin="normal"
+            variant="outlined"
+            fullWidth
           />
           <select
             name="LevelStudyId"
