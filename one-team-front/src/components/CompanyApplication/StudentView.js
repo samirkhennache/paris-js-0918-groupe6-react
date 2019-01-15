@@ -47,7 +47,7 @@ const StudentView = props => {
     dateStart,
     dateEnd,
     titre,
-    description,
+    descriptionTrainee,
     school,
     lastname,
     email
@@ -132,8 +132,8 @@ const StudentView = props => {
                 {town !== null ? town : "Ville : à compléter"}
               </li>
               <li>
-                {description !== null
-                  ? description
+                {descriptionTrainee !== null
+                  ? descriptionTrainee
                   : "description : à compléter"}
               </li>
             </ul>
@@ -182,8 +182,8 @@ const StudentView = props => {
               </li>
               <li> {town !== null ? town : "Ville : à compléter"}</li>
               <li>
-                {description !== null
-                  ? description
+                {descriptionTrainee !== null
+                  ? descriptionTrainee
                   : "Description: à compléter"}
               </li>
               <li>{phone !== null ? phone : "Télephone : à compléter"}</li>

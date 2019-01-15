@@ -62,7 +62,7 @@ class TeamsAdmin extends Component {
                               dateStart={student.Trainee.dateStart}
                               dateEnd={student.Trainee.dateEnd}
                               titre={student.Trainee.titre}
-                              description={student.Trainee.description}
+                              descriptionTrainee={student.Trainee.description}
                               school={student.Trainee.school}
                               address={student.Trainee.address}
                               postalCode={student.Trainee.postalCode}

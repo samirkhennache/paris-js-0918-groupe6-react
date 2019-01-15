@@ -296,7 +296,7 @@ class TraineeProfile extends Component {
           postalCode={data.postalCode}
           town={data.town}
           pictures={data.pictures}
-          description={data.description}
+          descriptionTrainee={data.description}
           school={data.school}
           titre={data.titre}
           dateStart={data.dateStart}

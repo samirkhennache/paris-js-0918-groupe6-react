@@ -19,6 +19,7 @@ class CompanyApplicationsList extends Component {
     axios
       .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
       .then(res => {
+        console.log("trainee", res.data.data);
         this.setState({ trainee: res.data, isLoaded: true });
       });
   }
@@ -47,7 +48,7 @@ class CompanyApplicationsList extends Component {
                     dateStart={e.Trainee.dateStart}
                     dateEnd={e.Trainee.dateEnd}
                     titre={e.Trainee.titre}
-                    description={e.Trainee.description}
+                    descriptionTrainee={e.Trainee.description}
                     school={e.Trainee.school}
                     size={SMALL}
                     missionId={element.mission_id}
