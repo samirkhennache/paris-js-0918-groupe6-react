@@ -38,7 +38,10 @@ class TraineeProfile extends Component {
         phone: e.target.phone.value,
         address: e.target.address.value,
         town: e.target.town.value,
-        postalCode: e.target.postalCode.value
+        postalCode: e.target.postalCode.value,
+        description: e.target.description.value,
+        dateStart: e.target.dateStart.value,
+        dateEnd: e.target.dateEnd.value
       })
       .then(response => {
         console.log(response);
@@ -76,8 +79,22 @@ class TraineeProfile extends Component {
     console.log("okkkkk");
   };
 
-  date() {
-    const date = new Date();
+  // date() {
+  //   const date = new Date();
+  //   let day = date.getDate();
+  //   if (day < 10) {
+  //     day = "0" + day;
+  //   }
+  //   let month = date.getMonth() + 1;
+  //   if (month < 10) {
+  //     month = "0" + month;
+  //   }
+  //   const year = date.getFullYear();
+  //   return `${year}-${month}-${day}`;
+  // }
+
+  date(data) {
+    const date = new Date(data);
     let day = date.getDate();
     if (day < 10) {
       day = "0" + day;
@@ -91,7 +108,6 @@ class TraineeProfile extends Component {
   }
 
   render() {
-    console.log(this.date());
     const { data } = this.state;
     if (this.state.data == null) {
       return <div>Loading</div>;
@@ -166,15 +182,6 @@ class TraineeProfile extends Component {
               variant="outlined"
               required
             />
-
-            {/* <TextField
-              type="password"
-              className="textField"
-              name="password"
-              placeholder="Mot de passe"
-              margin="normal"
-              variant="outlined"
-            /> */}
             <TextField
               type="text"
               className="textField"
@@ -215,17 +222,22 @@ class TraineeProfile extends Component {
               type="text"
               multiline
               className="textField"
-              name="Descriptions"
+              name="description"
               placeholder="Descriptions"
-              defaultValue={data.postalCode}
+              defaultValue={data.description}
               margin="normal"
               variant="outlined"
             />
             <TextField
               id="date"
+              name="dateStart"
               label="Debut stage"
               type="date"
-              defaultValue={this.date()}
+              defaultValue={
+                this.state.data.dateStart !== null
+                  ? this.date(this.state.data.dateStart)
+                  : null
+              }
               InputLabelProps={{
                 shrink: true
               }}
@@ -234,9 +246,14 @@ class TraineeProfile extends Component {
             />
             <TextField
               id="date"
+              name="dateEnd"
               label="Fin stage"
               type="date"
-              defaultValue={this.date()}
+              defaultValue={
+                this.state.data.dateEnd !== null
+                  ? this.date(this.state.data.dateEnd)
+                  : null
+              }
               InputLabelProps={{
                 shrink: true
               }}
