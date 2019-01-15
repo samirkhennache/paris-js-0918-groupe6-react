@@ -1,8 +1,11 @@
 import React from "react";
 import "./CompanyCreateOffers.css";
 import Axios from "axios";
-import { connect } from "react-redux";
-import { TextField } from "@material-ui/core";
+import { TextField, Select, MenuItem } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
 
@@ -13,9 +16,10 @@ const CompanyCreateOffers = class extends React.Component {
     Axios.get("http://localhost:3001/paradata/levelstudies").then(res => {
       this.setState({ idLoaded: true, levelstudies: res.data });
     });
-    const { mission } = this.props;
-    if (mission && mission.id) {
-      this.setState({ mission, isEditMode: true });
+    const { modifMission } = this.props;
+    // console.log(">>>CompanyCreateOffers", modifMission);
+    if (modifMission && modifMission.id) {
+      this.setState({ mission: modifMission, isEditMode: true });
     }
   }
 
@@ -39,8 +43,9 @@ const CompanyCreateOffers = class extends React.Component {
     }));
   };
 
-  handlerOnSubmit = event => {
-    event.preventDefault();
+  // handlerOnSubmit = event => {
+  //   event.preventDefault();
+  saveMission = () => {
     const { mission, isEditMode } = this.state;
     const postFormMission = {
       titleMission: mission.titleMission,
@@ -52,34 +57,30 @@ const CompanyCreateOffers = class extends React.Component {
       CompanyId: mission.CompanyId,
       LevelStudyId: Number(mission.LevelStudyId)
     };
-    // console.log(this.state.mission);
-    console.log("postFormMission", postFormMission);
+    // console.log(">>>", this.state.mission);
+    // console.log("postFormMission", postFormMission);
 
     if (!isEditMode) {
       Axios.post(API_ENDPOINT_MISSION, postFormMission).then(res => {
-        // console.log(res);
-        window.alert("Ajout ok");
+        // window.alert("Ajout ok");
+        // console.log(">>>", res.data);
         this.props.handlerCreateMission(res.data);
+        this.props.onClose();
       });
     } else {
       Axios.put(`${API_ENDPOINT_MISSION}${mission.id}`, postFormMission).then(
         res => {
-          window.alert("Modification ok");
+          // window.alert("Modification ok");
+          // console.log(">>>", res.data);
           this.props.handlerUpdateMission(res.data);
+          this.props.onClose();
         }
       );
     }
-
-    //
-    // .then(
-    //   this.setState({ mission: this.defaultState() }, () =>
-    //     console.log(this.state.mission)
-    //   )
-    // );
   };
 
   defaultState() {
-    const { idCompany } = this.props;
+    const idCompany = sessionStorage.getItem("token");
 
     return {
       mission: {
@@ -99,102 +100,119 @@ const CompanyCreateOffers = class extends React.Component {
 
   render() {
     const { mission, isEditMode, idLoaded, levelstudies } = this.state;
+    const { onClose, ...other } = this.props;
     return (
-      <div className="CompanyCreateOffers">
-        <p>{isEditMode ? "Je modifie une mission" : "Je crée une mission"}</p>
-        <form
-          method="post"
-          onSubmit={this.handlerOnSubmit}
-          className="container"
-        >
-          <TextField
-            placeholder="Titre de la mission de stage"
-            name="titleMission"
-            value={mission.titleMission}
-            onChange={this.handlerOnChange}
-            margin="normal"
-            variant="outlined"
-            required
-          />
-          <TextField
-            placeholder="Date de début"
-            name="dateStart"
-            value={mission.dateStart}
-            onChange={this.handlerOnChange}
-            margin="normal"
-            variant="outlined"
-            required
-          />
-          <TextField
-            placeholder="Date de fin"
-            name="dateEnd"
-            value={mission.dateEnd}
-            onChange={this.handlerOnChange}
-            margin="normal"
-            variant="outlined"
-            required
-          />
-          <TextField
-            placeholder="Ville"
-            name="town"
-            value={mission.town}
-            onChange={this.handlerOnChange}
-            margin="normal"
-            variant="outlined"
-            required
-          />
-          <TextField
-            placeholder="Introduction"
-            name="intro"
-            value={mission.intro}
-            onChange={this.handlerOnChange}
-            required
-            multiline
-            rows="2"
-            margin="normal"
-            variant="outlined"
-            fullWidth
-          />
-          <TextField
-            placeholder="Description"
-            name="description"
-            value={mission.description}
-            onChange={this.handlerOnChange}
-            required
-            multiline
-            rows="5"
-            margin="normal"
-            variant="outlined"
-            fullWidth
-          />
-          <select
-            name="LevelStudyId"
-            required
-            value={mission.LevelStudyId}
-            onChange={this.handlerOnChangeLevelStudy}
-          >
-            {idLoaded
-              ? levelstudies.map(element => (
-                  <option key={element.id} value={element.id}>
-                    {element.label}
-                  </option>
-                ))
-              : "loading..."}
-          </select>
-          <button type="submit" className="submit">
+      <Dialog
+        className="dialog"
+        // onClose={onClose}
+        {...other}
+        fullWidth={true}
+        maxWidth="lg"
+      >
+        <DialogTitle>
+          {isEditMode ? "Je modifie une mission" : "Je crée une mission"}
+        </DialogTitle>
+        <div className="CompanyCreateOffers">
+          <form className="container">
+            <TextField
+              placeholder="Titre de la mission de stage"
+              name="titleMission"
+              value={mission.titleMission}
+              onChange={this.handlerOnChange}
+              required
+              fullWidth
+              margin="normal"
+              variant="outlined"
+            />
+            <div className="date">
+              <div className="dateText">
+                <TextField
+                  placeholder="Date de début"
+                  name="dateStart"
+                  value={mission.dateStart}
+                  onChange={this.handlerOnChange}
+                  required
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+                />
+              </div>
+              <div className="dateText">
+                <TextField
+                  placeholder="Date de fin"
+                  name="dateEnd"
+                  value={mission.dateEnd}
+                  onChange={this.handlerOnChange}
+                  required
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+                />
+              </div>
+            </div>
+
+            <TextField
+              placeholder="Ville"
+              name="town"
+              value={mission.town}
+              onChange={this.handlerOnChange}
+              required
+              fullWidth
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              placeholder="Introduction"
+              name="intro"
+              value={mission.intro}
+              onChange={this.handlerOnChange}
+              required
+              fullWidth
+              multiline
+              rows="2"
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              placeholder="Description"
+              name="description"
+              value={mission.description}
+              onChange={this.handlerOnChange}
+              required
+              fullWidth
+              multiline
+              rows="5"
+              margin="normal"
+              variant="outlined"
+            />
+            <Select
+              name="LevelStudyId"
+              required
+              value={mission.LevelStudyId}
+              onChange={this.handlerOnChangeLevelStudy}
+            >
+              {idLoaded
+                ? levelstudies.map(element => (
+                    <MenuItem key={element.id} value={element.id}>
+                      {element.label}
+                    </MenuItem>
+                  ))
+                : "loading..."}
+            </Select>
+          </form>
+          <p>{isEditMode ? "" : "Cette offre sera publiée après validation"}</p>
+        </div>
+        <DialogActions>
+          <Button onClick={onClose} color="primary">
+            Annuler
+          </Button>
+          <Button onClick={this.saveMission} color="primary" autoFocus>
             {isEditMode ? "Modifier" : "Créer"}
-          </button>
-        </form>
-        <p>{isEditMode ? "" : "Cette offre sera publiée après validation"}</p>
-      </div>
+          </Button>
+        </DialogActions>
+      </Dialog>
     );
   }
 };
 
-const mapStateToProps = state => {
-  return {
-    idCompany: state.company.id
-  };
-};
-
-export default connect(mapStateToProps)(CompanyCreateOffers);
+export default CompanyCreateOffers;

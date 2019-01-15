@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
-import CompanyApplicationItem from "./CompanyApplicationItem";
+import axios from "axios";
+import Typography from "@material-ui/core/Typography";
+import StudentApplication from "./StudentApplication";
+import { SMALL } from "./studentConstant";
+import "./ViewStudent.css";
 
 class CompanyApplicationsList extends Component {
   state = {
@@ -11,21 +14,49 @@ class CompanyApplicationsList extends Component {
   };
 
   componentDidMount() {
-    //const { idCompany } = this.props;
+    const { mode } = this.props;
     const idCompany = sessionStorage.getItem("token");
-    console.log(idCompany);
+    console.log("idcompany", idCompany);
     axios
-      .get(`http://localhost:3001/application/${this.state.id}/mytrainee`)
+      .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
       .then(res => this.setState({ trainee: res.data, isLoaded: true }));
   }
 
+  compareMissions = (a, b) => {
+    return a - b;
+  };
+
   render() {
-    console.log(this.state);
+    const { trainee, isLoaded } = this.state;
+    const { mode, modeRefuse, modeSelect, size } = this.props;
     return (
       <div>
-        {this.state.isLoaded && (
-          <CompanyApplicationItem trainee={this.state.trainee} />
-        )}
+        {isLoaded &&
+          trainee.data.sort(this.compareMissions).map(element => (
+            <div>
+              <Typography variant="h2" component="h3">
+                {element.titleMission}
+              </Typography>
+              <div className="blocList">
+                {element.dataApplications.map(e => (
+                  <StudentApplication
+                    firstname={e.Trainee.firstname}
+                    town={e.Trainee.town}
+                    pictures={e.Trainee.pictures}
+                    address={e.Trainee.address}
+                    postalCode={e.Trainee.postalCode}
+                    size={SMALL}
+                    missionId={element.mission_id}
+                    traineeId={e.Trainee.id}
+                    modeSelect={modeSelect}
+                    modeRefuse={modeRefuse}
+                    mode={mode}
+                    {...this.props}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
       </div>
     );
   }

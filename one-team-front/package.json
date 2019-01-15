@@ -41,6 +41,9 @@
       "prettier/standard"
     ],
     "parser": "babel-eslint",
+    "globals": {
+      "sessionStorage": true
+    },
     "rules": {
       "react/jsx-filename-extension": false,
       "react/prefer-stateless-function": false,

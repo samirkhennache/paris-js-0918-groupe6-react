@@ -2,8 +2,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 95%;
+  /* border: 1px solid green; */
+  margin: auto;
 }
 
-.CompanyCreateOffers .submit {
-  margin: 15px auto 5px auto;
+.CompanyCreateOffers {
+  /* border: 1px solid red; */
+  width: 95%;
+  margin: auto;
+}
+
+.date {
+  /* border: 1px solid blue; */
+  width: 100%;
+  display: flex;
+}
+
+.dateText {
+  /* border: 1px solid red; */
+  margin: 0 5px;
+  width: 50%;
 }

@@ -4,14 +4,13 @@ import "./App.css";
 import HomeDefault from "./components/home/home";
 import SearchOffer from "./components/searchOffer/SearchOffer";
 import TraineeApplications from "./components/traineeApplications/TraineeApplications";
-import TraineeProfile from "./components/traineeProfile/traineeProfile";
-import CompanyOffers from "./components/companyOffers/CompanyOffers";
-import Param from "./Param";
+import Profil from "./components/traineeProfile/Profil";
+import CompanyOffersRoot from "./components/companyOffers/CompanyOffersRoot";
 import NavBar from "./components/navBar/NavBar";
 import Page404 from "./components/Page404";
+import OfferCompletedItem from "./components/admin/OfferCompletedItem";
 import CompanyApplications from "./components/CompanyApplication/CompanyApplications";
-import OffersCompletedList from "./components/admin/OffersCompletedList";
-import { OfferView } from "./components/offerView";
+import TeamsAdmin from "./components/admin/TeamsAdmin";
 
 // HOME ROUTER -------------------------------------------------------------
 const Home = ({ match }) => (
@@ -48,7 +47,7 @@ const Trainee = ({ match }) => {
           path={`${match.url}/applications`}
           component={TraineeApplications}
         />
-        <Route exact path={`${match.url}/profile`} component={TraineeProfile} />
+        <Route exact path={`${match.url}/profile`} component={Profil} />
       </Switch>
     </div>
   );
@@ -67,8 +66,7 @@ const Company = ({ match }) => {
         routeName={match.url}
       />
       <Switch>
-        <Route exact path={`${match.url}`} component={CompanyOffers} />
-        <Route exact path={`${match.url}/:id/my-params`} component={Param} />
+        <Route exact path={`${match.url}`} component={CompanyOffersRoot} />
         <Route
           exact
           path={`${match.url}/mytrainees`}
@@ -83,27 +81,16 @@ const Company = ({ match }) => {
 
 const Admin = ({ match }) => {
   const Missions = props => <Link to={`${match.url}/`} {...props} />;
-  const LesValidations = props => (
-    <Link to={`${match.url}/validations`} {...props} />
-  );
-  const Candidats = props => <Link to={`${match.url}/team`} {...props} />;
   return (
     <div>
-      <NavBar
-        candidats={Candidats}
-        missions={Missions}
-        validations={LesValidations}
-        routeName={match.url}
-      />
+      <NavBar missions={Missions} routeName={match.url} />
       <Switch>
-        <Route exact path={`${match.url}`} component={OffersCompletedList} />
+        <Route exact path={`${match.url}`} component={OfferCompletedItem} />
         <Route
           exact
-          path={`${match.url}/validations`}
-          component={CompanyOffers}
+          path={`${match.url}/missions`}
+          render={props => <TeamsAdmin {...props} />}
         />
-        <Route exact path={`${match.url}/missions`} component={SearchOffer} />
-        <Route exact path={`${match.url}/team`} component={OfferView} />
       </Switch>
     </div>
   );

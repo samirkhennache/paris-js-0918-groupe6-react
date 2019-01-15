@@ -1,38 +1,34 @@
 import React, { Component } from "react";
 import { AwesomeButton } from "react-awesome-button";
-import { connect } from "react-redux";
-import axios from "axios";
-import Modal from "./Modal";
-import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
+// import Modal from "./Modal";
 import CompanyOfferManage from "./CompanyOfferManage";
+import CompanyCreateOffers from "./CompanyCreateOffers";
 import "./Button.css";
-import "./Modal.css";
+// import "./Modal.css";
 import "./Missions.css";
 import "react-awesome-button/dist/styles.css";
+
+// const idCompany = sessionStorage.getItem("token");
+// const mode = "SELECT";
 
 class CompanyOffers extends Component {
   state = {
     show: false,
-    missions: [],
-    isLoaded: false
+    missions: []
   };
 
   componentDidMount() {
-    // const { idCompany } = this.props;
-    const idCompany = sessionStorage.getItem("token");
-    axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
-      // console.log("data", res.data);
-      this.setState({
-        missions: res.data.Missions.sort((a, b) => a - b),
-        isLoaded: true
-      });
+    const { missions } = this.props;
+    this.setState({
+      missions
     });
   }
 
   showModal = () => {
+    const { show } = this.state;
     this.setState({
       ...this.state,
-      show: !this.state.show
+      show: !show
     });
   };
 
@@ -51,11 +47,19 @@ class CompanyOffers extends Component {
     });
   };
 
+  handlerDeleteMission = idMission => {
+    this.setState({
+      missions: [...this.state.missions.filter(e => e.id !== idMission)]
+    });
+  };
+
   render() {
-    const { missions, isLoaded } = this.state;
+    const { missions } = this.state;
+
     return (
       <div className="mesMissions">
         <h1 className="titleMission"> Mes missions </h1>
+        <p>Nombre de missions: {missions.length}</p>
         <AwesomeButton
           type="primary"
           className="aws-btn add"
@@ -64,37 +68,31 @@ class CompanyOffers extends Component {
           Ajouter
         </AwesomeButton>
         <br />
-        <Modal onClose={this.showModal} show={this.state.show}>
-          <CompanyCreateOffers
-            handlerCreateMission={this.handlerCreateMission}
-          />
-        </Modal>
+        <CompanyCreateOffers
+          open={this.state.show}
+          onClose={this.showModal}
+          handlerCreateMission={this.handlerCreateMission}
+          missions={missions}
+        />
         <div>
-          {!isLoaded ? (
-            <p> loading.. </p>
-          ) : (
-            missions.map((e, index) => (
-              <div key={index}>
-                <CompanyOfferManage
-                  modifMission={e}
-                  titleMission={e.titleMission}
-                  dateStart={new Date(e.dateStart).toLocaleDateString()}
-                  dateEnd={new Date(e.dateEnd).toLocaleDateString()}
-                  description={e.description}
-                  idMission={e.id}
-                  handlerUpdateMission={this.handlerUpdateMission}
-                />
-              </div>
-            ))
-          )}
+          {missions.map((e, index) => (
+            <CompanyOfferManage
+              key={index}
+              modifMission={e}
+              titleMission={e.titleMission}
+              dateStart={new Date(e.dateStart).toLocaleDateString()}
+              dateEnd={new Date(e.dateEnd).toLocaleDateString()}
+              description={e.description}
+              idMission={e.id}
+              handlerUpdateMission={this.handlerUpdateMission}
+              handlerDeleteMission={this.handlerDeleteMission}
+              {...this.props}
+            />
+          ))}
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-    idCompany: state.company.id
-  });
-
-export default connect(mapStateToProps)(CompanyOffers);
+export default CompanyOffers;
