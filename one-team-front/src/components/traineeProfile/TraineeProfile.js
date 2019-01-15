@@ -39,6 +39,8 @@ class TraineeProfile extends Component {
         address: e.target.address.value,
         town: e.target.town.value,
         postalCode: e.target.postalCode.value,
+        school: e.target.school.value,
+        titre: e.target.titre.value,
         description: e.target.description.value,
         dateStart: e.target.dateStart.value,
         dateEnd: e.target.dateEnd.value
@@ -215,6 +217,24 @@ class TraineeProfile extends Component {
               name="postalCode"
               placeholder="Postal Code"
               defaultValue={data.postalCode}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              type="text"
+              className="textField"
+              name="school"
+              placeholder="École"
+              defaultValue={data.school}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              type="text"
+              className="textField"
+              name="titre"
+              placeholder="Intitulé de stage"
+              defaultValue={data.titre}
               margin="normal"
               variant="outlined"
             />
