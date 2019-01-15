@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import CompanyOffersRoot from "../companyOffers/CompanyOffersRoot";
 import StudentApplication from "../CompanyApplication/StudentApplication";
-import ModalOffer from "../offerView/ModalOffer";
+import CompanyPresentation from "./CompanyPresentation";
 import { FULL } from "../CompanyApplication/studentConstant";
 
 const mode = "ADMIN";
-const part = "ADMIN";
 
 class TeamsAdmin extends Component {
   state = {
@@ -25,6 +23,7 @@ class TeamsAdmin extends Component {
   }
 
   render() {
+
     const { fullMission, trainee } = this.state;
     return (
       <div>
@@ -35,14 +34,21 @@ class TeamsAdmin extends Component {
             fullMission.map(e => (
               <div>
                 <div>
-                  <ModalOffer
+                  <CompanyPresentation
                     size="FULL"
-                    titelMission={e.titelMission}
+                    titleMission={e.titleMission}
                     missionId={e.id}
                     company={e.Company.companyName}
                     description={e.description}
+                    introduction={e.intro}
                     dateStart={e.dateStart}
                     dateEnd={e.dateEnd}
+                    town={e.town}
+                    companyName={e.Company.companyName}
+                    firstNameContact={e.Company.firstnameContact}
+                    lastNameContact={e.Company.lastnameContact}
+                    companyPhone={e.Company.phone}
+                    companyEmail={e.Company.email}
                   />
                 </div>
                 {trainee &&
@@ -61,6 +67,7 @@ class TeamsAdmin extends Component {
                               mode={mode}
                               size={FULL}
                               phone={student.Trainee.phone}
+                              email={student.Trainee.email}
                             />
                           </div>
                         ))
