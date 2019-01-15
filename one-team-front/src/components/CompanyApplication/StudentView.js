@@ -43,7 +43,14 @@ const StudentView = props => {
     firstname,
     town,
     size,
-    phone
+    phone,
+    dateStart,
+    dateEnd,
+    titre,
+    description,
+    school,
+    lastname,
+    email
   } = props;
   switch (size) {
     case "SMALL": {
@@ -56,9 +63,11 @@ const StudentView = props => {
                 <img className={classes.image} src={pictures} alt="" />
               </li>
               <li>{firstname}</li>
-              <li className={classes.address}>
-                {address} - {postalCode} {town}
-              </li>
+              <li>{titre}</li>
+
+              <li>{dateStart}</li>
+              <li>{dateEnd}</li>
+              <li className={classes.address}>{town}</li>
             </ul>
           </Paper>
         </div>
@@ -74,9 +83,12 @@ const StudentView = props => {
                 <img className={classes.image} src={pictures} alt="" />
               </li>
               <li>{firstname}</li>
-              <li className={classes.address}>
-                {address} - {postalCode} {town}
-              </li>
+              <li>{titre}</li>
+              <li>{school}</li>
+              <li>{dateStart}</li>
+              <li>{dateEnd}</li>
+              <li className={classes.address}>{town}</li>
+              <li>{description}</li>
             </ul>
           </Paper>
         </div>
@@ -92,10 +104,17 @@ const StudentView = props => {
                 <img className={classes.image} src={pictures} alt="" />
               </li>
               <li>{firstname}</li>
+              <li>{lastname}</li>
+              <li>{titre}</li>
+              <li>{school}</li>
+              <li>{dateStart}</li>
+              <li>{dateEnd}</li>
               <li className={classes.address}>
-                {address} - {postalCode} {town}
+                {address} - {postalCode} - {town}
               </li>
+              <li>{description}</li>
               <li>{phone}</li>
+              <li>{email}</li>
             </ul>
           </Paper>
         </div>

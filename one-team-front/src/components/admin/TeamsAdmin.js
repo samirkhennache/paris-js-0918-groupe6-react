@@ -23,7 +23,6 @@ class TeamsAdmin extends Component {
   }
 
   render() {
-
     const { fullMission, trainee } = this.state;
     return (
       <div>
@@ -60,14 +59,20 @@ class TeamsAdmin extends Component {
                               firstname={student.Trainee.firstname}
                               town={student.Trainee.town}
                               pictures={student.Trainee.pictures}
+                              dateStart={student.Trainee.dateStart}
+                              dateEnd={student.Trainee.dateEnd}
+                              titre={student.Trainee.titre}
+                              description={student.Trainee.description}
+                              school={student.Trainee.school}
                               address={student.Trainee.address}
                               postalCode={student.Trainee.postalCode}
+                              phone={student.Trainee.phone}
+                              email={student.Trainee.email}
                               missionId={e.id}
                               traineeId={student.Trainee.id}
                               mode={mode}
                               size={FULL}
-                              phone={student.Trainee.phone}
-                              email={student.Trainee.email}
+
                             />
                           </div>
                         ))

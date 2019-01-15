@@ -43,8 +43,11 @@ class CompanyApplicationsList extends Component {
                     firstname={e.Trainee.firstname}
                     town={e.Trainee.town}
                     pictures={e.Trainee.pictures}
-                    address={e.Trainee.address}
-                    postalCode={e.Trainee.postalCode}
+                    dateStart={e.Trainee.dateStart}
+                    dateEnd={e.Trainee.dateEnd}
+                    titre={e.Trainee.titre}
+                    description={e.Trainee.description}
+                    school={e.Trainee.school}
                     size={SMALL}
                     missionId={element.mission_id}
                     traineeId={e.Trainee.id}
