@@ -78,9 +78,9 @@ const CompanyCreateOffers = class extends React.Component {
     }
   };
 
-  defaultState() {
+  defaultState(){
     const idCompany = sessionStorage.getItem("token");
-
+    
     return {
       mission: {
         titleMission: "",
