@@ -42,7 +42,8 @@ const StudentView = props => {
     postalCode,
     firstname,
     town,
-    size
+    size,
+    phone
   } = props;
   switch (size) {
     case "SMALL": {
@@ -94,6 +95,7 @@ const StudentView = props => {
               <li className={classes.address}>
                 {address} - {postalCode} {town}
               </li>
+              <li>{phone}</li>
             </ul>
           </Paper>
         </div>

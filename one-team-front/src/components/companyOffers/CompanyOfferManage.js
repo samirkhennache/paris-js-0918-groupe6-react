@@ -97,87 +97,77 @@ class CompanyOfferManage extends Component {
       dateStart,
       dateEnd,
       description,
-      modifMission,
-      part
+      modifMission
     } = this.props;
     const { title, content, button, open } = this.state;
 
-    switch (part) {
-      case "COMPANY": {
-        return (
-          <div>
-            {/* ***** FICHE MISSION ***** */}
-            <div>
-              {titleMission}
-              <br />
-              {dateStart}
-              <br />
-              {dateEnd}
-              <br />
-              {description}
-            </div>
-            {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
-            <AwesomeButton
-              type="primary"
-              className="aws-btn edit"
-              action={this.showModal}
-            >
-              Modifier
-            </AwesomeButton>
-            <br />
-            <AwesomeButton
-              type="primary"
-              className="aws-btn remove"
-              action={this.deleteData}
-            >
-              Supprimer
-            </AwesomeButton>
-            <CompanyCreateOffers
-              open={this.state.show}
-              onClose={this.showModal}
-              handlerUpdateMission={this.props.handlerUpdateMission}
-              modifMission={modifMission}
-            />
-            <br />
-            <hr align="center" width="50%" color="midnightblue" size="1" />
-            {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
-            <Team {...this.props} />
-            <AwesomeButton
-              action={this.validateMission}
-              type="primary"
-              className="aws-btn validate"
-            >
-              Valider ma team
-            </AwesomeButton>
-            <hr align="center" width="90%" color="midnightblue" size="1" />
-            {/* **************** DIALOG VALIDATE ************************** */}
-            <Dialog
-              open={open}
-              onClose={this.handleClose}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-            >
-              <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-              <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                  {content}
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={this.handleClose} color="primary">
-                  {button}
-                </Button>
-              </DialogActions>
-            </Dialog>
-          </div>
-        );
-      }
-      case "ADMIN": {
-        return <Team {...this.props} />;
-      }
-      default:
-        break;
-    }
+    return (
+      <div>
+        {/* ***** FICHE MISSION ***** */}
+        <div>
+          {titleMission}
+          <br />
+          {dateStart}
+          <br />
+          {dateEnd}
+          <br />
+          {description}
+        </div>
+        {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
+        <AwesomeButton
+          type="primary"
+          className="aws-btn edit"
+          action={this.showModal}
+        >
+          Modifier
+        </AwesomeButton>
+        <br />
+        <AwesomeButton
+          type="primary"
+          className="aws-btn remove"
+          action={this.deleteData}
+        >
+          Supprimer
+        </AwesomeButton>
+        <CompanyCreateOffers
+          open={this.state.show}
+          onClose={this.showModal}
+          handlerUpdateMission={this.props.handlerUpdateMission}
+          modifMission={modifMission}
+        />
+        <br />
+        <hr align="center" width="50%" color="midnightblue" size="1" />
+        {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
+        <Team {...this.props} />
+        <AwesomeButton
+          action={this.validateMission}
+          type="primary"
+          className="aws-btn validate"
+        >
+          Valider ma team
+        </AwesomeButton>
+        <hr align="center" width="90%" color="midnightblue" size="1" />
+        {/* **************** DIALOG VALIDATE ************************** */}
+        <Dialog
+          open={open}
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              {content}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+              {button}
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
   }
 }
 
