@@ -16,7 +16,7 @@ class TraineeProfile extends Component {
     axios
       .get(`http://localhost:3001/trainee/profile/${id}`)
       .then(response => {
-        // console.log(response);
+        console.log(response.data);
         this.setState({
           data: response.data
         });
@@ -275,7 +275,12 @@ class TraineeProfile extends Component {
           address={data.address}
           postalCode={data.postalCode}
           town={data.town}
-          pictures={`http://localhost:3001/${data.pictures}`}
+          pictures={data.pictures}
+          description={data.description}
+          school={data.school}
+          titre={data.titre}
+          dateStart={data.dateStart}
+          dateEnd={data.dateEnd}
           size={FULL_RESTRICTED}
         />
       </div>

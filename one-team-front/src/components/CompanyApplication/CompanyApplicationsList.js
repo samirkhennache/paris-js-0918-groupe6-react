@@ -16,10 +16,11 @@ class CompanyApplicationsList extends Component {
   componentDidMount() {
     const { mode } = this.props;
     const idCompany = sessionStorage.getItem("token");
-    console.log("idcompany", idCompany);
     axios
       .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
-      .then(res => this.setState({ trainee: res.data, isLoaded: true }));
+      .then(res => {
+        this.setState({ trainee: res.data, isLoaded: true });
+      });
   }
 
   compareMissions = (a, b) => {
