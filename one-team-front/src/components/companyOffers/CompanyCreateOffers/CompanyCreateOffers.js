@@ -15,9 +15,10 @@ const CompanyCreateOffers = class extends React.Component {
     Axios.get("http://localhost:3001/paradata/levelstudies").then(res => {
       this.setState({ idLoaded: true, levelstudies: res.data });
     });
-    const { mission } = this.props;
-    if (mission && mission.id) {
-      this.setState({ mission, isEditMode: true });
+    const { modifMission } = this.props;
+    // console.log(">>>CompanyCreateOffers", modifMission);
+    if (modifMission && modifMission.id) {
+      this.setState({ mission: modifMission, isEditMode: true });
     }
   }
 
@@ -55,12 +56,13 @@ const CompanyCreateOffers = class extends React.Component {
       CompanyId: mission.CompanyId,
       LevelStudyId: Number(mission.LevelStudyId)
     };
-    // console.log(this.state.mission);
+    // console.log(">>>", this.state.mission);
     // console.log("postFormMission", postFormMission);
 
     if (!isEditMode) {
       Axios.post(API_ENDPOINT_MISSION, postFormMission).then(res => {
         // window.alert("Ajout ok");
+        // console.log(">>>", res.data);
         this.props.handlerCreateMission(res.data);
         this.props.onClose();
       });
@@ -68,6 +70,7 @@ const CompanyCreateOffers = class extends React.Component {
       Axios.put(`${API_ENDPOINT_MISSION}${mission.id}`, postFormMission).then(
         res => {
           // window.alert("Modification ok");
+          // console.log(">>>", res.data);
           this.props.handlerUpdateMission(res.data);
           this.props.onClose();
         }
