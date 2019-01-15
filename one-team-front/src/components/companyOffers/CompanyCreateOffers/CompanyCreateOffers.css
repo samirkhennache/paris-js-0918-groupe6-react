@@ -24,3 +24,14 @@
   margin: 0 5px;
   width: 50%;
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .date {
+    display: flex;
+    flex-direction: column;
+  }
+  .dateText {
+    width: 100%;
+    margin: 0;
+  }
+}

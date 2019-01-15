@@ -117,6 +117,7 @@ const CompanyCreateOffers = class extends React.Component {
             <TextField
               placeholder="Titre de la mission de stage"
               name="titleMission"
+              label="Titre de la Mission"
               value={mission.titleMission}
               onChange={this.handlerOnChange}
               required
@@ -128,7 +129,9 @@ const CompanyCreateOffers = class extends React.Component {
               <div className="dateText">
                 <TextField
                   placeholder="Date de début"
+                  label="Date de début"
                   name="dateStart"
+                  type="date"
                   value={mission.dateStart}
                   onChange={this.handlerOnChange}
                   required
@@ -140,6 +143,8 @@ const CompanyCreateOffers = class extends React.Component {
               <div className="dateText">
                 <TextField
                   placeholder="Date de fin"
+                  label="Date de fin"
+                  type="date"
                   name="dateEnd"
                   value={mission.dateEnd}
                   onChange={this.handlerOnChange}
@@ -154,6 +159,7 @@ const CompanyCreateOffers = class extends React.Component {
             <TextField
               placeholder="Ville"
               name="town"
+              label="Ville"
               value={mission.town}
               onChange={this.handlerOnChange}
               required
@@ -164,24 +170,28 @@ const CompanyCreateOffers = class extends React.Component {
             <TextField
               placeholder="Introduction"
               name="intro"
+              label="Introduction"
               value={mission.intro}
               onChange={this.handlerOnChange}
               required
               fullWidth
               multiline
               rows="2"
+              rowsMax="2"
               margin="normal"
               variant="outlined"
             />
             <TextField
               placeholder="Description"
               name="description"
+              label="Description"
               value={mission.description}
               onChange={this.handlerOnChange}
               required
               fullWidth
               multiline
               rows="5"
+              rowsMax="10"
               margin="normal"
               variant="outlined"
             />
