@@ -182,7 +182,7 @@ const CompanyCreateOffers = class extends React.Component {
               fullWidth
               multiline
               rows="2"
-              rowsMax="2"
+              // rowsMax="2"
               margin="normal"
               variant="outlined"
             />
@@ -196,7 +196,7 @@ const CompanyCreateOffers = class extends React.Component {
               fullWidth
               multiline
               rows="5"
-              rowsMax="10"
+              // rowsMax="10"
               margin="normal"
               variant="outlined"
             />
