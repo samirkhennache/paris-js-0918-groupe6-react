@@ -76,19 +76,19 @@ class TraineeProfile extends Component {
     console.log("okkkkk");
   };
 
-  date() {
+  date = () => {
     const date = new Date();
     let day = date.getDate();
     if (day < 10) {
-      day = "0" + day;
+      day = `0${day}`;
     }
     let month = date.getMonth() + 1;
     if (month < 10) {
-      month = "0" + month;
+      month = `0${month}`;
     }
     const year = date.getFullYear();
     return `${year}-${month}-${day}`;
-  }
+  };
 
   render() {
     console.log(this.date());
@@ -102,7 +102,7 @@ class TraineeProfile extends Component {
         <div className="createForm">
           <form onSubmit={this.onSubmit}>
             <div>
-              <label for="file-input">
+              <label htmlFor="file-input">
                 {this.state.data.pictures !== null ? (
                   <div>
                     <img
@@ -130,6 +130,7 @@ class TraineeProfile extends Component {
               <input
                 id="file-input"
                 type="file"
+                accept=".jpg, .png, .jpeg,|images/*"
                 onChange={this.fileChangedHandler}
                 hidden
               />
