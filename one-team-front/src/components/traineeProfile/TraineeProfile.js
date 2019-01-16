@@ -16,7 +16,7 @@ class TraineeProfile extends Component {
     axios
       .get(`http://localhost:3001/trainee/profile/${id}`)
       .then(response => {
-        // console.log(response);
+        console.log(response.data);
         this.setState({
           data: response.data
         });
@@ -39,6 +39,8 @@ class TraineeProfile extends Component {
         address: e.target.address.value,
         town: e.target.town.value,
         postalCode: e.target.postalCode.value,
+        school: e.target.school.value,
+        titre: e.target.titre.value,
         description: e.target.description.value,
         dateStart: e.target.dateStart.value,
         dateEnd: e.target.dateEnd.value
@@ -220,6 +222,24 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
+              className="textField"
+              name="school"
+              placeholder="École"
+              defaultValue={data.school}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              type="text"
+              className="textField"
+              name="titre"
+              placeholder="Intitulé de stage"
+              defaultValue={data.titre}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              type="text"
               multiline
               className="textField"
               name="description"
@@ -275,7 +295,12 @@ class TraineeProfile extends Component {
           address={data.address}
           postalCode={data.postalCode}
           town={data.town}
-          pictures={`http://localhost:3001/${data.pictures}`}
+          pictures={data.pictures}
+          descriptionTrainee={data.description}
+          school={data.school}
+          titre={data.titre}
+          dateStart={data.dateStart}
+          dateEnd={data.dateEnd}
           size={FULL_RESTRICTED}
         />
       </div>

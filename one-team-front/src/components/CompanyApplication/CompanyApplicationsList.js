@@ -16,10 +16,12 @@ class CompanyApplicationsList extends Component {
   componentDidMount() {
     const { mode } = this.props;
     const idCompany = sessionStorage.getItem("token");
-    console.log("idcompany", idCompany);
     axios
       .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
-      .then(res => this.setState({ trainee: res.data, isLoaded: true }));
+      .then(res => {
+        console.log("trainee", res.data.data);
+        this.setState({ trainee: res.data, isLoaded: true });
+      });
   }
 
   compareMissions = (a, b) => {
@@ -43,8 +45,11 @@ class CompanyApplicationsList extends Component {
                     firstname={e.Trainee.firstname}
                     town={e.Trainee.town}
                     pictures={e.Trainee.pictures}
-                    address={e.Trainee.address}
-                    postalCode={e.Trainee.postalCode}
+                    dateStart={e.Trainee.dateStart}
+                    dateEnd={e.Trainee.dateEnd}
+                    titre={e.Trainee.titre}
+                    descriptionTrainee={e.Trainee.description}
+                    school={e.Trainee.school}
                     size={SMALL}
                     missionId={element.mission_id}
                     traineeId={e.Trainee.id}

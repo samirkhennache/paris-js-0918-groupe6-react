@@ -43,7 +43,14 @@ const StudentView = props => {
     firstname,
     town,
     size,
-    phone
+    phone,
+    dateStart,
+    dateEnd,
+    titre,
+    descriptionTrainee,
+    school,
+    lastname,
+    email
   } = props;
   switch (size) {
     case "SMALL": {
@@ -53,11 +60,34 @@ const StudentView = props => {
             <p>Size SMALL</p>
             <ul className={classes.list}>
               <li>
-                <img className={classes.image} src={pictures} alt="" />
+                <img
+                  className={classes.image}
+                  src={
+                    pictures !== null
+                      ? `http://localhost:3001/${pictures}`
+                      : "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+                  }
+                  alt=""
+                />
               </li>
               <li>{firstname}</li>
+              <li>
+                {titre !== null ? titre : "Poste recherché : à compléter"}
+              </li>
+              <li>
+                début :
+                {dateStart
+                  ? new Date(dateStart).toLocaleDateString()
+                  : "à compléter"}
+              </li>
+              <li>
+                fin:
+                {dateEnd
+                  ? new Date(dateEnd).toLocaleDateString()
+                  : "à compléter"}
+              </li>
               <li className={classes.address}>
-                {address} - {postalCode} {town}
+                {town !== null ? town : "Ville : à compléter"}
               </li>
             </ul>
           </Paper>
@@ -71,11 +101,40 @@ const StudentView = props => {
             <p>Size FULL_RESTRICTED</p>
             <ul className={classes.list}>
               <li>
-                <img className={classes.image} src={pictures} alt="" />
+                <img
+                  className={classes.image}
+                  src={
+                    pictures !== null
+                      ? `http://localhost:3001/${pictures}`
+                      : "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+                  }
+                  alt=""
+                />
               </li>
               <li>{firstname}</li>
+              <li>
+                {titre !== null ? titre : "Poste recherché : à compléter"}
+              </li>
+              <li>{school !== null ? school : "École : à compléter"}</li>
+              <li>
+                début :
+                {dateStart
+                  ? new Date(dateStart).toLocaleDateString()
+                  : "à compléter"}
+              </li>
+              <li>
+                fin:
+                {dateEnd
+                  ? new Date(dateEnd).toLocaleDateString()
+                  : "à compléter"}
+              </li>
               <li className={classes.address}>
-                {address} - {postalCode} {town}
+                {town !== null ? town : "Ville : à compléter"}
+              </li>
+              <li>
+                {descriptionTrainee !== null
+                  ? descriptionTrainee
+                  : "description : à compléter"}
               </li>
             </ul>
           </Paper>
@@ -89,13 +148,46 @@ const StudentView = props => {
             <p>Size FULL</p>
             <ul className={classes.list}>
               <li>
-                <img className={classes.image} src={pictures} alt="" />
+                <img
+                  className={classes.image}
+                  src={
+                    pictures !== null
+                      ? `http://localhost:3001/${pictures}`
+                      : "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+                  }
+                  alt=""
+                />
               </li>
               <li>{firstname}</li>
-              <li className={classes.address}>
-                {address} - {postalCode} {town}
+              <li>{lastname}</li>
+              <li>
+                {titre !== null ? titre : "Poste recherché : à compléter"}
               </li>
-              <li>{phone}</li>
+              <li>{school !== null ? school : "École : à compléter"}</li>
+              <li>
+                début :
+                {dateStart
+                  ? new Date(dateStart).toLocaleDateString()
+                  : "à compléter"}
+              </li>
+              <li>
+                fin:
+                {dateEnd
+                  ? new Date(dateEnd).toLocaleDateString()
+                  : "à compléter"}
+              </li>
+              <li className={classes.address}>{address}</li>
+              <li>
+                {postalCode !== null ? postalCode : "Code postal : à compléter"}
+              </li>
+              <li> {town !== null ? town : "Ville : à compléter"}</li>
+              <li>
+                {descriptionTrainee !== null
+                  ? descriptionTrainee
+                  : "Description: à compléter"}
+              </li>
+              <li>{phone !== null ? phone : "Télephone : à compléter"}</li>
+              <li>{email}</li>
             </ul>
           </Paper>
         </div>

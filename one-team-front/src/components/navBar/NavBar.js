@@ -33,12 +33,13 @@ const ButtonAppBar = props => {
     candidats,
     routeName
   } = props;
+
   return (
     <MuiThemeProvider theme={theme}>
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar className="toolbar">
-            {routeName !== undefined && (
+            {routeName !== "/salutadmin" && (
               <OpenMenuBurger
                 openSearch={search}
                 openMyOffers={myOffers}

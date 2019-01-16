@@ -35,7 +35,6 @@ class StudentApplication extends Component {
 
   selectStudent = mode => {
     const { missionId, traineeId, firstname } = this.props;
-    console.log("onclick", missionId, traineeId, mode);
     axios
       .put(`http://localhost:3001/application`, {
         missionId,
@@ -117,6 +116,7 @@ class StudentApplication extends Component {
   };
 
   render() {
+    console.log(this.props.descriptionTrainee);
     const {
       open,
       openMessageSelect,
