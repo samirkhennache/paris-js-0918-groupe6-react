@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Select from "@material-ui/core/Select";
 import StudentView from "../CompanyApplication/StudentView";
 import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
 import "./traineeProfile.css";
@@ -9,6 +14,15 @@ import "./traineeProfile.css";
 class TraineeProfile extends Component {
   state = {
     selectedFile: null
+  };
+
+  handleChange = event => {
+    this.setState(prevState => ({
+      data: {
+        ...prevState.data,
+        [event.target.name]: event.target.value
+      }
+    }));
   };
 
   componentDidMount() {
@@ -43,7 +57,8 @@ class TraineeProfile extends Component {
         titre: e.target.titre.value,
         description: e.target.description.value,
         dateStart: e.target.dateStart.value,
-        dateEnd: e.target.dateEnd.value
+        dateEnd: e.target.dateEnd.value,
+        LevelStudyId: e.target.LevelStudyId.value
       })
       .then(response => {
         console.log(response);
@@ -114,6 +129,7 @@ class TraineeProfile extends Component {
     if (this.state.data == null) {
       return <div>Loading</div>;
     }
+    console.log(this.state);
     return (
       <div>
         <h1>Complète ton profile</h1>
@@ -229,6 +245,23 @@ class TraineeProfile extends Component {
               margin="normal"
               variant="outlined"
             />
+
+            <FormControl className="profileTextField">
+              <InputLabel>Level</InputLabel>
+              <Select
+                value={this.state.data.LevelStudyId || ""}
+                onChange={this.handleChange}
+                inputProps={{
+                  name: "LevelStudyId"
+                }}
+              >
+                <MenuItem value={1}>BAC+2</MenuItem>
+                <MenuItem value={2}>BAC+3</MenuItem>
+                <MenuItem value={3}>BAC+4</MenuItem>
+                <MenuItem value={4}>BAC+5</MenuItem>
+              </Select>
+            </FormControl>
+
             <TextField
               type="text"
               className="profileTextField"
