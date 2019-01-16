@@ -6,9 +6,6 @@ import StudentApplication from "./StudentApplication";
 import { SMALL } from "./studentConstant";
 import "./ViewStudent.css";
 
-const modeSelect = "SELECT";
-const modeRefuse = "REFUSE";
-
 class CompanyApplicationsList extends Component {
   state = {
     trainee: [],
@@ -19,10 +16,12 @@ class CompanyApplicationsList extends Component {
   componentDidMount() {
     const { mode } = this.props;
     const idCompany = sessionStorage.getItem("token");
-    console.log("idcompany", idCompany);
     axios
       .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
-      .then(res => this.setState({ trainee: res.data, isLoaded: true }));
+      .then(res => {
+        console.log("trainee", res.data.data);
+        this.setState({ trainee: res.data, isLoaded: true });
+      });
   }
 
   compareMissions = (a, b) => {
@@ -31,8 +30,7 @@ class CompanyApplicationsList extends Component {
 
   render() {
     const { trainee, isLoaded } = this.state;
-    const { mode } = this.props;
-    console.log(trainee.data);
+    const { mode, modeRefuse, modeSelect, size } = this.props;
     return (
       <div>
         {isLoaded &&
@@ -47,14 +45,18 @@ class CompanyApplicationsList extends Component {
                     firstname={e.Trainee.firstname}
                     town={e.Trainee.town}
                     pictures={e.Trainee.pictures}
-                    address={e.Trainee.address}
-                    postalCode={e.Trainee.postalCode}
+                    dateStart={e.Trainee.dateStart}
+                    dateEnd={e.Trainee.dateEnd}
+                    titre={e.Trainee.titre}
+                    descriptionTrainee={e.Trainee.description}
+                    school={e.Trainee.school}
                     size={SMALL}
                     missionId={element.mission_id}
                     traineeId={e.Trainee.id}
                     modeSelect={modeSelect}
                     modeRefuse={modeRefuse}
                     mode={mode}
+                    {...this.props}
                   />
                 ))}
               </div>

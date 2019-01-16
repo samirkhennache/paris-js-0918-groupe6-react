@@ -2,16 +2,13 @@ import React, { Component } from "react";
 import StudentApplication from "../CompanyApplication/StudentApplication";
 import { SMALL } from "../CompanyApplication/studentConstant";
 
-const modeSelect = "SELECT";
-const modeRefuse = "REFUSE";
-const mode = "SELECT";
-
 class Team extends Component {
   state = {};
 
   render() {
     const { trainee, idMission } = this.props;
     console.log("team trainee", trainee);
+
     return (
       <div>
         <h2>My team</h2>
@@ -24,14 +21,15 @@ class Team extends Component {
                     firstname={e.Trainee.firstname}
                     town={e.Trainee.town}
                     pictures={e.Trainee.pictures}
-                    address={e.Trainee.address}
-                    postalCode={e.Trainee.postalCode}
+                    dateStart={e.Trainee.dateStart}
+                    dateEnd={e.Trainee.dateEnd}
+                    titre={e.Trainee.titre}
+                    descriptionTrainee={e.Trainee.description}
+                    school={e.Trainee.school}
                     size={SMALL}
-                    missionId={idMission}
+                    missionId={data.mission_id}
                     traineeId={e.Trainee.id}
-                    modeSelect={modeSelect}
-                    modeRefuse={modeRefuse}
-                    mode={mode}
+                    {...this.props}
                   />
                 ))}
             </div>

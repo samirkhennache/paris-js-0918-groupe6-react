@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import StudentView from "./StudentView";
 import StudentProfilView from "./StudentProfilView";
+import { SMALL } from "../CompanyApplication/studentConstant";
 
 import axios from "axios";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,6 +11,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+
 import { loadavg } from "os";
 
 class StudentApplication extends Component {
@@ -33,7 +35,6 @@ class StudentApplication extends Component {
 
   selectStudent = mode => {
     const { missionId, traineeId, firstname } = this.props;
-    console.log("onclick", missionId, traineeId, mode);
     axios
       .put(`http://localhost:3001/application`, {
         missionId,
@@ -115,6 +116,7 @@ class StudentApplication extends Component {
   };
 
   render() {
+    console.log(this.props.descriptionTrainee);
     const {
       open,
       openMessageSelect,
@@ -131,7 +133,7 @@ class StudentApplication extends Component {
           <div>
             <div>
               <div onClick={() => this.clickStudentSmall()}>
-                <StudentView {...this.props} open={open} />
+                <StudentView {...this.props} size={SMALL} open={open} />
               </div>
               <Button
                 onClick={() => this.selectStudent(modeSelect)}
@@ -199,7 +201,7 @@ class StudentApplication extends Component {
           <div>
             <div>
               <div onClick={() => this.clickStudentSmall()}>
-                <StudentView {...this.props} />
+                <StudentView {...this.props} size={SMALL} />
               </div>
               <Button
                 onClick={() => this.refuseStudent(modeRefuse)}
@@ -233,6 +235,22 @@ class StudentApplication extends Component {
                 </Button>
               </DialogActions>
             </Dialog>
+          </div>
+        );
+      }
+      case "ADMIN": {
+        return (
+          <div>
+            <div>
+              <div onClick={() => this.clickStudentSmall()}>
+                <StudentView {...this.props} size={SMALL} />
+              </div>
+              <StudentProfilView
+                {...this.props}
+                open={open}
+                close={this.clickClose}
+              />
+            </div>
           </div>
         );
       }
