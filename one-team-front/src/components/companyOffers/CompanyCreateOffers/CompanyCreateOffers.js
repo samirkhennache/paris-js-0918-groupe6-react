@@ -79,6 +79,11 @@ const CompanyCreateOffers = class extends React.Component {
     }
   };
 
+  closeMission = () => {
+    this.setState(this.defaultState());
+    this.props.onClose();
+  };
+
   defaultState() {
     const idCompany = sessionStorage.getItem("token");
 
@@ -213,7 +218,7 @@ const CompanyCreateOffers = class extends React.Component {
           <p>{isEditMode ? "" : "Cette offre sera publiée après validation"}</p>
         </div>
         <DialogActions>
-          <Button onClick={onClose} color="primary">
+          <Button onClick={this.closeMission} color="primary">
             Annuler
           </Button>
           <Button onClick={this.saveMission} color="primary" autoFocus>
