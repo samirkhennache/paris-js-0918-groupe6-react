@@ -19,7 +19,8 @@ class CompanyOfferManage extends Component {
     open: false,
     title: ``,
     content: ``,
-    button: ``
+    button: ``,
+    disabled: false
   };
 
   deleteData = () => {
@@ -54,7 +55,8 @@ class CompanyOfferManage extends Component {
           open: true,
           title: `Validation réussie`,
           content: `Vous avez validé votre Team, OneTeam a réceptionné votre demande et va contacter votre équipe pour l'entretien`,
-          button: `Fermer`
+          button: `Fermer`,
+          disabled: true
         });
       })
       .catch(error => {
@@ -99,7 +101,7 @@ class CompanyOfferManage extends Component {
       modifMission,
       isFull
     } = this.props;
-    const { title, content, button, open } = this.state;
+    const { title, content, button, open, disabled } = this.state;
     console.log("FULL", isFull);
 
     return (
@@ -139,8 +141,8 @@ class CompanyOfferManage extends Component {
         <br />
         <hr align="center" width="50%" color="midnightblue" size="1" />
         {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
-        <Team {...this.props} />
-        {isFull === true ? (
+        <Team {...this.props} disabled={disabled}/>
+        {disabled ? (
           <AwesomeButton type="primary" disabled className="aws-btn validate">
             Valider ma team
           </AwesomeButton>

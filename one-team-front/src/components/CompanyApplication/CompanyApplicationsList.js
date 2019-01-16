@@ -63,16 +63,6 @@ class CompanyApplicationsList extends Component {
       trainee
     });
     console.log(trainee);
-    // this.setState(
-    //   {
-    //     trainee: [
-    //       ...this.state.trainee.data.map(element => {
-    //         element.dataApplications.filter(e => e.TraineeId !== idTrainee);
-    //       })
-    //     ]
-    //   },
-    //   console.log("after trainee", this.state.trainee)
-    // );
   };
 
   render() {

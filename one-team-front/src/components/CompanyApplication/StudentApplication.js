@@ -125,7 +125,7 @@ class StudentApplication extends Component {
       button,
       content
     } = this.state;
-    const { mode, modeSelect, modeRefuse, isFull } = this.props;
+    const { mode, modeSelect, modeRefuse, disabled } = this.props;
 
     switch (mode) {
       case "APPLICATION": {
@@ -137,7 +137,6 @@ class StudentApplication extends Component {
               </div>
               <Button
                 onClick={() => this.selectStudent(modeSelect)}
-
                 variant="contained"
                 color="primary"
               >
@@ -204,7 +203,7 @@ class StudentApplication extends Component {
               <div onClick={() => this.clickStudentSmall()}>
                 <StudentView {...this.props} size={SMALL} />
               </div>
-              {isFull === true ? (
+              {disabled ? (
                 <Button disabled variant="contained" color="secondary">
                   Refuser
                 </Button>
