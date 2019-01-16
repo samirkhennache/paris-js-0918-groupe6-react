@@ -1,6 +1,7 @@
 import React from "react";
 import "./CompanyCreateOffers.css";
 import Axios from "axios";
+import { TextField, Select, MenuItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -78,9 +79,14 @@ const CompanyCreateOffers = class extends React.Component {
     }
   };
 
-  defaultState(){
+  closeMission = () => {
+    this.setState(this.defaultState());
+    this.props.onClose();
+  };
+
+  defaultState() {
     const idCompany = sessionStorage.getItem("token");
-    
+
     return {
       mission: {
         titleMission: "",
@@ -102,57 +108,99 @@ const CompanyCreateOffers = class extends React.Component {
     const { onClose, ...other } = this.props;
     return (
       <Dialog
+        className="dialog"
         // onClose={onClose}
         {...other}
+        fullWidth={true}
+        maxWidth="lg"
       >
         <DialogTitle>
           {isEditMode ? "Je modifie une mission" : "Je crée une mission"}
         </DialogTitle>
         <div className="CompanyCreateOffers">
           <form className="container">
-            <input
+            <TextField
               placeholder="Titre de la mission de stage"
               name="titleMission"
+              label="Titre de la Mission"
               value={mission.titleMission}
               onChange={this.handlerOnChange}
               required
+              fullWidth
+              margin="normal"
+              variant="outlined"
             />
-            <input
-              placeholder="Date de début"
-              name="dateStart"
-              value={mission.dateStart}
-              onChange={this.handlerOnChange}
-              required
-            />
-            <input
-              placeholder="Date de fin"
-              name="dateEnd"
-              value={mission.dateEnd}
-              onChange={this.handlerOnChange}
-              required
-            />
-            <input
+            <div className="date">
+              <div className="dateText">
+                <TextField
+                  placeholder="Date de début"
+                  label="Date de début"
+                  name="dateStart"
+                  type="date"
+                  value={mission.dateStart}
+                  onChange={this.handlerOnChange}
+                  required
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+                />
+              </div>
+              <div className="dateText">
+                <TextField
+                  placeholder="Date de fin"
+                  label="Date de fin"
+                  type="date"
+                  name="dateEnd"
+                  value={mission.dateEnd}
+                  onChange={this.handlerOnChange}
+                  required
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+                />
+              </div>
+            </div>
+
+            <TextField
               placeholder="Ville"
               name="town"
+              label="Ville"
               value={mission.town}
               onChange={this.handlerOnChange}
               required
+              fullWidth
+              margin="normal"
+              variant="outlined"
             />
-            <textarea
+            <TextField
               placeholder="Introduction"
               name="intro"
+              label="Introduction"
               value={mission.intro}
               onChange={this.handlerOnChange}
               required
+              fullWidth
+              multiline
+              rows="2"
+              // rowsMax="2"
+              margin="normal"
+              variant="outlined"
             />
-            <textarea
+            <TextField
               placeholder="Description"
               name="description"
+              label="Description"
               value={mission.description}
               onChange={this.handlerOnChange}
               required
+              fullWidth
+              multiline
+              rows="5"
+              // rowsMax="10"
+              margin="normal"
+              variant="outlined"
             />
-            <select
+            <Select
               name="LevelStudyId"
               required
               value={mission.LevelStudyId}
@@ -160,17 +208,17 @@ const CompanyCreateOffers = class extends React.Component {
             >
               {idLoaded
                 ? levelstudies.map(element => (
-                    <option key={element.id} value={element.id}>
+                    <MenuItem key={element.id} value={element.id}>
                       {element.label}
-                    </option>
+                    </MenuItem>
                   ))
                 : "loading..."}
-            </select>
+            </Select>
           </form>
           <p>{isEditMode ? "" : "Cette offre sera publiée après validation"}</p>
         </div>
         <DialogActions>
-          <Button onClick={onClose} color="primary">
+          <Button onClick={this.closeMission} color="primary">
             Annuler
           </Button>
           <Button onClick={this.saveMission} color="primary" autoFocus>

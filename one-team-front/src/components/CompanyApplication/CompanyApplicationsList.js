@@ -20,14 +20,62 @@ class CompanyApplicationsList extends Component {
       .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
       .then(res => {
         console.log("trainee", res.data.data);
-        this.setState({ trainee: res.data, isLoaded: true });
+        this.setState({ trainee: res.data.data, isLoaded: true });
       });
   }
 
   compareMissions = (a, b) => a - b;
 
+  handleCloseRefresh = (idTrainee, missionId) => {
+    const trainee = [];
+    this.state.trainee.map(e => {
+      console.log("e", e);
+      if (e.mission_id === missionId) {
+        // const newDataApplication = e.dataApplications.map(f => {
+        //   if (f.TraineeId !== idTrainee) return f;
+        // });
+        const newDataApplication = [
+          ...e.dataApplications.filter(
+            element => element.TraineeId !== idTrainee
+          )
+        ];
+        const result = {
+          isFull: e.isFull,
+          mission_id: e.mission_id,
+          titleMission: e.titleMission,
+          dataApplications: newDataApplication
+        };
+        trainee.push(result);
+        console.log(newDataApplication);
+      } else {
+        const result = {
+          isFull: e.isFull,
+          mission_id: e.mission_id,
+          titleMission: e.titleMission,
+          dataApplications: e.dataApplications
+        };
+        trainee.push(result);
+      }
+    });
+    this.setState({
+      trainee
+    });
+    console.log(trainee);
+    // this.setState(
+    //   {
+    //     trainee: [
+    //       ...this.state.trainee.data.map(element => {
+    //         element.dataApplications.filter(e => e.TraineeId !== idTrainee);
+    //       })
+    //     ]
+    //   },
+    //   console.log("after trainee", this.state.trainee)
+    // );
+  };
+
   render() {
     const { trainee, isLoaded } = this.state;
+    console.log("before trainee", trainee);
     const { mode, modeRefuse, modeSelect, size } = this.props;
     return (
       <div>
@@ -59,8 +107,8 @@ class CompanyApplicationsList extends Component {
                   />
                 ))}
               </div>
-            </div>
-          ))}
+            ))
+          : "loading"}
       </div>
     );
   }

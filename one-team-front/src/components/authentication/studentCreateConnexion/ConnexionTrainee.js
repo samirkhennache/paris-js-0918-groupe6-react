@@ -101,7 +101,7 @@ class ConnexionTrainee extends Component {
             label="Email"
             onChange={this.onChange}
             // margin="normal"
-            variant="outlined"
+            variant="outlined" //sessionStorage.setItem("token", result.data.id);
             required
           />
           <TextField
