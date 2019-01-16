@@ -1,3 +1,6 @@
 .createForm {
   margin-bottom: 50px;
 }
+.profileTextField {
+  width: 100%;
+}

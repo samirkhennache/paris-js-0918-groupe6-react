@@ -154,7 +154,7 @@ class TraineeProfile extends Component {
             </div>
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="firstname"
               placeholder="Prénom"
               defaultValue={data.firstname}
@@ -164,7 +164,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="lastname"
               placeholder="Nom"
               defaultValue={data.lastname}
@@ -176,7 +176,7 @@ class TraineeProfile extends Component {
             <TextField
               disabled
               type="email"
-              className="textField"
+              className="profileTextField"
               name="email"
               placeholder="Email"
               defaultValue={data.email}
@@ -186,7 +186,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="phone"
               placeholder="Phone"
               defaultValue={data.phone}
@@ -195,7 +195,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="address"
               placeholder="Adress"
               defaultValue={data.address}
@@ -204,7 +204,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="town"
               placeholder="Ville"
               defaultValue={data.town}
@@ -213,7 +213,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="postalCode"
               placeholder="Postal Code"
               defaultValue={data.postalCode}
@@ -222,7 +222,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="school"
               placeholder="École"
               defaultValue={data.school}
@@ -231,7 +231,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="titre"
               placeholder="Intitulé de stage"
               defaultValue={data.titre}
@@ -241,12 +241,13 @@ class TraineeProfile extends Component {
             <TextField
               type="text"
               multiline
-              className="textField"
+              className="profileTextField"
               name="description"
               placeholder="Descriptions"
               defaultValue={data.description}
               margin="normal"
               variant="outlined"
+              rows="5"
             />
             <TextField
               id="date"
