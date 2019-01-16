@@ -126,11 +126,6 @@ class StudentApplication extends Component {
       content
     } = this.state;
     const { mode, modeSelect, modeRefuse, isFull } = this.props;
-<<<<<<< HEAD
-    console.log("isFull : ", isFull);
-=======
->>>>>>> ac1f3c5ee715f3d88398523fc38927251c921bce
-
     switch (mode) {
       case "APPLICATION": {
         return (

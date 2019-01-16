@@ -79,33 +79,35 @@ class CompanyApplicationsList extends Component {
     const { mode, modeRefuse, modeSelect, size } = this.props;
     return (
       <div>
-        {isLoaded &&
-          trainee.data.sort(this.compareMissions).map(element => (
-            <div>
-              <Typography variant="h2" component="h3">
-                {element.titleMission}
-              </Typography>
-              <div className="blocList">
-                {element.dataApplications.map(e => (
-                  <StudentApplication
-                    firstname={e.Trainee.firstname}
-                    town={e.Trainee.town}
-                    pictures={e.Trainee.pictures}
-                    dateStart={e.Trainee.dateStart}
-                    dateEnd={e.Trainee.dateEnd}
-                    titre={e.Trainee.titre}
-                    descriptionTrainee={e.Trainee.description}
-                    school={e.Trainee.school}
-                    size={SMALL}
-                    missionId={element.mission_id}
-                    traineeId={e.Trainee.id}
-                    modeSelect={modeSelect}
-                    modeRefuse={modeRefuse}
-                    mode={mode}
-                    isFull={element.isFull}
-                    {...this.props}
-                  />
-                ))}
+        {isLoaded
+          ? trainee.data.sort(this.compareMissions).map(element => (
+              <div>
+                <Typography variant="h2" component="h3">
+                  {element.titleMission}
+                </Typography>
+                <div className="blocList">
+                  {element.dataApplications.map(e => (
+                    <StudentApplication
+                      firstname={e.Trainee.firstname}
+                      town={e.Trainee.town}
+                      pictures={e.Trainee.pictures}
+                      dateStart={e.Trainee.dateStart}
+                      dateEnd={e.Trainee.dateEnd}
+                      titre={e.Trainee.titre}
+                      descriptionTrainee={e.Trainee.description}
+                      school={e.Trainee.school}
+                      size={SMALL}
+                      missionId={element.mission_id}
+                      traineeId={e.Trainee.id}
+                      modeSelect={modeSelect}
+                      modeRefuse={modeRefuse}
+                      mode={mode}
+                      isFull={element.isFull}
+                      {...this.props}
+                    />
+                  ))}
+                </div>
+                ))
               </div>
             ))
           : "loading"}
