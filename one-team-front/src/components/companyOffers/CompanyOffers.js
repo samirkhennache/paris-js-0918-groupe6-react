@@ -55,6 +55,7 @@ class CompanyOffers extends Component {
 
   render() {
     const { missions } = this.state;
+    console.log("missions", missions);
 
     return (
       <div className="mesMissions">
@@ -84,6 +85,7 @@ class CompanyOffers extends Component {
               dateEnd={new Date(e.dateEnd).toLocaleDateString()}
               description={e.description}
               idMission={e.id}
+              isFull={e.isFull}
               handlerUpdateMission={this.handlerUpdateMission}
               handlerDeleteMission={this.handlerDeleteMission}
               {...this.props}

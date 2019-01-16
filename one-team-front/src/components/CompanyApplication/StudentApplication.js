@@ -109,10 +109,10 @@ class StudentApplication extends Component {
   };
 
   handleClose = () => {
+    const { handleCloseRefresh, traineeId, missionId } = this.props;
+    console.log(traineeId);
+    handleCloseRefresh(traineeId, missionId);
     this.setState({ openMessageSelect: false, openMessageRefuse: false });
-    console.log("close");
-    // refresh the page
-    window.location.reload();
   };
 
   render() {
@@ -125,7 +125,7 @@ class StudentApplication extends Component {
       button,
       content
     } = this.state;
-    const { mode, modeSelect, modeRefuse } = this.props;
+    const { mode, modeSelect, modeRefuse, isFull } = this.props;
 
     switch (mode) {
       case "APPLICATION": {
@@ -137,6 +137,7 @@ class StudentApplication extends Component {
               </div>
               <Button
                 onClick={() => this.selectStudent(modeSelect)}
+
                 variant="contained"
                 color="primary"
               >
@@ -203,13 +204,19 @@ class StudentApplication extends Component {
               <div onClick={() => this.clickStudentSmall()}>
                 <StudentView {...this.props} size={SMALL} />
               </div>
-              <Button
-                onClick={() => this.refuseStudent(modeRefuse)}
-                variant="contained"
-                color="secondary"
-              >
-                Refuser
-              </Button>
+              {isFull === true ? (
+                <Button disabled variant="contained" color="secondary">
+                  Refuser
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => this.refuseStudent(modeRefuse)}
+                  variant="contained"
+                  color="secondary"
+                >
+                  Refuser
+                </Button>
+              )}
               <StudentProfilView
                 {...this.props}
                 open={open}
