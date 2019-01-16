@@ -111,7 +111,7 @@ const CompanyCreateOffers = class extends React.Component {
         className="dialog"
         // onClose={onClose}
         {...other}
-        fullWidth={true}
+        fullWidth
         maxWidth="lg"
       >
         <DialogTitle>
