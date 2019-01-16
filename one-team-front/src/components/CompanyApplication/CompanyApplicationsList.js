@@ -24,10 +24,6 @@ class CompanyApplicationsList extends Component {
       });
   }
 
-  compareMissions = (a, b) => {
-    return a - b;
-  };
-
   handleCloseRefresh = (idTrainee, missionId) => {
     const trainee = [];
     this.state.trainee.map(e => {
@@ -94,6 +90,7 @@ class CompanyApplicationsList extends Component {
                       modeSelect={modeSelect}
                       modeRefuse={modeRefuse}
                       mode={mode}
+                      isFull={element.isFull}
                       handleCloseRefresh={this.handleCloseRefresh}
                       {...this.props}
                     />
