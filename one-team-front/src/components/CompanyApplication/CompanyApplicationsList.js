@@ -24,9 +24,7 @@ class CompanyApplicationsList extends Component {
       });
   }
 
-  compareMissions = (a, b) => {
-    return a - b;
-  };
+  compareMissions = (a, b) => a - b;
 
   render() {
     const { trainee, isLoaded } = this.state;
@@ -56,6 +54,7 @@ class CompanyApplicationsList extends Component {
                     modeSelect={modeSelect}
                     modeRefuse={modeRefuse}
                     mode={mode}
+                    isFull={element.isFull}
                     {...this.props}
                   />
                 ))}
