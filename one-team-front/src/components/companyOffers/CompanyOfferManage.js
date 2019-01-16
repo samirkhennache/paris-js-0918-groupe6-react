@@ -96,9 +96,11 @@ class CompanyOfferManage extends Component {
       dateStart,
       dateEnd,
       description,
-      modifMission
+      modifMission,
+      isFull
     } = this.props;
     const { title, content, button, open } = this.state;
+    console.log("FULL", isFull);
 
     return (
       <div>
@@ -138,13 +140,19 @@ class CompanyOfferManage extends Component {
         <hr align="center" width="50%" color="midnightblue" size="1" />
         {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
         <Team {...this.props} />
-        <AwesomeButton
-          action={this.validateMission}
-          type="primary"
-          className="aws-btn validate"
-        >
-          Valider ma team
-        </AwesomeButton>
+        {isFull === true ? (
+          <AwesomeButton type="primary" disabled className="aws-btn validate">
+            Valider ma team
+          </AwesomeButton>
+        ) : (
+          <AwesomeButton
+            action={this.validateMission}
+            type="primary"
+            className="aws-btn validate"
+          >
+            Valider ma team
+          </AwesomeButton>
+        )}
         <hr align="center" width="90%" color="midnightblue" size="1" />
         {/* **************** DIALOG VALIDATE ************************** */}
         <Dialog
