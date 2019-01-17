@@ -9,6 +9,7 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Select from "@material-ui/core/Select";
 import StudentView from "../CompanyApplication/StudentView";
 import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
+import ConvertDate from "../../tools";
 import "./traineeProfile.css";
 
 class TraineeProfile extends Component {
@@ -93,19 +94,19 @@ class TraineeProfile extends Component {
     // console.log("okkkkk");
   };
 
-  date = data => {
-    const date = new Date(data);
-    let day = date.getDate();
-    if (day < 10) {
-      day = `0${day}`;
-    }
-    let month = date.getMonth() + 1;
-    if (month < 10) {
-      month = `0${month}`;
-    }
-    const year = date.getFullYear();
-    return `${year}-${month}-${day}`;
-  };
+  // date = data => {
+  //   const date = new Date(data);
+  //   let day = date.getDate();
+  //   if (day < 10) {
+  //     day = `0${day}`;
+  //   }
+  //   let month = date.getMonth() + 1;
+  //   if (month < 10) {
+  //     month = `0${month}`;
+  //   }
+  //   const year = date.getFullYear();
+  //   return `${year}-${month}-${day}`;
+  // };
 
   render() {
     const { data } = this.state;
@@ -273,12 +274,9 @@ class TraineeProfile extends Component {
               type="date"
               defaultValue={
                 this.state.data.dateStart !== null
-                  ? this.date(this.state.data.dateStart)
+                  ? ConvertDate(this.state.data.dateStart)
                   : null
               }
-              InputLabelProps={{
-                shrink: true
-              }}
               margin="normal"
               variant="outlined"
             />
@@ -289,7 +287,7 @@ class TraineeProfile extends Component {
               type="date"
               defaultValue={
                 this.state.data.dateEnd !== null
-                  ? this.date(this.state.data.dateEnd)
+                  ? ConvertDate(this.state.data.dateEnd)
                   : null
               }
               InputLabelProps={{
