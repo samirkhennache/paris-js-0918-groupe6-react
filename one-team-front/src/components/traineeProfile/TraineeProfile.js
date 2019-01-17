@@ -291,6 +291,9 @@ class TraineeProfile extends Component {
                   ? ConvertDate(this.state.data.dateStart)
                   : null
               }
+              InputLabelProps={{
+                shrink: true
+              }}
               margin="normal"
               variant="outlined"
             />
