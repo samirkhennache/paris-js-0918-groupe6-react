@@ -56,9 +56,9 @@ class StudentCreateAccount extends Component {
         if (error.response.status === 400) {
           this.setState({
             open: true,
-            title: `user already exists`,
-            content: `Cette adresse mail existe déjà, connectez-vous!`,
-            button: `Se connecter`
+            title: `Utilisateur déjà enregistré`,
+            content: `Cette adresse mail existe déjà, connectez-vous`,
+            button: `Fermer`
           });
         } else {
           this.setState({

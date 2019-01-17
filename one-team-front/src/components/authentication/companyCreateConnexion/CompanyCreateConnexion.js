@@ -15,6 +15,7 @@ class CompanyCreateConnexion extends Component {
   clickConnexion = () => {
     this.setState({ connexion: true });
   };
+  
   render() {
     const { connexion } = this.state;
     return (
