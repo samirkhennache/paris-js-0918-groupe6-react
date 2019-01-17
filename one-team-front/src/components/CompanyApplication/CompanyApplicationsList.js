@@ -61,14 +61,15 @@ class CompanyApplicationsList extends Component {
     console.log(trainee);
   };
 
+  sortData = data => data.sort((a, b) => a.mission_id - b.mission_id);
+
   render() {
     const { trainee, isLoaded } = this.state;
-    console.log("before trainee", trainee);
     const { mode, modeRefuse, modeSelect, size } = this.props;
     return (
       <div>
         {isLoaded
-          ? trainee.map(element => (
+          ? this.sortData(trainee).map(element => (
               <div>
                 <Typography variant="h2" component="h3">
                   {element.titleMission}
