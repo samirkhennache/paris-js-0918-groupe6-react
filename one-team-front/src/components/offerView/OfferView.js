@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Typography from "@material-ui/core/Typography";
 
 import "./Button.css";
 
@@ -23,7 +24,7 @@ const OfferView = props => {
           <h3> {titleMission} </h3> <p> {company} </p>{" "}
           <p> début: {new Date(dateStart).toLocaleDateString()} </p>
           <p> fin: {new Date(dateEnd).toLocaleDateString()} </p>{" "}
-          {statusAppli && <p> en cours </p>}
+          {statusAppli ? <p> En cours </p> : <p> Refusé </p>}
           {/* <ModalOffer /> */}
         </div>
       );

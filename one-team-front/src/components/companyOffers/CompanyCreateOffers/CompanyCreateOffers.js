@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import ConvertDate from "../../../tools";
 
 const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
 
@@ -57,36 +58,25 @@ const CompanyCreateOffers = class extends React.Component {
       CompanyId: mission.CompanyId,
       LevelStudyId: Number(mission.LevelStudyId)
     };
-    // console.log(">>>", this.state.mission);
-    // console.log("postFormMission", postFormMission);
-
     if (!isEditMode) {
       Axios.post(API_ENDPOINT_MISSION, postFormMission).then(res => {
-        // window.alert("Ajout ok");
-        // console.log(">>>", res.data);
-        this.props.handlerCreateMission(res.data);
-        this.props.onClose();
+        const { handlerCreateMission } = this.props;
+        handlerCreateMission(res.data);
+        this.closeMission();
       });
     } else {
       Axios.put(`${API_ENDPOINT_MISSION}${mission.id}`, postFormMission).then(
         res => {
-          // window.alert("Modification ok");
-          // console.log(">>>", res.data);
-          this.props.handlerUpdateMission(res.data);
-          this.props.onClose();
+          const { handlerUpdateMission } = this.props;
+          handlerUpdateMission(res.data);
+          this.closeMission();
         }
       );
     }
   };
 
-  closeMission = () => {
-    this.setState(this.defaultState());
-    this.props.onClose();
-  };
-
   defaultState() {
     const idCompany = sessionStorage.getItem("token");
-
     return {
       mission: {
         titleMission: "",
@@ -103,6 +93,12 @@ const CompanyCreateOffers = class extends React.Component {
     };
   }
 
+  closeMission = () => {
+    const { onClose } = this.props;
+    this.setState(this.defaultState());
+    onClose();
+  };
+
   render() {
     const { mission, isEditMode, idLoaded, levelstudies } = this.state;
     const { onClose, ...other } = this.props;
@@ -111,7 +107,7 @@ const CompanyCreateOffers = class extends React.Component {
         className="dialog"
         // onClose={onClose}
         {...other}
-        fullWidth={true}
+        fullWidth
         maxWidth="lg"
       >
         <DialogTitle>
@@ -137,12 +133,19 @@ const CompanyCreateOffers = class extends React.Component {
                   label="Date de début"
                   name="dateStart"
                   type="date"
-                  value={mission.dateStart}
+                  value={
+                    mission.dateStart !== null
+                      ? ConvertDate(mission.dateStart)
+                      : null
+                  }
                   onChange={this.handlerOnChange}
                   required
                   fullWidth
                   margin="normal"
                   variant="outlined"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
                 />
               </div>
               <div className="dateText">
@@ -151,7 +154,11 @@ const CompanyCreateOffers = class extends React.Component {
                   label="Date de fin"
                   type="date"
                   name="dateEnd"
-                  value={mission.dateEnd}
+                  value={
+                    mission.dateEnd !== null
+                      ? ConvertDate(mission.dateEnd)
+                      : null
+                  }
                   onChange={this.handlerOnChange}
                   required
                   fullWidth
@@ -215,7 +222,6 @@ const CompanyCreateOffers = class extends React.Component {
                 : "loading..."}
             </Select>
           </form>
-          <p>{isEditMode ? "" : "Cette offre sera publiée après validation"}</p>
         </div>
         <DialogActions>
           <Button onClick={this.closeMission} color="primary">
