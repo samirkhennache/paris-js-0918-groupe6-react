@@ -16,21 +16,6 @@ class TraineeProfile extends Component {
     selectedFile: null
   };
 
-  componentDidMount() {
-    const id = sessionStorage.getItem("token");
-    axios
-      .get(`http://localhost:3001/trainee/profile/${id}`)
-      .then(response => {
-        console.log(response.data);
-        this.setState({
-          data: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error.response);
-      });
-  }
-
   handleChange = event => {
     this.setState(prevState => ({
       data: {
@@ -39,6 +24,32 @@ class TraineeProfile extends Component {
       }
     }));
   };
+
+  componentDidMount() {
+    const id = sessionStorage.getItem("token");
+    axios
+      .get(`http://localhost:3001/trainee/profile/${id}`)
+      .then(response => {
+        // console.log(response.data);
+        this.setState({
+          data: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+    axios
+      .get("http://localhost:3001/paradata/levelstudies")
+      .then(response => {
+        // console.log(response.data);
+        this.setState({
+          levelstudies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  }
 
   onSubmit = e => {
     // e.preventDefault();
@@ -71,12 +82,15 @@ class TraineeProfile extends Component {
 
   uploadPhoto = () => {
     // e.preventDefault();
-    const selectedFile = this.state;
     const id = sessionStorage.getItem("token");
-    if (selectedFile !== null) {
-      console.log("uploadphoto", selectedFile);
+    if (this.state.selectedFile !== null) {
+      console.log("uploadphoto", this.state.selectedFile);
       const formData = new FormData();
-      formData.append("avatar", selectedFile, selectedFile.name);
+      formData.append(
+        "avatar",
+        this.state.selectedFile,
+        this.state.selectedFile.name
+      );
       axios.post(`http://localhost:3001/trainee/uploadphoto/${id}`, formData);
     }
   };
@@ -90,36 +104,36 @@ class TraineeProfile extends Component {
     fr.readAsDataURL(document.querySelector('input[type="file"]').files[0]);
 
     this.setState({ selectedFile: event.target.files[0] });
-    // console.log("okkkkk");
+    console.log("okkkkk");
   };
 
-  date = data => {
+  date(data) {
     const date = new Date(data);
     let day = date.getDate();
     if (day < 10) {
-      day = `0${day}`;
+      day = "0" + day;
     }
     let month = date.getMonth() + 1;
     if (month < 10) {
-      month = `0${month}`;
+      month = "0" + month;
     }
     const year = date.getFullYear();
     return `${year}-${month}-${day}`;
-  };
+  }
 
   render() {
     const { data } = this.state;
-    if (this.state.data == null) {
+    if (this.state.data == null || this.state.levelstudies == null) {
       return <div>Loading</div>;
     }
-    console.log("Profile", this.state);
+    console.log(this.state.levelstudies);
     return (
       <div>
         <h1>Complète ton profile</h1>
         <div className="createForm">
           <form onSubmit={this.onSubmit}>
             <div>
-              <label htmlFor="file-input">
+              <label for="file-input">
                 {this.state.data.pictures !== null ? (
                   <div>
                     <img
@@ -147,7 +161,6 @@ class TraineeProfile extends Component {
               <input
                 id="file-input"
                 type="file"
-                accept=".jpg, .png, .jpeg,|images/*"
                 onChange={this.fileChangedHandler}
                 hidden
               />
@@ -239,10 +252,11 @@ class TraineeProfile extends Component {
                   name: "LevelStudyId"
                 }}
               >
-                <MenuItem value={1}>BAC+2</MenuItem>
-                <MenuItem value={2}>BAC+3</MenuItem>
-                <MenuItem value={3}>BAC+4</MenuItem>
-                <MenuItem value={4}>BAC+5</MenuItem>
+                {this.state.levelstudies.map(e => (
+                  <MenuItem key={e.id} value={e.id}>
+                    {e.label}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
 
@@ -320,7 +334,6 @@ class TraineeProfile extends Component {
           dateStart={data.dateStart}
           dateEnd={data.dateEnd}
           size={FULL_RESTRICTED}
-          LevelStudy={data.LevelStudy ? data.LevelStudy.label : null}
         />
       </div>
     );
