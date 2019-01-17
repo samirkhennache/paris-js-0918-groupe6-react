@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import CompanyCreateAccount from "./CompanyCreateAccount";
 import ConnexionCompany from "./ConnexionCompany";
-import { Link } from "react-router-dom";
-
-import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import "../authentication.css";
 
 class CompanyCreateConnexion extends Component {
   state = {
@@ -32,14 +28,14 @@ class CompanyCreateConnexion extends Component {
         {connexion ? (
           <p>
             Vous n'êtes pas encore sur OneTeam ?{" "}
-            <a href="#" onClick={this.clickAccount}>
+            <a href="#" onClick={this.clickAccount} className="orangeBold">
               Inscrivez-vous !
             </a>{" "}
           </p>
         ) : (
           <p>
             J'ai déjà un compte,{" "}
-            <a href="#" onClick={this.clickConnexion}>
+            <a href="#" onClick={this.clickConnexion} className="orangeBold">
               je me connecte
             </a>{" "}
             !
