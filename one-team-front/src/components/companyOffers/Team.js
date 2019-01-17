@@ -13,7 +13,7 @@ class Team extends Component {
       <div>
         <h2>My team</h2>
         {trainee &&
-          trainee.data.map(data => (
+          trainee.map(data => (
             <div>
               {data.mission_id === idMission &&
                 data.dataApplications.map(e => (
