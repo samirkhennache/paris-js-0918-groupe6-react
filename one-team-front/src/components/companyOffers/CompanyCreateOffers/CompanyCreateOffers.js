@@ -58,36 +58,25 @@ const CompanyCreateOffers = class extends React.Component {
       CompanyId: mission.CompanyId,
       LevelStudyId: Number(mission.LevelStudyId)
     };
-    // console.log(">>>", this.state.mission);
-    // console.log("postFormMission", postFormMission);
-
     if (!isEditMode) {
       Axios.post(API_ENDPOINT_MISSION, postFormMission).then(res => {
-        // window.alert("Ajout ok");
-        // console.log(">>>", res.data);
-        this.props.handlerCreateMission(res.data);
-        this.props.onClose();
+        const { handlerCreateMission } = this.props;
+        handlerCreateMission(res.data);
+        this.closeMission();
       });
     } else {
       Axios.put(`${API_ENDPOINT_MISSION}${mission.id}`, postFormMission).then(
         res => {
-          // window.alert("Modification ok");
-          // console.log(">>>", res.data);
-          this.props.handlerUpdateMission(res.data);
-          this.props.onClose();
+          const { handlerUpdateMission } = this.props;
+          handlerUpdateMission(res.data);
+          this.closeMission();
         }
       );
     }
   };
 
-  closeMission = () => {
-    this.setState(this.defaultState());
-    this.props.onClose();
-  };
-
   defaultState() {
     const idCompany = sessionStorage.getItem("token");
-
     return {
       mission: {
         titleMission: "",
@@ -103,6 +92,12 @@ const CompanyCreateOffers = class extends React.Component {
       idLoaded: false
     };
   }
+
+  closeMission = () => {
+    const { onClose } = this.props;
+    this.setState(this.defaultState());
+    onClose();
+  };
 
   render() {
     const { mission, isEditMode, idLoaded, levelstudies } = this.state;
