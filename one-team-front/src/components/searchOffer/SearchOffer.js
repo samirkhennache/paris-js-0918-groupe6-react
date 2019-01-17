@@ -11,7 +11,7 @@ class SearchOffer extends Component {
         <h3> Page Trainee Search Offer </h3>
         <FindOffers {...this.props} />
         {/* <StudentApplicationList /> */}
-        <StudentOfferList {...this.props} />
+        {/* <StudentOfferList {...this.props} /> */}
       </div>
     );
   }

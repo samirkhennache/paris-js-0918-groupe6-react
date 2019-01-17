@@ -78,6 +78,7 @@ class CompanyApplicationsList extends Component {
                       dateEnd={e.Trainee.dateEnd}
                       titre={e.Trainee.titre}
                       descriptionTrainee={e.Trainee.description}
+                      LevelStudy={e.LevelStudy ? e.LevelStudy.label : null}
                       school={e.Trainee.school}
                       size={SMALL}
                       missionId={element.mission_id}
