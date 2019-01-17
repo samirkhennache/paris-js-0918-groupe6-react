@@ -9,7 +9,6 @@ import "./ViewStudent.css";
 class CompanyApplicationsList extends Component {
   state = {
     trainee: [],
-    id: 1,
     isLoaded: false
   };
 
@@ -19,7 +18,6 @@ class CompanyApplicationsList extends Component {
     axios
       .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
       .then(res => {
-        console.log("trainee", res.data.data);
         this.setState({ trainee: res.data.data, isLoaded: true });
       });
   }
@@ -27,11 +25,7 @@ class CompanyApplicationsList extends Component {
   handleCloseRefresh = (idTrainee, missionId) => {
     const trainee = [];
     this.state.trainee.map(e => {
-      console.log("e", e);
       if (e.mission_id === missionId) {
-        // const newDataApplication = e.dataApplications.map(f => {
-        //   if (f.TraineeId !== idTrainee) return f;
-        // });
         const newDataApplication = [
           ...e.dataApplications.filter(
             element => element.TraineeId !== idTrainee
@@ -44,7 +38,6 @@ class CompanyApplicationsList extends Component {
           dataApplications: newDataApplication
         };
         trainee.push(result);
-        console.log(newDataApplication);
       } else {
         const result = {
           isFull: e.isFull,
@@ -58,7 +51,6 @@ class CompanyApplicationsList extends Component {
     this.setState({
       trainee
     });
-    console.log(trainee);
   };
 
   sortData = data => data.sort((a, b) => a.mission_id - b.mission_id);
@@ -71,9 +63,11 @@ class CompanyApplicationsList extends Component {
         {isLoaded
           ? this.sortData(trainee).map(element => (
               <div>
-                <Typography variant="h2" component="h3">
-                  {element.titleMission}
-                </Typography>
+                {element.dataApplications.length !== 0 && (
+                  <Typography variant="h2" component="h3">
+                    {element.titleMission}
+                  </Typography>
+                )}
                 <div className="blocList">
                   {element.dataApplications.map(e => (
                     <StudentApplication
