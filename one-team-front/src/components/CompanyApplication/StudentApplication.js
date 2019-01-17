@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
 import axios from "axios";
@@ -25,7 +24,6 @@ class StudentApplication extends Component {
   };
 
   clickStudentSmall = () => {
-    console.log("open");
     this.setState({ open: true });
   };
 
@@ -42,7 +40,6 @@ class StudentApplication extends Component {
         mode
       })
       .then(response => {
-        console.log(response);
         this.setState({
           openMessageSelect: true,
           title: `Trainee added`,
@@ -51,7 +48,6 @@ class StudentApplication extends Component {
         });
       })
       .catch(error => {
-        console.log(error.response);
         if (error.response.status === 404) {
           this.setState({
             openMessageSelect: true,
@@ -116,7 +112,6 @@ class StudentApplication extends Component {
   };
 
   render() {
-    console.log(this.props.descriptionTrainee);
     const {
       open,
       openMessageSelect,
@@ -209,7 +204,7 @@ class StudentApplication extends Component {
               <div onClick={() => this.clickStudentSmall()}>
                 <StudentView {...this.props} size={SMALL} />
               </div>
-              {disabled ? (
+              {disabled || isFull ? (
                 <Button disabled variant="contained" color="secondary">
                   Refuser
                 </Button>
