@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import ConvertDate from "../../../tools";
 
 const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
 
@@ -137,12 +138,19 @@ const CompanyCreateOffers = class extends React.Component {
                   label="Date de début"
                   name="dateStart"
                   type="date"
-                  value={mission.dateStart}
+                  value={
+                    mission.dateStart !== null
+                      ? ConvertDate(mission.dateStart)
+                      : null
+                  }
                   onChange={this.handlerOnChange}
                   required
                   fullWidth
                   margin="normal"
                   variant="outlined"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
                 />
               </div>
               <div className="dateText">
@@ -151,7 +159,11 @@ const CompanyCreateOffers = class extends React.Component {
                   label="Date de fin"
                   type="date"
                   name="dateEnd"
-                  value={mission.dateEnd}
+                  value={
+                    mission.dateEnd !== null
+                      ? ConvertDate(mission.dateEnd)
+                      : null
+                  }
                   onChange={this.handlerOnChange}
                   required
                   fullWidth
@@ -215,7 +227,6 @@ const CompanyCreateOffers = class extends React.Component {
                 : "loading..."}
             </Select>
           </form>
-          <p>{isEditMode ? "" : "Cette offre sera publiée après validation"}</p>
         </div>
         <DialogActions>
           <Button onClick={this.closeMission} color="primary">
