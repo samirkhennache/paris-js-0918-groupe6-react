@@ -67,6 +67,9 @@ class FindOffers extends Component {
             dateStart={element.dateStart}
             dateEnd={element.dateEnd}
             description={element.description}
+            intro={element.intro}
+            town={element.town}
+            LevelStudy={element.LevelStudy.label}
             {...this.props}
           />
         ))}
