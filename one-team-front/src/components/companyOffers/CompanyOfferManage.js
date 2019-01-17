@@ -41,7 +41,6 @@ class CompanyOfferManage extends Component {
   };
 
   validateMission = () => {
-    console.log("click validate");
     const { idMission } = this.props;
     const missionId = idMission;
     const companyId = sessionStorage.getItem("token");
@@ -142,7 +141,7 @@ class CompanyOfferManage extends Component {
         <hr align="center" width="50%" color="midnightblue" size="1" />
         {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
         <Team {...this.props} disabled={disabled}/>
-        {disabled ? (
+        {disabled || isFull ? (
           <AwesomeButton type="primary" disabled className="aws-btn validate">
             Valider ma team
           </AwesomeButton>
