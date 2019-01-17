@@ -9,6 +9,7 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Select from "@material-ui/core/Select";
 import StudentView from "../CompanyApplication/StudentView";
 import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
+import ConvertDate from "../../tools";
 import "./traineeProfile.css";
 
 class TraineeProfile extends Component {
@@ -287,12 +288,9 @@ class TraineeProfile extends Component {
               type="date"
               defaultValue={
                 this.state.data.dateStart !== null
-                  ? this.date(this.state.data.dateStart)
+                  ? ConvertDate(this.state.data.dateStart)
                   : null
               }
-              InputLabelProps={{
-                shrink: true
-              }}
               margin="normal"
               variant="outlined"
             />
@@ -303,7 +301,7 @@ class TraineeProfile extends Component {
               type="date"
               defaultValue={
                 this.state.data.dateEnd !== null
-                  ? this.date(this.state.data.dateEnd)
+                  ? ConvertDate(this.state.data.dateEnd)
                   : null
               }
               InputLabelProps={{

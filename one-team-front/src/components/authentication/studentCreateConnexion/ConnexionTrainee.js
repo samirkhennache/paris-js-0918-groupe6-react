@@ -62,22 +62,22 @@ class ConnexionTrainee extends Component {
         if (error.response.status === 401) {
           this.setState({
             open: true,
-            title: `user doesn't exists`,
+            title: `Cet utilisateur n'existe pas`,
             content: `Cette adresse mail n'est pas reconnue, essayer de nouveau ou bien crééz votre compte :)`,
-            button: `Créer un compte`
+            button: `Fermer`
           });
         } else if (error.response.status === 404) {
           this.setState({
             open: true,
-            title: `false password`,
-            content: `erreur lors de la saisie du mot de passe`,
+            title: `Mauvais mot de passe`,
+            content: `Erreur lors de la saisie du mot de passe`,
             button: `Fermer`
           });
         } else {
           this.setState({
             open: true,
-            title: error.response.status,
-            content: `erreur inconnue, veuillez recommencez`,
+            title: "Erreur inconnue",
+            content: `Une erreur s'est produite, veuillez recommencez s'il-vous-plait`,
             button: `Fermer`
           });
         }

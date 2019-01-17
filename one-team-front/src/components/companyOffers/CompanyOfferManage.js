@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import { AwesomeButton } from "react-awesome-button";
 import Button from "@material-ui/core/Button";
-import Team from "./Team";
-import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import "./Button.css";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Hidden from "@material-ui/core/Hidden";
+import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
+import Team from "./Team";
 
 const idCompany = sessionStorage.getItem("token");
 
@@ -98,22 +99,25 @@ class CompanyOfferManage extends Component {
       dateEnd,
       description,
       modifMission,
+      intro,
       isFull
     } = this.props;
     const { title, content, button, open, disabled } = this.state;
+    const descriptionToShow = description.substring(0, 300);
+    console.log("ma description ", description.substring(0, 20));
+
     console.log("FULL", isFull);
 
     return (
       <div>
         {/* ***** FICHE MISSION ***** */}
         <div>
-          {titleMission}
-          <br />
-          {dateStart}
-          <br />
-          {dateEnd}
-          <br />
-          {description}
+          <h3>{titleMission}</h3>
+          <p>{dateStart}</p>
+          <p>{dateEnd}</p>
+          <Hidden xsDown>
+            <p>{`${descriptionToShow} ...`}</p>
+          </Hidden>
         </div>
         {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
         <AwesomeButton
@@ -140,7 +144,7 @@ class CompanyOfferManage extends Component {
         <br />
         <hr align="center" width="50%" color="midnightblue" size="1" />
         {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
-        <Team {...this.props} disabled={disabled}/>
+        <Team {...this.props} disabled={disabled} />
         {disabled || isFull ? (
           <AwesomeButton type="primary" disabled className="aws-btn validate">
             Valider ma team

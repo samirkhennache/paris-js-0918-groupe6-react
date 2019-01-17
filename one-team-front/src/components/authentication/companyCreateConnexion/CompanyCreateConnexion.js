@@ -15,11 +15,12 @@ class CompanyCreateConnexion extends Component {
   clickConnexion = () => {
     this.setState({ connexion: true });
   };
+  
   render() {
     const { connexion } = this.state;
     return (
       <div>
-        {connexion ? <h3>Inscrivez-vous !</h3> : <h3>Connectez-vous !</h3>}
+        {connexion ? <h3>Connectez-vous !</h3> : <h3>Inscrivez-vous !</h3>}
         {connexion ? (
           <ConnexionCompany {...this.props} />
         ) : (
