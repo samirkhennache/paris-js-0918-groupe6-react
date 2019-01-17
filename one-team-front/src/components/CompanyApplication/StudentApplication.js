@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 // import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import StudentView from "./StudentView";
-import StudentProfilView from "./StudentProfilView";
-import { SMALL } from "../CompanyApplication/studentConstant";
 
 import axios from "axios";
 import Dialog from "@material-ui/core/Dialog";
@@ -13,6 +10,9 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 import { loadavg } from "os";
+import { SMALL } from "./studentConstant";
+import StudentProfilView from "./StudentProfilView";
+import StudentView from "./StudentView";
 
 class StudentApplication extends Component {
   state = {
@@ -109,10 +109,10 @@ class StudentApplication extends Component {
   };
 
   handleClose = () => {
+    const { handleCloseRefresh, traineeId, missionId } = this.props;
+    console.log(traineeId);
+    handleCloseRefresh(traineeId, missionId);
     this.setState({ openMessageSelect: false, openMessageRefuse: false });
-    console.log("close");
-    // refresh the page
-    window.location.reload();
   };
 
   render() {
@@ -125,7 +125,7 @@ class StudentApplication extends Component {
       button,
       content
     } = this.state;
-    const { mode, modeSelect, modeRefuse } = this.props;
+    const { mode, modeSelect, modeRefuse, disabled, isFull } = this.props;
 
     switch (mode) {
       case "APPLICATION": {
@@ -135,13 +135,19 @@ class StudentApplication extends Component {
               <div onClick={() => this.clickStudentSmall()}>
                 <StudentView {...this.props} size={SMALL} open={open} />
               </div>
-              <Button
-                onClick={() => this.selectStudent(modeSelect)}
-                variant="contained"
-                color="primary"
-              >
-                Ajouter
-              </Button>
+              {isFull ? (
+                <Button variant="contained" disabled>
+                  Ajouter
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => this.selectStudent(modeSelect)}
+                  variant="contained"
+                  color="primary"
+                >
+                  Ajouter
+                </Button>
+              )}
               <Button
                 onClick={() => this.refuseStudent(modeRefuse)}
                 variant="contained"
@@ -203,13 +209,19 @@ class StudentApplication extends Component {
               <div onClick={() => this.clickStudentSmall()}>
                 <StudentView {...this.props} size={SMALL} />
               </div>
-              <Button
-                onClick={() => this.refuseStudent(modeRefuse)}
-                variant="contained"
-                color="secondary"
-              >
-                Refuser
-              </Button>
+              {disabled ? (
+                <Button disabled variant="contained" color="secondary">
+                  Refuser
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => this.refuseStudent(modeRefuse)}
+                  variant="contained"
+                  color="secondary"
+                >
+                  Refuser
+                </Button>
+              )}
               <StudentProfilView
                 {...this.props}
                 open={open}
@@ -447,4 +459,4 @@ export default StudentApplication;
 // CompanyApplicationItem.prototype = {
 //   classes: PropTypes.object.isRequired
 // };
-//export default withStyles(styles)(CompanyApplicationItem);
+// export default withStyles(styles)(CompanyApplicationItem);
