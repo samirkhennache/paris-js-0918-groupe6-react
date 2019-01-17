@@ -16,15 +16,6 @@ class TraineeProfile extends Component {
     selectedFile: null
   };
 
-  handleChange = event => {
-    this.setState(prevState => ({
-      data: {
-        ...prevState.data,
-        [event.target.name]: event.target.value
-      }
-    }));
-  };
-
   componentDidMount() {
     const id = sessionStorage.getItem("token");
     axios
@@ -39,6 +30,15 @@ class TraineeProfile extends Component {
         console.log(error.response);
       });
   }
+
+  handleChange = event => {
+    this.setState(prevState => ({
+      data: {
+        ...prevState.data,
+        [event.target.name]: event.target.value
+      }
+    }));
+  };
 
   onSubmit = e => {
     // e.preventDefault();
@@ -71,15 +71,12 @@ class TraineeProfile extends Component {
 
   uploadPhoto = () => {
     // e.preventDefault();
+    const selectedFile = this.state;
     const id = sessionStorage.getItem("token");
-    if (this.state.selectedFile !== null) {
-      console.log("uploadphoto", this.state.selectedFile);
+    if (selectedFile !== null) {
+      console.log("uploadphoto", selectedFile);
       const formData = new FormData();
-      formData.append(
-        "avatar",
-        this.state.selectedFile,
-        this.state.selectedFile.name
-      );
+      formData.append("avatar", selectedFile, selectedFile.name);
       axios.post(`http://localhost:3001/trainee/uploadphoto/${id}`, formData);
     }
   };
@@ -93,7 +90,7 @@ class TraineeProfile extends Component {
     fr.readAsDataURL(document.querySelector('input[type="file"]').files[0]);
 
     this.setState({ selectedFile: event.target.files[0] });
-    console.log("okkkkk");
+    // console.log("okkkkk");
   };
 
   date = data => {
@@ -115,7 +112,7 @@ class TraineeProfile extends Component {
     if (this.state.data == null) {
       return <div>Loading</div>;
     }
-    console.log(this.state);
+    console.log("Profile", this.state);
     return (
       <div>
         <h1>Complète ton profile</h1>
@@ -323,6 +320,7 @@ class TraineeProfile extends Component {
           dateStart={data.dateStart}
           dateEnd={data.dateEnd}
           size={FULL_RESTRICTED}
+          LevelStudy={data.LevelStudy ? data.LevelStudy.label : null}
         />
       </div>
     );

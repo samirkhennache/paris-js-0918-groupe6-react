@@ -50,7 +50,8 @@ const StudentView = props => {
     descriptionTrainee,
     school,
     lastname,
-    email
+    email,
+    LevelStudy
   } = props;
   switch (size) {
     case "SMALL": {
@@ -136,6 +137,11 @@ const StudentView = props => {
                   ? descriptionTrainee
                   : "description : à compléter"}
               </li>
+              <li>
+                {LevelStudy !== null
+                  ? LevelStudy
+                  : "Niveau d'étude : à compléter"}
+              </li>
             </ul>
           </Paper>
         </div>
@@ -185,6 +191,11 @@ const StudentView = props => {
                 {descriptionTrainee !== null
                   ? descriptionTrainee
                   : "Description: à compléter"}
+              </li>
+              <li>
+                {LevelStudy !== null
+                  ? LevelStudy
+                  : "Niveau d'étude : à compléter"}
               </li>
               <li>{phone !== null ? phone : "Télephone : à compléter"}</li>
               <li>{email}</li>

@@ -64,7 +64,7 @@ class CompanyApplicationsList extends Component {
   render() {
     const { trainee, isLoaded } = this.state;
     console.log("before trainee", trainee);
-    const { mode, modeRefuse, modeSelect, size } = this.props;
+    const { mode, modeRefuse, modeSelect } = this.props;
     return (
       <div>
         {isLoaded
@@ -83,6 +83,7 @@ class CompanyApplicationsList extends Component {
                       dateEnd={e.Trainee.dateEnd}
                       titre={e.Trainee.titre}
                       descriptionTrainee={e.Trainee.description}
+                      LevelStudy={e.LevelStudy ? e.LevelStudy.label : null}
                       school={e.Trainee.school}
                       size={SMALL}
                       missionId={element.mission_id}

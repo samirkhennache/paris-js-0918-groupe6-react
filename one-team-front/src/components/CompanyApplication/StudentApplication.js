@@ -116,7 +116,7 @@ class StudentApplication extends Component {
   };
 
   render() {
-    console.log(this.props.descriptionTrainee);
+    // console.log(this.props.descriptionTrainee);
     const {
       open,
       openMessageSelect,
