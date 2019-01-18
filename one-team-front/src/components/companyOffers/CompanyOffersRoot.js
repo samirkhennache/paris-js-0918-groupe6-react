@@ -3,7 +3,6 @@ import axios from "axios";
 import CompanyOffers from "./CompanyOffers";
 import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
 
-const idCompany = sessionStorage.getItem("token");
 const mode = "SELECT";
 const modeRefuse = "REFUSE";
 
@@ -13,6 +12,7 @@ class CompanyOffersRoot extends Component {
   };
 
   componentDidMount() {
+    const idCompany = sessionStorage.getItem("token");
     axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
       console.log("data", res.data);
       this.setState({
@@ -69,6 +69,7 @@ class CompanyOffersRoot extends Component {
 
   render() {
     const { missions, isLoaded, trainee, company } = this.state;
+    console.log("trainee", trainee);
     return (
       <div>
         {!isLoaded ? (
