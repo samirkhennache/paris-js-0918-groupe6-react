@@ -47,10 +47,10 @@ class OpenMenuBurger extends React.Component {
           Recherche
         </ListItem>
         <ListItem component={openMyOffers} button>
-          Mes offres
+          Mes candidatures
         </ListItem>
         <ListItem component={openTraineeProfile} button>
-          Profil
+          Mon profil
         </ListItem>
       </div>
     );

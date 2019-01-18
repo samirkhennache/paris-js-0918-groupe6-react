@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Typography from "@material-ui/core/Typography";
 
 import "./Button.css";
 
@@ -11,7 +12,10 @@ const OfferView = props => {
     dateEnd,
     statusAppli,
     description,
-    company
+    company,
+    intro,
+    town,
+    LevelStudy
   } = props;
   switch (size) {
     case "SMALL": {
@@ -20,7 +24,7 @@ const OfferView = props => {
           <h3> {titleMission} </h3> <p> {company} </p>{" "}
           <p> début: {new Date(dateStart).toLocaleDateString()} </p>
           <p> fin: {new Date(dateEnd).toLocaleDateString()} </p>{" "}
-          {statusAppli && <p> en cours </p>}
+          {statusAppli ? <p> En cours </p> : <p> Refusé </p>}
           {/* <ModalOffer /> */}
         </div>
       );
@@ -28,11 +32,12 @@ const OfferView = props => {
     case "MIDDLE": {
       return (
         <div className="OfferView">
-          <h3> {titleMission} </h3>
+          <h3>{titleMission} </h3>
           <h4>{company}</h4>
-          <p> début: {new Date(dateStart).toLocaleDateString()} </p>
-          <p> fin: {new Date(dateEnd).toLocaleDateString()} </p>
-          <p> {description} </p>
+          <p>{town} </p>
+          <p>début: {new Date(dateStart).toLocaleDateString()} </p>
+          <p>fin: {new Date(dateEnd).toLocaleDateString()} </p>
+          <p>{intro} </p>
         </div>
       );
     }
@@ -41,9 +46,12 @@ const OfferView = props => {
         <div className="OfferView">
           <h3> {titleMission} </h3>
           <h4>{company}</h4>
+          <p>{town} </p>
           <p> début: {new Date(dateStart).toLocaleDateString()} </p>
           <p> fin: {new Date(dateEnd).toLocaleDateString()} </p>
-          <p> {description} </p>
+          <p> niveau d'étude: {LevelStudy} </p>
+          <p>{intro} </p>
+          <p>{description} </p>
         </div>
       );
     }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import axios from "axios";
+
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,6 +11,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { selectCompany } from "../../../actions/getIdAction";
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import "../authentication.css";
 
 class CompanyCreateAccount extends Component {
@@ -77,9 +81,9 @@ class CompanyCreateAccount extends Component {
         if (error.response.status === 401) {
           this.setState({
             open: true,
-            title: `user already exists`,
-            content: `Cette adresse mail existe déjà, connectez-vous!`,
-            button: `Se connecter`
+            title: `Utilisateur déjà enregistré`,
+            content: `Cette adresse mail existe déjà, connectez-vous`,
+            button: `Fermer`
           });
         } else {
           this.setState({

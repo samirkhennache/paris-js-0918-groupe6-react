@@ -63,6 +63,11 @@ class TeamsAdmin extends Component {
                               dateEnd={student.Trainee.dateEnd}
                               titre={student.Trainee.titre}
                               descriptionTrainee={student.Trainee.description}
+                              LevelStudy={
+                                student.LevelStudy
+                                  ? student.LevelStudy.label
+                                  : null
+                              }
                               school={student.Trainee.school}
                               address={student.Trainee.address}
                               postalCode={student.Trainee.postalCode}
@@ -72,7 +77,6 @@ class TeamsAdmin extends Component {
                               traineeId={student.Trainee.id}
                               mode={mode}
                               size={FULL}
-
                             />
                           </div>
                         ))

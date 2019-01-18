@@ -2,13 +2,42 @@ import React, { Component } from "react";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 import StudentView from "../CompanyApplication/StudentView";
 import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
+import ConvertDate from "../../tools";
 import "./traineeProfile.css";
 
 class TraineeProfile extends Component {
   state = {
-    selectedFile: null
+    selectedFile: null,
+    openTrainee: false,
+    button: "fermer"
+  };
+
+  traineeOpenConnexion = () => {
+    this.setState({
+      openTrainee: true
+    });
+  };
+
+  handleCloseTrainee = () => {
+    this.setState({ openTrainee: false });
+  };
+
+  handleChange = event => {
+    this.setState(prevState => ({
+      data: {
+        ...prevState.data,
+        [event.target.name]: event.target.value
+      }
+    }));
   };
 
   componentDidMount() {
@@ -16,9 +45,20 @@ class TraineeProfile extends Component {
     axios
       .get(`http://localhost:3001/trainee/profile/${id}`)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({
           data: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+    axios
+      .get("http://localhost:3001/paradata/levelstudies")
+      .then(response => {
+        // console.log(response.data);
+        this.setState({
+          levelstudies: response.data
         });
       })
       .catch(error => {
@@ -39,11 +79,13 @@ class TraineeProfile extends Component {
         address: e.target.address.value,
         town: e.target.town.value,
         postalCode: e.target.postalCode.value,
+        dateBirth: e.target.dateBirth.value,
         school: e.target.school.value,
         titre: e.target.titre.value,
         description: e.target.description.value,
         dateStart: e.target.dateStart.value,
-        dateEnd: e.target.dateEnd.value
+        dateEnd: e.target.dateEnd.value,
+        LevelStudyId: e.target.LevelStudyId.value
       })
       .then(response => {
         console.log(response);
@@ -81,20 +123,6 @@ class TraineeProfile extends Component {
     console.log("okkkkk");
   };
 
-  // date() {
-  //   const date = new Date();
-  //   let day = date.getDate();
-  //   if (day < 10) {
-  //     day = "0" + day;
-  //   }
-  //   let month = date.getMonth() + 1;
-  //   if (month < 10) {
-  //     month = "0" + month;
-  //   }
-  //   const year = date.getFullYear();
-  //   return `${year}-${month}-${day}`;
-  // }
-
   date(data) {
     const date = new Date(data);
     let day = date.getDate();
@@ -109,14 +137,29 @@ class TraineeProfile extends Component {
     return `${year}-${month}-${day}`;
   }
 
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   render() {
-    const { data } = this.state;
-    if (this.state.data == null) {
+    const { data, openTrainee, button } = this.state;
+    if (this.state.data == null || this.state.levelstudies == null) {
       return <div>Loading</div>;
     }
     return (
       <div>
         <h1>Complète ton profile</h1>
+        <Button
+          variant="contained"
+          className="buttonConnexion2"
+          onClick={this.traineeOpenConnexion}
+        >
+          Voir profile public
+        </Button>
         <div className="createForm">
           <form onSubmit={this.onSubmit}>
             <div>
@@ -154,7 +197,7 @@ class TraineeProfile extends Component {
             </div>
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="firstname"
               placeholder="Prénom"
               defaultValue={data.firstname}
@@ -164,7 +207,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="lastname"
               placeholder="Nom"
               defaultValue={data.lastname}
@@ -176,7 +219,7 @@ class TraineeProfile extends Component {
             <TextField
               disabled
               type="email"
-              className="textField"
+              className="profileTextField"
               name="email"
               placeholder="Email"
               defaultValue={data.email}
@@ -186,7 +229,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="phone"
               placeholder="Phone"
               defaultValue={data.phone}
@@ -195,7 +238,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="address"
               placeholder="Adress"
               defaultValue={data.address}
@@ -204,7 +247,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="town"
               placeholder="Ville"
               defaultValue={data.town}
@@ -213,7 +256,7 @@ class TraineeProfile extends Component {
             />
             <TextField
               type="text"
-              className="textField"
+              className="profileTextField"
               name="postalCode"
               placeholder="Postal Code"
               defaultValue={data.postalCode}
@@ -221,41 +264,13 @@ class TraineeProfile extends Component {
               variant="outlined"
             />
             <TextField
-              type="text"
-              className="textField"
-              name="school"
-              placeholder="École"
-              defaultValue={data.school}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              type="text"
-              className="textField"
-              name="titre"
-              placeholder="Intitulé de stage"
-              defaultValue={data.titre}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              type="text"
-              multiline
-              className="textField"
-              name="description"
-              placeholder="Descriptions"
-              defaultValue={data.description}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              id="date"
-              name="dateStart"
-              label="Debut stage"
+              // id="date"
+              name="dateBirth"
+              label="Date de naissance"
               type="date"
               defaultValue={
-                this.state.data.dateStart !== null
-                  ? this.date(this.state.data.dateStart)
+                this.state.data.dateBirth !== null
+                  ? ConvertDate(this.state.data.dateBirth)
                   : null
               }
               InputLabelProps={{
@@ -265,13 +280,76 @@ class TraineeProfile extends Component {
               variant="outlined"
             />
             <TextField
-              id="date"
+              type="text"
+              className="profileTextField"
+              name="school"
+              placeholder="École"
+              defaultValue={data.school}
+              margin="normal"
+              variant="outlined"
+            />
+
+            <FormControl className="profileTextField">
+              <InputLabel>Level</InputLabel>
+              <Select
+                value={this.state.data.LevelStudyId || ""}
+                onChange={this.handleChange}
+                inputProps={{
+                  name: "LevelStudyId"
+                }}
+              >
+                {this.state.levelstudies.map(e => (
+                  <MenuItem key={e.id} value={e.id}>
+                    {e.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <TextField
+              type="text"
+              className="profileTextField"
+              name="titre"
+              placeholder="Intitulé de stage"
+              defaultValue={data.titre}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              type="text"
+              multiline
+              className="profileTextField"
+              name="description"
+              placeholder="Descriptions"
+              defaultValue={data.description}
+              margin="normal"
+              variant="outlined"
+              rows="5"
+            />
+            <TextField
+              // id="date"
+              name="dateStart"
+              label="Debut stage"
+              type="date"
+              defaultValue={
+                this.state.data.dateStart !== null
+                  ? ConvertDate(this.state.data.dateStart)
+                  : null
+              }
+              InputLabelProps={{
+                shrink: true
+              }}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              // id="date"
               name="dateEnd"
               label="Fin stage"
               type="date"
               defaultValue={
                 this.state.data.dateEnd !== null
-                  ? this.date(this.state.data.dateEnd)
+                  ? ConvertDate(this.state.data.dateEnd)
                   : null
               }
               InputLabelProps={{
@@ -290,19 +368,34 @@ class TraineeProfile extends Component {
             </Button>
           </form>
         </div>
-        <StudentView
-          firstname={data.firstname}
-          address={data.address}
-          postalCode={data.postalCode}
-          town={data.town}
-          pictures={data.pictures}
-          descriptionTrainee={data.description}
-          school={data.school}
-          titre={data.titre}
-          dateStart={data.dateStart}
-          dateEnd={data.dateEnd}
-          size={FULL_RESTRICTED}
-        />
+
+        <Dialog
+          open={openTrainee}
+          onClose={this.handleCloseTrainee}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogContent>
+            <StudentView
+              firstname={data.firstname}
+              address={data.address}
+              postalCode={data.postalCode}
+              town={data.town}
+              pictures={data.pictures}
+              descriptionTrainee={data.description}
+              school={data.school}
+              titre={data.titre}
+              dateStart={data.dateStart}
+              dateEnd={data.dateEnd}
+              size={FULL_RESTRICTED}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCloseTrainee} color="primary">
+              {button}
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }

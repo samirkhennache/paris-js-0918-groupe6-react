@@ -14,13 +14,15 @@ import "react-awesome-button/dist/styles.css";
 class CompanyOffers extends Component {
   state = {
     show: false,
-    missions: []
+    missions: [],
+    company: null
   };
 
   componentDidMount() {
-    const { missions } = this.props;
+    const { missions, company } = this.props;
     this.setState({
-      missions
+      missions,
+      company
     });
   }
 
@@ -54,7 +56,8 @@ class CompanyOffers extends Component {
   };
 
   render() {
-    const { missions } = this.state;
+    const { missions, company } = this.state;
+    // console.log("missions", missions);
 
     return (
       <div className="mesMissions">
@@ -72,7 +75,7 @@ class CompanyOffers extends Component {
           open={this.state.show}
           onClose={this.showModal}
           handlerCreateMission={this.handlerCreateMission}
-          missions={missions}
+          // missions={missions}
         />
         <div>
           {missions.map((e, index) => (
@@ -84,6 +87,11 @@ class CompanyOffers extends Component {
               dateEnd={new Date(e.dateEnd).toLocaleDateString()}
               description={e.description}
               idMission={e.id}
+              isFull={e.isFull}
+              intro={e.intro}
+              company={company.companyName}
+              town={e.town}
+              LevelStudy={e.LevelStudy.label}
               handlerUpdateMission={this.handlerUpdateMission}
               handlerDeleteMission={this.handlerDeleteMission}
               {...this.props}

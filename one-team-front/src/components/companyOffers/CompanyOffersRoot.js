@@ -3,7 +3,6 @@ import axios from "axios";
 import CompanyOffers from "./CompanyOffers";
 import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
 
-const idCompany = sessionStorage.getItem("token");
 const mode = "SELECT";
 const modeRefuse = "REFUSE";
 
@@ -13,6 +12,7 @@ class CompanyOffersRoot extends Component {
   };
 
   componentDidMount() {
+    const idCompany = sessionStorage.getItem("token");
     axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
       console.log("data", res.data);
       this.setState({
@@ -25,13 +25,51 @@ class CompanyOffersRoot extends Component {
       .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
       .then(res =>
         this.setState({
-          trainee: res.data
+          trainee: res.data.data
         })
       );
   }
 
+  handleCloseRefresh = (idTrainee, missionId) => {
+    const trainee = [];
+    this.state.trainee.map(e => {
+      // console.log("e", e);
+      if (e.mission_id === missionId) {
+        // const newDataApplication = e.dataApplications.map(f => {
+        //   if (f.TraineeId !== idTrainee) return f;
+        // });
+        const newDataApplication = [
+          ...e.dataApplications.filter(
+            element => element.TraineeId !== idTrainee
+          )
+        ];
+        const result = {
+          isFull: e.isFull,
+          mission_id: e.mission_id,
+          titleMission: e.titleMission,
+          dataApplications: newDataApplication
+        };
+        trainee.push(result);
+        // console.log(newDataApplication);
+      } else {
+        const result = {
+          isFull: e.isFull,
+          mission_id: e.mission_id,
+          titleMission: e.titleMission,
+          dataApplications: e.dataApplications
+        };
+        trainee.push(result);
+      }
+    });
+    this.setState({
+      trainee
+    });
+    // console.log(trainee);
+  };
+
   render() {
     const { missions, isLoaded, trainee, company } = this.state;
+    console.log("trainee", trainee);
     return (
       <div>
         {!isLoaded ? (
@@ -44,6 +82,7 @@ class CompanyOffersRoot extends Component {
             company={company}
             size={FULL_RESTRICTED}
             modeRefuse={modeRefuse}
+            handleCloseRefresh={this.handleCloseRefresh}
           />
         )}
       </div>

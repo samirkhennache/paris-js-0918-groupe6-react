@@ -9,7 +9,6 @@ import "./ViewStudent.css";
 class CompanyApplicationsList extends Component {
   state = {
     trainee: [],
-    id: 1,
     isLoaded: false
   };
 
@@ -19,49 +18,83 @@ class CompanyApplicationsList extends Component {
     axios
       .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
       .then(res => {
-        console.log("trainee", res.data.data);
-        this.setState({ trainee: res.data, isLoaded: true });
+        this.setState({ trainee: res.data.data, isLoaded: true });
       });
   }
 
-  compareMissions = (a, b) => {
-    return a - b;
+  handleCloseRefresh = (idTrainee, missionId) => {
+    const trainee = [];
+    this.state.trainee.map(e => {
+      if (e.mission_id === missionId) {
+        const newDataApplication = [
+          ...e.dataApplications.filter(
+            element => element.TraineeId !== idTrainee
+          )
+        ];
+        const result = {
+          isFull: e.isFull,
+          mission_id: e.mission_id,
+          titleMission: e.titleMission,
+          dataApplications: newDataApplication
+        };
+        trainee.push(result);
+      } else {
+        const result = {
+          isFull: e.isFull,
+          mission_id: e.mission_id,
+          titleMission: e.titleMission,
+          dataApplications: e.dataApplications
+        };
+        trainee.push(result);
+      }
+    });
+    this.setState({
+      trainee
+    });
   };
+
+  sortData = data => data.sort((a, b) => a.mission_id - b.mission_id);
 
   render() {
     const { trainee, isLoaded } = this.state;
-    const { mode, modeRefuse, modeSelect, size } = this.props;
+    const { mode, modeRefuse, modeSelect } = this.props;
     return (
       <div>
-        {isLoaded &&
-          trainee.data.sort(this.compareMissions).map(element => (
-            <div>
-              <Typography variant="h2" component="h3">
-                {element.titleMission}
-              </Typography>
-              <div className="blocList">
-                {element.dataApplications.map(e => (
-                  <StudentApplication
-                    firstname={e.Trainee.firstname}
-                    town={e.Trainee.town}
-                    pictures={e.Trainee.pictures}
-                    dateStart={e.Trainee.dateStart}
-                    dateEnd={e.Trainee.dateEnd}
-                    titre={e.Trainee.titre}
-                    descriptionTrainee={e.Trainee.description}
-                    school={e.Trainee.school}
-                    size={SMALL}
-                    missionId={element.mission_id}
-                    traineeId={e.Trainee.id}
-                    modeSelect={modeSelect}
-                    modeRefuse={modeRefuse}
-                    mode={mode}
-                    {...this.props}
-                  />
-                ))}
+        {isLoaded
+          ? this.sortData(trainee).map(element => (
+              <div>
+                {element.dataApplications.length !== 0 && (
+                  <Typography variant="h2" component="h3">
+                    {element.titleMission}
+                  </Typography>
+                )}
+                <div className="blocList">
+                  {element.dataApplications.map(e => (
+                    <StudentApplication
+                      firstname={e.Trainee.firstname}
+                      town={e.Trainee.town}
+                      pictures={e.Trainee.pictures}
+                      dateStart={e.Trainee.dateStart}
+                      dateEnd={e.Trainee.dateEnd}
+                      titre={e.Trainee.titre}
+                      descriptionTrainee={e.Trainee.description}
+                      LevelStudy={e.LevelStudy ? e.LevelStudy.label : null}
+                      school={e.Trainee.school}
+                      size={SMALL}
+                      missionId={element.mission_id}
+                      traineeId={e.Trainee.id}
+                      modeSelect={modeSelect}
+                      modeRefuse={modeRefuse}
+                      mode={mode}
+                      isFull={element.isFull}
+                      handleCloseRefresh={this.handleCloseRefresh}
+                      {...this.props}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          : "loading"}
       </div>
     );
   }

@@ -3,6 +3,12 @@ import axios from "axios";
 import ModalOffer from "../offerView/ModalOffer";
 import { MIDDLE } from "../offerView";
 
+import logoSearch from "../../img/icons8-chercher-208.png";
+
+import Button from "@material-ui/core/Button";
+
+import "./OffersStud.css";
+
 class FindOffers extends Component {
   state = {
     result: [],
@@ -21,9 +27,16 @@ class FindOffers extends Component {
     event.preventDefault();
     const { search, town } = this.state;
     const url = `http://localhost:3001/mission?search=${search}&town=${town}`;
-    axios.get(url).then(res => {
-      this.setState({ result: res.data });
-    });
+    axios
+      .get(url)
+      .then(res => {
+        this.setState({ result: res.data });
+      })
+      .catch(err => {
+        if (err.response.status === 304) {
+          console.log("status", err.response.status);
+        }
+      });
   };
 
   componentDidMount() {
@@ -55,7 +68,14 @@ class FindOffers extends Component {
             placeholder="ville"
             onChange={this.handleChange}
           />
-          <button type="submit">Submit</button>
+          {/* <button type="submit">Rechercher</button> */}
+          <Button variant="contained" type="submit" className="searchButton">
+            <img
+              src={require("../../img/icons8-chercher-208.png")}
+              width="30"
+              height="30"
+            />
+          </Button>
         </form>
         {result.map(element => (
           <ModalOffer
@@ -67,6 +87,9 @@ class FindOffers extends Component {
             dateStart={element.dateStart}
             dateEnd={element.dateEnd}
             description={element.description}
+            intro={element.intro}
+            town={element.town}
+            LevelStudy={element.LevelStudy.label}
             {...this.props}
           />
         ))}
