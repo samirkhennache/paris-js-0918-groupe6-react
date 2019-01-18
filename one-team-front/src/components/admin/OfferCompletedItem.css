@@ -1,0 +1,33 @@
+.offersForAdmin {
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../img/Onepage.jpg");
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+  z-index: 3;
+  height: 100%;
+}
+
+.miniMarge {
+  transform: translate(50%, 90%);
+  background-color: white;
+  width: 50%;
+  height: 35%;
+}
+@media (max-width: 768px) {
+  .miniMarge {
+    width: auto;
+    height: auto;
+    transform: translate(0%, 30%);
+  }
+}
+
+/* .square {
+  background-color: whitesmoke;
+  z-index: 2;
+  width: 100vh;
+  height: 30vh;
+  transform: translate(30%, -87%);
+  opacity: 0.3;
+} */

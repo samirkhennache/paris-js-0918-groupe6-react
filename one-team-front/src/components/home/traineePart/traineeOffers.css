@@ -1,0 +1,28 @@
+.logo-offers {
+    height: 50px;
+    margin: auto;
+}
+.logo-offers img {
+    height: 100%;
+}
+.bloc-offers {
+    display: flex;
+    flex-wrap: wrap;
+    word-break: break-word;
+    justify-content: center;
+}
+.bloc-offers-solo {
+    width: calc(100px + 25vw);
+    margin: 20px;
+}
+.text-offers {
+    text-align: left;
+}
+.papers-offers{
+    margin: 10px;
+}
+@media all and (max-width: 500px) {
+    .bloc-offers-solo {
+        width: calc(200px + 10vw);
+    }
+}

@@ -1,0 +1,21 @@
+.createForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  /* width: calc(100px + 50vw); */
+  width: 90%;
+  margin: auto;
+}
+.textField {
+  width: 100%;
+}
+.buttonCreateForm {
+  width: 100%;
+  margin: 15px auto 5px auto;
+}
+
+.orangeBold {
+  color: #ff8800;
+  font-weight: bold;
+}

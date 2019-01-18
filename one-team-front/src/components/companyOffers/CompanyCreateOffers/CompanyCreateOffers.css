@@ -1,0 +1,41 @@
+.CompanyCreateOffers .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  /* border: 1px solid green; */
+  margin: auto;
+}
+
+.CompanyCreateOffers {
+  /* border: 1px solid red; */
+  /* width: 90%; */
+  /* margin: auto; */
+}
+
+.date {
+  /* border: 1px solid blue; */
+  width: 100%;
+  display: flex;
+}
+
+.dateText {
+  /* border: 1px solid red; */
+  margin: 0;
+  width: 50%;
+}
+
+.dateText:nth-child(1) {
+  margin-right: 5px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .date {
+    display: flex;
+    flex-direction: column;
+  }
+  .dateText {
+    width: 100%;
+    margin: 0;
+  }
+}
