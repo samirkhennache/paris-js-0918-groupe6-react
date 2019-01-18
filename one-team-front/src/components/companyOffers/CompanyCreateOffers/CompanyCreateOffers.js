@@ -75,7 +75,7 @@ const CompanyCreateOffers = class extends React.Component {
     }
   };
 
-  defaultState() {
+  defaultState(isLoaded=false) {
     const idCompany = sessionStorage.getItem("token");
     return {
       mission: {
@@ -89,13 +89,13 @@ const CompanyCreateOffers = class extends React.Component {
         LevelStudyId: 1
       },
       isEditMode: false,
-      idLoaded: false
+      idLoaded: isLoaded
     };
   }
 
   closeMission = () => {
     const { onClose } = this.props;
-    this.setState(this.defaultState());
+    this.setState(this.defaultState(true));
     onClose();
   };
 

@@ -89,7 +89,7 @@ class CompanyOfferManage extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
-    console.log("close");
+    // console.log("close");
   };
 
   render() {
@@ -100,21 +100,28 @@ class CompanyOfferManage extends Component {
       description,
       modifMission,
       intro,
-      isFull
+      isFull,
+      town,
+      LevelStudy
     } = this.props;
+
     const { title, content, button, open, disabled } = this.state;
     const descriptionToShow = description.substring(0, 300);
-    console.log("ma description ", description.substring(0, 20));
+    // console.log("ma description ", description.substring(0, 20));
 
-    console.log("FULL", isFull);
+    // console.log("FULL", isFull);
 
     return (
       <div>
         {/* ***** FICHE MISSION ***** */}
         <div>
           <h3>{titleMission}</h3>
+          <h4>{this.props.company.companyName}</h4>
+          <p>{town} </p>
           <p>{dateStart}</p>
           <p>{dateEnd}</p>
+          <p> niveau d'étude: {LevelStudy} </p>
+          <p>{intro} </p>
           <Hidden xsDown>
             <p>{`${descriptionToShow} ...`}</p>
           </Hidden>
