@@ -33,7 +33,7 @@ class CompanyOffersRoot extends Component {
   handleCloseRefresh = (idTrainee, missionId) => {
     const trainee = [];
     this.state.trainee.map(e => {
-      console.log("e", e);
+      // console.log("e", e);
       if (e.mission_id === missionId) {
         // const newDataApplication = e.dataApplications.map(f => {
         //   if (f.TraineeId !== idTrainee) return f;
@@ -50,7 +50,7 @@ class CompanyOffersRoot extends Component {
           dataApplications: newDataApplication
         };
         trainee.push(result);
-        console.log(newDataApplication);
+        // console.log(newDataApplication);
       } else {
         const result = {
           isFull: e.isFull,
@@ -64,7 +64,7 @@ class CompanyOffersRoot extends Component {
     this.setState({
       trainee
     });
-    console.log(trainee);
+    // console.log(trainee);
   };
 
   render() {

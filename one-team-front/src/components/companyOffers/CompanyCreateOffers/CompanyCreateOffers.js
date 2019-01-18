@@ -58,9 +58,14 @@ const CompanyCreateOffers = class extends React.Component {
       CompanyId: mission.CompanyId,
       LevelStudyId: Number(mission.LevelStudyId)
     };
+
+    const levelStudy = this.state.levelstudies.filter(
+      level => level.id == postFormMission.LevelStudyId
+    )[0];
     if (!isEditMode) {
       Axios.post(API_ENDPOINT_MISSION, postFormMission).then(res => {
         const { handlerCreateMission } = this.props;
+        res.data = { ...res.data, LevelStudy: levelStudy };
         handlerCreateMission(res.data);
         this.closeMission();
       });
@@ -68,6 +73,7 @@ const CompanyCreateOffers = class extends React.Component {
       Axios.put(`${API_ENDPOINT_MISSION}${mission.id}`, postFormMission).then(
         res => {
           const { handlerUpdateMission } = this.props;
+          res.data = { ...res.data, LevelStudy: levelStudy };
           handlerUpdateMission(res.data);
           this.closeMission();
         }
@@ -75,7 +81,7 @@ const CompanyCreateOffers = class extends React.Component {
     }
   };
 
-  defaultState() {
+  defaultState(isLoaded = false) {
     const idCompany = sessionStorage.getItem("token");
     return {
       mission: {
@@ -89,13 +95,13 @@ const CompanyCreateOffers = class extends React.Component {
         LevelStudyId: 1
       },
       isEditMode: false,
-      idLoaded: false
+      idLoaded: isLoaded
     };
   }
 
   closeMission = () => {
     const { onClose } = this.props;
-    this.setState(this.defaultState());
+    this.setState(this.defaultState(true));
     onClose();
   };
 
