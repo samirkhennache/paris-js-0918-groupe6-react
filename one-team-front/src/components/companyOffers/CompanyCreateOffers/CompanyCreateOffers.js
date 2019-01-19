@@ -55,7 +55,7 @@ const CompanyCreateOffers = class extends React.Component {
       description: mission.description,
       town: mission.town,
       intro: mission.intro,
-      CompanyId: mission.CompanyId,
+      CompanyId: Number(mission.CompanyId),
       LevelStudyId: Number(mission.LevelStudyId)
     };
 
