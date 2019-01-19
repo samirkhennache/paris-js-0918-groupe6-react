@@ -14,7 +14,7 @@ export const ConvertDate = data => {
 
 export const MakeCompletedUrl = url => {
   const server = "http://localhost";
-  const rootAPI = ""; //"/api/v1";
+  const rootAPI = "/api/v1";
   const port = 3001;
 
   if (!url) throw Error("Parameter [url] is not defined.");
