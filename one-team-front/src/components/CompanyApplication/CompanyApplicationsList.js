@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import Typography from "@material-ui/core/Typography";
 import StudentApplication from "./StudentApplication";
 import { SMALL } from "./studentConstant";
@@ -16,7 +17,7 @@ class CompanyApplicationsList extends Component {
     const { mode } = this.props;
     const idCompany = sessionStorage.getItem("token");
     axios
-      .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
+      .get(MakeCompletedUrl(`application/${idCompany}/${mode}/mytrainee`))
       .then(res => {
         this.setState({ trainee: res.data.data, isLoaded: true });
       });

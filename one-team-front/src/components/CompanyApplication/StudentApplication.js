@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -34,7 +35,7 @@ class StudentApplication extends Component {
   selectStudent = mode => {
     const { missionId, traineeId, firstname } = this.props;
     axios
-      .put(`http://localhost:3001/application`, {
+      .put(MakeCompletedUrl(`application`), {
         missionId,
         traineeId,
         mode
@@ -70,7 +71,7 @@ class StudentApplication extends Component {
     const { missionId, traineeId, firstname } = this.props;
     // console.log("onclick", missionId, traineeId, mode);
     axios
-      .put(`http://localhost:3001/application`, {
+      .put(MakeCompletedUrl(`application`), {
         missionId,
         traineeId,
         mode

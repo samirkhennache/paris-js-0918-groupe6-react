@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import { AwesomeButton } from "react-awesome-button";
 import Button from "@material-ui/core/Button";
 import "./Button.css";
@@ -26,7 +27,7 @@ class CompanyOfferManage extends Component {
 
   deleteData = () => {
     const { idMission } = this.props;
-    const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
+    const API_ENDPOINT_MISSION = MakeCompletedUrl("mission/");
     axios
       .delete(`${API_ENDPOINT_MISSION}${idMission}`, this.state)
       .then(res => {
@@ -46,7 +47,7 @@ class CompanyOfferManage extends Component {
     const missionId = idMission;
     const companyId = sessionStorage.getItem("token");
     axios
-      .put(`http://localhost:3001/mission/validate`, {
+      .put(MakeCompletedUrl(`mission/validate`), {
         missionId,
         companyId
       })

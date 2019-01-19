@@ -3,6 +3,7 @@ import axios from "axios";
 import StudentApplication from "../CompanyApplication/StudentApplication";
 import CompanyPresentation from "./CompanyPresentation";
 import { FULL } from "../CompanyApplication/studentConstant";
+import { MakeCompletedUrl } from "../../tools";
 
 const mode = "ADMIN";
 
@@ -13,7 +14,7 @@ class TeamsAdmin extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:3001/salutadmin/missions").then(res => {
+    axios.get(MakeCompletedUrl("salutadmin/missions")).then(res => {
       // console.log(res.data);
       this.setState({
         fullMission: res.data.data,

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Axios from "axios";
+import { MakeCompletedUrl } from "../../../tools";
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
@@ -46,7 +47,7 @@ class ConnexionTrainee extends Component {
       password
     };
 
-    Axios.post("http://localhost:3001/trainee/login", postDataLogin)
+    Axios.post(MakeCompletedUrl("trainee/login"), postDataLogin)
       .then(result => {
         props.selectStudent(result.data.id);
         sessionStorage.setItem("token", result.data.id);
