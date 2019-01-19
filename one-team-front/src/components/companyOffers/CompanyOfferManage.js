@@ -12,6 +12,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Hidden from "@material-ui/core/Hidden";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
+import ConfirmDialog from "../Dialogs/ConfirmDialog";
 
 const idCompany = sessionStorage.getItem("token");
 
@@ -136,13 +137,19 @@ class CompanyOfferManage extends Component {
           Modifier
         </AwesomeButton>
         <br />
-        <AwesomeButton
+        {/* <AwesomeButton
           type="primary"
           className="aws-btn remove"
           action={this.deleteData}
         >
           Supprimer
-        </AwesomeButton>
+        </AwesomeButton> */}
+        <ConfirmDialog
+          buttonCaption="Supprimer"
+          dialogTitle="Confirmation"
+          dialogQuestion="Voulez-vous supprimer cette offre?"
+          handleOk={this.deleteData}
+        />
         <CompanyCreateOffers
           open={this.state.show}
           onClose={this.showModal}
