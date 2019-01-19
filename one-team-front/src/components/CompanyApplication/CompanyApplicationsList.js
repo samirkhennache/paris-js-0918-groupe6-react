@@ -74,8 +74,8 @@ class CompanyApplicationsList extends Component {
                       firstname={e.Trainee.firstname}
                       town={e.Trainee.town}
                       pictures={e.Trainee.pictures}
-                      dateStart={e.Trainee.dateStart}
-                      dateEnd={e.Trainee.dateEnd}
+                      // dateStart={e.Trainee.dateStart}
+                      // dateEnd={e.Trainee.dateEnd}
                       titre={e.Trainee.titre}
                       descriptionTrainee={e.Trainee.description}
                       LevelStudy={e.LevelStudy ? e.LevelStudy.label : null}
@@ -88,6 +88,8 @@ class CompanyApplicationsList extends Component {
                       mode={mode}
                       isFull={element.isFull}
                       handleCloseRefresh={this.handleCloseRefresh}
+                      newDateStart={e.Trainee.dateStart}
+                      newDateEnd={e.Trainee.dateEnd}
                       {...this.props}
                     />
                   ))}

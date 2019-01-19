@@ -53,6 +53,8 @@ const StudentView = props => {
     email,
     LevelStudy
   } = props;
+  // console.log("StudentView", dateStart, dateEnd);
+
   switch (size) {
     case "SMALL": {
       return (
