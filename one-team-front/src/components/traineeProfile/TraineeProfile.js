@@ -169,7 +169,7 @@ class TraineeProfile extends Component {
                     <img
                       src={
                         this.state.image ||
-                        `http://localhost:3001/${this.state.data.pictures}`
+                        MakeCompletedUrl(`${this.state.data.pictures}`)
                       }
                       width="100"
                       height="100"
@@ -180,7 +180,7 @@ class TraineeProfile extends Component {
                   <img
                     src={
                       this.state.image ||
-                      "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+                      MakeCompletedUrl("public/photoProfile/PhotoProfil.jpg")
                     }
                     width="100"
                     height="100"

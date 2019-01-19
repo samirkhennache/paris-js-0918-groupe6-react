@@ -1,6 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import { MakeCompletedUrl } from "../../tools";
 
 const styles = theme => ({
   row: {
@@ -67,8 +68,8 @@ const StudentView = props => {
                   className={classes.image}
                   src={
                     pictures !== null
-                      ? `http://localhost:3001/${pictures}`
-                      : "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+                      ? MakeCompletedUrl(`${pictures}`)
+                      : MakeCompletedUrl("public/photoProfile/PhotoProfil.jpg")
                   }
                   alt=""
                 />
@@ -108,8 +109,8 @@ const StudentView = props => {
                   className={classes.image}
                   src={
                     pictures !== null
-                      ? `http://localhost:3001/${pictures}`
-                      : "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+                      ? MakeCompletedUrl(`${pictures}`)
+                      : MakeCompletedUrl("public/photoProfile/PhotoProfil.jpg")
                   }
                   alt=""
                 />
@@ -160,8 +161,8 @@ const StudentView = props => {
                   className={classes.image}
                   src={
                     pictures !== null
-                      ? `http://localhost:3001/${pictures}`
-                      : "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+                      ? MakeCompletedUrl(`${pictures}`)
+                      : MakeCompletedUrl("public/photoProfile/PhotoProfil.jpg")
                   }
                   alt=""
                 />
