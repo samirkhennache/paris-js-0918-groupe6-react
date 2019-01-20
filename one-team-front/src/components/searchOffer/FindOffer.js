@@ -17,14 +17,26 @@ class FindOffers extends Component {
     isLoad: false
   };
 
+  componentDidMount() {
+    this.getResult();
+    this.getCount();
+  }
+
+  getCount = () => {
+    const url = "http://localhost:3001/mission/getcount";
+    axios.get(url).then(res => {
+      console.log("res", res);
+      this.setState({ ...this.state, count: res.data.count });
+    });
+  };
+
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  getResult = () => {
     const { search, town } = this.state;
     const url = `http://localhost:3001/mission?search=${search}&town=${town}`;
     axios
@@ -39,13 +51,10 @@ class FindOffers extends Component {
       });
   };
 
-  componentDidMount() {
-    const url = "http://localhost:3001/mission/getcount";
-    axios.get(url).then(res => {
-      console.log("res", res);
-      this.setState({ ...this.state, count: res.data.count });
-    });
-  }
+  handleSubmit = event => {
+    event.preventDefault();
+    this.getResult();
+  };
 
   render() {
     const { result, count } = this.state;
