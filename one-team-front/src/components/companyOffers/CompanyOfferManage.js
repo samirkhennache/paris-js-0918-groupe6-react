@@ -11,6 +11,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Hidden from "@material-ui/core/Hidden";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
+import renderHTML from "react-render-html";
 
 const idCompany = sessionStorage.getItem("token");
 
@@ -123,7 +124,7 @@ class CompanyOfferManage extends Component {
           <p> niveau d'étude: {LevelStudy} </p>
           <p>{intro} </p>
           <Hidden xsDown>
-            <p>{`${descriptionToShow} ...`}</p>
+            <p>r{renderHTML(`${descriptionToShow} ...`)}</p>
           </Hidden>
         </div>
         {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
