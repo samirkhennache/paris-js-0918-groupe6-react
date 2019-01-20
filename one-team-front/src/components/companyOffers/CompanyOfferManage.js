@@ -127,21 +127,25 @@ class CompanyOfferManage extends Component {
           </Hidden>
         </div>
         {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
-        <AwesomeButton
-          type="primary"
-          className="aws-btn edit"
-          action={this.showModal}
+        <Button
+          // type="primary"
+          // className="aws-btn edit"
+          variant="contained"
+          color="primary"
+          onClick={this.showModal}
         >
           Modifier
-        </AwesomeButton>
+        </Button>
         <br />
-        <AwesomeButton
-          type="primary"
-          className="aws-btn remove"
-          action={this.deleteData}
+        <Button
+          // type="primary"
+          // className="aws-btn remove"
+          variant="contained"
+          color="secondary"
+          onClick={this.deleteData}
         >
           Supprimer
-        </AwesomeButton>
+        </Button>
         <CompanyCreateOffers
           open={this.state.show}
           onClose={this.showModal}
@@ -153,17 +157,19 @@ class CompanyOfferManage extends Component {
         {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
         <Team {...this.props} disabled={disabled} />
         {disabled || isFull ? (
-          <AwesomeButton type="primary" disabled className="aws-btn validate">
+          <Button type="primary" disabled className="aws-btn validate">
             Valider ma team
-          </AwesomeButton>
+          </Button>
         ) : (
-          <AwesomeButton
-            action={this.validateMission}
-            type="primary"
-            className="aws-btn validate"
+          <Button
+            onClick={this.validateMission}
+            // type="primary"
+            // className="aws-btn validate"
+            variant="contained"
+            color="primary"
           >
             Valider ma team
-          </AwesomeButton>
+          </Button>
         )}
         <hr align="center" width="90%" color="midnightblue" size="1" />
         {/* **************** DIALOG VALIDATE ************************** */}

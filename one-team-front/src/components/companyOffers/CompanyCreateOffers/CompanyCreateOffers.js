@@ -7,6 +7,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import ConvertDate from "../../../tools";
+import Tinymce from "../../tiny/Tiny";
 
 const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
 
@@ -23,6 +24,18 @@ const CompanyCreateOffers = class extends React.Component {
       this.setState({ mission: modifMission, isEditMode: true });
     }
   }
+
+  // TinyMce Editeur pour la description
+  handleEditor = e => {
+    console.log("tiny", e);
+    console.log("miss", e.target.getContent());
+    this.setState(previousState => ({
+      mission: {
+        ...previousState.mission,
+        description: e.target.getContent()
+      }
+    }));
+  };
 
   handlerOnChange = event => {
     const { name, value } = event.target;
@@ -193,13 +206,19 @@ const CompanyCreateOffers = class extends React.Component {
               onChange={this.handlerOnChange}
               required
               fullWidth
-              multiline
-              rows="2"
+              // multiline
+              // rows="2"
               // rowsMax="2"
               margin="normal"
               variant="outlined"
             />
-            <TextField
+
+            <Tinymce
+              mission={this.state.mission.description}
+              handle={this.handleEditor}
+            />
+
+            {/* <TextField
               placeholder="Description"
               name="description"
               label="Description"
@@ -212,7 +231,7 @@ const CompanyCreateOffers = class extends React.Component {
               // rowsMax="10"
               margin="normal"
               variant="outlined"
-            />
+            /> */}
             <Select
               name="LevelStudyId"
               required
