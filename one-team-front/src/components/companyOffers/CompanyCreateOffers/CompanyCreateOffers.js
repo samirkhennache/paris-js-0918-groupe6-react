@@ -7,11 +7,41 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Grid from "@material-ui/core/Grid";
+import {
+  withStyles,
+  createMuiTheme,
+  MuiThemeProvider
+} from "@material-ui/core/styles";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import withMobileDialog from "@material-ui/core/withMobileDialog";
 import { MakeCompletedUrl, ConvertDate } from "../../../tools";
 import logoCompany from "../../../img/three-buildings.png";
 
 const API_ENDPOINT_MISSION = MakeCompletedUrl("mission/");
 
+const styles = theme => ({
+  centerLogo: {
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center",
+      margin: "35px"
+    }
+  },
+  centerButton: {
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center"
+    }
+  },
+  selectControl: {
+    width: "100%"
+  }
+});
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#ff8900"
+    }
+  }
+});
 const CompanyCreateOffers = class extends React.Component {
   state = this.defaultState();
 
@@ -109,7 +139,7 @@ const CompanyCreateOffers = class extends React.Component {
 
   render() {
     const { mission, isEditMode, idLoaded, levelstudies } = this.state;
-    const { onClose, ...other } = this.props;
+    const { onClose, classes, fullScreen, ...other } = this.props;
     return (
       <div className="CompanyCreateOffers">
         <Dialog
@@ -117,14 +147,21 @@ const CompanyCreateOffers = class extends React.Component {
           {...other}
           fullWidth
           maxWidth="lg"
+          fullScreen={fullScreen}
         >
-          <DialogTitle>
+          {/* <DialogTitle>
             {isEditMode ? "Je modifie une mission" : "Je crée une mission"}
-          </DialogTitle>
+          </DialogTitle> */}
           <div className="createOffers">
             <form className="form-create-offers">
-              <Grid container alignItems="center">
-                <Grid item container xs={12} lg={2} justify="center">
+              <Grid container alignItems="center" spacing={16}>
+                <Grid
+                  item
+                  container
+                  className={classes.centerLogo}
+                  xs={12}
+                  md={2}
+                >
                   <div className="logo-company">
                     <img
                       className="logo-img"
@@ -133,7 +170,7 @@ const CompanyCreateOffers = class extends React.Component {
                     />
                   </div>
                 </Grid>
-                <Grid item xs={12} lg={10}>
+                <Grid item container xs={12} md={10} justify="center">
                   <TextField
                     placeholder="Titre de la mission de stage"
                     name="titleMission"
@@ -142,12 +179,17 @@ const CompanyCreateOffers = class extends React.Component {
                     onChange={this.handlerOnChange}
                     required
                     fullWidth
-                    margin="normal"
                     variant="outlined"
                   />
                 </Grid>
-                <div className="date">
-                  <div className="dateText">
+                <Grid
+                  item
+                  container
+                  className="company-criterion"
+                  justify="center"
+                  spacing={8}
+                >
+                  <Grid item container xs={6} md={3} justify="center">
                     <TextField
                       placeholder="Date de début"
                       label="Date de début"
@@ -161,12 +203,11 @@ const CompanyCreateOffers = class extends React.Component {
                       onChange={this.handlerOnChange}
                       required
                       fullWidth
-                      margin="normal"
                       variant="outlined"
                       InputLabelProps={{ shrink: true }}
                     />
-                  </div>
-                  <div className="dateText">
+                  </Grid>
+                  <Grid item xs={6} md={3} justify="center">
                     <TextField
                       placeholder="Date de fin"
                       label="Date de fin"
@@ -180,72 +221,105 @@ const CompanyCreateOffers = class extends React.Component {
                       onChange={this.handlerOnChange}
                       required
                       fullWidth
-                      margin="normal"
                       variant="outlined"
                     />
-                  </div>
-                </div>
-                <TextField
-                  placeholder="Ville"
-                  name="town"
-                  label="Ville"
-                  value={mission.town}
-                  onChange={this.handlerOnChange}
-                  required
-                  fullWidth
-                  margin="normal"
-                  variant="outlined"
-                />
-                <TextField
-                  placeholder="Introduction"
-                  name="intro"
-                  label="Introduction"
-                  value={mission.intro}
-                  onChange={this.handlerOnChange}
-                  required
-                  fullWidth
-                  multiline
-                  rows="2"
-                  margin="normal"
-                  variant="outlined"
-                />
-                <TextField
-                  placeholder="Description"
-                  name="description"
-                  label="Description"
-                  value={mission.description}
-                  onChange={this.handlerOnChange}
-                  required
-                  fullWidth
-                  multiline
-                  rows="5"
-                  margin="normal"
-                  variant="outlined"
-                />
-                <Select
-                  name="LevelStudyId"
-                  required
-                  value={mission.LevelStudyId}
-                  onChange={this.handlerOnChangeLevelStudy}
-                >
-                  {idLoaded
-                    ? levelstudies.map(element => (
-                        <MenuItem key={element.id} value={element.id}>
-                          {element.label}
-                        </MenuItem>
-                      ))
-                    : "loading..."}
-                </Select>
+                  </Grid>
+                  <Grid
+                    item
+                    container
+                    xs={6}
+                    md={3}
+                    alignItems="center"
+                    justify="center"
+                  >
+                    <TextField
+                      placeholder="Ville"
+                      name="town"
+                      label="Ville"
+                      value={mission.town}
+                      onChange={this.handlerOnChange}
+                      required
+                      fullWidth
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item container xs={6} md={3}>
+                    <Select
+                      name="LevelStudyId"
+                      className={classes.selectControl}
+                      value={
+                        mission.LevelStudyId // className="selct-level" // required
+                      }
+                      onChange={this.handlerOnChangeLevelStudy}
+                      input={
+                        <OutlinedInput
+                          name="LevelStudyId"
+                          id="outlined-age-simple"
+                        />
+                      }
+                    >
+                      {idLoaded
+                        ? levelstudies.map(element => (
+                            <MenuItem key={element.id} value={element.id}>
+                              {element.label}
+                            </MenuItem>
+                          ))
+                        : "loading..."}
+                    </Select>
+                  </Grid>
+                </Grid>
+                <Grid item xs={12} justify="center">
+                  <TextField
+                    placeholder="Introduction"
+                    name="intro"
+                    label="Introduction"
+                    value={mission.intro}
+                    onChange={this.handlerOnChange}
+                    required
+                    fullWidth
+                    multiline
+                    rows="2"
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12} justify="center">
+                  <TextField
+                    placeholder="Description"
+                    name="description"
+                    label="Description"
+                    value={mission.description}
+                    onChange={this.handlerOnChange}
+                    required
+                    fullWidth
+                    multiline
+                    rows="5"
+                    variant="outlined"
+                  />
+                </Grid>
               </Grid>
             </form>
           </div>
-          <DialogActions>
-            <Button onClick={this.closeMission} color="primary">
+          <DialogActions className={classes.centerButton}>
+            <Button
+              onClick={this.closeMission}
+              variant="contained"
+              size="large"
+            >
               Annuler
             </Button>
-            <Button onClick={this.saveMission} color="primary" autoFocus>
-              {isEditMode ? "Modifier" : "Créer"}
-            </Button>
+
+            <MuiThemeProvider theme={theme}>
+              <div className="btn">
+                <Button
+                  onClick={this.saveMission}
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                >
+                  {isEditMode ? "Modifier" : "Créer"}
+                </Button>
+              </div>
+            </MuiThemeProvider>
           </DialogActions>
         </Dialog>
       </div>
@@ -253,4 +327,4 @@ const CompanyCreateOffers = class extends React.Component {
   }
 };
 
-export default CompanyCreateOffers;
+export default withStyles(styles)(withMobileDialog()(CompanyCreateOffers));
