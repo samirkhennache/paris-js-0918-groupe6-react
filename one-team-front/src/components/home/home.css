@@ -14,6 +14,7 @@
 }
 .home_section {
   font-weight: 900;
+  font-family: apple-system, "Ubuntu", sans-serif;
   color: white;
   letter-spacing: 0.1cm;
   font-size: calc(20px + 1vw);
@@ -22,30 +23,35 @@
 }
 .home_subsection_orange {
   font-family: "Open Sans", sans-serif;
+  font-weight: 700;
   font-size: calc(15px + 2vw);
   color: #ff8900;
 }
 .home_subsection_white {
   font-family: "Open Sans", sans-serif;
+  font-weight: 700;
   font-size: calc(15px + 2vw);
   color: white;
 }
 .home_subsection_grey {
   font-family: "Open Sans", sans-serif;
+  font-weight: 700;
   font-size: calc(15px + 2vw);
   color: #494642;
 }
 .icon_white_title {
   font-family: "Open Sans", sans-serif;
+  font-weight: 700;
   font-size: calc(18px + 0.3vw);
   color: white;
 }
 .icon_orange_title {
   font-family: "Open Sans", sans-serif;
+  font-weight: 700;
   font-size: calc(18px + 0.3vw);
   color: #ff8900;
 }
-/* *********************** PAGES TEXT CLASSES **********************/
+
 
 /* *********************** BACKGROUND GENERAUX **********************/
 .background-carrousel {

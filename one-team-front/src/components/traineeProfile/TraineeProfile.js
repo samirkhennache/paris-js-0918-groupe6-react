@@ -199,7 +199,7 @@ class TraineeProfile extends Component {
               type="text"
               className="profileTextField"
               name="firstname"
-              placeholder="Prénom"
+              label="Prénom"
               defaultValue={data.firstname}
               margin="normal"
               variant="outlined"
@@ -209,7 +209,7 @@ class TraineeProfile extends Component {
               type="text"
               className="profileTextField"
               name="lastname"
-              placeholder="Nom"
+              label="Nom"
               defaultValue={data.lastname}
               margin="normal"
               variant="outlined"
@@ -221,7 +221,7 @@ class TraineeProfile extends Component {
               type="email"
               className="profileTextField"
               name="email"
-              placeholder="Email"
+              label="Email"
               defaultValue={data.email}
               margin="normal"
               variant="outlined"
@@ -231,7 +231,7 @@ class TraineeProfile extends Component {
               type="text"
               className="profileTextField"
               name="phone"
-              placeholder="Phone"
+              label="Phone"
               defaultValue={data.phone}
               margin="normal"
               variant="outlined"
@@ -240,7 +240,7 @@ class TraineeProfile extends Component {
               type="text"
               className="profileTextField"
               name="address"
-              placeholder="Adress"
+              label="Adress"
               defaultValue={data.address}
               margin="normal"
               variant="outlined"
@@ -249,7 +249,7 @@ class TraineeProfile extends Component {
               type="text"
               className="profileTextField"
               name="town"
-              placeholder="Ville"
+              label="Ville"
               defaultValue={data.town}
               margin="normal"
               variant="outlined"
@@ -258,7 +258,7 @@ class TraineeProfile extends Component {
               type="text"
               className="profileTextField"
               name="postalCode"
-              placeholder="Postal Code"
+              label="Postal Code"
               defaultValue={data.postalCode}
               margin="normal"
               variant="outlined"
@@ -283,7 +283,7 @@ class TraineeProfile extends Component {
               type="text"
               className="profileTextField"
               name="school"
-              placeholder="École"
+              label="École"
               defaultValue={data.school}
               margin="normal"
               variant="outlined"
@@ -310,7 +310,7 @@ class TraineeProfile extends Component {
               type="text"
               className="profileTextField"
               name="titre"
-              placeholder="Intitulé de stage"
+              label="Intitulé de stage"
               defaultValue={data.titre}
               margin="normal"
               variant="outlined"
@@ -320,7 +320,7 @@ class TraineeProfile extends Component {
               multiline
               className="profileTextField"
               name="description"
-              placeholder="Descriptions"
+              label="Descriptions"
               defaultValue={data.description}
               margin="normal"
               variant="outlined"
