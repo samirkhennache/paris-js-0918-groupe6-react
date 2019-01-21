@@ -6,7 +6,7 @@ export default class Services extends Component {
   render() {
     return (
       <div className="servicesBottle general_margin">
-        <h3 className="servicesTitle">
+        <h3 className="home_subsection_white">
           Les Services <span className="orange">One Team</span>
         </h3>
         <div className="exampleTiret" />

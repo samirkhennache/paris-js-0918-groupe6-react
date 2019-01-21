@@ -6,7 +6,7 @@ export default class Recrutement extends Component {
   render() {
     return (
       <div className="recrutementBottle general_margin">
-        <h3 className="recrutementTitle">Le processus de recrutement</h3>
+        <h3 className="home_subsection_orange">Le processus de recrutement</h3>
         <div className="recrutTiret" />
         <div class="section group">
           <div class="col span_1_of_4">
