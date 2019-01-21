@@ -1,0 +1,11 @@
+.servicesBottle {
+  background-color: #494642;
+  opacity: 0.8;
+  color: white;
+}
+
+.servicesTitle {
+  margin-top: 0px;
+  padding-top: 2%;
+  font-size: 5vh;
+}
