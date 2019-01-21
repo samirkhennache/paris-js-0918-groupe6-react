@@ -11,9 +11,9 @@ class TraineeHome extends Component {
     return (
       <div>
         <TraineeCarrousel />
-        <TraineeOffers />
+        {/* <TraineeOffers />
         <GoodReasonsStudents {...this.props} />
-        <Cursus />
+        <Cursus /> */}
       </div>
     );
   }

@@ -40,15 +40,13 @@ const tutorialSteps = [
 const styles = theme => ({
   root: {
     padding: "50px 0 30px 0",
-    backgroundColor: "#ffdfa0"
+    backgroundColor: "#f9bf59"
   },
   mobileStepper: {
     position: "static",
     backgroundColor: "rgba(0, 0, 0, 0)"
   },
   bloc: {
-    display: "flex",
-    flexDirection: "column",
     width: "calc(100px + 50vw)",
     margin: "auto"
   },
@@ -56,21 +54,32 @@ const styles = theme => ({
     position: "relative"
   },
   text: {
-    position: "absolute",
-    bottom: 0,
     textAlign: "center",
-    fontSize: "calc(10px + 2vw)",
-    width: "100%",
-    padding: "20px 0 20px 0"
+    fontSize: "calc(10px + 1.5vw)",
+    padding: "30px 50px 30px 50px",
+    backgroundColor: "rgba(0,0,0, 0.5)",
+    color: "white",
+    // border: "red 1px solid",
+    margin: "0px"
   },
   blocText: {
-    position: "relative",
-    width: "80%",
+    position: "absolute",
+    bottom: 0,
     margin: "auto"
+    // border: "green 3px solid"
   },
   img: {
     width: "100%",
     height: "auto"
+  },
+  tmpText: {
+    fontSize: "calc(10px + 1.5vw)"
+  },
+  miniHR: {
+    backgroundColor: "#494642",
+    height: "0.4vw",
+    width: "10vw",
+    margin: "auto"
   }
 });
 
@@ -96,12 +105,28 @@ class TraineeCarrousel extends React.Component {
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <h2
-            className="recruteurs"
+            // className="recruteurs"
             id="section2"
-            style={{ marginBottom: 50, marginTop: 20 }}
+            // style={{ marginBottom: 50, marginTop: 20 }}
+            className={classes.tmpText}
+            style={{ color: "white", fontWeight: "bold" }}
           >
             Pour les étudiants
           </h2>
+          <h3
+            // className="recruteurs"
+            // id="section2"
+            // style={{ marginBottom: 50, marginTop: 20 }}
+            className={classes.tmpText}
+            style={{ color: "#494642", fontWeight: "bold" }}
+          >
+            Tu cherches un stage en accord avec ta génération ?
+          </h3>
+          <div className={classes.miniHR} />
+          <p className={classes.tmpText} style={{ color: "white" }}>
+            Comme eux, intègre une team d’étudiants-stagiaires et participe à
+            une expérience challengeante
+          </p>
           <div className={classes.bloc}>
             <AutoPlaySwipeableViews
               onChangeIndex={this.handleStepChange}
@@ -110,7 +135,7 @@ class TraineeCarrousel extends React.Component {
               className={classes.carrousel}
             >
               {tutorialSteps.map((element, index) => (
-                <div key={index}>
+                <div key={index} style={{ position: "relative" }}>
                   <img
                     className={classes.img}
                     src={element.imgPath}
