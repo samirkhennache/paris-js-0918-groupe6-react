@@ -8,7 +8,7 @@ import number3 from "../../../img/students/number3.png";
 class GoodReasonsStudents extends Component {
   render() {
     return (
-      <div className="good-reasons">
+      <div className="good-reasons general_margin">
         <h2 className="h2-good-reasons">3 bonnes raisons de nous rejoindre</h2>
         <div className="bloc-good-reasons">
           <div className="good-reason-solo">

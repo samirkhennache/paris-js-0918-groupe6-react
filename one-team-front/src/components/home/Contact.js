@@ -4,7 +4,7 @@ import facebook from "../../img/facebook.png";
 import twitter from "../../img/twitter.png";
 
 const Contact = () => (
-  <div className="contact-home">
+  <div className="contact-home general_margin">
     <h2>Contactez-nous</h2>
     <h3 style={{ color: "#605b55" }}>Vous souhaitez en savoir plus..</h3>
     <p>Appelez-nous, nous serons ravis d’échanger avec vous sur vos projets.</p>

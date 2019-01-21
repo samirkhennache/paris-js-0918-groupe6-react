@@ -7,6 +7,8 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
+// import ConvertDate from "../../../tools";
+import Tinymce from "../../tiny/Tiny";
 
 const API_ENDPOINT_MISSION = MakeCompletedUrl("mission/");
 
@@ -23,6 +25,18 @@ const CompanyCreateOffers = class extends React.Component {
       this.setState({ mission: modifMission, isEditMode: true });
     }
   }
+
+  // TinyMce Editeur pour la description
+  handleEditor = e => {
+    console.log("tiny", e);
+    console.log("miss", e.target.getContent());
+    this.setState(previousState => ({
+      mission: {
+        ...previousState.mission,
+        description: e.target.getContent()
+      }
+    }));
+  };
 
   handlerOnChange = event => {
     const { name, value } = event.target;
@@ -101,7 +115,14 @@ const CompanyCreateOffers = class extends React.Component {
 
   closeMission = () => {
     const { onClose } = this.props;
-    this.setState(this.defaultState(true));
+    // this.setState(this.defaultState(true));
+    onClose();
+  };
+
+  cancelMission = () => {
+    const { onClose } = this.props;
+    const { isEditMode } = this.state;
+    if (!isEditMode) this.setState(this.defaultState(true));
     onClose();
   };
 
@@ -193,13 +214,19 @@ const CompanyCreateOffers = class extends React.Component {
               onChange={this.handlerOnChange}
               required
               fullWidth
-              multiline
-              rows="2"
+              // multiline
+              // rows="2"
               // rowsMax="2"
               margin="normal"
               variant="outlined"
             />
-            <TextField
+
+            <Tinymce
+              mission={this.state.mission.description}
+              handle={this.handleEditor}
+            />
+
+            {/* <TextField
               placeholder="Description"
               name="description"
               label="Description"
@@ -212,7 +239,7 @@ const CompanyCreateOffers = class extends React.Component {
               // rowsMax="10"
               margin="normal"
               variant="outlined"
-            />
+            /> */}
             <Select
               name="LevelStudyId"
               required
@@ -230,7 +257,7 @@ const CompanyCreateOffers = class extends React.Component {
           </form>
         </div>
         <DialogActions>
-          <Button onClick={this.closeMission} color="primary">
+          <Button onClick={this.cancelMission} color="primary">
             Annuler
           </Button>
           <Button onClick={this.saveMission} color="primary" autoFocus>

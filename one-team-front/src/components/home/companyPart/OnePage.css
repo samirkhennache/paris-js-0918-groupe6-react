@@ -48,19 +48,6 @@
   }
 }
 
-.textCentral {
-  margin-top: 17%;
-  color: white;
-  font-size: 50px;
-}
-@media (max-width: 768px) {
-  .textCentral {
-    margin-top: 57%;
-    margin-right: 5%;
-    margin-left: 5%;
-    font-size: 30px;
-  }
-}
 .buttonConnexion {
   width: 23%;
   height: 10%;

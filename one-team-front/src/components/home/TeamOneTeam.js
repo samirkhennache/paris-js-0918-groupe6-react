@@ -10,7 +10,7 @@ import prudence from "../../img/teamOneTeam/prudence.jpeg";
 import gerard from "../../img/teamOneTeam/gerard.jpeg";
 
 const TeamOneTeam = () => (
-  <div className="teamOneTeam">
+  <div className="general_margin">
     <h2 className="white-color h2-team">La team</h2>
     <img className="logo-team" src={logo} alt="logo One Team" />
     <Grid container className="border-test team-block" justify="center">

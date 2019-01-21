@@ -10,9 +10,13 @@ class TraineeHome extends Component {
   render() {
     return (
       <div>
-        <TraineeCarrousel />
+        <div className="background-carrousel">
+          <TraineeCarrousel />
+        </div>
         <TraineeOffers />
-        <GoodReasonsStudents {...this.props} />
+        <div className="background-goodReasons">
+          <GoodReasonsStudents {...this.props} />
+        </div>
         <Cursus />
       </div>
     );

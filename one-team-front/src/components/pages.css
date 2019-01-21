@@ -1,0 +1,104 @@
+/* GENERAL MARGIN */
+.general_margin {
+  /* width: 70%;
+    margin: auto; */
+  margin: 10px calc(1px + 15vw);
+}
+@media (max-width: 425px) {
+  .general_margin {
+    margin: 10px calc(10px + 2vw);
+  }
+}
+hr {
+  background-color: #ff8900;
+  height: 4px;
+  border: 0;
+}
+
+/* *********************** PAGES TEXT CLASSES **********************/
+
+.page_title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: calc(15px + 2vw);
+  color: white;
+  margin: 0;
+}
+.page_subtitle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: calc(15px + 1vw);
+  color: #ff8900;
+  margin: 0;
+}
+.regular_text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: calc(16px + 0.1vw);
+  margin: 0;
+}
+.criteres_small {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: calc(18px + 0.1vw);
+  color: #494642;
+  margin: 0;
+}
+.criteres_big {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: calc(14px + 0.1vw);
+  color: #494642;
+  margin: 0;
+}
+.regular_orange_subtitle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: calc(20px + 0.1vw);
+  color: #ff8900;
+  text-transform: uppercase;
+  margin: 0;
+}
+.regular_black_subtitle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: calc(20px + 0.1vw);
+  color: black;
+  text-transform: uppercase;
+  margin: 0;
+}
+.regular_orange_title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: calc(18px + 0.1vw);
+  text-align: left;
+  color: #ff8900;
+  text-transform: uppercase;
+  margin: 0;
+}
+.regular_black_title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: calc(18px + 0.1vw);
+  color: black;
+  text-transform: uppercase;
+  margin: 0;
+}
+.mission_title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: calc(16px + 0.1vw);
+  text-align: left;
+  color: black;
+  text-transform: uppercase;
+  margin: 0;
+}
+.mission_title_middle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: calc(14px + 0.1vw);
+  text-align: left;
+  color: black;
+  text-transform: uppercase;
+  margin: 0;
+}
