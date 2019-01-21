@@ -106,7 +106,7 @@ class CompanyCreateAccount extends Component {
             type="text"
             className="textField"
             name="companyName"
-            placeholder="Nom de l'entreprise"
+            label="Nom de l'entreprise"
             margin="normal"
             variant="outlined"
             required
@@ -115,7 +115,7 @@ class CompanyCreateAccount extends Component {
             type="text"
             className="textField"
             name="firstnameContact"
-            placeholder="Prénom"
+            label="Prénom"
             margin="normal"
             variant="outlined"
             required
@@ -124,7 +124,7 @@ class CompanyCreateAccount extends Component {
             type="text"
             className="textField"
             name="lastnameContact"
-            placeholder="Nom"
+            label="Nom"
             margin="normal"
             variant="outlined"
             required
@@ -134,7 +134,7 @@ class CompanyCreateAccount extends Component {
             type="email"
             className="textField"
             name="email"
-            placeholder="Email"
+            label="Email"
             margin="normal"
             variant="outlined"
             required
@@ -143,7 +143,7 @@ class CompanyCreateAccount extends Component {
             type="text"
             className="textField"
             name="phone"
-            placeholder="Numéro de téléphone"
+            label="Numéro de téléphone"
             margin="normal"
             variant="outlined"
             required
@@ -153,7 +153,7 @@ class CompanyCreateAccount extends Component {
             type="password"
             className="textField"
             name="password"
-            placeholder="Mot de passe"
+            label="Mot de passe"
             margin="normal"
             variant="outlined"
             required
