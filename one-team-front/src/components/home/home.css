@@ -51,79 +51,7 @@
   font-size: calc(18px + 0.3vw);
   color: #ff8900;
 }
-/* *********************** PAGES TEXT CLASSES **********************/
 
-.page_title {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 700;
-  font-size: calc(15px + 2vw);
-  color: white;
-}
-.page_subtitle {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 700;
-  font-size: calc(15px + 1vw);
-  color: #ff8900;
-}
-.regular_text {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 400;
-    font-size: calc(16px + 0.1vw)
-}
-.criteres_small {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 400;
-    font-size: calc(18px + 0.1vw);
-    color: #494642;
-}
-.criteres_big {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 400;
-    font-size: calc(22px + 0.1vw);
-    color: #494642;
-}
-.regular_orange_subtitle {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 700;
-    font-size: calc(20px + 0.1vw);
-    color: #ff8900;
-    text-transform: uppercase;
-}
-.regular_black_subtitle {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
-    font-size: calc(20px + 0.1vw);
-    color: black;
-    text-transform: uppercase;
-}
-.regular_orange_title {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 700;
-    font-size: calc(24px + 0.1vw);
-    color: #ff8900;
-    text-transform: uppercase;
-}
-.regular_black_title {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 700;
-    font-size: calc(24px + 0.1vw);
-    color: black;
-    text-transform: uppercase;
-}
-.mission_title {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 400;
-    font-size: calc(22px + 0.1vw);
-    color: black;
-    text-transform: uppercase;
-}
-.mission_title_middle {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 400;
-    font-size: calc(20px + 0.1vw);
-    color: black;
-    text-transform: uppercase;
-}
 
 /* *********************** BACKGROUND GENERAUX **********************/
 .background-carrousel {
