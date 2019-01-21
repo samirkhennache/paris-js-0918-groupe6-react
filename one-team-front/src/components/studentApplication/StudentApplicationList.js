@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import ModalOffer from "../offerView/ModalOffer";
 import { SMALL } from "../offerView";
 
@@ -14,7 +15,7 @@ class StudentApplicationList extends Component {
     // const { traineeId } = this.props;
     const traineeId = sessionStorage.getItem("token");
     axios
-      .get(`http://localhost:3001/trainee/${traineeId}/application`)
+      .get(MakeCompletedUrl(`trainee/${traineeId}/application`))
       .then(res => {
         this.setState({ applications: res.data, isLoaded: true });
       });

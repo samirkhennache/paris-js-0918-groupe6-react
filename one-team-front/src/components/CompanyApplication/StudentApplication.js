@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -34,7 +35,7 @@ class StudentApplication extends Component {
   selectStudent = mode => {
     const { missionId, traineeId, firstname } = this.props;
     axios
-      .put(`http://localhost:3001/application`, {
+      .put(MakeCompletedUrl(`application`), {
         missionId,
         traineeId,
         mode
@@ -68,15 +69,15 @@ class StudentApplication extends Component {
 
   refuseStudent = mode => {
     const { missionId, traineeId, firstname } = this.props;
-    console.log("onclick", missionId, traineeId, mode);
+    // console.log("onclick", missionId, traineeId, mode);
     axios
-      .put(`http://localhost:3001/application`, {
+      .put(MakeCompletedUrl(`application`), {
         missionId,
         traineeId,
         mode
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           openMessageRefuse: true,
           title: `Trainee deleted`,
@@ -85,7 +86,7 @@ class StudentApplication extends Component {
         });
       })
       .catch(error => {
-        console.log(error.response);
+        // console.log(error.response);
         if (error.response.status === 404) {
           this.setState({
             openMessageSelect: true,
@@ -120,7 +121,12 @@ class StudentApplication extends Component {
       content
     } = this.state;
     const { mode, modeSelect, modeRefuse, disabled, isFull } = this.props;
-    console.log("isFull :", isFull);
+    // console.log("isFull :", isFull);
+    // console.log(
+    //   "StudentApplication",
+    //   this.props.newDateStart,
+    //   this.props.newDateEnd
+    // );
 
     switch (mode) {
       case "APPLICATION": {
@@ -128,7 +134,13 @@ class StudentApplication extends Component {
           <div>
             <div>
               <div onClick={this.clickStudentSmall}>
-                <StudentView {...this.props} size={SMALL} open={open} />
+                <StudentView
+                  {...this.props}
+                  dateStart={this.props.newDateStart}
+                  dateEnd={this.props.newDateEnd}
+                  size={SMALL}
+                  open={open}
+                />
               </div>
               {isFull ? (
                 <Button variant="contained" disabled>
@@ -152,6 +164,8 @@ class StudentApplication extends Component {
               </Button>
               <StudentProfilView
                 {...this.props}
+                dateStart={this.props.newDateStart}
+                dateEnd={this.props.newDateEnd}
                 open={open}
                 close={this.clickClose}
               />
@@ -202,7 +216,12 @@ class StudentApplication extends Component {
           <div>
             <div>
               <div onClick={() => this.clickStudentSmall()}>
-                <StudentView {...this.props} size={SMALL} />
+                <StudentView
+                  {...this.props}
+                  dateStart={this.props.newDateStart}
+                  dateEnd={this.props.newDateEnd}
+                  size={SMALL}
+                />
               </div>
               {disabled || isFull ? (
                 <Button disabled variant="contained" color="secondary">
@@ -219,6 +238,8 @@ class StudentApplication extends Component {
               )}
               <StudentProfilView
                 {...this.props}
+                dateStart={this.props.newDateStart}
+                dateEnd={this.props.newDateEnd}
                 open={open}
                 close={this.clickClose}
               />
@@ -250,10 +271,17 @@ class StudentApplication extends Component {
           <div>
             <div>
               <div onClick={() => this.clickStudentSmall()}>
-                <StudentView {...this.props} size={SMALL} />
+                <StudentView
+                  {...this.props}
+                  dateStart={this.props.newDateStart}
+                  dateEnd={this.props.newDateEnd}
+                  size={SMALL}
+                />
               </div>
               <StudentProfilView
                 {...this.props}
+                dateStart={this.props.newDateStart}
+                dateEnd={this.props.newDateEnd}
                 open={open}
                 close={this.clickClose}
               />
