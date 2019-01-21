@@ -1,0 +1,6 @@
+/* GENERAL MARGIN */
+.general_margin {
+  /* width: 70%;
+    margin: auto; */
+  margin: 10px calc(1px + 15vw);
+}

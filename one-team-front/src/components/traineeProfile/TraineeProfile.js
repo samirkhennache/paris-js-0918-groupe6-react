@@ -1,20 +1,34 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { MakeCompletedUrl, ConvertDate } from "../../tools";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Select from "@material-ui/core/Select";
 import StudentView from "../CompanyApplication/StudentView";
 import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
-import ConvertDate from "../../tools";
 import "./traineeProfile.css";
 
 class TraineeProfile extends Component {
   state = {
-    selectedFile: null
+    selectedFile: null,
+    openTrainee: false,
+    button: "fermer"
+  };
+
+  traineeOpenConnexion = () => {
+    this.setState({
+      openTrainee: true
+    });
+  };
+
+  handleCloseTrainee = () => {
+    this.setState({ openTrainee: false });
   };
 
   handleChange = event => {
@@ -29,7 +43,7 @@ class TraineeProfile extends Component {
   componentDidMount() {
     const id = sessionStorage.getItem("token");
     axios
-      .get(`http://localhost:3001/trainee/profile/${id}`)
+      .get(MakeCompletedUrl(`trainee/profile/${id}`))
       .then(response => {
         // console.log(response.data);
         this.setState({
@@ -40,7 +54,7 @@ class TraineeProfile extends Component {
         console.log(error.response);
       });
     axios
-      .get("http://localhost:3001/paradata/levelstudies")
+      .get(MakeCompletedUrl("paradata/levelstudies"))
       .then(response => {
         // console.log(response.data);
         this.setState({
@@ -57,7 +71,7 @@ class TraineeProfile extends Component {
     // const { id } = this.state;
     const id = sessionStorage.getItem("token");
     axios
-      .put("http://localhost:3001/trainee/profile", {
+      .put(MakeCompletedUrl("trainee/profile"), {
         id,
         firstname: e.target.firstname.value,
         lastname: e.target.lastname.value,
@@ -65,6 +79,7 @@ class TraineeProfile extends Component {
         address: e.target.address.value,
         town: e.target.town.value,
         postalCode: e.target.postalCode.value,
+        dateBirth: e.target.dateBirth.value,
         school: e.target.school.value,
         titre: e.target.titre.value,
         description: e.target.description.value,
@@ -92,7 +107,7 @@ class TraineeProfile extends Component {
         this.state.selectedFile,
         this.state.selectedFile.name
       );
-      axios.post(`http://localhost:3001/trainee/uploadphoto/${id}`, formData);
+      axios.post(MakeCompletedUrl(`trainee/uploadphoto/${id}`), formData);
     }
   };
 
@@ -122,15 +137,29 @@ class TraineeProfile extends Component {
     return `${year}-${month}-${day}`;
   }
 
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   render() {
-    const { data } = this.state;
+    const { data, openTrainee, button } = this.state;
     if (this.state.data == null || this.state.levelstudies == null) {
       return <div>Loading</div>;
     }
-    console.log(this.state.levelstudies);
     return (
       <div>
         <h1>Complète ton profile</h1>
+        <Button
+          variant="contained"
+          className="buttonConnexion2"
+          onClick={this.traineeOpenConnexion}
+        >
+          Voir profile public
+        </Button>
         <div className="createForm">
           <form onSubmit={this.onSubmit}>
             <div>
@@ -140,7 +169,7 @@ class TraineeProfile extends Component {
                     <img
                       src={
                         this.state.image ||
-                        `http://localhost:3001/${this.state.data.pictures}`
+                        MakeCompletedUrl(`${this.state.data.pictures}`)
                       }
                       width="100"
                       height="100"
@@ -151,7 +180,7 @@ class TraineeProfile extends Component {
                   <img
                     src={
                       this.state.image ||
-                      "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+                      MakeCompletedUrl("public/photoProfile/PhotoProfil.jpg")
                     }
                     width="100"
                     height="100"
@@ -235,6 +264,22 @@ class TraineeProfile extends Component {
               variant="outlined"
             />
             <TextField
+              // id="date"
+              name="dateBirth"
+              label="Date de naissance"
+              type="date"
+              defaultValue={
+                this.state.data.dateBirth !== null
+                  ? ConvertDate(this.state.data.dateBirth)
+                  : null
+              }
+              InputLabelProps={{
+                shrink: true
+              }}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
               type="text"
               className="profileTextField"
               name="school"
@@ -282,7 +327,7 @@ class TraineeProfile extends Component {
               rows="5"
             />
             <TextField
-              id="date"
+              // id="date"
               name="dateStart"
               label="Debut stage"
               type="date"
@@ -298,7 +343,7 @@ class TraineeProfile extends Component {
               variant="outlined"
             />
             <TextField
-              id="date"
+              // id="date"
               name="dateEnd"
               label="Fin stage"
               type="date"
@@ -323,19 +368,34 @@ class TraineeProfile extends Component {
             </Button>
           </form>
         </div>
-        <StudentView
-          firstname={data.firstname}
-          address={data.address}
-          postalCode={data.postalCode}
-          town={data.town}
-          pictures={data.pictures}
-          descriptionTrainee={data.description}
-          school={data.school}
-          titre={data.titre}
-          dateStart={data.dateStart}
-          dateEnd={data.dateEnd}
-          size={FULL_RESTRICTED}
-        />
+
+        <Dialog
+          open={openTrainee}
+          onClose={this.handleCloseTrainee}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogContent>
+            <StudentView
+              firstname={data.firstname}
+              address={data.address}
+              postalCode={data.postalCode}
+              town={data.town}
+              pictures={data.pictures}
+              descriptionTrainee={data.description}
+              school={data.school}
+              titre={data.titre}
+              dateStart={data.dateStart}
+              dateEnd={data.dateEnd}
+              size={FULL_RESTRICTED}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCloseTrainee} color="primary">
+              {button}
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }

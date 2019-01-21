@@ -1,0 +1,53 @@
+/********************** TEAM ************************/
+.logo-team {
+  width: calc(90px + 30vw);
+  margin-bottom: 20px;
+}
+.white-color {
+  color: white;
+}
+.h2-team {
+  padding: 5px;
+}
+.img-team {
+  width: 100%;
+}
+.name-team {
+  margin: 5px 0;
+  color: white;
+}
+.team-item {
+  margin: 20px 10px;
+}
+
+/********************* CONTACT *********************/
+.contact-home {
+  background-color: #202020;
+  padding: 15px 0;
+  margin: 0;
+  color: whitesmoke;
+}
+
+.social-media {
+  margin: 10px;
+}
+.nav-footer {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+.nav-footer li {
+  list-style-type: none;
+  margin: 5px 10px;
+  padding: 0;
+}
+.nav-footer a {
+  color: whitesmoke;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.nav-footer a:hover {
+  color: #ff8900;
+}

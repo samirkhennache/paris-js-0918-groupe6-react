@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import CompanyOffers from "./CompanyOffers";
 import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
 
-const idCompany = sessionStorage.getItem("token");
 const mode = "SELECT";
 const modeRefuse = "REFUSE";
 
@@ -13,7 +13,8 @@ class CompanyOffersRoot extends Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
+    const idCompany = sessionStorage.getItem("token");
+    axios.get(MakeCompletedUrl(`company/${idCompany}`)).then(res => {
       console.log("data", res.data);
       this.setState({
         missions: res.data.Missions.sort((a, b) => a - b),
@@ -22,7 +23,7 @@ class CompanyOffersRoot extends Component {
       });
     });
     axios
-      .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
+      .get(MakeCompletedUrl(`application/${idCompany}/${mode}/mytrainee`))
       .then(res =>
         this.setState({
           trainee: res.data.data
@@ -33,7 +34,7 @@ class CompanyOffersRoot extends Component {
   handleCloseRefresh = (idTrainee, missionId) => {
     const trainee = [];
     this.state.trainee.map(e => {
-      console.log("e", e);
+      // console.log("e", e);
       if (e.mission_id === missionId) {
         // const newDataApplication = e.dataApplications.map(f => {
         //   if (f.TraineeId !== idTrainee) return f;
@@ -50,7 +51,7 @@ class CompanyOffersRoot extends Component {
           dataApplications: newDataApplication
         };
         trainee.push(result);
-        console.log(newDataApplication);
+        // console.log(newDataApplication);
       } else {
         const result = {
           isFull: e.isFull,
@@ -64,11 +65,12 @@ class CompanyOffersRoot extends Component {
     this.setState({
       trainee
     });
-    console.log(trainee);
+    // console.log(trainee);
   };
 
   render() {
     const { missions, isLoaded, trainee, company } = this.state;
+    console.log("trainee", trainee);
     return (
       <div>
         {!isLoaded ? (

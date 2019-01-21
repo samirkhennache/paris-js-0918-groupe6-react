@@ -1,8 +1,8 @@
 .rules-item {
-    margin: 25px 25px;
+    margin: 25px 10px;
 }
 .rules-bloc {
-    padding: 0 calc(5px + 10vw);
+    margin: 0 calc(5px + 10vw);
 }
 .rules-line {
     height: 1px;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import ModalOffer from "../offerView/ModalOffer";
 import { MIDDLE } from "../offerView";
 
@@ -17,16 +18,30 @@ class FindOffers extends Component {
     isLoad: false
   };
 
+  componentDidMount() {
+    this.getMission();
+    this.getCount();
+  }
+
+  getCount = () => {
+    const url = MakeCompletedUrl("mission/getcount");
+    axios.get(url).then(res => {
+      console.log("res", res);
+      this.setState({ ...this.state, count: res.data.count });
+    });
+  };
+
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  // getResult = () => {};
+
+  getMission = () => {
     const { search, town } = this.state;
-    const url = `http://localhost:3001/mission?search=${search}&town=${town}`;
+    const url = MakeCompletedUrl(`mission?search=${search}&town=${town}`);
     axios
       .get(url)
       .then(res => {
@@ -39,13 +54,10 @@ class FindOffers extends Component {
       });
   };
 
-  componentDidMount() {
-    const url = "http://localhost:3001/mission/getcount";
-    axios.get(url).then(res => {
-      console.log("res", res);
-      this.setState({ ...this.state, count: res.data.count });
-    });
-  }
+  handleSubmit = event => {
+    event.preventDefault();
+    this.getMission();
+  };
 
   render() {
     const { result, count } = this.state;
@@ -62,7 +74,7 @@ class FindOffers extends Component {
             onChange={this.handleChange}
           />
           <input
-            type="text"
+            type="search"
             name="town"
             id="town"
             placeholder="ville"

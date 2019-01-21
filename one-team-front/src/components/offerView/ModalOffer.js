@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -73,7 +74,7 @@ class ModalOffer extends Component {
     const traineeId = sessionStorage.getItem("token");
     this.setState({ open: false });
     axios
-      .post("http://localhost:3001/application", {
+      .post(MakeCompletedUrl("application"), {
         missionId,
         traineeId
       })

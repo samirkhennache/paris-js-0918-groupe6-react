@@ -1,66 +1,62 @@
-h2 {
+/* ********************* HOME TEXT CLASS *************************/
+.home_title {
+  margin-top: 17%;
+  color: white;
+  font-size: calc(20px + 3vw);
+}
+@media (max-width: 768px) {
+  .home_title {
+    margin-top: 27%;
+    margin-right: 5%;
+    margin-left: 5%;
+    font-size: calc(20px + 3vw);
+  }
+}
+.home_section {
+  font-weight: 900;
+  color: white;
+  letter-spacing: 0.1cm;
   font-size: calc(20px + 1vw);
   padding: 30px 0 30px 0;
   margin: 0 5px;
 }
-/********************** TEAM ************************/
-.logo-team {
-  width: calc(90px + 30vw);
-  margin-bottom: 20px;
-}
-.white-color {
-  color: white;
-}
-.h2-team {
-  padding: 5px;
-}
-.teamOneTeam {
-  background-color: #494642;
-  padding: 30px 0;
-  margin: 0;
-}
-.img-team {
-  width: 100%;
-}
-.name-team {
-  margin: 5px 0;
-  color: white;
-}
-.team-item {
-  margin: 20px 40px;
-}
-.team-block {
-  padding: 0 calc(10px + 10vw);
-}
-
-/********************* CONTACT *********************/
-.contact-home {
-  background-color: #202020;
-  padding: 15px 0;
-  margin: 0;
-  color: whitesmoke;
-}
-
-.social-media {
-  margin: 10px;
-}
-.nav-footer {
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  margin-top: 35px;
-}
-.nav-footer li {
-  list-style-type: none;
-  margin: 5px 10px;
-  padding: 0;
-}
-.nav-footer a {
-  color: whitesmoke;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.nav-footer a:hover {
+.home_subsection_orange {
+  font-family: "Open Sans", sans-serif;
+  font-size: calc(15px + 2vw);
   color: #ff8900;
+}
+.home_subsection_white {
+  font-family: "Open Sans", sans-serif;
+  font-size: calc(15px + 2vw);
+  color: white;
+}
+.home_subsection_grey {
+  font-family: "Open Sans", sans-serif;
+  font-size: calc(15px + 2vw);
+  color: #494642;
+}
+.icon_white_title {
+  font-family: "Open Sans", sans-serif;
+  font-size: calc(18px + 0.3vw);
+  color: white;
+}
+.icon_orange_title {
+  font-family: "Open Sans", sans-serif;
+  font-size: calc(18px + 0.3vw);
+  color: #ff8900;
+}
+/* *********************** PAGES TEXT CLASSES **********************/
+
+/* *********************** BACKGROUND GENERAUX **********************/
+.background-carrousel {
+  background-color: #ffdfa0;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
+}
+.background-goodReasons {
+  background-color: #494642;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
+}
+.background-team {
+  background-color: #494642;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
 }

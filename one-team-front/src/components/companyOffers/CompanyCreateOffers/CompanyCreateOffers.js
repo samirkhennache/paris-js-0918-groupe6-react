@@ -1,20 +1,22 @@
 import React from "react";
 import "./CompanyCreateOffers.css";
 import Axios from "axios";
+import { MakeCompletedUrl, ConvertDate } from "../../../tools";
 import { TextField, Select, MenuItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import ConvertDate from "../../../tools";
+// import ConvertDate from "../../../tools";
+import Tinymce from "../../tiny/Tiny";
 
-const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
+const API_ENDPOINT_MISSION = MakeCompletedUrl("mission/");
 
 const CompanyCreateOffers = class extends React.Component {
   state = this.defaultState();
 
   componentDidMount() {
-    Axios.get("http://localhost:3001/paradata/levelstudies").then(res => {
+    Axios.get(MakeCompletedUrl("paradata/levelstudies")).then(res => {
       this.setState({ idLoaded: true, levelstudies: res.data });
     });
     const { modifMission } = this.props;
@@ -23,6 +25,18 @@ const CompanyCreateOffers = class extends React.Component {
       this.setState({ mission: modifMission, isEditMode: true });
     }
   }
+
+  // TinyMce Editeur pour la description
+  handleEditor = e => {
+    console.log("tiny", e);
+    console.log("miss", e.target.getContent());
+    this.setState(previousState => ({
+      mission: {
+        ...previousState.mission,
+        description: e.target.getContent()
+      }
+    }));
+  };
 
   handlerOnChange = event => {
     const { name, value } = event.target;
@@ -55,12 +69,17 @@ const CompanyCreateOffers = class extends React.Component {
       description: mission.description,
       town: mission.town,
       intro: mission.intro,
-      CompanyId: mission.CompanyId,
+      CompanyId: Number(mission.CompanyId),
       LevelStudyId: Number(mission.LevelStudyId)
     };
+
+    const levelStudy = this.state.levelstudies.filter(
+      level => level.id == postFormMission.LevelStudyId
+    )[0];
     if (!isEditMode) {
       Axios.post(API_ENDPOINT_MISSION, postFormMission).then(res => {
         const { handlerCreateMission } = this.props;
+        res.data = { ...res.data, LevelStudy: levelStudy };
         handlerCreateMission(res.data);
         this.closeMission();
       });
@@ -68,6 +87,7 @@ const CompanyCreateOffers = class extends React.Component {
       Axios.put(`${API_ENDPOINT_MISSION}${mission.id}`, postFormMission).then(
         res => {
           const { handlerUpdateMission } = this.props;
+          res.data = { ...res.data, LevelStudy: levelStudy };
           handlerUpdateMission(res.data);
           this.closeMission();
         }
@@ -75,7 +95,7 @@ const CompanyCreateOffers = class extends React.Component {
     }
   };
 
-  defaultState() {
+  defaultState(isLoaded = false) {
     const idCompany = sessionStorage.getItem("token");
     return {
       mission: {
@@ -89,13 +109,20 @@ const CompanyCreateOffers = class extends React.Component {
         LevelStudyId: 1
       },
       isEditMode: false,
-      idLoaded: false
+      idLoaded: isLoaded
     };
   }
 
   closeMission = () => {
     const { onClose } = this.props;
-    this.setState(this.defaultState());
+    // this.setState(this.defaultState(true));
+    onClose();
+  };
+
+  cancelMission = () => {
+    const { onClose } = this.props;
+    const { isEditMode } = this.state;
+    if (!isEditMode) this.setState(this.defaultState(true));
     onClose();
   };
 
@@ -187,13 +214,19 @@ const CompanyCreateOffers = class extends React.Component {
               onChange={this.handlerOnChange}
               required
               fullWidth
-              multiline
-              rows="2"
+              // multiline
+              // rows="2"
               // rowsMax="2"
               margin="normal"
               variant="outlined"
             />
-            <TextField
+
+            <Tinymce
+              mission={this.state.mission.description}
+              handle={this.handleEditor}
+            />
+
+            {/* <TextField
               placeholder="Description"
               name="description"
               label="Description"
@@ -206,7 +239,7 @@ const CompanyCreateOffers = class extends React.Component {
               // rowsMax="10"
               margin="normal"
               variant="outlined"
-            />
+            /> */}
             <Select
               name="LevelStudyId"
               required
@@ -224,7 +257,7 @@ const CompanyCreateOffers = class extends React.Component {
           </form>
         </div>
         <DialogActions>
-          <Button onClick={this.closeMission} color="primary">
+          <Button onClick={this.cancelMission} color="primary">
             Annuler
           </Button>
           <Button onClick={this.saveMission} color="primary" autoFocus>
