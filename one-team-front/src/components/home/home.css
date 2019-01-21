@@ -26,30 +26,35 @@
   font-weight: 700;
   font-size: calc(15px + 1vw);
   color: #ff8900;
+  margin: 40px 0 10px 0;
 }
 .home_subsection_white {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: calc(15px + 1vw);
   color: white;
+  margin: 40px 0 10px 0;
 }
 .home_subsection_grey {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: calc(15px + 2vw);
+  font-size: calc(15px + 1vw);
   color: #494642;
+  margin: 40px 0 10px 0;
 }
 .icon_white_title {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: calc(18px + 0.3vw);
   color: white;
+  margin: 0;
 }
 .icon_orange_title {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: calc(18px + 0.3vw);
   color: #ff8900;
+  margin: 0
 }
 
 /* *********************** BACKGROUND GENERAUX **********************/
