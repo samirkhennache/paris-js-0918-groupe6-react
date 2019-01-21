@@ -85,11 +85,16 @@ class CompanyCarrousel extends React.Component {
 
     return (
       <MuiThemeProvider theme={theme}>
-        <div className={classes.root}>
+        <div className={`${classes.root} general_margin`}>
           <h2
-            className="recruteurs"
+            className="home_section"
             id="section2"
-            style={{ marginBottom: 50, marginTop: 20 }}
+            style={{
+              marginBottom: 50,
+              marginTop: 20,
+              color: "white",
+              fontSize: 35
+            }}
           >
             Pour les recruteurs
           </h2>

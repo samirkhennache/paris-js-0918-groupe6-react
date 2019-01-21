@@ -4,3 +4,34 @@
 .profileTextField {
   width: 100%;
 }
+
+.traineeProfileTitle {
+  text-align: start;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.traineeProfileTitleBackGroud {
+  background-image: url(../../img/bandeau_trainee-1.jpg);
+  border-top: 0.1px solid #4a4641;
+  margin-bottom: 10px;
+  height: 40vh;
+}
+
+.traineeProfileTextProfile {
+  color: white;
+}
+
+.traineeProfileText {
+  color: #ff8900;
+}
+
+.traineeProfileImage {
+  border-radius: 50%;
+  height: 150px;
+}
+
+.traineeProfileIcon {
+  margin-left: 10px;
+  color: white;
+}
