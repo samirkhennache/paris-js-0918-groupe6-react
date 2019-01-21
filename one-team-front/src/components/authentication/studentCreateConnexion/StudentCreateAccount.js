@@ -81,7 +81,7 @@ class StudentCreateAccount extends Component {
             type="text"
             className="textField"
             name="firstname"
-            placeholder="Prénom"
+            label="Prénom"
             onChange={this.onChange}
             margin="normal"
             variant="outlined"
@@ -91,7 +91,7 @@ class StudentCreateAccount extends Component {
             type="text"
             className="textField"
             name="lastname"
-            placeholder="Nom"
+            label="Nom"
             onChange={this.onChange}
             margin="normal"
             variant="outlined"
@@ -102,7 +102,7 @@ class StudentCreateAccount extends Component {
             type="email"
             className="textField"
             name="email"
-            placeholder="Email"
+            label="Email"
             onChange={this.onChange}
             margin="normal"
             variant="outlined"
@@ -113,7 +113,7 @@ class StudentCreateAccount extends Component {
             type="password"
             className="textField"
             name="password"
-            placeholder="Mot de passe"
+            label="Mot de passe"
             onChange={this.onChange}
             margin="normal"
             variant="outlined"

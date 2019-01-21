@@ -10,6 +10,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Hidden from "@material-ui/core/Hidden";
 
+import renderHTML from "react-render-html";
 import { MakeCompletedUrl } from "../../tools";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
@@ -126,17 +127,18 @@ class CompanyOfferManage extends Component {
           <p> niveau d'étude: {LevelStudy} </p>
           <p>{intro} </p>
           <Hidden xsDown>
-            <p>{`${descriptionToShow} ...`}</p>
+            <p>r{renderHTML(`${descriptionToShow} ...`)}</p>
           </Hidden>
         </div>
         {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
-        <AwesomeButton
-          type="primary"
-          className="aws-btn edit"
-          action={this.showModal}
+        <Button // type="primary"
+          // className="aws-btn edit"
+          variant="contained"
+          color="primary"
+          onClick={this.showModal}
         >
           Modifier
-        </AwesomeButton>
+        </Button>
 
         <br />
         <AwesomeButton
@@ -163,17 +165,18 @@ class CompanyOfferManage extends Component {
         {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
         <Team {...this.props} disabled={disabled} />
         {disabled || isFull ? (
-          <AwesomeButton type="primary" disabled className="aws-btn validate">
+          <Button type="primary" disabled className="aws-btn validate">
             Valider ma team
-          </AwesomeButton>
+          </Button>
         ) : (
-          <AwesomeButton
-            action={this.validateMission}
-            type="primary"
-            className="aws-btn validate"
+          <Button
+            onClick={this.validateMission} // type="primary"
+            // className="aws-btn validate"
+            variant="contained"
+            color="primary"
           >
             Valider ma team
-          </AwesomeButton>
+          </Button>
         )}
         <hr align="center" width="90%" color="midnightblue" size="1" />
         {/* **************** DIALOG VALIDATE ************************** */}

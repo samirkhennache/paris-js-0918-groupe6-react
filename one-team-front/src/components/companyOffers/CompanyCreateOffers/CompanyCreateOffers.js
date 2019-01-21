@@ -16,6 +16,8 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import { MakeCompletedUrl, ConvertDate } from "../../../tools";
 import logoCompany from "../../../img/three-buildings.png";
+// import ConvertDate from "../../../tools";
+import Tinymce from "../../tiny/Tiny";
 
 const API_ENDPOINT_MISSION = MakeCompletedUrl("mission/");
 
@@ -55,6 +57,18 @@ const CompanyCreateOffers = class extends React.Component {
       this.setState({ mission: modifMission, isEditMode: true });
     }
   }
+
+  // TinyMce Editeur pour la description
+  handleEditor = e => {
+    console.log("tiny", e);
+    console.log("miss", e.target.getContent());
+    this.setState(previousState => ({
+      mission: {
+        ...previousState.mission,
+        description: e.target.getContent()
+      }
+    }));
+  };
 
   handlerOnChange = event => {
     const { name, value } = event.target;
@@ -133,7 +147,14 @@ const CompanyCreateOffers = class extends React.Component {
 
   closeMission = () => {
     const { onClose } = this.props;
-    this.setState(this.defaultState(true));
+    // this.setState(this.defaultState(true));
+    onClose();
+  };
+
+  cancelMission = () => {
+    const { onClose } = this.props;
+    const { isEditMode } = this.state;
+    if (!isEditMode) this.setState(this.defaultState(true));
     onClose();
   };
 
@@ -277,13 +298,13 @@ const CompanyCreateOffers = class extends React.Component {
                     onChange={this.handlerOnChange}
                     required
                     fullWidth
-                    multiline
-                    rows="2"
+                    // multiline
+                    // // rows="2"
                     variant="outlined"
                   />
                 </Grid>
                 <Grid item xs={12} justify="center">
-                  <TextField
+                  {/* <TextField
                     placeholder="Description"
                     name="description"
                     label="Description"
@@ -291,9 +312,13 @@ const CompanyCreateOffers = class extends React.Component {
                     onChange={this.handlerOnChange}
                     required
                     fullWidth
-                    multiline
-                    rows="5"
+                    // multiline
+                    // rows="5"
                     variant="outlined"
+                  /> */}
+                  <Tinymce
+                    mission={this.state.mission.description}
+                    handle={this.handleEditor}
                   />
                 </Grid>
               </Grid>

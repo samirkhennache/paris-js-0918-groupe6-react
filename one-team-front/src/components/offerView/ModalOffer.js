@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core/styles";
+import {
+  withStyles,
+  createMuiTheme,
+  MuiThemeProvider
+} from "@material-ui/core/styles";
+
 import axios from "axios";
 import { MakeCompletedUrl } from "../../tools";
 import Button from "@material-ui/core/Button";
@@ -11,6 +16,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import { AwesomeButton } from "react-awesome-button";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import IconButton from "@material-ui/core/IconButton";
+import Paper from "@material-ui/core/Paper";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import OfferView from "./OfferView";
@@ -98,63 +104,143 @@ class ModalOffer extends Component {
   render() {
     const { open, content, openToConfirm } = this.state;
     const { size, titleMission, missionId } = this.props;
-
-    return (
-      <div className="ModalOffer">
-        <OfferView
-          key={`${missionId}-${titleMission}`}
-          {...this.props}
-          size={size}
-        />
-        <AwesomeButton
-          type="primary"
-          className="aws-btn remove"
-          action={this.handleOpen}
-        >
-          {size === "SMALL" ? "Consulter" : "En savoir plus"}
-        </AwesomeButton>
-        {/* //////////////////////////////////////////////////// */}
-        <Dialog
-          open={open}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-          onClose={this.handleClose}
-        >
-          <DialogTitle
-            id="customized-dialog-title"
-            onClose={this.handleClose}
-          />
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              <OfferView
-                key={`${missionId}-${titleMission}`}
-                {...this.props}
-                size={FULL}
+    switch (size) {
+      case "SMALL": {
+        return (
+          <div className="ModalOffer application-item">
+            <Paper>
+              <div className="application-paper">
+                <OfferView
+                  key={`${missionId}-${titleMission}`}
+                  {...this.props}
+                  size={size}
+                />
+                <MuiThemeProvider theme={theme}>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    onClick={this.handleOpen}
+                  >
+                    {size === "SMALL" ? "Voir l'offre" : "En savoir plus"}
+                  </Button>
+                </MuiThemeProvider>
+              </div>
+            </Paper>
+            {/* //////////////////////////////////////////////////// */}
+            <Dialog
+              open={open}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+              onClose={this.handleClose}
+            >
+              <DialogTitle
+                id="customized-dialog-title"
+                onClose={this.handleClose}
               />
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            {size === "SMALL" ? (
-              <Button disabled color="primary">
-                postuler
-              </Button>
-            ) : (
-              <Button onClick={this.handleClickApplicate} color="primary">
-                postuler
-              </Button>
-            )}
-          </DialogActions>
-        </Dialog>
-        <ModalConfimation
-          openConfirmation={openToConfirm}
-          content={content}
-          close={this.handleClose}
-          {...this.props}
-        />
-      </div>
-    );
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  <OfferView
+                    key={`${missionId}-${titleMission}`}
+                    {...this.props}
+                    size={FULL}
+                  />
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                {size === "SMALL" ? (
+                  <Button disabled color="primary">
+                    postuler
+                  </Button>
+                ) : (
+                  <Button onClick={this.handleClickApplicate} color="primary">
+                    postuler
+                  </Button>
+                )}
+              </DialogActions>
+            </Dialog>
+            <ModalConfimation
+              openConfirmation={openToConfirm}
+              content={content}
+              close={this.handleClose}
+              {...this.props}
+            />
+          </div>
+        );
+      }
+      default:
+        return (
+          <div className="ModalOffer">
+            <OfferView
+              key={`${missionId}-${titleMission}`}
+              {...this.props}
+              size={size}
+            />
+            <AwesomeButton
+              type="primary"
+              className="aws-btn remove"
+              action={this.handleOpen}
+            >
+              {size === "SMALL" ? "Consulter" : "En savoir plus"}
+            </AwesomeButton>
+
+            {/* //////////////////////////////////////////////////// */}
+            <Dialog
+              open={open}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+              onClose={this.handleClose}
+            >
+              <DialogTitle
+                id="customized-dialog-title"
+                onClose={this.handleClose}
+              />
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  <OfferView
+                    key={`${missionId}-${titleMission}`}
+                    {...this.props}
+                    size={FULL}
+                  />
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                {size === "SMALL" ? (
+                  <Button disabled color="primary">
+                    postuler
+                  </Button>
+                ) : (
+                  <Button onClick={this.handleClickApplicate} color="primary">
+                    postuler
+                  </Button>
+                )}
+              </DialogActions>
+            </Dialog>
+            <ModalConfimation
+              openConfirmation={openToConfirm}
+              content={content}
+              close={this.handleClose}
+              {...this.props}
+            />
+          </div>
+        );
+    }
   }
 }
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiButton: {
+      text: {
+        color: "rgb(255, 255, 255)"
+      }
+    }
+  },
+  palette: {
+    primary: {
+      main: "#ff8900"
+    }
+  }
+});
 
 const mapStateToProps = state => ({
   traineeId: state.student.id
