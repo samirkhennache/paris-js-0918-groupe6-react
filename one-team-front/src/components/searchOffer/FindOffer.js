@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import ModalOffer from "../offerView/ModalOffer";
 import { MIDDLE } from "../offerView";
 
@@ -38,7 +39,7 @@ class FindOffers extends Component {
 
   getResult = () => {
     const { search, town } = this.state;
-    const url = `http://localhost:3001/mission?search=${search}&town=${town}`;
+    const url = MakeCompletedUrl(`mission?search=${search}&town=${town}`);
     axios
       .get(url)
       .then(res => {
@@ -51,10 +52,20 @@ class FindOffers extends Component {
       });
   };
 
+<<<<<<< HEAD
   handleSubmit = event => {
     event.preventDefault();
     this.getResult();
   };
+=======
+  componentDidMount() {
+    const url = MakeCompletedUrl("mission/getcount");
+    axios.get(url).then(res => {
+      console.log("res", res);
+      this.setState({ ...this.state, count: res.data.count });
+    });
+  }
+>>>>>>> f638a1ef7e93db068867e7ac2c8fc70494ef501b
 
   render() {
     const { result, count } = this.state;

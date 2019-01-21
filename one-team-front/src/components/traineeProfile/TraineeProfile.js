@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { MakeCompletedUrl, ConvertDate } from "../../tools";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -11,7 +12,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import StudentView from "../CompanyApplication/StudentView";
 import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
-import ConvertDate from "../../tools";
 import "./traineeProfile.css";
 
 class TraineeProfile extends Component {
@@ -43,7 +43,7 @@ class TraineeProfile extends Component {
   componentDidMount() {
     const id = sessionStorage.getItem("token");
     axios
-      .get(`http://localhost:3001/trainee/profile/${id}`)
+      .get(MakeCompletedUrl(`trainee/profile/${id}`))
       .then(response => {
         // console.log(response.data);
         this.setState({
@@ -54,7 +54,7 @@ class TraineeProfile extends Component {
         console.log(error.response);
       });
     axios
-      .get("http://localhost:3001/paradata/levelstudies")
+      .get(MakeCompletedUrl("paradata/levelstudies"))
       .then(response => {
         // console.log(response.data);
         this.setState({
@@ -71,7 +71,7 @@ class TraineeProfile extends Component {
     // const { id } = this.state;
     const id = sessionStorage.getItem("token");
     axios
-      .put("http://localhost:3001/trainee/profile", {
+      .put(MakeCompletedUrl("trainee/profile"), {
         id,
         firstname: e.target.firstname.value,
         lastname: e.target.lastname.value,
@@ -107,7 +107,7 @@ class TraineeProfile extends Component {
         this.state.selectedFile,
         this.state.selectedFile.name
       );
-      axios.post(`http://localhost:3001/trainee/uploadphoto/${id}`, formData);
+      axios.post(MakeCompletedUrl(`trainee/uploadphoto/${id}`), formData);
     }
   };
 
@@ -169,7 +169,7 @@ class TraineeProfile extends Component {
                     <img
                       src={
                         this.state.image ||
-                        `http://localhost:3001/${this.state.data.pictures}`
+                        MakeCompletedUrl(`${this.state.data.pictures}`)
                       }
                       width="100"
                       height="100"
@@ -180,7 +180,7 @@ class TraineeProfile extends Component {
                   <img
                     src={
                       this.state.image ||
-                      "http://localhost:3001/public/photoProfile/PhotoProfil.jpg"
+                      MakeCompletedUrl("public/photoProfile/PhotoProfil.jpg")
                     }
                     width="100"
                     height="100"
