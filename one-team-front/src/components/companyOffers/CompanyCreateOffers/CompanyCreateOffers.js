@@ -1,12 +1,14 @@
 import React from "react";
 import "./CompanyCreateOffers.css";
 import Axios from "axios";
-import { MakeCompletedUrl, ConvertDate } from "../../../tools";
 import { TextField, Select, MenuItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Grid from "@material-ui/core/Grid";
+import { MakeCompletedUrl, ConvertDate } from "../../../tools";
+import logoCompany from "../../../img/three-buildings.png";
 
 const API_ENDPOINT_MISSION = MakeCompletedUrl("mission/");
 
@@ -109,135 +111,144 @@ const CompanyCreateOffers = class extends React.Component {
     const { mission, isEditMode, idLoaded, levelstudies } = this.state;
     const { onClose, ...other } = this.props;
     return (
-      <Dialog
-        className="dialog"
-        // onClose={onClose}
-        {...other}
-        fullWidth
-        maxWidth="lg"
-      >
-        <DialogTitle>
-          {isEditMode ? "Je modifie une mission" : "Je crée une mission"}
-        </DialogTitle>
-        <div className="CompanyCreateOffers">
-          <form className="container">
-            <TextField
-              placeholder="Titre de la mission de stage"
-              name="titleMission"
-              label="Titre de la Mission"
-              value={mission.titleMission}
-              onChange={this.handlerOnChange}
-              required
-              fullWidth
-              margin="normal"
-              variant="outlined"
-            />
-            <div className="date">
-              <div className="dateText">
+      <div className="CompanyCreateOffers">
+        <Dialog
+          className="dialog-create-offres"
+          {...other}
+          fullWidth
+          maxWidth="lg"
+        >
+          <DialogTitle>
+            {isEditMode ? "Je modifie une mission" : "Je crée une mission"}
+          </DialogTitle>
+          <div className="createOffers">
+            <form className="form-create-offers">
+              <Grid container alignItems="center">
+                <Grid item container xs={12} lg={2} justify="center">
+                  <div className="logo-company">
+                    <img
+                      className="logo-img"
+                      src={logoCompany}
+                      alt="logo company"
+                    />
+                  </div>
+                </Grid>
+                <Grid item xs={12} lg={10}>
+                  <TextField
+                    placeholder="Titre de la mission de stage"
+                    name="titleMission"
+                    label="Titre de la Mission"
+                    value={mission.titleMission}
+                    onChange={this.handlerOnChange}
+                    required
+                    fullWidth
+                    margin="normal"
+                    variant="outlined"
+                  />
+                </Grid>
+                <div className="date">
+                  <div className="dateText">
+                    <TextField
+                      placeholder="Date de début"
+                      label="Date de début"
+                      name="dateStart"
+                      type="date"
+                      value={
+                        mission.dateStart !== null
+                          ? ConvertDate(mission.dateStart)
+                          : null
+                      }
+                      onChange={this.handlerOnChange}
+                      required
+                      fullWidth
+                      margin="normal"
+                      variant="outlined"
+                      InputLabelProps={{ shrink: true }}
+                    />
+                  </div>
+                  <div className="dateText">
+                    <TextField
+                      placeholder="Date de fin"
+                      label="Date de fin"
+                      type="date"
+                      name="dateEnd"
+                      value={
+                        mission.dateEnd !== null
+                          ? ConvertDate(mission.dateEnd)
+                          : null
+                      }
+                      onChange={this.handlerOnChange}
+                      required
+                      fullWidth
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </div>
+                </div>
                 <TextField
-                  placeholder="Date de début"
-                  label="Date de début"
-                  name="dateStart"
-                  type="date"
-                  value={
-                    mission.dateStart !== null
-                      ? ConvertDate(mission.dateStart)
-                      : null
-                  }
+                  placeholder="Ville"
+                  name="town"
+                  label="Ville"
+                  value={mission.town}
                   onChange={this.handlerOnChange}
                   required
                   fullWidth
                   margin="normal"
                   variant="outlined"
-                  InputLabelProps={{
-                    shrink: true
-                  }}
                 />
-              </div>
-              <div className="dateText">
                 <TextField
-                  placeholder="Date de fin"
-                  label="Date de fin"
-                  type="date"
-                  name="dateEnd"
-                  value={
-                    mission.dateEnd !== null
-                      ? ConvertDate(mission.dateEnd)
-                      : null
-                  }
+                  placeholder="Introduction"
+                  name="intro"
+                  label="Introduction"
+                  value={mission.intro}
                   onChange={this.handlerOnChange}
                   required
                   fullWidth
+                  multiline
+                  rows="2"
                   margin="normal"
                   variant="outlined"
                 />
-              </div>
-            </div>
-
-            <TextField
-              placeholder="Ville"
-              name="town"
-              label="Ville"
-              value={mission.town}
-              onChange={this.handlerOnChange}
-              required
-              fullWidth
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              placeholder="Introduction"
-              name="intro"
-              label="Introduction"
-              value={mission.intro}
-              onChange={this.handlerOnChange}
-              required
-              fullWidth
-              multiline
-              rows="2"
-              // rowsMax="2"
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              placeholder="Description"
-              name="description"
-              label="Description"
-              value={mission.description}
-              onChange={this.handlerOnChange}
-              required
-              fullWidth
-              multiline
-              rows="5"
-              // rowsMax="10"
-              margin="normal"
-              variant="outlined"
-            />
-            <Select
-              name="LevelStudyId"
-              required
-              value={mission.LevelStudyId}
-              onChange={this.handlerOnChangeLevelStudy}
-            >
-              {idLoaded
-                ? levelstudies.map(element => (
-                    <MenuItem key={element.id} value={element.id}>
-                      {element.label}
-                    </MenuItem>
-                  ))
-                : "loading..."}
-            </Select>
-          </form>
-        </div>
-        <DialogActions>
-          <Button onClick={this.closeMission} color="primary">
-            Annuler
-          </Button>
-          <Button onClick={this.saveMission} color="primary" autoFocus>
-            {isEditMode ? "Modifier" : "Créer"}
-          </Button>
-        </DialogActions>
-      </Dialog>
+                <TextField
+                  placeholder="Description"
+                  name="description"
+                  label="Description"
+                  value={mission.description}
+                  onChange={this.handlerOnChange}
+                  required
+                  fullWidth
+                  multiline
+                  rows="5"
+                  margin="normal"
+                  variant="outlined"
+                />
+                <Select
+                  name="LevelStudyId"
+                  required
+                  value={mission.LevelStudyId}
+                  onChange={this.handlerOnChangeLevelStudy}
+                >
+                  {idLoaded
+                    ? levelstudies.map(element => (
+                        <MenuItem key={element.id} value={element.id}>
+                          {element.label}
+                        </MenuItem>
+                      ))
+                    : "loading..."}
+                </Select>
+              </Grid>
+            </form>
+          </div>
+          <DialogActions>
+            <Button onClick={this.closeMission} color="primary">
+              Annuler
+            </Button>
+            <Button onClick={this.saveMission} color="primary" autoFocus>
+              {isEditMode ? "Modifier" : "Créer"}
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     );
   }
 };

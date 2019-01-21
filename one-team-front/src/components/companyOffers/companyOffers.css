@@ -1,0 +1,24 @@
+.home-company {
+  background-image: url("../../img/Onepage2.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 40vh;
+  z-index: 0;
+  border-top: solid #494642 0.1px;
+}
+.compnay-overlay {
+  position: absolute;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-top: solid #494642 0.1px;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -5;
+}
+.block-company {
+  position: relative;
+  margin: auto;
+}

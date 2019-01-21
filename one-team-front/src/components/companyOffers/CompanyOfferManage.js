@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { MakeCompletedUrl } from "../../tools";
 import { AwesomeButton } from "react-awesome-button";
 import Button from "@material-ui/core/Button";
 import "./Button.css";
@@ -10,6 +9,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Hidden from "@material-ui/core/Hidden";
+
+import { MakeCompletedUrl } from "../../tools";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
 import ConfirmDialog from "../Dialogs/ConfirmDialog";
@@ -136,14 +137,15 @@ class CompanyOfferManage extends Component {
         >
           Modifier
         </AwesomeButton>
+
         <br />
-        {/* <AwesomeButton
+        <AwesomeButton
           type="primary"
           className="aws-btn remove"
           action={this.deleteData}
         >
           Supprimer
-        </AwesomeButton> */}
+        </AwesomeButton>
         <ConfirmDialog
           buttonCaption="Supprimer"
           dialogTitle="Confirmation"
