@@ -89,7 +89,12 @@ class CompanyCarrousel extends React.Component {
           <h2
             className="recruteurs"
             id="section2"
-            style={{ marginBottom: 50, marginTop: 20 }}
+            style={{
+              marginBottom: 50,
+              marginTop: 20,
+              color: "white",
+              fontSize: 35
+            }}
           >
             Pour les recruteurs
           </h2>
