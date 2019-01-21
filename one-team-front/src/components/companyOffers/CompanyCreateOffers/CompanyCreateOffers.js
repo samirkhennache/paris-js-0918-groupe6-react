@@ -115,7 +115,14 @@ const CompanyCreateOffers = class extends React.Component {
 
   closeMission = () => {
     const { onClose } = this.props;
-    this.setState(this.defaultState(true));
+    // this.setState(this.defaultState(true));
+    onClose();
+  };
+
+  cancelMission = () => {
+    const { onClose } = this.props;
+    const { isEditMode } = this.state;
+    if (!isEditMode) this.setState(this.defaultState(true));
     onClose();
   };
 
@@ -250,7 +257,7 @@ const CompanyCreateOffers = class extends React.Component {
           </form>
         </div>
         <DialogActions>
-          <Button onClick={this.closeMission} color="primary">
+          <Button onClick={this.cancelMission} color="primary">
             Annuler
           </Button>
           <Button onClick={this.saveMission} color="primary" autoFocus>
