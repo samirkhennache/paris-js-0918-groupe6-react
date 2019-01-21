@@ -19,12 +19,12 @@ class FindOffers extends Component {
   };
 
   componentDidMount() {
-    this.getResult();
+    this.getMission();
     this.getCount();
   }
 
   getCount = () => {
-    const url = "http://localhost:3001/mission/getcount";
+    const url = MakeCompletedUrl("mission/getcount");
     axios.get(url).then(res => {
       console.log("res", res);
       this.setState({ ...this.state, count: res.data.count });
@@ -37,7 +37,9 @@ class FindOffers extends Component {
     });
   };
 
-  getResult = () => {
+  // getResult = () => {};
+
+  getMission = () => {
     const { search, town } = this.state;
     const url = MakeCompletedUrl(`mission?search=${search}&town=${town}`);
     axios
@@ -52,20 +54,10 @@ class FindOffers extends Component {
       });
   };
 
-<<<<<<< HEAD
   handleSubmit = event => {
     event.preventDefault();
-    this.getResult();
+    this.getMission();
   };
-=======
-  componentDidMount() {
-    const url = MakeCompletedUrl("mission/getcount");
-    axios.get(url).then(res => {
-      console.log("res", res);
-      this.setState({ ...this.state, count: res.data.count });
-    });
-  }
->>>>>>> f638a1ef7e93db068867e7ac2c8fc70494ef501b
 
   render() {
     const { result, count } = this.state;
@@ -82,7 +74,7 @@ class FindOffers extends Component {
             onChange={this.handleChange}
           />
           <input
-            type="text"
+            type="search"
             name="town"
             id="town"
             placeholder="ville"
