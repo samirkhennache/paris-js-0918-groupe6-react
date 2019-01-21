@@ -7,7 +7,7 @@ class Team extends Component {
 
   render() {
     const { trainee, idMission } = this.props;
-    console.log("team trainee", trainee);
+    // console.log("team trainee", trainee);
 
     return (
       <div>
@@ -21,8 +21,8 @@ class Team extends Component {
                     firstname={e.Trainee.firstname}
                     town={e.Trainee.town}
                     pictures={e.Trainee.pictures}
-                    dateStart={e.Trainee.dateStart}
-                    dateEnd={e.Trainee.dateEnd}
+                    // dateStart={e.Trainee.dateEnd}
+                    // dateEnd={e.Trainee.dateEnd}
                     titre={e.Trainee.titre}
                     descriptionTrainee={e.Trainee.description}
                     LevelStudy={e.LevelStudy ? e.LevelStudy.label : null}
@@ -30,6 +30,8 @@ class Team extends Component {
                     size={SMALL}
                     missionId={data.mission_id}
                     traineeId={e.Trainee.id}
+                    newDateStart={e.Trainee.dateStart}
+                    newDateEnd={e.Trainee.dateEnd}
                     {...this.props}
                   />
                 ))}

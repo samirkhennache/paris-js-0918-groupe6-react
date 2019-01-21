@@ -1,21 +1,22 @@
 import React from "react";
 import "./CompanyCreateOffers.css";
 import Axios from "axios";
+import { MakeCompletedUrl, ConvertDate } from "../../../tools";
 import { TextField, Select, MenuItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import ConvertDate from "../../../tools";
+// import ConvertDate from "../../../tools";
 import Tinymce from "../../tiny/Tiny";
 
-const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
+const API_ENDPOINT_MISSION = MakeCompletedUrl("mission/");
 
 const CompanyCreateOffers = class extends React.Component {
   state = this.defaultState();
 
   componentDidMount() {
-    Axios.get("http://localhost:3001/paradata/levelstudies").then(res => {
+    Axios.get(MakeCompletedUrl("paradata/levelstudies")).then(res => {
       this.setState({ idLoaded: true, levelstudies: res.data });
     });
     const { modifMission } = this.props;
@@ -68,7 +69,7 @@ const CompanyCreateOffers = class extends React.Component {
       description: mission.description,
       town: mission.town,
       intro: mission.intro,
-      CompanyId: mission.CompanyId,
+      CompanyId: Number(mission.CompanyId),
       LevelStudyId: Number(mission.LevelStudyId)
     };
 

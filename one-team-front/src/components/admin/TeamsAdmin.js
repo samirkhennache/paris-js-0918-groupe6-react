@@ -3,6 +3,7 @@ import axios from "axios";
 import StudentApplication from "../CompanyApplication/StudentApplication";
 import CompanyPresentation from "./CompanyPresentation";
 import { FULL } from "../CompanyApplication/studentConstant";
+import { MakeCompletedUrl } from "../../tools";
 
 const mode = "ADMIN";
 
@@ -13,8 +14,8 @@ class TeamsAdmin extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:3001/salutadmin/missions").then(res => {
-      console.log(res.data);
+    axios.get(MakeCompletedUrl("salutadmin/missions")).then(res => {
+      // console.log(res.data);
       this.setState({
         fullMission: res.data.data,
         trainee: res.data.trainee
@@ -59,8 +60,8 @@ class TeamsAdmin extends Component {
                               firstname={student.Trainee.firstname}
                               town={student.Trainee.town}
                               pictures={student.Trainee.pictures}
-                              dateStart={student.Trainee.dateStart}
-                              dateEnd={student.Trainee.dateEnd}
+                              // dateStart={student.Trainee.dateStart}
+                              // dateEnd={student.Trainee.dateEnd}
                               titre={student.Trainee.titre}
                               descriptionTrainee={student.Trainee.description}
                               LevelStudy={
@@ -77,6 +78,8 @@ class TeamsAdmin extends Component {
                               traineeId={student.Trainee.id}
                               mode={mode}
                               size={FULL}
+                              newDateStart={student.Trainee.dateStart}
+                              newDateEnd={student.Trainee.dateEnd}
                             />
                           </div>
                         ))

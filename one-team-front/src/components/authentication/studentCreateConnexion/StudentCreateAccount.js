@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../../tools";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -46,7 +47,7 @@ class StudentCreateAccount extends Component {
       password
     };
     axios
-      .post("http://localhost:3001/trainee", postFormStudent)
+      .post(MakeCompletedUrl("trainee"), postFormStudent)
       .then(result => {
         props.selectStudent(result.data.id);
         sessionStorage.setItem("token", result.data.id);

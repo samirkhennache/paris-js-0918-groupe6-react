@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import { AwesomeButton } from "react-awesome-button";
 import Button from "@material-ui/core/Button";
 import "./Button.css";
@@ -12,6 +13,7 @@ import Hidden from "@material-ui/core/Hidden";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
 import renderHTML from "react-render-html";
+import ConfirmDialog from "../Dialogs/ConfirmDialog";
 
 const idCompany = sessionStorage.getItem("token");
 
@@ -27,7 +29,7 @@ class CompanyOfferManage extends Component {
 
   deleteData = () => {
     const { idMission } = this.props;
-    const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
+    const API_ENDPOINT_MISSION = MakeCompletedUrl("mission/");
     axios
       .delete(`${API_ENDPOINT_MISSION}${idMission}`, this.state)
       .then(res => {
@@ -47,7 +49,7 @@ class CompanyOfferManage extends Component {
     const missionId = idMission;
     const companyId = sessionStorage.getItem("token");
     axios
-      .put(`http://localhost:3001/mission/validate`, {
+      .put(MakeCompletedUrl(`mission/validate`), {
         missionId,
         companyId
       })
@@ -138,15 +140,28 @@ class CompanyOfferManage extends Component {
           Modifier
         </Button>
         <br />
-        <Button
-          // type="primary"
-          // className="aws-btn remove"
+        {/* <Button
+          type="primary"
+          className="aws-btn remove"
           variant="contained"
           color="secondary"
           onClick={this.deleteData}
         >
           Supprimer
-        </Button>
+        </Button> */}
+        {/* <AwesomeButton
+          type="primary"
+          className="aws-btn remove"
+          action={this.deleteData}
+        >
+          Supprimer
+        </AwesomeButton> */}
+        <ConfirmDialog
+          buttonCaption="Supprimer"
+          dialogTitle="Confirmation"
+          dialogQuestion="Voulez-vous supprimer cette offre?"
+          handleOk={this.deleteData}
+        />
         <CompanyCreateOffers
           open={this.state.show}
           onClose={this.showModal}

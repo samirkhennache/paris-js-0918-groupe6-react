@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../tools";
 import CompanyOffers from "./CompanyOffers";
 import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
 
@@ -13,7 +14,7 @@ class CompanyOffersRoot extends Component {
 
   componentDidMount() {
     const idCompany = sessionStorage.getItem("token");
-    axios.get(`http://localhost:3001/company/${idCompany}`).then(res => {
+    axios.get(MakeCompletedUrl(`company/${idCompany}`)).then(res => {
       console.log("data", res.data);
       this.setState({
         missions: res.data.Missions.sort((a, b) => a - b),
@@ -22,7 +23,7 @@ class CompanyOffersRoot extends Component {
       });
     });
     axios
-      .get(`http://localhost:3001/application/${idCompany}/${mode}/mytrainee`)
+      .get(MakeCompletedUrl(`application/${idCompany}/${mode}/mytrainee`))
       .then(res =>
         this.setState({
           trainee: res.data.data
