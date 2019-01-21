@@ -3,4 +3,20 @@
   color: white !important;
   text-transform: initial !important;
   font-weight: 900 !important;
+  margin-top: 5px !important;
+  margin-left: 5px !important;
+  padding: 12px !important ;
+  border-radius: 10px !important  ;
+}
+
+.Haut {
+  background-image: url("../../img/Onepage2.jpg");
+  background-size: center;
+  background-repeat: no-repeat;
+  height: 250px;
+}
+
+.Middle {
+  border: 1px solid red;
+  padding: 10px 0;
 }

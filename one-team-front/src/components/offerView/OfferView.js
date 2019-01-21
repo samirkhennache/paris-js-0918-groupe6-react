@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 
 import "./Button.css";
+import "./OfferView.css";
 
 const OfferView = props => {
   const {
@@ -31,7 +32,7 @@ const OfferView = props => {
     }
     case "MIDDLE": {
       return (
-        <div className="OfferView">
+        <div className="OfferViewM">
           <h3>{titleMission} </h3>
           <h4>{company}</h4>
           <p>{town} </p>
