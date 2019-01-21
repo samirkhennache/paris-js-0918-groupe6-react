@@ -42,33 +42,39 @@ export default class PartieEntreprise extends Component {
 
     return (
       <div>
-        <CompanyCarrousel />
-        <Example />
-        <Services />
-        <Button
-          variant="contained"
-          className="buttonMission"
-          onClick={this.companyOpenConnexion}
-        >
-          Créer une mission
-        </Button>
+        <div className="background-carrousel-company">
+          <CompanyCarrousel />
+          <Example />
+        </div>
+        <div className="background-services">
+          <Services />
+        </div>
+        <div>
+          <Button
+            variant="contained"
+            className="buttonMission"
+            onClick={this.companyOpenConnexion}
+          >
+            Créer une mission
+          </Button>
 
-        {/* DIALOG COMPANY -----------------------------------------*/}
-        <Dialog
-          open={openCompany}
-          onClose={this.handleCloseCompany}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogContent>
-            <CompanyCreateConnexion {...this.props} />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleCloseCompany} color="primary">
-              {button}
-            </Button>
-          </DialogActions>
-        </Dialog>
+          {/* DIALOG COMPANY -----------------------------------------*/}
+          <Dialog
+            open={openCompany}
+            onClose={this.handleCloseCompany}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogContent>
+              <CompanyCreateConnexion {...this.props} />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleCloseCompany} color="primary">
+                {button}
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
       </div>
     );
   }

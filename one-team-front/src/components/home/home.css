@@ -52,6 +52,14 @@
   background-color: #ffdfa0;
   border: 0.1px solid rgba(0, 0, 0, 0.01);
 }
+.background-carrousel-company {
+  background-color: #494642;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
+}
+.background-services {
+  background-color: #6c6b68;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
+}
 .background-goodReasons {
   background-color: #494642;
   border: 0.1px solid rgba(0, 0, 0, 0.01);

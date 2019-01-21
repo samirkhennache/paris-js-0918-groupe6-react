@@ -6,7 +6,7 @@ import ExampleCarrousel from "./ExampleCarrousel";
 export default class Example extends Component {
   render() {
     return (
-      <div className="exampleBottle">
+      <div className="exampleBottle general_margin">
         <h3 className="exampleTitle">Exemples de thèmes de mission</h3>
         <div className="exampleTiret" />
         <div class="section group">
