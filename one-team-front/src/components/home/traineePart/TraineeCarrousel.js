@@ -39,8 +39,7 @@ const tutorialSteps = [
 
 const styles = theme => ({
   root: {
-    padding: "50px 0 30px 0",
-    backgroundColor: "#ffdfa0"
+    padding: "50px 0 30px 0"
   },
   mobileStepper: {
     position: "static",
@@ -49,7 +48,6 @@ const styles = theme => ({
   bloc: {
     display: "flex",
     flexDirection: "column",
-    width: "calc(100px + 50vw)",
     margin: "auto"
   },
   carrousel: {
@@ -94,10 +92,9 @@ class TraineeCarrousel extends React.Component {
 
     return (
       <MuiThemeProvider theme={theme}>
-        <div className={classes.root}>
+        <div className={`${classes.root} general_margin`}>
           <h2
-            className="recruteurs"
-            id="section2"
+            className="home_section"
             style={{ marginBottom: 50, marginTop: 20 }}
           >
             Pour les étudiants

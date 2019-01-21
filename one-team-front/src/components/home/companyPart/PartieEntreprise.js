@@ -39,10 +39,8 @@ export default class PartieEntreprise extends Component {
 
     return (
       <div>
-        <Container className="Invitez">
-          <h2 className="recruteurs" id="section1">
-            Pour les recruteurs
-          </h2>
+        <Container className="Invitez general_margin">
+          <h2 className="home_section">Pour les recruteurs</h2>
 
           <Row>
             <Col sm={6} className="ColInvitez">
@@ -75,7 +73,7 @@ export default class PartieEntreprise extends Component {
             </Col>
           </Row>
         </Container>
-        <Container>
+        <Container className="general_margin">
           <h2 className="Exemple">Des exemples</h2>
           <img
             src="https://img.icons8.com/color/30/ffffff/chevron-down.png"
