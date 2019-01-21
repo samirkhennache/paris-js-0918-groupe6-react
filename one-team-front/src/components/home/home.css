@@ -1,4 +1,17 @@
 /* ********************* HOME TEXT CLASS *************************/
+.home_title {
+  margin-top: 17%;
+  color: white;
+  font-size: calc(20px + 3vw);
+}
+@media (max-width: 768px) {
+  .home_title {
+    margin-top: 27%;
+    margin-right: 5%;
+    margin-left: 5%;
+    font-size: calc(20px + 3vw);
+  }
+}
 .home_section {
   font-weight: 900;
   color: white;
@@ -7,16 +20,43 @@
   padding: 30px 0 30px 0;
   margin: 0 5px;
 }
+.home_subsection_orange {
+  font-family: "Open Sans", sans-serif;
+  font-size: calc(15px + 2vw);
+  color: #ff8900;
+}
+.home_subsection_white {
+  font-family: "Open Sans", sans-serif;
+  font-size: calc(15px + 2vw);
+  color: white;
+}
+.home_subsection_grey {
+  font-family: "Open Sans", sans-serif;
+  font-size: calc(15px + 2vw);
+  color: #494642;
+}
+.icon_white_title {
+  font-family: "Open Sans", sans-serif;
+  font-size: calc(18px + 0.3vw);
+  color: white;
+}
+.icon_orange_title {
+  font-family: "Open Sans", sans-serif;
+  font-size: calc(18px + 0.3vw);
+  color: #ff8900;
+}
+/* *********************** PAGES TEXT CLASSES **********************/
 
+/* *********************** BACKGROUND GENERAUX **********************/
 .background-carrousel {
-    background-color: #ffdfa0;
-    border: 0.1px solid rgba(0, 0, 0, 0.01)
+  background-color: #ffdfa0;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
 }
 .background-goodReasons {
-    background-color: #494642;
-    border: 0.1px solid rgba(0, 0, 0, 0.01)
+  background-color: #494642;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
 }
 .background-team {
-    background-color: #494642;
-    border: 0.1px solid rgba(0, 0, 0, 0.01)
+  background-color: #494642;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
 }
