@@ -36,11 +36,11 @@ const offers = [
 class TraineeOffers extends Component {
   render() {
     return (
-      <div>
+      <div className="general-offers general_margin">
         <h2>Parcourir les offres de stage</h2>
         <div className="bloc-offers">
           {offers.map((element, index) => (
-            <Paper className="papers-offers"elevation={3}>
+            <Paper className="papers-offers" elevation={3}>
               <div className="bloc-offers-solo" key={index}>
                 <div className="logo-offers">
                   <img src={element.logo} alt={element.title} />

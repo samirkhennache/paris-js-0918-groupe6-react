@@ -11,6 +11,7 @@ import Page404 from "./components/Page404";
 import OfferCompletedItem from "./components/admin/OfferCompletedItem";
 import CompanyApplications from "./components/CompanyApplication/CompanyApplications";
 import TeamsAdmin from "./components/admin/TeamsAdmin";
+import "./components/pages.css";
 
 // HOME ROUTER -------------------------------------------------------------
 const Home = ({ match }) => (

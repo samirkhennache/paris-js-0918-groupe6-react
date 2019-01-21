@@ -10,10 +10,14 @@ class TraineeHome extends Component {
   render() {
     return (
       <div>
-        <TraineeCarrousel />
-        {/* <TraineeOffers />
-        <GoodReasonsStudents {...this.props} />
-        <Cursus /> */}
+        <div className="background-carrousel">
+          <TraineeCarrousel />
+        </div>
+        <TraineeOffers />
+        <div className="background-goodReasons">
+          <GoodReasonsStudents {...this.props} />
+        </div>
+        <Cursus />
       </div>
     );
   }
