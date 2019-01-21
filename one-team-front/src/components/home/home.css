@@ -9,14 +9,14 @@
 }
 
 .background-carrousel {
-    background-color: #ffdfa0;
-    border: 0.1px solid rgba(0, 0, 0, 0.01)
+  background-color: #f9bf59;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
 }
 .background-goodReasons {
-    background-color: #494642;
-    border: 0.1px solid rgba(0, 0, 0, 0.01)
+  background-color: #494642;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
 }
 .background-team {
-    background-color: #494642;
-    border: 0.1px solid rgba(0, 0, 0, 0.01)
+  background-color: #494642;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
 }

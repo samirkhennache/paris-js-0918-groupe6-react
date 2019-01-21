@@ -39,8 +39,8 @@ const tutorialSteps = [
 
 const styles = theme => ({
   root: {
-    padding: "50px 0 30px 0"
-    // backgroundColor: "#f9bf59"
+    padding: "50px 0 30px 0",
+    backgroundColor: "#f9bf59"
   },
   mobileStepper: {
     position: "static",
@@ -108,9 +108,9 @@ class TraineeCarrousel extends React.Component {
             // className="recruteurs"
             id="section2"
             // style={{ marginBottom: 50, marginTop: 20 }}
-            className={classes.tmpText}
+            // className={classes.tmpText}
             style={{ color: "white", fontWeight: "bold" }}
-            // className="home_section"
+            className="home_section"
           >
             Pour les étudiants
           </h2>
