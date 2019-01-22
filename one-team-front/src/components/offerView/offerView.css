@@ -65,6 +65,168 @@
 .application-item {
   margin: 15px;
 }
+
 .application-mission {
   padding-bottom: 15px;
 }
+
+/* Midddle */
+
+.Middle {
+  /* border: 1px solid rgb(0, 70, 128); */
+  text-align: right;
+  width: 960px;
+  margin: 10px auto;
+  padding: 5px 5px;
+}
+
+.btn {
+  width: 150px;
+  position: absolute;
+}
+
+.OfferViewMiddle {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* border: 1px solid red; */
+}
+
+.LogoMiddle {
+  /* background-color: #777; */
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 3px solid orange;
+  margin-right: 10px;
+}
+
+.contenueMiddle {
+  text-align: left;
+  /* border: 1px solid brown; */
+  width: 100%;
+}
+
+.introMiddle,
+.titleMiddle {
+  text-transform: uppercase;
+}
+
+.titleMiddle {
+  color: orange;
+}
+
+.milieuMiddle {
+  display: flex;
+  flex-direction: row;
+}
+
+.townMiddle {
+  width: 50%;
+  font-weight: 400;
+  font-size: 1.25rem;
+  /* background-image: url("../../../public/img/placeholder-filled-point.png");
+  background-repeat: no-repeat; */
+  /* background-image: url("../../img/"); */
+}
+
+.townMiddle > img {
+  height: 33px;
+  margin-right: 3px;
+}
+
+.dateMiddle {
+  /* display: flex;
+  flex-direction: row; */
+  width: 100%;
+  font-weight: 400;
+  font-size: 1.25rem;
+  /* border: 1px solid green; */
+}
+
+.dateMiddle > img {
+  height: 33px;
+  margin-right: 3px;
+}
+
+/* Media query Middle */
+
+@media all and (min-width: 320px) and (max-width: 720px) {
+  .Middle {
+    width: 350px;
+    /* border: #494642 1px solid; */
+  }
+
+  .OfferViewMiddle {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+    /* border: 1px solid rosybrown; */
+  }
+
+  .LogoMiddle {
+    width: 95%;
+    height: 30%;
+    border: none;
+    border-bottom: 3px solid #ff8900;
+  }
+
+  .milieuMiddle {
+    flex-direction: column;
+    /* align-items: flex-end; */
+    justify-content: ;
+    border: 1px solid red;
+  }
+}
+
+@media all and (min-width: 720px) and (max-width: 960px) {
+  .Middle {
+    width: 720px;
+  }
+}
+
+/* Fin Middle */
+
+/* FULL */
+
+.OfferViewFull {
+  text-align: left !important;
+  color: #000;
+}
+
+.LogoFull,
+.introFull,
+.titleFull {
+  text-transform: uppercase;
+}
+
+.LogoFull {
+  border-bottom: 3px solid orange;
+  color: #000;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.titleFull {
+  color: orange;
+}
+
+.introFull {
+  font-weight: 800;
+}
+
+.milieuFull {
+  display: flex;
+  justify-content: center;
+}
+
+.townFull,
+.dateFull {
+  margin-right: 5px;
+}
+
+/* FinFULL */

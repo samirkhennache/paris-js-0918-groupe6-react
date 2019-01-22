@@ -1,15 +1,16 @@
 .companyAppliBackground {
+  width: 100%;
   background-image: url(../../img/bandeau_company.jpg);
-  border-top: 0.1px solid #4a4641;
-  margin-bottom: 10px;
-  height: 40vh;
+  background-repeat: no-repeat;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.companyAppliTitle {
-  text-align: start;
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 5%;
+.titles-candidatures {
+  text-align: left;
+  margin: 0 10%;
 }
 
 .companyAppliText1 {

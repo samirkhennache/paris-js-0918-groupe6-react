@@ -21,20 +21,13 @@
   margin-bottom: 20px;
   /* max-width: 100%; */
 }
- 
-.company-criterion {
-  /* margin-top: 20px;
-  margin-bottom: 20px;
-  border: black solid 2px;
-  padding-top: 20px;
-  padding-bottom: 20px; */
-}
 .logo-img {
   width: 60%;
   margin: auto;
 }
 .btn {
-  padding: 30px;
+  padding: 20px;
+  margin: auto;
 }
 .date {
   /* border: 1px solid blue; */

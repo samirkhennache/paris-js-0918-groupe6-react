@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./offerView.css";
+import RenderHTML from "react-render-html";
+//import placeholder.filled-point from "../../img/icons/placeholder.filled-point.png";
+import Typography from "@material-ui/core/Typography";
 import calendar from "../../img/icons/calendar-black.png";
 import loading from "../../img/icons/reload-symbol-black.png";
 import loadingWhite from "../../img/icons/reload-symbol.png";
@@ -72,27 +75,46 @@ const OfferView = props => {
     }
     case "MIDDLE": {
       return (
-        <div className="OfferView">
-          <h3>{titleMission} </h3>
-          <h4>{company}</h4>
-          <p>{town} </p>
-          <p>début: {new Date(dateStart).toLocaleDateString()} </p>
-          <p>fin: {new Date(dateEnd).toLocaleDateString()} </p>
-          <p>{intro} </p>
+        <div className="OfferViewMiddle">
+          <div className="LogoMiddle">
+            <h4>{company}</h4>
+          </div>
+          <div className="contenueMiddle">
+            <h3 className="titleMiddle">{titleMission} </h3>
+            <p className="introMiddle">{intro}</p>
+            <div className="milieuMiddle">
+              <p className="townMiddle">
+                <img src="img/placeholder-filled-point.png" alt="pointer" />
+                {town}
+              </p>
+              <p className="dateMiddle">
+                <img src="img/calendar.png" alt="calendar" />
+                début: {new Date(dateStart).toLocaleDateString()}
+                {/*- fin: {new Date(dateEnd).toLocaleDateString()} */}
+              </p>
+              {/* <p>fin: {new Date(dateEnd).toLocaleDateString()} </p> */}
+            </div>
+          </div>
         </div>
       );
     }
     case "FULL": {
       return (
-        <div className="OfferView">
-          <h3> {titleMission} </h3>
-          <h4>{company}</h4>
-          <p>{town} </p>
-          <p> début: {new Date(dateStart).toLocaleDateString()} </p>
-          <p> fin: {new Date(dateEnd).toLocaleDateString()} </p>
-          <p> niveau d'étude: {LevelStudy} </p>
-          <p>{intro} </p>
-          <p>{description} </p>
+        <div className="OfferViewFull">
+          <h4 className="LogoFull">{company}</h4>
+          <h3 className="titleFull"> {titleMission} </h3>
+          <p className="introFull">{intro} </p>
+          <div className="milieuFull">
+            <p className="townFull">{town} </p>
+            <p className="dateFull">
+              {" "}
+              début: {new Date(dateStart).toLocaleDateString()} - fin:{" "}
+              {new Date(dateEnd).toLocaleDateString()}
+            </p>
+            {/* <p> fin: {new Date(dateEnd).toLocaleDateString()} </p> */}
+            <p className="levelFull"> niveau d'étude: {LevelStudy} </p>
+          </div>
+          <p className="descripFull">{RenderHTML(description)} </p>
         </div>
       );
     }

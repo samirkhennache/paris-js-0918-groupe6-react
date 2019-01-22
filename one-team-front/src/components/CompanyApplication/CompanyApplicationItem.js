@@ -51,9 +51,7 @@ const CompanyApplicationItem = props => {
         e // console.log("e", e.dataApplications)
       ) => (
         <p key={e.mission_id}>
-          <Typography variant="h2" component="h3">
-            {e.titleMission}
-          </Typography>
+          <p className="mission_title">{e.titleMission}</p>
           <div className={classes.row}>
             {e.dataApplications.map(name => (
               <Paper key={name.TraineId} className={classes.root} elevation={2}>

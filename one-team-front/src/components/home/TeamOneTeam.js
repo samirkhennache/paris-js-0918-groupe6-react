@@ -8,6 +8,7 @@ import camille from "../../img/teamOneTeam/camille.jpeg";
 import paolo from "../../img/teamOneTeam/paolo.jpeg";
 import prudence from "../../img/teamOneTeam/prudence.jpeg";
 import gerard from "../../img/teamOneTeam/gerard.jpeg";
+import imgAnonyme from "../../img/icons/PhotoProfil.jpg";
 
 const styles = {
   miniHR: {
@@ -29,7 +30,7 @@ const TeamOneTeam = () => (
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <div className="border-test team-item">
-          <img className="img-team" src={gerard} alt="Gérard Magro" />
+          <img className="img-team" src={imgAnonyme} alt="Gérard Magro" />
           <h3 className="name-team">Gérard Magro</h3>
           <p className="name-team">Fondateur</p>
         </div>
@@ -37,7 +38,7 @@ const TeamOneTeam = () => (
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <div className="border-test team-item">
-          <img className="img-team" src={samir} alt="Samir Khennache" />
+          <img className="img-team" src={imgAnonyme} alt="Samir Khennache" />
           <h3 className="name-team">Samir Khennache</h3>
           <p className="name-team">Développeur</p>
         </div>
@@ -45,7 +46,7 @@ const TeamOneTeam = () => (
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <div className="border-test team-item">
-          <img className="img-team" src={camille} alt="Camille Coutens" />
+          <img className="img-team" src={imgAnonyme} alt="Camille Coutens" />
           <h3 className="name-team">Camille Coutens</h3>
           <p className="name-team">Développeuse</p>
         </div>
@@ -53,7 +54,7 @@ const TeamOneTeam = () => (
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <div className="border-test team-item">
-          <img className="img-team" src={david} alt="David Huveau" />
+          <img className="img-team" src={imgAnonyme} alt="David Huveau" />
           <h3 className="name-team">David Huveau</h3>
           <p className="name-team">Développeur</p>
         </div>
@@ -61,7 +62,7 @@ const TeamOneTeam = () => (
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <div className="border-test team-item">
-          <img className="img-team" src={mohamed} alt="Mohamed Kerkeb" />
+          <img className="img-team" src={imgAnonyme} alt="Mohamed Kerkeb" />
           <h3 className="name-team">Mohamed Kerkeb</h3>
           <p className="name-team">Développeur</p>
         </div>
@@ -69,7 +70,7 @@ const TeamOneTeam = () => (
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <div className="border-test team-item">
-          <img className="img-team" src={paolo} alt="Paolo Catalani" />
+          <img className="img-team" src={imgAnonyme} alt="Paolo Catalani" />
           <h3 className="name-team">Paolo Catalani</h3>
           <p className="name-team">Développeur</p>
         </div>
@@ -77,7 +78,7 @@ const TeamOneTeam = () => (
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <div className="border-test team-item">
-          <img className="img-team" src={prudence} alt="Prudence Gaboriau" />
+          <img className="img-team" src={imgAnonyme} alt="Prudence Gaboriau" />
           <h3 className="name-team">Prudence Gaboriau</h3>
           <p className="name-team">Développeuse</p>
         </div>
