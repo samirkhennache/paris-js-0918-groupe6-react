@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { MakeCompletedUrl } from "../../tools";
-import Typography from "@material-ui/core/Typography";
-import StudentApplication from "./StudentApplication";
+
 import { SMALL } from "./studentConstant";
-import "./ViewStudent.css";
+import { MakeCompletedUrl } from "../../tools";
+
+import Grid from "@material-ui/core/Grid";
+
+import StudentApplication from "./StudentApplication";
+
 import write from "../../img/icons/writing.png";
+
+import "./ViewStudent.css";
 
 class CompanyApplicationsList extends Component {
   state = {
@@ -78,6 +83,7 @@ class CompanyApplicationsList extends Component {
                     <hr className="hr_horizontal_orange" />
                   </div>
                 )}
+
                 <div className="blocList">
                   {element.dataApplications.map(e => (
                     <StudentApplication

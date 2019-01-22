@@ -8,6 +8,11 @@ $size: 30px;
   transform: translate(16.5em, 3.7em);
   border-radius: 50%;
 }
+@media screen and (max-width: 600px) {
+  .button-negative {
+    transform: translate(15.5em, 3.7em);
+  }
+}
 
 .button-negative:before,
 .button-negative:after {
