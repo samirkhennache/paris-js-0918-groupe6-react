@@ -320,6 +320,7 @@ const CompanyCreateOffers = class extends React.Component {
           </div>
           <DialogActions className={classes.centerButton}>
             <Button
+              className="classic_button_blue"
               onClick={this.closeMission}
               variant="contained"
               size="large"
