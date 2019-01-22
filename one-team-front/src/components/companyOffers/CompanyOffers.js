@@ -66,15 +66,18 @@ class CompanyOffers extends Component {
               <h2 className="page_subtitle">
                 Nombre de missions en cours : {missions.length}
               </h2>
-              <Fab
-                color="primary"
-                size="large"
-                aria-label="Add"
-                variant="round"
-                onClick={this.showModal}
-              >
-                <AddIcon />
-              </Fab>
+              <div className ="btn-add-offers">
+                <Fab
+                  className="classic_button_orange"
+                  // color="primary"
+                  size="large"
+                  aria-label="Add"
+                  variant="round"
+                  onClick={this.showModal}
+                >
+                  <AddIcon />
+                </Fab>
+              </div>
             </div>
           </div>
         </div>
