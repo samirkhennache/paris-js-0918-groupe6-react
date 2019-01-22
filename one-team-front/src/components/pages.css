@@ -23,7 +23,6 @@
   height: 100%;
 }
 
-
 /* *********************** PAGES TEXT CLASSES **********************/
 
 .page_title {
@@ -96,7 +95,7 @@
 .mission_title {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: calc(16px + 0.1vw);
+  font-size: calc(16px + 0.051vw);
   text-align: left;
   color: black;
   text-transform: uppercase;

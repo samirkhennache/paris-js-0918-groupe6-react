@@ -12,9 +12,9 @@ class CompanyApplications extends Component {
     return (
       <div>
         <div className="companyAppliBackground">
-          <div className="companyAppliTitle general_margin">
-            <h1 className="companyAppliText1">Candidatures</h1>
-            <h2 className="companyAppliText2">
+          <div className="titles-candidatures general_margin">
+            <h1 className="page_title">Candidatures</h1>
+            <h2 className="page_subtitle">
               Ajoutez des candidats à votre mission de stage, ou refusez-les.
             </h2>
           </div>
