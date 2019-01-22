@@ -134,6 +134,18 @@
 .classic_button_orange:hover {
   background-color: #f9bf59 !important;
 }
+.classic_button_red {
+  background-color: red !important;
+  color: white !important;
+  text-transform: initial !important;
+  font-family: "Open Sans" !important;
+  font-size: calc(12px + 0.5vw) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+.classic_button_red:hover {
+  background-color: red !important;
+}
 .classic_button_blue {
   background-color: rgb(0, 70, 100) !important;
   color: white !important;
