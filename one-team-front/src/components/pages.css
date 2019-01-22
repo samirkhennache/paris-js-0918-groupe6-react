@@ -111,6 +111,8 @@
   text-transform: uppercase;
   margin: 0;
 }
+
+/**************************  BUTTONS  ***********************************/
 .classic_button_orange {
   background-color: #ff8900 !important;
   color: white !important;
@@ -134,4 +136,9 @@
 }
 .classic_button_blue:hover {
   background-color: rgba(0, 70, 100, 0.8) !important;
+}
+.police_button_black {
+  font-family: "Open Sans" !important;
+  font-size: calc(12px + 0.5vw) !important;
+  font-weight: 600 !important;
 }

@@ -1,0 +1,21 @@
+.companyAppliBackground {
+  background-image: url(../../img/bandeau_company.jpg);
+  border-top: 0.1px solid #4a4641;
+  margin-bottom: 10px;
+  height: 40vh;
+}
+
+.companyAppliTitle {
+  text-align: start;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+}
+
+.companyAppliText1 {
+  color: white;
+}
+
+.companyAppliText2 {
+  color: #ff8900;
+}
