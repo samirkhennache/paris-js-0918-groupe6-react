@@ -60,7 +60,7 @@ class CompanyApplicationsList extends Component {
     const { trainee, isLoaded } = this.state;
     const { mode, modeRefuse, modeSelect } = this.props;
     return (
-      <div>
+      <div style={{ marginTop: 80 }}>
         {isLoaded
           ? this.sortData(trainee).map(element => (
               <div>

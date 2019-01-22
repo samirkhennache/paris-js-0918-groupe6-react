@@ -107,19 +107,19 @@ class TraineeCarrousel extends React.Component {
           <h2
             // className="recruteurs"
             id="section2"
-            // style={{ marginBottom: 50, marginTop: 20 }}
+            // // style={{ marginBottom: 50, marginTop: 20 }}
             // className={classes.tmpText}
-            style={{ color: "white", fontWeight: "bold" }}
+            // style={{ color: "white", fontWeight: "bold" }}
             className="home_section"
           >
             Pour les étudiants
           </h2>
           <h3
             // className="recruteurs"
-            // id="section2"
             // style={{ marginBottom: 50, marginTop: 20 }}
-            className={classes.tmpText}
-            style={{ color: "#494642", fontWeight: "bold" }}
+            // className={classes.tmpText}
+            // style={{ color: "#494642", fontWeight: "bold" }}
+            className="home_subsection_grey"
           >
             Tu cherches un stage en accord avec ta génération ?
           </h3>

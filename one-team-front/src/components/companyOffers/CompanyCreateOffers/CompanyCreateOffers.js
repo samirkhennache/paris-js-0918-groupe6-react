@@ -18,6 +18,7 @@ import { MakeCompletedUrl, ConvertDate } from "../../../tools";
 import logoCompany from "../../../img/three-buildings.png";
 // import ConvertDate from "../../../tools";
 import Tinymce from "../../tiny/Tiny";
+import "../../pages.css";
 
 const API_ENDPOINT_MISSION = MakeCompletedUrl("mission/");
 
@@ -27,6 +28,9 @@ const styles = theme => ({
       justifyContent: "center",
       margin: "35px"
     }
+  },
+  marginContainer: {
+    marginBottom: "20px"
   },
   centerButton: {
     [theme.breakpoints.down("sm")]: {
@@ -175,12 +179,13 @@ const CompanyCreateOffers = class extends React.Component {
           </DialogTitle> */}
           <div className="createOffers">
             <form className="form-create-offers">
-              <Grid container alignItems="center" spacing={16}>
+              <Grid container alignItems="center">
                 <Grid
                   item
                   container
                   className={classes.centerLogo}
                   xs={12}
+                  lg={2}
                   md={2}
                 >
                   <div className="logo-company">
@@ -191,7 +196,16 @@ const CompanyCreateOffers = class extends React.Component {
                     />
                   </div>
                 </Grid>
-                <Grid item container xs={12} md={10} justify="center">
+
+                <Grid
+                  item
+                  container
+                  xs={12}
+                  lg={10}
+                  md={10}
+                  className={classes.marginContainer}
+                  justify="flex-end"
+                >
                   <TextField
                     placeholder="Titre de la mission de stage"
                     name="titleMission"
@@ -206,9 +220,9 @@ const CompanyCreateOffers = class extends React.Component {
                 <Grid
                   item
                   container
-                  className="company-criterion"
+                  className={classes.marginContainer}
                   justify="center"
-                  spacing={8}
+                  spacing={16}
                 >
                   <Grid item container xs={6} md={3} justify="center">
                     <TextField
@@ -289,7 +303,12 @@ const CompanyCreateOffers = class extends React.Component {
                     </Select>
                   </Grid>
                 </Grid>
-                <Grid item xs={12} justify="center">
+                <Grid
+                  item
+                  xs={12}
+                  className={classes.marginContainer}
+                  justify="center"
+                >
                   <TextField
                     placeholder="Introduction"
                     name="intro"
@@ -298,8 +317,6 @@ const CompanyCreateOffers = class extends React.Component {
                     onChange={this.handlerOnChange}
                     required
                     fullWidth
-                    // multiline
-                    // // rows="2"
                     variant="outlined"
                   />
                 </Grid>
