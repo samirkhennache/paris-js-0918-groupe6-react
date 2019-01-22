@@ -9,7 +9,7 @@ import logoSearch from "../../img/icons8-chercher-208.png";
 import Button from "@material-ui/core/Button";
 
 import "./OffersStud.css";
-import { Grid, TextField, withStyles } from "@material-ui/core";
+import { Grid, TextField, withStyles, Paper } from "@material-ui/core";
 
 const styles = theme => ({
   // container: {
@@ -85,17 +85,23 @@ class FindOffers extends Component {
     console.log(result);
     return (
       <div>
-        <Grid direction="column" justify="center" alignItems="center">
+        <Grid xs direction="column" justify="center" alignItems="center">
           <Grid
+            item
             container
             direction="column"
             justify="center"
             alignItems="center"
             className="Haut"
+            xs
           >
-            <h3>Trouve la mission de stage de tes rêves !</h3>
+            <h3 className="titrePage">
+              Trouve la mission de stage de tes rêves !
+            </h3>
 
-            <p>Nombre d’offres disponibles : {count || "x"} </p>
+            <p className="count">
+              Nombre d’offres disponibles : {count || "x"}{" "}
+            </p>
             <form onSubmit={this.handleSubmit} className={classes.Form}>
               <TextField
                 name="search"
@@ -138,15 +144,14 @@ class FindOffers extends Component {
             direction="column"
             justify="center"
             alignItems="center"
-            className="Middle"
           >
             {result.map(element => (
               <ModalOffer
                 size={MIDDLE}
                 key={`${element.id}-${element.titleMission}`}
                 missionId={element.id}
-                titleMission={element.titleMission}
                 company={element.Company.companyName}
+                titleMission={element.titleMission}
                 dateStart={element.dateStart}
                 dateEnd={element.dateEnd}
                 description={element.description}

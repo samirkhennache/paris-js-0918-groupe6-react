@@ -16,7 +16,39 @@
   height: 250px;
 }
 
-.Middle {
+.titrePage {
+  color: #fff;
+  font-size: 2rem;
+  /* border: 1px solid white; */
+  margin: 0;
+}
+
+.count {
+  color: orange;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+/* .Middle {
   border: 1px solid red;
   padding: 10px 0;
+  width: 960px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  boder: 1px solid green;
+} */
+
+@media (max-width: 480px) {
+  /* .Middle {
+    width: 300px;
+    background: #ff8900;
+    align-content: center;
+    justify-content: center;
+  } */
+
+  .searchButton {
+    margin-left: 3px !important;
+    margin-right: 3px !important;
+  }
 }
