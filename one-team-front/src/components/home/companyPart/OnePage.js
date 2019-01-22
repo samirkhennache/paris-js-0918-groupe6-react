@@ -78,7 +78,7 @@ export default class OnePage extends Component {
               </Link>
             </p>
 
-            <h1 className="textCentral">
+            <h1 className="home_title">
               La 1ère plateforme de teams <br /> d'étudiants-stagiaires
             </h1>
 

@@ -1,0 +1,26 @@
+.small-offerView {
+
+}
+.application-date {
+  display: flex;
+  align-items: center;
+}
+.application-satut {
+  display: flex;
+  align-items: center;
+}
+.application-date-statut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid yellow;
+}
+.application-hr {
+    width: 100%;
+}
+.application-paper {
+    padding: 20px;
+}
+.application-item {
+    margin: 15px;
+}

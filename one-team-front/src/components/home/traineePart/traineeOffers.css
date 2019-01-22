@@ -1,27 +1,90 @@
 .general-offers {
 }
 .logo-offers {
-  height: 50px;
-  margin: auto;
-}
-.logo-offers img {
+  /* width: 100%;
+  margin: auto;*/
+  /* border: 2px orange solid; */
   height: 100%;
-}
-.bloc-offers {
+  width: 100%;
+  /* margin: auto; */
   display: flex;
-  flex-wrap: wrap;
-  word-break: break-word;
+  align-items: center;
   justify-content: center;
 }
-.bloc-offers-solo {
+.logo-offers img {
+  max-height: 100%;
+  max-width: 100%;
+  /* border: 1px blue solid; */
+}
+/* .bloc-offers { */
+/* display: flex;
+  flex-wrap: wrap;
+  word-break: break-word;
+  justify-content: center; */
+/* } */
+/* .bloc-offers-solo {
   padding: 20px;
 }
 .text-offers {
   text-align: left;
-}
+} */
 .papers-offers {
-  margin: 10px 0;
+  margin: 1.5vw 0;
+  height: 200px;
+  padding: 1.5vw;
+  padding-left: 0px;
 }
+.papers-offers-row {
+  height: 100%;
+}
+.papers-offers-column {
+  height: 100%;
+  padding: 1.5vw;
+  /* border: 1px blue solid; */
+}
+.papers-offers-description {
+  width: 100%;
+  height: 100%;
+  /* border: 1px blue solid; */
+}
+.papers-offers-description-text {
+  text-align: left;
+  max-height: 100%;
+  max-width: 100%;
+}
+.papers-offers-description-logos {
+  /* text-align: left; */
+  max-height: 100%;
+  max-width: 100%;
+  height: 33px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+
+  /* border: 1px blue solid; */
+
+  /* height: 100% */
+}
+
+.papers-offers-description-logos {
+  /* height: 33px;
+  width: 100%; */
+}
+.papers-offers-description-logos img {
+  height: 33px;
+  max-width: 100%;
+  margin-left: 0.3vw;
+  margin-right: 0.3vw;
+}
+
+/* .papers-offers-detail {
+  display: flex;
+  flex-direction: column;
+  text-align:
+} */
+
 /* @media all and (max-width: 500px) {
     .bloc-offers-solo {
         width: calc(200px + 10vw);

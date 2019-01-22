@@ -13,7 +13,7 @@ class Cursus extends Component {
       <div className="rules-bloc general_margin">
         <Grid container justify="center">
           <Grid item xs={12}>
-            <h2>Sur le plan pratique</h2>
+            <h2 className="home_subsection_orange">Sur le plan pratique</h2>
           </Grid>
           {/* *************** RULES 1 ********************* */}
           <Grid item xs={12} sm={6} md={3} lg={3}>
@@ -21,7 +21,7 @@ class Cursus extends Component {
               <div>
                 <img src={blackNumber1} alt="1" />
               </div>
-              <h3>Complète ton profil</h3>
+              <h3 className="icon_orange_title">Complète ton profil</h3>
               <p>
                 Après avoir créer ton compte, remplis soigneusement ta fiche
                 publique afin d’être visible auprès des recruteurs

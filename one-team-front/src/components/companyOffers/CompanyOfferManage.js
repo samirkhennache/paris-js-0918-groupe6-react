@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { MakeCompletedUrl } from "../../tools";
 import { AwesomeButton } from "react-awesome-button";
 import Button from "@material-ui/core/Button";
 import "./Button.css";
@@ -10,9 +9,11 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Hidden from "@material-ui/core/Hidden";
+
+import renderHTML from "react-render-html";
+import { MakeCompletedUrl } from "../../tools";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
-import renderHTML from "react-render-html";
 import ConfirmDialog from "../Dialogs/ConfirmDialog";
 
 const idCompany = sessionStorage.getItem("token");
@@ -130,8 +131,7 @@ class CompanyOfferManage extends Component {
           </Hidden>
         </div>
         {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
-        <Button
-          // type="primary"
+        <Button // type="primary"
           // className="aws-btn edit"
           variant="contained"
           color="primary"
@@ -139,23 +139,15 @@ class CompanyOfferManage extends Component {
         >
           Modifier
         </Button>
+
         <br />
-        {/* <Button
-          type="primary"
-          className="aws-btn remove"
-          variant="contained"
-          color="secondary"
-          onClick={this.deleteData}
-        >
-          Supprimer
-        </Button> */}
-        {/* <AwesomeButton
+        <AwesomeButton
           type="primary"
           className="aws-btn remove"
           action={this.deleteData}
         >
           Supprimer
-        </AwesomeButton> */}
+        </AwesomeButton>
         <ConfirmDialog
           buttonCaption="Supprimer"
           dialogTitle="Confirmation"
@@ -178,8 +170,7 @@ class CompanyOfferManage extends Component {
           </Button>
         ) : (
           <Button
-            onClick={this.validateMission}
-            // type="primary"
+            onClick={this.validateMission} // type="primary"
             // className="aws-btn validate"
             variant="contained"
             color="primary"
