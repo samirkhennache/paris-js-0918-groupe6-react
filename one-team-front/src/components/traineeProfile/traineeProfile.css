@@ -32,6 +32,16 @@
   color: white;
 }
 
+.pageProfile {
+  border: 1px solid black;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.traineeProfileTextField {
+  width: 100%;
+}
+
 .testclass {
   border: 1px solid black;
 }

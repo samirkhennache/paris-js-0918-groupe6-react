@@ -80,7 +80,7 @@ class TraineeProfile extends Component {
   }
 
   onSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
     // const { id } = this.state;
     const id = sessionStorage.getItem("token");
     axios
@@ -133,7 +133,6 @@ class TraineeProfile extends Component {
     fr.readAsDataURL(document.querySelector('input[type="file"]').files[0]);
 
     this.setState({ selectedFile: event.target.files[0] });
-    console.log("okkkkk");
   };
 
   date(data) {
@@ -173,7 +172,7 @@ class TraineeProfile extends Component {
             </h2>
           </div>
         </div>
-        <div>
+        <div className="general_margin">
           <form onSubmit={this.onSubmit}>
             <Grid
               container
@@ -216,143 +215,168 @@ class TraineeProfile extends Component {
                   />
                 </div>
               </Grid>
-              <Grid item xs={3}>
-                <Button
-                  className="classic_button_blue"
-                  color="primary"
-                  variant="contained"
-                  onClick={this.traineeOpenConnexion}
-                >
-                  Aperçu profil
-                  <RemoveEye className="traineeProfileIcon" />
-                </Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button
-                  className="classic_button_orange"
-                  color="secondary"
-                  variant="contained"
-                  type="submit"
-                >
-                  Sauvegarder
-                  <Save className="traineeProfileIcon" />
-                </Button>
+              <Grid items xs={6}>
+                <Grid container>
+                  <Grid className="testclass" item xs={12} md={6}>
+                    <Button
+                      className="classic_button_blue"
+                      color="primary"
+                      variant="contained"
+                      onClick={this.traineeOpenConnexion}
+                    >
+                      Aperçu profil
+                      <RemoveEye className="traineeProfileIcon" />
+                    </Button>
+                  </Grid>
+                  <Grid className="testclass" item xs={12} md={6}>
+                    <Button
+                      className="classic_button_orange"
+                      color="secondary"
+                      variant="contained"
+                      type="submit"
+                    >
+                      Sauvegarder
+                      <Save className="traineeProfileIcon" />
+                    </Button>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
-            <Grid container>
+            <Grid container spacing={40}>
               <Grid item xs={6}>
-                <TextField
-                  type="text"
-                  name="firstname"
-                  placeholder="Prénom"
-                  defaultValue={data.firstname}
-                  margin="normal"
-                  variant="outlined"
-                  required
-                />
-                <br />
-                <TextField
-                  type="text"
-                  name="lastname"
-                  placeholder="Nom"
-                  defaultValue={data.lastname}
-                  margin="normal"
-                  variant="outlined"
-                  required
-                />
-                <br />
-                <TextField
-                  disabled
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  defaultValue={data.email}
-                  margin="normal"
-                  variant="outlined"
-                  required
-                />
-                <br />
-                <TextField
-                  type="text"
-                  name="phone"
-                  placeholder="Phone"
-                  defaultValue={data.phone}
-                  margin="normal"
-                  variant="outlined"
-                />
-                <br />
-                <TextField
-                  type="text"
-                  name="address"
-                  placeholder="Adress"
-                  defaultValue={data.address}
-                  margin="normal"
-                  variant="outlined"
-                />
-                <br />
-                <TextField
-                  type="text"
-                  name="town"
-                  placeholder="Ville"
-                  defaultValue={data.town}
-                  margin="normal"
-                  variant="outlined"
-                />
-                <br />
-                <TextField
-                  type="text"
-                  name="postalCode"
-                  placeholder="Postal Code"
-                  defaultValue={data.postalCode}
-                  margin="normal"
-                  variant="outlined"
-                />
-                <br />
-                <TextField
-                  // id="date"
-                  name="dateBirth"
-                  label="Date de naissance"
-                  type="date"
-                  defaultValue={
-                    this.state.data.dateBirth !== null
-                      ? ConvertDate(this.state.data.dateBirth)
-                      : null
-                  }
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  margin="normal"
-                  variant="outlined"
-                />
-                <br />
-                <TextField
-                  type="text"
-                  name="school"
-                  placeholder="École"
-                  defaultValue={data.school}
-                  margin="normal"
-                  variant="outlined"
-                />
-                <br />
-                <TextField
-                  select
-                  label="Level"
-                  value={this.state.data.LevelStudyId || ""}
-                  onChange={this.handleChange}
-                  inputProps={{
-                    name: "LevelStudyId"
-                  }}
-                  margin="normal"
-                  variant="outlined"
-                >
-                  {this.state.levelstudies.map(e => (
-                    <MenuItem key={e.id} value={e.id}>
-                      {e.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
+                <Grid container>
+                  <Grid item xs={12}>
+                    <TextField
+                      className="traineeProfileTextField"
+                      type="text"
+                      name="firstname"
+                      placeholder="Prénom"
+                      defaultValue={data.firstname}
+                      margin="normal"
+                      variant="outlined"
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      className="traineeProfileTextField"
+                      type="text"
+                      name="lastname"
+                      placeholder="Nom"
+                      defaultValue={data.lastname}
+                      margin="normal"
+                      variant="outlined"
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      className="traineeProfileTextField"
+                      disabled
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      defaultValue={data.email}
+                      margin="normal"
+                      variant="outlined"
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      className="traineeProfileTextField"
+                      type="text"
+                      name="phone"
+                      placeholder="Phone"
+                      defaultValue={data.phone}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      className="traineeProfileTextField"
+                      type="text"
+                      name="address"
+                      placeholder="Adress"
+                      defaultValue={data.address}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      className="traineeProfileTextField"
+                      type="text"
+                      name="town"
+                      placeholder="Ville"
+                      defaultValue={data.town}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      className="traineeProfileTextField"
+                      type="text"
+                      name="postalCode"
+                      placeholder="Postal Code"
+                      defaultValue={data.postalCode}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      className="traineeProfileTextField"
+                      name="dateBirth"
+                      label="Date de naissance"
+                      type="date"
+                      defaultValue={
+                        this.state.data.dateBirth !== null
+                          ? ConvertDate(this.state.data.dateBirth)
+                          : null
+                      }
+                      InputLabelProps={{
+                        shrink: true
+                      }}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      className="traineeProfileTextField"
+                      type="text"
+                      name="school"
+                      placeholder="École"
+                      defaultValue={data.school}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      className="traineeProfileTextField"
+                      select
+                      label="Level"
+                      value={this.state.data.LevelStudyId || ""}
+                      onChange={this.handleChange}
+                      inputProps={{
+                        name: "LevelStudyId"
+                      }}
+                      margin="normal"
+                      variant="outlined"
+                    >
+                      {this.state.levelstudies.map(e => (
+                        <MenuItem key={e.id} value={e.id}>
+                          {e.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </Grid>
 
-                {/* <FormControl>
+                  {/* <FormControl>
                   <InputLabel>Level</InputLabel>
                   <Select
                     value={this.state.data.LevelStudyId || ""}
@@ -368,65 +392,75 @@ class TraineeProfile extends Component {
                     ))}
                   </Select>
                 </FormControl> */}
+                </Grid>
               </Grid>
               <Grid item xs={6}>
-                <TextField
-                  type="text"
-                  name="titre"
-                  placeholder="Intitulé de stage"
-                  defaultValue={data.titre}
-                  margin="normal"
-                  variant="outlined"
-                />
-
                 <Grid container>
-                  <Grid item xs={6}>
+                  <Grid item xs={12}>
                     <TextField
-                      // id="date"
-                      name="dateStart"
-                      label="Debut stage"
-                      type="date"
-                      defaultValue={
-                        this.state.data.dateStart !== null
-                          ? ConvertDate(this.state.data.dateStart)
-                          : null
-                      }
-                      InputLabelProps={{
-                        shrink: true
-                      }}
+                      className="traineeProfileTextField"
+                      type="text"
+                      name="titre"
+                      placeholder="Intitulé de stage"
+                      defaultValue={data.titre}
                       margin="normal"
                       variant="outlined"
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={12}>
+                    <Grid container spacing={16}>
+                      <Grid item xs={12} md={6}>
+                        <TextField
+                          className="traineeProfileTextField"
+                          name="dateStart"
+                          label="Debut stage"
+                          type="date"
+                          defaultValue={
+                            this.state.data.dateStart !== null
+                              ? ConvertDate(this.state.data.dateStart)
+                              : null
+                          }
+                          InputLabelProps={{
+                            shrink: true
+                          }}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <TextField
+                          className="traineeProfileTextField"
+                          name="dateEnd"
+                          label="Fin stage"
+                          type="date"
+                          defaultValue={
+                            this.state.data.dateEnd !== null
+                              ? ConvertDate(this.state.data.dateEnd)
+                              : null
+                          }
+                          InputLabelProps={{
+                            shrink: true
+                          }}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12}>
                     <TextField
-                      // id="date"
-                      name="dateEnd"
-                      label="Fin stage"
-                      type="date"
-                      defaultValue={
-                        this.state.data.dateEnd !== null
-                          ? ConvertDate(this.state.data.dateEnd)
-                          : null
-                      }
-                      InputLabelProps={{
-                        shrink: true
-                      }}
+                      className="traineeProfileTextField"
+                      type="text"
+                      multiline
+                      name="description"
+                      placeholder="Descriptions"
+                      defaultValue={data.description}
                       margin="normal"
                       variant="outlined"
+                      rows="30"
                     />
                   </Grid>
                 </Grid>
-                <TextField
-                  type="text"
-                  multiline
-                  name="description"
-                  placeholder="Descriptions"
-                  defaultValue={data.description}
-                  margin="normal"
-                  variant="outlined"
-                  rows="5"
-                />
               </Grid>
             </Grid>
           </form>
