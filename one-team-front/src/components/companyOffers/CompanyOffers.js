@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import { AwesomeButton } from "react-awesome-button";
 // import Modal from "./Modal";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 import CompanyOfferManage from "./CompanyOfferManage";
 import CompanyCreateOffers from "./CompanyCreateOffers";
-import "./Button.css";
-// import "./Modal.css";
-import "./Missions.css";
-import "react-awesome-button/dist/styles.css";
-
-// const idCompany = sessionStorage.getItem("token");
-// const mode = "SELECT";
+import "./companyOffers.css";
 
 class CompanyOffers extends Component {
   state = {
@@ -61,21 +56,27 @@ class CompanyOffers extends Component {
 
     return (
       <div className="mesMissions">
-        <h1 className="titleMission"> Mes missions </h1>
-        <p>Nombre de missions: {missions.length}</p>
-        <AwesomeButton
-          type="primary"
-          className="aws-btn add"
-          action={this.showModal}
-        >
-          Ajouter
-        </AwesomeButton>
-        <br />
+        <div className="home-company">
+          <div className="compnay-overlay">
+            <div className="block-company">
+              <h2>Ici, créer et gérer vos missions de stages</h2>
+              <h2>Nombre de missions en cours : {missions.length}</h2>
+              <Fab
+                color="primary"
+                size="large"
+                aria-label="Add"
+                variant="round"
+                onClick={this.showModal}
+              >
+                <AddIcon />
+              </Fab>
+            </div>
+          </div>
+        </div>
         <CompanyCreateOffers
           open={this.state.show}
           onClose={this.showModal}
           handlerCreateMission={this.handlerCreateMission}
-          // missions={missions}
         />
         <div>
           {missions.map((e, index) => (
