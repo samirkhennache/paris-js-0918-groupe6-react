@@ -117,6 +117,7 @@ class ModalOffer extends Component {
                 />
                 <MuiThemeProvider theme={theme}>
                   <Button
+                    className="classic_button_orange"
                     color="primary"
                     variant="contained"
                     onClick={this.handleOpen}
@@ -228,18 +229,11 @@ class ModalOffer extends Component {
 }
 
 const theme = createMuiTheme({
-  overrides: {
-    MuiButton: {
-      text: {
-        color: "rgb(255, 255, 255)"
-      }
-    }
-  },
-  palette: {
-    primary: {
-      main: "#ff8900"
-    }
-  }
+  // palette: {
+  //   primary: {
+  //     main: "#ff8900"
+  //   }
+  // }
 });
 
 const mapStateToProps = state => ({
