@@ -54,7 +54,7 @@
   background-color: #ff8900 !important;
   color: white !important;
   text-transform: initial !important;
-  font-size: 17px !important;
+  font-size: 20px !important;
   font-weight: 900 !important;
 }
 @media (max-width: 768px) {
@@ -70,7 +70,7 @@
   color: white !important;
   margin-left: 2% !important;
   text-transform: initial !important;
-  font-size: 17px !important;
+  font-size: 20px !important;
   font-weight: 900 !important;
 }
 @media (max-width: 768px) {

@@ -80,7 +80,7 @@ class TraineeProfile extends Component {
   }
 
   onSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     // const { id } = this.state;
     const id = sessionStorage.getItem("token");
     axios
@@ -480,6 +480,8 @@ class TraineeProfile extends Component {
               town={data.town}
               pictures={data.pictures}
               descriptionTrainee={data.description}
+              LevelStudy={data.LevelStudy ? data.LevelStudy.label : null}
+              age={data.dateBirth}
               school={data.school}
               titre={data.titre}
               dateStart={data.dateStart}

@@ -58,9 +58,10 @@ class CompanyApplicationsList extends Component {
 
   render() {
     const { trainee, isLoaded } = this.state;
+    console.log(trainee);
     const { mode, modeRefuse, modeSelect } = this.props;
     return (
-      <div>
+      <div style={{ marginTop: 80 }}>
         {isLoaded
           ? this.sortData(trainee).map(element => (
               <div>
@@ -79,8 +80,12 @@ class CompanyApplicationsList extends Component {
                       // dateEnd={e.Trainee.dateEnd}
                       titre={e.Trainee.titre}
                       descriptionTrainee={e.Trainee.description}
-                      LevelStudy={e.LevelStudy ? e.LevelStudy.label : null}
+                      LevelStudy={
+                        e.Trainee.LevelStudy ? e.Trainee.LevelStudy.label : null
+                      }
+                      // LevelStudy={e.Trainee.LevelStudy}
                       school={e.Trainee.school}
+                      age={e.Trainee.dateBirth}
                       size={SMALL}
                       missionId={element.mission_id}
                       traineeId={e.Trainee.id}

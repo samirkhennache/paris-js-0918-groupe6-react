@@ -7,7 +7,7 @@ export default class Recrutement extends Component {
     return (
       <div className="recrutementBottle general_margin">
         <h3 className="home_subsection_orange">Le processus de recrutement</h3>
-        <hr className="hr_horizontal_orange" />
+        <hr className="hr_horizontal_orange_home" />
         <div class="section group">
           <div class="col span_1_of_4">
             <img
