@@ -160,7 +160,7 @@ class CompanyCreateAccount extends Component {
           />
           <Button
             variant="contained"
-            className="buttonCreateForm"
+            className="buttonCreateForm classic_button_orange"
             type="submit"
           >
             S'inscrire

@@ -119,6 +119,7 @@ class StudentView extends Component {
       case "FULL_RESTRICTED": {
         return (
           <div className="bloc-trainee-profil">
+            {/*  BANDEAU  */}
             <div className="bandeau-trainee-profil">
               <div className="user-photo">
                 <img
@@ -131,12 +132,13 @@ class StudentView extends Component {
                 />
               </div>
             </div>
+            {/* **********************  BLOC UNDER BANDEAU  **************************** */}
             <div className="bloc-under-bandeau">
               <p className="regular_orange_subtitle left">{firstname}</p>
               <p className="regular_black_subtitle left">
                 {titre ? titre : "Poste recherché : à compléter"}
               </p>
-
+              {/* CRITERES TRAINEE */}
               <div className="bloc-criteres-big">
                 <div className="icon-and-text">
                   <div className="img-student-view">
@@ -193,6 +195,7 @@ class StudentView extends Component {
                   </p>
                 </div>
               </div>
+              {/* FIN CRITERES TRAINEE */}
               <p className="regular_orange_subtitle left">à propos</p>
               <p className="regular_text left">
                 {descriptionTrainee !== null
