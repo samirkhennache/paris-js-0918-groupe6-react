@@ -123,7 +123,16 @@ class TraineeProfile extends Component {
         this.state.selectedFile,
         this.state.selectedFile.name
       );
-      axios.post(MakeCompletedUrl(`trainee/uploadphoto/${id}`), formData);
+      axios
+        .post(MakeCompletedUrl(`trainee/uploadphoto/${id}`), formData)
+        .then(res =>
+          this.setState(prevState => ({
+            data: {
+              ...prevState.data,
+              pictures: res.data.pictures
+            }
+          }))
+        );
     }
   };
 

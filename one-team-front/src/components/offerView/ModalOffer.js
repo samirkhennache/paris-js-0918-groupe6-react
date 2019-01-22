@@ -22,6 +22,7 @@ import Typography from "@material-ui/core/Typography";
 import OfferView from "./OfferView";
 import { FULL } from "./constants";
 import ModalConfimation from "./ModalConfirmation";
+import "./offerView.css";
 
 const DialogTitle = withStyles(theme => ({
   root: {
@@ -171,18 +172,21 @@ class ModalOffer extends Component {
       default:
         return (
           <div className="ModalOffer">
-            <OfferView
-              key={`${missionId}-${titleMission}`}
-              {...this.props}
-              size={size}
-            />
-            <AwesomeButton
-              type="primary"
-              className="aws-btn remove"
-              action={this.handleOpen}
-            >
-              {size === "SMALL" ? "Consulter" : "En savoir plus"}
-            </AwesomeButton>
+            <Paper className="Middle">
+              <OfferView
+                key={`${missionId}-${titleMission}`}
+                {...this.props}
+                size={size}
+              />
+              <Button
+                color="primary"
+                className="aws-btn remove btn"
+                variant="contained"
+                onClick={this.handleOpen}
+              >
+                {size === "SMALL" ? "Consulter" : "En savoir plus"}
+              </Button>
+            </Paper>
 
             {/* //////////////////////////////////////////////////// */}
             <Dialog
