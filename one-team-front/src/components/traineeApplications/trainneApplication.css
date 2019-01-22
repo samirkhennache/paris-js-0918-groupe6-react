@@ -1,6 +1,5 @@
 .bandeau-candidatures-trainee {
     width: 100%;
-    border: 1px solid rgba(0, 0, 0, 1);
     background-image: url(../../img/bandeau_trainee-1.jpg);
     background-repeat: no-repeat;
     height: 150px;
@@ -9,6 +8,6 @@
     align-items: center;
 }
 .titles-candidatures {
-    border: 1px solid red;
     text-align: left;
+    margin: 0 10%;
 }
