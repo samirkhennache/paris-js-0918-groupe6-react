@@ -1,6 +1,14 @@
 .bandeau-candidatures-trainee {
-    width: 100%
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 1);
+    background-image: url(../../img/bandeau_trainee-1.jpg);
+    background-repeat: no-repeat;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.bandeau-candidatures-trainee img {
-    width: 100%
+.titles-candidatures {
+    border: 1px solid red;
+    text-align: left;
 }
