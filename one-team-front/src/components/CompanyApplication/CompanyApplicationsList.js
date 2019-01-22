@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import StudentApplication from "./StudentApplication";
 import { SMALL } from "./studentConstant";
 import "./ViewStudent.css";
+import write from "../../img/icons/writing.png";
 
 class CompanyApplicationsList extends Component {
   state = {
@@ -60,14 +61,22 @@ class CompanyApplicationsList extends Component {
     const { trainee, isLoaded } = this.state;
     const { mode, modeRefuse, modeSelect } = this.props;
     return (
-      <div style={{ marginTop: 80 }}>
+      <div style={{ marginTop: 80 }} className="general_margin">
         {isLoaded
           ? this.sortData(trainee).map(element => (
               <div>
                 {element.dataApplications.length !== 0 && (
-                  <Typography variant="h2" component="h3">
+                  <div className="mission_title">
+                    <img
+                      src={write}
+                      width="18"
+                      height="18"
+                      style={{ marginRight: 5, marginBottom: -5 }}
+                      alt=""
+                    />
                     {element.titleMission}
-                  </Typography>
+                    <hr className="hr_horizontal_orange" />
+                  </div>
                 )}
                 <div className="blocList">
                   {element.dataApplications.map(e => (

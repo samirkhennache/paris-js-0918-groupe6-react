@@ -1,0 +1,39 @@
+.button-negative {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  -webkit-transform: translate(16.5em, 3.7em);
+  -ms-transform: translate(16.5em, 3.7em);
+  transform: translate(16.5em, 3.7em);
+  border-radius: 50%; }
+
+.button-negative:before,
+.button-negative:after {
+  content: "";
+  width: 15px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%; }
+
+.button-negative,
+.button-negative:before,
+.button-negative:after {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black; }
+
+.button-negative:before,
+.button-negative:after {
+  height: 0;
+  border-top: 0px;
+  margin-left: -8.5px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+.button-negative:after {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg); }
