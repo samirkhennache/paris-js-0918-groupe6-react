@@ -9,10 +9,24 @@ import paolo from "../../img/teamOneTeam/paolo.jpeg";
 import prudence from "../../img/teamOneTeam/prudence.jpeg";
 import gerard from "../../img/teamOneTeam/gerard.jpeg";
 
+const styles = {
+  miniHR: {
+    backgroundColor: "white",
+    height: "4px",
+    width: "10vw",
+    margin: "auto",
+    marginBottom: "20px"
+  }
+};
+
 const TeamOneTeam = () => (
   <div className="general_margin">
-    <h2 className="white-color h2-team">La team</h2>
-    <img className="logo-team" src={logo} alt="logo One Team" />
+    <h2 style={{ color: "white", fontWeight: "bold" }} className="home_section">
+      La Team <span style={{ color: "#ff8900" }}>One Team</span>
+    </h2>
+    <div style={styles.miniHR} />
+    {/* <h2 className="white-color h2-team">La team</h2> */}
+    {/* <img className="logo-team" src={logo} alt="logo One Team" /> */}
     <Grid container className="border-test team-block" justify="center">
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>

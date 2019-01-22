@@ -434,6 +434,8 @@ class TraineeProfile extends Component {
                 town={data.town}
                 pictures={data.pictures}
                 descriptionTrainee={data.description}
+                LevelStudy={data.LevelStudy ? data.LevelStudy.label : null}
+                age={data.dateBirth}
                 school={data.school}
                 titre={data.titre}
                 dateStart={data.dateStart}
