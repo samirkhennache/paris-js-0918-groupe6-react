@@ -13,21 +13,21 @@ export default class Services extends Component {
         <div class="section group">
           <div class="col span_1_of_3">
             <img src={require("../../../img/services/offres.png")} />
-            <p className="bold-services"> Publication des offres </p>
+            <p className="icon_white_title"> Publication des offres </p>
             <p className="black petit_texte">
               Inclus dans le forfait de l'offre
             </p>
           </div>
           <div class="col span_1_of_3">
             <img src={require("../../../img/services/profils.png")} />
-            <p className="bold-services"> Sélection des profils </p>
+            <p className="icon_white_title"> Sélection des profils </p>
             <p className="black petit_texte">
               Par vous-même ou par un consultant One Team
             </p>
           </div>
           <div class="col span_1_of_3">
             <img src={require("../../../img/services/meeting.png")} />
-            <p className="bold-services"> Team-Building </p>
+            <p className="icon_white_title"> Team-Building </p>
             <p className="black petit_texte">
               Séminaire onboarding co-animé par l'entreprise et un consultant
               One Team
@@ -37,14 +37,14 @@ export default class Services extends Component {
         <div class="section group">
           <div class="col span_1_of_2">
             <img src={require("../../../img/services/meeting.png")} />
-            <p className="bold-services"> Pages Vitrines </p>
+            <p className="icon_white_title"> Pages Vitrines </p>
             <p className="black petit_texte">
               Inclus dans le forfait de l'offre
             </p>
           </div>
           <div class="col span_1_of_2">
             <img src={require("../../../img/services/meeting.png")} />
-            <p className="bold-services"> Coaching d'équipe </p>
+            <p className="icon_white_title"> Coaching d'équipe </p>
             <p className="black petit_texte">
               Réalisé sur toute la période du stage par un consultant One Team
               selon un protocole d'accompagnement axé sur l'efficacité

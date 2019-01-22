@@ -9,11 +9,30 @@
     margin: 10px calc(10px + 2vw);
   }
 }
-hr {
+.hr_horizontal_orange {
   background-color: #ff8900;
   height: 4px;
   border: 0;
 }
+.hr_vertical_orange {
+  background-color: #ff8900;
+  width: 4px;
+  border: 0;
+}
+.hr_horizontal_white {
+  background-color: white;
+  height: 4px;
+  width: 40px;
+  border: 0;
+}
+.hr_horizontal_grey {
+  background-color: #494642;
+  height: 4px;
+  width: 40px;
+  border: 0;
+}
+
+
 
 /* *********************** PAGES TEXT CLASSES **********************/
 
@@ -101,4 +120,16 @@ hr {
   color: black;
   text-transform: uppercase;
   margin: 0;
+}
+.classic_button_orange {
+  background-color: #ff8900 !important;
+  color: white !important;
+  text-transform: initial !important;
+  font-family: 'Open Sans' !important;
+  font-size: calc(12px + 0.5vw) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+.classic_button_orange:hover {
+  background-color: #f9bf59 !important;
 }
