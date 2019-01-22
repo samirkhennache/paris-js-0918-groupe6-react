@@ -15,7 +15,7 @@
   clear: both;
   padding: 0px;
   margin: 0px;
-  font-size: 3.5vh;
+  font-size: 2.5vh;
 }
 
 /*  COLUMN SETUP  */
@@ -44,30 +44,22 @@
 /*  GRID OF TWO  */
 .span_2_of_2 {
   width: 100%;
-  margin-top: -5%;
 }
 .span_1_of_2 {
-  width: 49.2%;
-  margin-top: 5%;
+  width: 69.2%;
 }
 
-/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+/*  GO FULL WIDTH AT LESS THAN 600 PIXELS */
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 600px) {
   .col {
     margin: 1% 0 1% 0%;
   }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 600px) {
   .span_2_of_2,
   .span_1_of_2 {
     width: 100%;
   }
-}
-
-.exampleTiret {
-  border: 3px white solid;
-  margin-left: 45%;
-  margin-right: 45%;
 }
