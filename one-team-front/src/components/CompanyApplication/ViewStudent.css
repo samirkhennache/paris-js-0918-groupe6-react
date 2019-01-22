@@ -1,5 +1,7 @@
 .blocList {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
 }
 /* ************************************ FULL RESTRICTED ***************************************** */

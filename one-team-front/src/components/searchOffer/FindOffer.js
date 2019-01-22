@@ -9,6 +9,26 @@ import logoSearch from "../../img/icons8-chercher-208.png";
 import Button from "@material-ui/core/Button";
 
 import "./OffersStud.css";
+import { Grid, TextField, withStyles, Paper } from "@material-ui/core";
+
+const styles = theme => ({
+  // container: {
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   border: "1px solid red"
+  // }
+  TextField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    backgroundColor: "#fff",
+    borderRadius: 10
+  },
+  Form: {
+    display: "flex",
+    justify: "center",
+    alignItems: "center"
+  }
+});
 
 class FindOffers extends Component {
   state = {
@@ -61,53 +81,91 @@ class FindOffers extends Component {
 
   render() {
     const { result, count } = this.state;
+    const { classes } = this.props;
     console.log(result);
     return (
       <div>
-        <p>{count || "x"} stages pour votre recherche</p>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            name="search"
-            id="search"
-            type="search"
-            placeholder="Stage"
-            onChange={this.handleChange}
-          />
-          <input
-            type="search"
-            name="town"
-            id="town"
-            placeholder="ville"
-            onChange={this.handleChange}
-          />
-          {/* <button type="submit">Rechercher</button> */}
-          <Button variant="contained" type="submit" className="searchButton">
-            <img
-              src={require("../../img/icons8-chercher-208.png")}
-              width="30"
-              height="30"
-            />
-          </Button>
-        </form>
-        {result.map(element => (
-          <ModalOffer
-            size={MIDDLE}
-            key={`${element.id}-${element.titleMission}`}
-            missionId={element.id}
-            titleMission={element.titleMission}
-            company={element.Company.companyName}
-            dateStart={element.dateStart}
-            dateEnd={element.dateEnd}
-            description={element.description}
-            intro={element.intro}
-            town={element.town}
-            LevelStudy={element.LevelStudy.label}
-            {...this.props}
-          />
-        ))}
+        <Grid xs direction="column" justify="center" alignItems="center">
+          <Grid
+            item
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+            className="Haut"
+            xs
+          >
+            <h3 className="titrePage">
+              Trouve la mission de stage de tes rêves !
+            </h3>
+
+            <p className="count">
+              Nombre d’offres disponibles : {count || "x"}{" "}
+            </p>
+            <form onSubmit={this.handleSubmit} className={classes.Form}>
+              <TextField
+                name="search"
+                label="Recherche"
+                margin="normal"
+                variant="outlined"
+                className={classes.TextField}
+                id="search"
+                type="search"
+                placeholder="Stage"
+                onChange={this.handleChange}
+              />
+              <TextField
+                type="search"
+                name="town"
+                id="town"
+                placeholder="ville"
+                onChange={this.handleChange}
+                label="Town"
+                margin="normal"
+                variant="outlined"
+                className={classes.TextField}
+              />
+              {/* <button type="submit">Rechercher</button> */}
+              <Button
+                variant="contained"
+                type="submit"
+                className="searchButton"
+              >
+                <img
+                  src={require("../../img/icons8-chercher-208.png")}
+                  width="30"
+                  height="30"
+                />
+              </Button>
+            </form>
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+          >
+            {result.map(element => (
+              <ModalOffer
+                size={MIDDLE}
+                key={`${element.id}-${element.titleMission}`}
+                missionId={element.id}
+                company={element.Company.companyName}
+                titleMission={element.titleMission}
+                dateStart={element.dateStart}
+                dateEnd={element.dateEnd}
+                description={element.description}
+                intro={element.intro}
+                town={element.town}
+                LevelStudy={element.LevelStudy.label}
+                {...this.props}
+              />
+            ))}
+          </Grid>
+        </Grid>
       </div>
     );
   }
 }
 
-export default FindOffers;
+export default withStyles(styles)(FindOffers);

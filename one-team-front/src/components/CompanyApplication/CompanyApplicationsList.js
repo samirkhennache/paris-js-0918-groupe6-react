@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { MakeCompletedUrl } from "../../tools";
-import Typography from "@material-ui/core/Typography";
-import StudentApplication from "./StudentApplication";
+
 import { SMALL } from "./studentConstant";
+import { MakeCompletedUrl } from "../../tools";
+
+import Grid from "@material-ui/core/Grid";
+
+import StudentApplication from "./StudentApplication";
+
+import write from "../../img/icons/writing.png";
+
 import "./ViewStudent.css";
 
 class CompanyApplicationsList extends Component {
@@ -61,15 +67,24 @@ class CompanyApplicationsList extends Component {
     console.log(trainee);
     const { mode, modeRefuse, modeSelect } = this.props;
     return (
-      <div style={{ marginTop: 80 }}>
+      <div style={{ marginTop: 80 }} className="general_margin">
         {isLoaded
           ? this.sortData(trainee).map(element => (
               <div>
                 {element.dataApplications.length !== 0 && (
-                  <Typography variant="h2" component="h3">
+                  <div className="mission_title">
+                    <img
+                      src={write}
+                      width="18"
+                      height="18"
+                      style={{ marginRight: 5, marginBottom: -5 }}
+                      alt=""
+                    />
                     {element.titleMission}
-                  </Typography>
+                    <hr className="hr_horizontal_orange" />
+                  </div>
                 )}
+
                 <div className="blocList">
                   {element.dataApplications.map(e => (
                     <StudentApplication
