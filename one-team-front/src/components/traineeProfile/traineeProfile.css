@@ -28,3 +28,7 @@
   margin-left: 10px;
   color: white;
 }
+
+.testclass {
+  border: 1px solid black;
+}

@@ -173,13 +173,14 @@ class TraineeProfile extends Component {
             </h2>
           </div>
         </div>
-        <div className="createForm">
+        <div>
           <form onSubmit={this.onSubmit}>
             <Grid
               container
               direction="row"
               justify="flex-start"
               alignItems="center"
+              className="testclass"
             >
               <Grid item xs={6}>
                 <div>
@@ -218,9 +219,9 @@ class TraineeProfile extends Component {
               </Grid>
               <Grid item xs={3}>
                 <Button
+                  className="classic_button_blue"
                   color="primary"
                   variant="contained"
-                  className="traineeProfileButton"
                   onClick={this.traineeOpenConnexion}
                 >
                   Aperçu profil
@@ -230,12 +231,12 @@ class TraineeProfile extends Component {
               <Grid item xs={3}>
                 <Button
                   className="classic_button_orange"
-                  color="primary"
+                  color="secondary"
                   variant="contained"
                   type="submit"
                 >
                   Sauvegarder
-                  {/* <Save className="traineeProfileIcon" /> */}
+                  <Save className="traineeProfileIcon" />
                 </Button>
               </Grid>
             </Grid>
@@ -250,6 +251,7 @@ class TraineeProfile extends Component {
                   variant="outlined"
                   required
                 />
+                <br />
                 <TextField
                   type="text"
                   name="lastname"
@@ -259,7 +261,7 @@ class TraineeProfile extends Component {
                   variant="outlined"
                   required
                 />
-
+                <br />
                 <TextField
                   disabled
                   type="email"
@@ -270,6 +272,7 @@ class TraineeProfile extends Component {
                   variant="outlined"
                   required
                 />
+                <br />
                 <TextField
                   type="text"
                   name="phone"
@@ -278,6 +281,7 @@ class TraineeProfile extends Component {
                   margin="normal"
                   variant="outlined"
                 />
+                <br />
                 <TextField
                   type="text"
                   name="address"
@@ -286,6 +290,7 @@ class TraineeProfile extends Component {
                   margin="normal"
                   variant="outlined"
                 />
+                <br />
                 <TextField
                   type="text"
                   name="town"
@@ -294,6 +299,7 @@ class TraineeProfile extends Component {
                   margin="normal"
                   variant="outlined"
                 />
+                <br />
                 <TextField
                   type="text"
                   name="postalCode"
@@ -302,6 +308,7 @@ class TraineeProfile extends Component {
                   margin="normal"
                   variant="outlined"
                 />
+                <br />
                 <TextField
                   // id="date"
                   name="dateBirth"
@@ -318,6 +325,7 @@ class TraineeProfile extends Component {
                   margin="normal"
                   variant="outlined"
                 />
+                <br />
                 <TextField
                   type="text"
                   name="school"
@@ -326,6 +334,7 @@ class TraineeProfile extends Component {
                   margin="normal"
                   variant="outlined"
                 />
+                <br />
                 <TextField
                   select
                   label="Level"
