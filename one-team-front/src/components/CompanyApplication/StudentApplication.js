@@ -136,10 +136,10 @@ class StudentApplication extends Component {
         return (
           <div>
             <div>
+              <a onClick={() => this.refuseStudent(modeRefuse)}>
+                <p className="button-negative side-by-side" />
+              </a>
               <div onClick={this.clickStudentSmall}>
-                <a onClick={() => this.refuseStudent(modeRefuse)}>
-                  <p className="button-negative side-by-side" />
-                </a>
                 <StudentView
                   {...this.props}
                   dateStart={this.props.newDateStart}
