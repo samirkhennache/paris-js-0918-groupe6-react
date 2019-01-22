@@ -64,7 +64,7 @@ const OfferView = props => {
               )}
             </div>
           </div>
-          <hr className="application-hr" />
+          <hr className="application-hr hr_horizontal" />
           <p className="regular_orange_title">{company}</p>
           <p className="mission_title application-mission">{titleMission}</p>
         </div>
