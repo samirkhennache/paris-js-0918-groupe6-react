@@ -11,11 +11,16 @@ import Hidden from "@material-ui/core/Hidden";
 import Paper from "@material-ui/core/Paper";
 import renderHTML from "react-render-html";
 import { Grid } from "@material-ui/core";
+import Edit from "@material-ui/icons/Edit";
 import { MakeCompletedUrl } from "../../tools";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
 import ConfirmDialog from "../Dialogs/ConfirmDialog";
 import "./companyOffers.css";
+import townCompany from "../../img/icons/placeholder-filled-point.png";
+import school from "../../img/icons/graduate-cap.png";
+import calendar from "../../img/icons/calendar-black.png";
+import next from "../../img/icons/right-chevron(1).png";
 
 class CompanyOfferManage extends Component {
   state = {
@@ -116,94 +121,120 @@ class CompanyOfferManage extends Component {
 
     return (
       <div className="general_margin">
-        <Paper>
-          {/* ***** FICHE MISSION ***** */}
+        {/* ***** FICHE MISSION ***** */}
 
-          <Grid container className="grid_manage_offer">
-            <Grid item container xs={12} justify="flex-start">
-              <p>LA MISSION</p>
-            </Grid>
-            <Grid item container xs={12} justify="flex-start">
-              <p>{titleMission}</p>
-            </Grid>
-            <Grid container item xs={12} justify="space-between">
-              <Grid item xs={3}>
-                <div>
-                  <p>{town} </p>
-                  <p>{this.props.company.companyName}</p>
-                  <p>{LevelStudy} </p>
-                  <p>{dateStart}</p>
-                  <p>{dateEnd}</p>
+        <Paper container className="container_company_manage">
+          <Grid item container xs={12} justify="flex-start">
+            <p>LA MISSION</p>
+          </Grid>
+          <Grid item container xs={12} justify="flex-start">
+            <p>{titleMission}</p>
+          </Grid>
+          <Grid container item xs={12} className="btn_border">
+            <Grid item xs={12} md={6} lg={6}>
+              <div>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={townCompany} alt="ville" />
+                  </div>
+                  <p className="criteres_big">{town} </p>
+                </div>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={school} alt="école" />
+                  </div>
+                  <p className="criteres_big">{LevelStudy}</p>
+                </div>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={calendar} alt="calendrier" />
+                  </div>
+                  <p className="criteres_big">{dateStart}</p>
+                  <div className="img-student-view margin-chevron">
+                    <img src={next} alt="chevron" />
+                  </div>
+                  <p className="criteres_big">{dateEnd}</p>
+                </div>
 
-                  {/* <p>{intro} </p>
+                {/* <p>{intro} </p>
                 <Hidden xsDown>
                   <p>r{renderHTML(`${descriptionToShow} ...`)}</p>
                 </Hidden> */}
-                </div>
-              </Grid>
-              <Grid item xs={3}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={this.showModal}
-                >
-                  Modifier
-                </Button>
-                <ConfirmDialog
-                  buttonCaption="Supprimer"
-                  dialogTitle="Confirmation"
-                  dialogQuestion="Voulez-vous supprimer cette offre?"
-                  handleOk={this.deleteData}
-                />
-                <CompanyCreateOffers
-                  open={this.state.show}
-                  onClose={this.showModal}
-                  handlerUpdateMission={this.props.handlerUpdateMission}
-                  modifMission={modifMission}
-                />
-              </Grid>
-            </Grid>
-            <Grid item container xs={12} justify="center">
-              <div className="div_hr">
-                {/* <hr className="hr_horizontal_orange" /> */}
               </div>
             </Grid>
-            <Grid item xs={12}>
-              {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
-              <Team {...this.props} disabled={disabled} />
-              {disabled || isFull ? (
-                <Button type="primary" disabled className="aws-btn validate">
-                  Valider ma team
-                </Button>
-              ) : (
-                <Button
-                  onClick={this.validateMission}
-                  variant="contained"
-                  color="primary"
-                >
-                  Valider ma team
-                </Button>
-              )}
-              {/* **************** DIALOG VALIDATE ************************** */}
-              <Dialog
-                open={open}
-                onClose={this.handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-              >
-                <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-                <DialogContent>
-                  <DialogContentText id="alert-dialog-description">
-                    {content}
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={this.handleClose} color="primary">
-                    {button}
+            <Grid
+              item
+              container
+              xs={12}
+              lg={6}
+              md={6}
+              alignItems="center"
+              spacing={8}
+            >
+              <Grid item container xs={12} justify="flex-end">
+                <Grid item lg={5} md={6} sm={4} xs={6}>
+                  <Button
+                    className="classic_button_orange btn_size"
+                    onClick={this.showModal}
+                  >
+                    Modifier <Edit className="icon_Edit" />
                   </Button>
-                </DialogActions>
-              </Dialog>
+                </Grid>
+              </Grid>
+              <Grid item container xs={12} justify="flex-end">
+                <Grid item lg={5} md={6} sm={4} xs={6}>
+                  <ConfirmDialog
+                    buttonCaption="Supprimer"
+                    dialogTitle="Confirmation"
+                    dialogQuestion="Voulez-vous supprimer cette offre?"
+                    handleOk={this.deleteData}
+                  />
+                  <CompanyCreateOffers
+                    open={this.state.show}
+                    onClose={this.showModal}
+                    handlerUpdateMission={this.props.handlerUpdateMission}
+                    modifMission={modifMission}
+                  />
+                </Grid>
+              </Grid>
             </Grid>
+          </Grid>
+          <Grid item container xs={12} justify="center" />
+          <Grid item xs={12}>
+            {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
+            <Team {...this.props} disabled={disabled} />
+            {disabled || isFull ? (
+              <Button type="primary" disabled className="aws-btn validate">
+                Valider ma team
+              </Button>
+            ) : (
+              <Button
+                onClick={this.validateMission}
+                variant="contained"
+                color="primary"
+              >
+                Valider ma team
+              </Button>
+            )}
+            {/* **************** DIALOG VALIDATE ************************** */}
+            <Dialog
+              open={open}
+              onClose={this.handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  {content}
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.handleClose} color="primary">
+                  {button}
+                </Button>
+              </DialogActions>
+            </Dialog>
           </Grid>
         </Paper>
       </div>

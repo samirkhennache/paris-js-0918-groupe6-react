@@ -1,11 +1,11 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import { AwesomeButton } from "react-awesome-button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Delete from "@material-ui/icons/Delete";
 
 class ConfirmDialog extends React.Component {
   state = {
@@ -31,20 +31,12 @@ class ConfirmDialog extends React.Component {
     return (
       <div>
         <Button
-          variant="contained"
-          type="primary"
-         // className="aws-btn remove"
+          className="classic_button_red btn_size"
           onClick={this.handleClickOpen}
         >
           {buttonCaption || "buttonCaption"}
+          <Delete className=" icon_Delete" />
         </Button>
-        {/* <AwesomeButton
-          type="primary"
-          className="aws-btn edit"
-          action={this.handleClickOpen}
-        >
-          {buttonCaption || "buttonCaption"}
-        </AwesomeButton> */}
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

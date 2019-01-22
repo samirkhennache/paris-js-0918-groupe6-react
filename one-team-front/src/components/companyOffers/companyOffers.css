@@ -25,10 +25,27 @@
 .btn-add-offers {
   margin-top: 40px;
 }
-.grid_manage_offer {
-  margin: 20px;
+.container_company_manage {
+  padding: 30px;
+  /* border: black solid 2 px; */
 }
-.div_hr {
-  border: solid black 2px;
-  width: 100%;
+.divhr {
+  border: black solid 2 px;
+}
+.btn_border {
+  /* border: solid black 2px; */
+
+}
+.div_btn_size {
+  width: 200px;
+  margin: auto;
+}
+.btn_size {
+  width: 100% !important;
+}
+.icon_Delete {
+  margin-left: 15px;
+}
+.icon_Edit {
+  margin-left: 30px;
 }
