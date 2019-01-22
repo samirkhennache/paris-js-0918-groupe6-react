@@ -87,6 +87,7 @@ class FindOffers extends Component {
       <div>
         <Grid xs direction="column" justify="center" alignItems="center">
           <Grid
+            item
             container
             direction="column"
             justify="center"
@@ -145,22 +146,20 @@ class FindOffers extends Component {
             alignItems="center"
           >
             {result.map(element => (
-              <Paper className="Middle">
-                <ModalOffer
-                  size={MIDDLE}
-                  key={`${element.id}-${element.titleMission}`}
-                  missionId={element.id}
-                  company={element.Company.companyName}
-                  titleMission={element.titleMission}
-                  dateStart={element.dateStart}
-                  dateEnd={element.dateEnd}
-                  description={element.description}
-                  intro={element.intro}
-                  town={element.town}
-                  LevelStudy={element.LevelStudy.label}
-                  {...this.props}
-                />
-              </Paper>
+              <ModalOffer
+                size={MIDDLE}
+                key={`${element.id}-${element.titleMission}`}
+                missionId={element.id}
+                company={element.Company.companyName}
+                titleMission={element.titleMission}
+                dateStart={element.dateStart}
+                dateEnd={element.dateEnd}
+                description={element.description}
+                intro={element.intro}
+                town={element.town}
+                LevelStudy={element.LevelStudy.label}
+                {...this.props}
+              />
             ))}
           </Grid>
         </Grid>

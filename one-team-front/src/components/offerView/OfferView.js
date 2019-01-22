@@ -4,6 +4,12 @@ import "./offerView.css";
 import RenderHTML from "react-render-html";
 
 import Typography from "@material-ui/core/Typography";
+import calendar from "../../img/icons/calendar-black.png";
+import loading from "../../img/icons/reload-symbol-black.png";
+import loadingWhite from "../../img/icons/reload-symbol.png";
+import accept from "../../img/icons/check-mark-black.png";
+import refuse from "../../img/icons/cross.png";
+import refuseWhite from "../../img/icons/cross(white).png";
 
 import "./Button.css";
 
@@ -26,7 +32,9 @@ const OfferView = props => {
         <div className="OfferView small-offerView ">
           <div className="application-date-statut">
             <div className="application-date">
-              <img src="#" alt="#" />
+              <div className="date-icon">
+                <img src={calendar} alt="calendar" />
+              </div>
               <p className="criteres_big">
                 {new Date(dateStart).toLocaleDateString()}
               </p>
@@ -34,22 +42,34 @@ const OfferView = props => {
             <div>
               {statusAppli ? (
                 <div className="application-satut">
-                  <img src="#" alt="en cours" />
-                  <img src="#" alt="#" />
-                  <img src="#" alt="#" />
+                  <div className="statut-icon-blue">
+                    <img src={loadingWhite} alt="en cours" />
+                  </div>
+                  <div className="statut-icon">
+                    <img src={refuse} alt="en cours" />
+                  </div>
+                  <div className="statut-icon">
+                    <img src={accept} alt="en cours" />
+                  </div>
                 </div>
               ) : (
-                <div>
-                  <img src="#" alt="#" />
-                  <img src="#" alt="refusé" />
-                  <img src="#" alt="#" />
+                <div className="application-satut">
+                  <div className="statut-icon">
+                    <img src={loading} alt="en cours" />
+                  </div>
+                  <div className="statut-icon-red">
+                    <img src={refuseWhite} alt="en cours" />
+                  </div>
+                  <div className="statut-icon">
+                    <img src={accept} alt="en cours" />
+                  </div>
                 </div>
               )}
             </div>
           </div>
           <hr className="application-hr" />
           <p className="regular_orange_title">{company}</p>
-          <p className="mission_title">{titleMission}</p>
+          <p className="mission_title application-mission">{titleMission}</p>
         </div>
       );
     }
@@ -65,8 +85,8 @@ const OfferView = props => {
             <div className="milieuMiddle">
               <p className="townMiddle">{town}</p>
               <p className="dateMiddle">
-                début: {new Date(dateStart).toLocaleDateString()} - fin:{" "}
-                {new Date(dateEnd).toLocaleDateString()}
+                début: {new Date(dateStart).toLocaleDateString()}
+                {/*- fin: {new Date(dateEnd).toLocaleDateString()} */}
               </p>
               {/* <p>fin: {new Date(dateEnd).toLocaleDateString()} </p> */}
             </div>

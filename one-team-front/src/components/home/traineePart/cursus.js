@@ -21,7 +21,7 @@ class Cursus extends Component {
               <div>
                 <img src={blackNumber1} alt="1" />
               </div>
-              <h3 className="icon_orange_title">Complète ton profil</h3>
+              <p className="icon_orange_title">Complète ton profil</p>
               <p>
                 Après avoir créer ton compte, remplis soigneusement ta fiche
                 publique afin d’être visible auprès des recruteurs
@@ -34,7 +34,7 @@ class Cursus extends Component {
               <div>
                 <img src={blackNumber2} alt="2" />
               </div>
-              <h3>Pas de CV ni de lettre de motivation standards</h3>
+              <p className="icon_orange_title">Pas de CV ni de lettre de motivation standards</p>
               <p>
                 Parle-nous de ton cursus, des tes compétences spécifiques.
                 Dis-nous ce qui te motive, ce que tu souhaite apporter à une
@@ -48,7 +48,7 @@ class Cursus extends Component {
               <div>
                 <img src={blackNumber3} alt="3" />
               </div>
-              <h3>1,2,3 postule !</h3>
+              <p className="icon_orange_title">1,2,3 postule !</p>
               <p>
                 Lance toi, envoie tes candidatures auprès des entreprises et des
                 missions qui te plaisent.
@@ -61,7 +61,7 @@ class Cursus extends Component {
               <div>
                 <img src={blackNumber4} alt="4" />
               </div>
-              <h3>Prépare ton entretien</h3>
+              <p className="icon_orange_title">Prépare ton entretien</p>
               <p>
                 Lorsque qu’une entreprise à sélectionné sa team, un consultant
                 de One Team prépare les membres de l’équipe au premier entretien
@@ -74,7 +74,7 @@ class Cursus extends Component {
               <div>
                 <img src={blackNumber5} alt="5" />
               </div>
-              <h3>Bravo ta team a été recrutée</h3>
+              <p className="icon_orange_title">Bravo ta team a été recrutée</p>
               <p>
                 Pendant ton stage One Team peut réaliser à la demande de
                 l’entreprise un coaching d’équipe ponctué par des points
