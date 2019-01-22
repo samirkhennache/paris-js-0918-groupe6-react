@@ -9,10 +9,18 @@
     margin: 10px calc(10px + 2vw);
   }
 }
-hr {
+.hr_horizontal_orange {
   background-color: #ff8900;
   height: 4px;
+  width: 40px;
   border: 0;
+  width: 100%;
+}
+.hr_vertical_orange {
+  background-color: #ff8900;
+  width: 4px;
+  border: 0;
+  height: 100%;
 }
 
 /* *********************** PAGES TEXT CLASSES **********************/
@@ -20,14 +28,14 @@ hr {
 .page_title {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: calc(15px + 2vw);
+  font-size: calc(20px + 1vw);
   color: white;
   margin: 0;
 }
 .page_subtitle {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: calc(15px + 1vw);
+  font-size: calc(15px + 0.5vw);
   color: #ff8900;
   margin: 0;
 }
@@ -40,21 +48,21 @@ hr {
 .criteres_small {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: calc(18px + 0.1vw);
+  font-size: calc(12px + 0.1vw);
   color: #494642;
   margin: 0;
 }
 .criteres_big {
   font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: calc(14px + 0.1vw);
+  font-weight: 600;
+  font-size: calc(16px + 0.1vw);
   color: #494642;
   margin: 0;
 }
 .regular_orange_subtitle {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: calc(20px + 0.1vw);
+  font-size: calc(22px + 0.1vw);
   color: #ff8900;
   text-transform: uppercase;
   margin: 0;
@@ -87,7 +95,7 @@ hr {
 .mission_title {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: calc(16px + 0.1vw);
+  font-size: calc(16px + 0.051vw);
   text-align: left;
   color: black;
   text-transform: uppercase;
@@ -101,4 +109,35 @@ hr {
   color: black;
   text-transform: uppercase;
   margin: 0;
+}
+
+/**************************  BUTTONS  ***********************************/
+.classic_button_orange {
+  background-color: #ff8900 !important;
+  color: white !important;
+  text-transform: initial !important;
+  font-family: "Open Sans" !important;
+  font-size: calc(12px + 0.5vw) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+.classic_button_orange:hover {
+  background-color: #f9bf59 !important;
+}
+.classic_button_blue {
+  background-color: rgb(0, 70, 100) !important;
+  color: white !important;
+  text-transform: initial !important;
+  font-family: "Open Sans" !important;
+  font-size: calc(12px + 0.5vw) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+.classic_button_blue:hover {
+  background-color: rgba(0, 70, 100, 0.8) !important;
+}
+.police_button_black {
+  font-family: "Open Sans" !important;
+  font-size: calc(12px + 0.5vw) !important;
+  font-weight: 600 !important;
 }

@@ -7,29 +7,35 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from "@material-ui/core/Button";
 import StudentView from "./StudentView";
+import withMobileDialog from "@material-ui/core/withMobileDialog";
 import { FULL } from "./studentConstant";
 
 const styles = theme => ({
   dialog: {
-    // textAlign: "center"
+    width: ""
   }
 });
 
 class StudentProfilView extends Component {
+
   handleCloseFull = () => {
     const { close } = this.props;
     close();
   };
 
   render() {
-    const { classes, open, size } = this.props;
+    const { classes, open, size, fullScreen, ...other } = this.props;
     return (
       <div>
         <Dialog
+          {...other}
           classeName={classes.dialog}
           open={open}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
+          fullWidth
+          maxWidth="md"
+          fullScreen={fullScreen}
         >
           <DialogTitle id="customized-dialog-title" />
           <DialogContent>
@@ -45,4 +51,4 @@ class StudentProfilView extends Component {
     );
   }
 }
-export default withStyles(styles)(StudentProfilView);
+export default withStyles(styles)(withMobileDialog()(StudentProfilView));
