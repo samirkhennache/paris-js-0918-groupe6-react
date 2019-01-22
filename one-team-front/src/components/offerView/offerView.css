@@ -122,6 +122,36 @@
   flex-direction: row;
 }
 
+.townMiddle {
+  width: 50%;
+  font-weight: 400;
+  font-size: 1.25rem;
+  /* background-image: url("../../../public/img/placeholder-filled-point.png");
+  background-repeat: no-repeat; */
+  /* background-image: url("../../img/"); */
+}
+
+.townMiddle > img {
+  height: 33px;
+  margin-right: 3px;
+}
+
+.dateMiddle {
+  /* display: flex;
+  flex-direction: row; */
+  width: 100%;
+  font-weight: 400;
+  font-size: 1.25rem;
+  /* border: 1px solid green; */
+}
+
+.dateMiddle > img {
+  height: 33px;
+  margin-right: 3px;
+}
+
+/* Media query Middle */
+
 @media all and (min-width: 320px) and (max-width: 720px) {
   .Middle {
     width: 350px;
@@ -156,18 +186,6 @@
   .Middle {
     width: 720px;
   }
-}
-
-.townMiddle {
-  width: 50%;
-  /* background-image: url("../../img/"); */
-}
-
-.dateMiddle {
-  /* display: flex;
-  flex-direction: row; */
-  width: 100%;
-  /* border: 1px solid green; */
 }
 
 /* Fin Middle */
