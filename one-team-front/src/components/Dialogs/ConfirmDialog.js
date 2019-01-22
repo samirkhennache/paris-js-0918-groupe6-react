@@ -30,13 +30,21 @@ class ConfirmDialog extends React.Component {
     const { buttonCaption, dialogTitle, dialogQuestion } = this.props;
     return (
       <div>
-        <AwesomeButton
+        <Button
+          variant="contained"
+          type="primary"
+         // className="aws-btn remove"
+          onClick={this.handleClickOpen}
+        >
+          {buttonCaption || "buttonCaption"}
+        </Button>
+        {/* <AwesomeButton
           type="primary"
           className="aws-btn edit"
           action={this.handleClickOpen}
         >
           {buttonCaption || "buttonCaption"}
-        </AwesomeButton>
+        </AwesomeButton> */}
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

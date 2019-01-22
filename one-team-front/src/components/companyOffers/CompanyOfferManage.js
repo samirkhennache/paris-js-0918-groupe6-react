@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { AwesomeButton } from "react-awesome-button";
 import Button from "@material-ui/core/Button";
 import "./Button.css";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,14 +8,14 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Hidden from "@material-ui/core/Hidden";
-
+import Paper from "@material-ui/core/Paper";
 import renderHTML from "react-render-html";
+import { Grid } from "@material-ui/core";
 import { MakeCompletedUrl } from "../../tools";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
 import ConfirmDialog from "../Dialogs/ConfirmDialog";
-
-const idCompany = sessionStorage.getItem("token");
+import "./companyOffers.css";
 
 class CompanyOfferManage extends Component {
   state = {
@@ -116,88 +115,97 @@ class CompanyOfferManage extends Component {
     // console.log("FULL", isFull);
 
     return (
-      <div>
-        {/* ***** FICHE MISSION ***** */}
-        <div>
-          <h3>{titleMission}</h3>
-          <h4>{this.props.company.companyName}</h4>
-          <p>{town} </p>
-          <p>{dateStart}</p>
-          <p>{dateEnd}</p>
-          <p> niveau d'étude: {LevelStudy} </p>
-          <p>{intro} </p>
-          <Hidden xsDown>
-            <p>r{renderHTML(`${descriptionToShow} ...`)}</p>
-          </Hidden>
-        </div>
-        {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
-        <Button // type="primary"
-          // className="aws-btn edit"
-          variant="contained"
-          color="primary"
-          onClick={this.showModal}
-        >
-          Modifier
-        </Button>
+      <div className="general_margin">
+        <Paper>
+          {/* ***** FICHE MISSION ***** */}
 
-        <br />
-        <AwesomeButton
-          type="primary"
-          className="aws-btn remove"
-          action={this.deleteData}
-        >
-          Supprimer
-        </AwesomeButton>
-        <ConfirmDialog
-          buttonCaption="Supprimer"
-          dialogTitle="Confirmation"
-          dialogQuestion="Voulez-vous supprimer cette offre?"
-          handleOk={this.deleteData}
-        />
-        <CompanyCreateOffers
-          open={this.state.show}
-          onClose={this.showModal}
-          handlerUpdateMission={this.props.handlerUpdateMission}
-          modifMission={modifMission}
-        />
-        <br />
-        <hr align="center" width="50%" color="midnightblue" size="1" />
-        {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
-        <Team {...this.props} disabled={disabled} />
-        {disabled || isFull ? (
-          <Button type="primary" disabled className="aws-btn validate">
-            Valider ma team
-          </Button>
-        ) : (
-          <Button
-            onClick={this.validateMission} // type="primary"
-            // className="aws-btn validate"
-            variant="contained"
-            color="primary"
-          >
-            Valider ma team
-          </Button>
-        )}
-        <hr align="center" width="90%" color="midnightblue" size="1" />
-        {/* **************** DIALOG VALIDATE ************************** */}
-        <Dialog
-          open={open}
-          onClose={this.handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              {content}
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              {button}
-            </Button>
-          </DialogActions>
-        </Dialog>
+          <Grid container className="grid_manage_offer">
+            <Grid item container xs={12} justify="flex-start">
+              <p>LA MISSION</p>
+            </Grid>
+            <Grid item container xs={12} justify="flex-start">
+              <p>{titleMission}</p>
+            </Grid>
+            <Grid container item xs={12} justify="space-between">
+              <Grid item xs={3}>
+                <div>
+                  <p>{town} </p>
+                  <p>{this.props.company.companyName}</p>
+                  <p>{LevelStudy} </p>
+                  <p>{dateStart}</p>
+                  <p>{dateEnd}</p>
+
+                  {/* <p>{intro} </p>
+                <Hidden xsDown>
+                  <p>r{renderHTML(`${descriptionToShow} ...`)}</p>
+                </Hidden> */}
+                </div>
+              </Grid>
+              <Grid item xs={3}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.showModal}
+                >
+                  Modifier
+                </Button>
+                <ConfirmDialog
+                  buttonCaption="Supprimer"
+                  dialogTitle="Confirmation"
+                  dialogQuestion="Voulez-vous supprimer cette offre?"
+                  handleOk={this.deleteData}
+                />
+                <CompanyCreateOffers
+                  open={this.state.show}
+                  onClose={this.showModal}
+                  handlerUpdateMission={this.props.handlerUpdateMission}
+                  modifMission={modifMission}
+                />
+              </Grid>
+            </Grid>
+            <Grid item container xs={12} justify="center">
+              <div className="div_hr">
+                {/* <hr className="hr_horizontal_orange" /> */}
+              </div>
+            </Grid>
+            <Grid item xs={12}>
+              {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
+              <Team {...this.props} disabled={disabled} />
+              {disabled || isFull ? (
+                <Button type="primary" disabled className="aws-btn validate">
+                  Valider ma team
+                </Button>
+              ) : (
+                <Button
+                  onClick={this.validateMission}
+                  variant="contained"
+                  color="primary"
+                >
+                  Valider ma team
+                </Button>
+              )}
+              {/* **************** DIALOG VALIDATE ************************** */}
+              <Dialog
+                open={open}
+                onClose={this.handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-description">
+                    {content}
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={this.handleClose} color="primary">
+                    {button}
+                  </Button>
+                </DialogActions>
+              </Dialog>
+            </Grid>
+          </Grid>
+        </Paper>
       </div>
     );
   }

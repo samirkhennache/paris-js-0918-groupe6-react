@@ -66,7 +66,7 @@ class CompanyOffers extends Component {
               <h2 className="page_subtitle">
                 Nombre de missions en cours : {missions.length}
               </h2>
-              <div className ="btn-add-offers">
+              <div className="btn-add-offers">
                 <Fab
                   className="classic_button_orange"
                   // color="primary"
@@ -81,6 +81,7 @@ class CompanyOffers extends Component {
             </div>
           </div>
         </div>
+
         <CompanyCreateOffers
           open={this.state.show}
           onClose={this.showModal}
