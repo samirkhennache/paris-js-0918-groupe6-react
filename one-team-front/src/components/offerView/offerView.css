@@ -1,4 +1,6 @@
-.small-offerView {
+/* ***************************  APPLICATION OFFER VIEW ************************ */
+.application-bloc {
+  padding: 20px 0;
 }
 .application-date {
   display: flex;

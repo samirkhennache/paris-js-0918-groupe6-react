@@ -77,7 +77,7 @@ const styles = theme => ({
   },
   miniHR: {
     backgroundColor: "#494642",
-    height: "0.4vw",
+    height: "4px",
     width: "10vw",
     margin: "auto"
   }
