@@ -9,7 +9,7 @@ export default class Services extends Component {
         <h3 className="home_subsection_white">
           Les Services <span className="orange">One Team</span>
         </h3>
-        <div className="exampleTiret" />
+        <hr className="hr_horizontal_white" />
         <div class="section group">
           <div class="col span_1_of_3">
             <img src={require("../../../img/services/offres.png")} />

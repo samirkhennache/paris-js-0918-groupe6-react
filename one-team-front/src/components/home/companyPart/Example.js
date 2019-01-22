@@ -8,22 +8,20 @@ export default class Example extends Component {
     return (
       <div className="exampleBottle general_margin">
         <h3 className="home_subsection_white">Exemples de thèmes de mission</h3>
-        <div className="exampleTiret" />
+        <hr className="hr_horizontal_grey" />
         <div class="section group">
           <div class="col span_1_of_2">
-            <ul>
-              <li>Politique d'innovation</li>
-              <li>Business development</li>
-              <li>Growth-Hacking</li>
-              <li>Stratégie Digitale</li>
-              <li>Agilité organisationnelle</li>
-              <li>Innovation managériale</li>
-              <li>Management de projet</li>
-              <li>Ingénierie de process</li>
-              <li>Audit - Etudes</li>
-              <li>Knowledge management</li>
-              <li>Méthodes Qualité</li>
-            </ul>
+            <p>- Politique d'innovation </p>
+            <p>- Business development </p>
+            <p>- Growth-Hacking </p>
+            <p>- Stratégie Digitale </p>
+            <p>- Agilité organisationnelle </p>
+            <p>- Innovation managériale </p>
+            <p>- Management de projet </p>
+            <p>- Ingénierie de process </p>
+            <p>- Audit - Etudes </p>
+            <p>- Knowledge management </p>
+            <p>- Méthodes Qualité </p>
           </div>
           <div class="col span_1_of_2">
             <ExampleCarrousel />
