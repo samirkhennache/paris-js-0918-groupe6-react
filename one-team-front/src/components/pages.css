@@ -29,14 +29,14 @@
 .page_title {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: calc(15px + 2vw);
+  font-size: calc(20px + 1vw);
   color: white;
   margin: 0;
 }
 .page_subtitle {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: calc(15px + 1vw);
+  font-size: calc(15px + 0.5vw);
   color: #ff8900;
   margin: 0;
 }

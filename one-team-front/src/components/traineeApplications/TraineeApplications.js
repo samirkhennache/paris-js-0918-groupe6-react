@@ -9,9 +9,12 @@ class TraineeApplications extends Component {
     return (
       <div>
         <div className="bandeau-candidatures-trainee">
-        <h1>Candidatures</h1>
-        <h2>Tu peux consulter et suivre l'avancement de tes candidatures</h2>
-          <img src={bandeauTrainee} alt="candidatures" />
+          <div className="titles-candidatures">
+            <h1 className="page_title">Candidatures</h1>
+            <h2 className="page_subtitle">
+              Tu peux consulter et suivre l'avancement de tes candidatures
+            </h2>
+          </div>
         </div>
         <StudentApplicationList {...this.props} />
       </div>
