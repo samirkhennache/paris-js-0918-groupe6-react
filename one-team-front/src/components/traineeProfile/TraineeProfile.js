@@ -180,7 +180,6 @@ class TraineeProfile extends Component {
               direction="row"
               justify="flex-start"
               alignItems="center"
-              className="testclass"
             >
               <Grid item xs={6}>
                 <div>
