@@ -25,8 +25,6 @@ const TeamOneTeam = () => (
       La Team <span style={{ color: "#ff8900" }}>One Team</span>
     </h2>
     <div style={styles.miniHR} />
-    {/* <h2 className="white-color h2-team">La team</h2> */}
-    {/* <img className="logo-team" src={logo} alt="logo One Team" /> */}
     <Grid container className="border-test team-block" justify="center">
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
