@@ -88,7 +88,7 @@ class CompanyCarrousel extends React.Component {
         <div className={`${classes.root} general_margin`}>
           <h2
             className="home_section"
-            id="section2"
+            id="section1"
             style={{
               marginBottom: 50,
               marginTop: 20,
