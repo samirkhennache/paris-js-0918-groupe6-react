@@ -27,7 +27,7 @@ const offers = [
 const styles = {
   miniHR: {
     backgroundColor: "white",
-    height: "0.4vw",
+    height: "4px",
     width: "10vw",
     margin: "auto"
   }
@@ -86,7 +86,7 @@ class TraineeOffers extends Component {
                       className="papers-offers-description-text"
                       // style={{ border: "2px pink solid" }}
                     >
-                      <p>{element.title}</p>
+                      <p className="regular_orange_subtitle">{element.title}</p>
                       <p>{element.content}</p>
                     </Grid>
                     <Grid

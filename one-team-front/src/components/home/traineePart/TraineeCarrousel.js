@@ -39,8 +39,8 @@ const tutorialSteps = [
 
 const styles = theme => ({
   root: {
-    padding: "50px 0 30px 0",
-    backgroundColor: "#f9bf59"
+    padding: "50px 0 30px 0"
+    // backgroundColor: "#f9bf59"
   },
   mobileStepper: {
     position: "static",
@@ -77,7 +77,7 @@ const styles = theme => ({
   },
   miniHR: {
     backgroundColor: "#494642",
-    height: "0.4vw",
+    height: "4px",
     width: "10vw",
     margin: "auto"
   }
