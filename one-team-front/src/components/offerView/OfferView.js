@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./offerView.css";
+import RenderHTML from "react-render-html";
 
 import Typography from "@material-ui/core/Typography";
 
 import "./Button.css";
-import "./OfferView.css";
 
 const OfferView = props => {
   const {
@@ -47,7 +47,7 @@ const OfferView = props => {
               )}
             </div>
           </div>
-          <hr className="application-hr"/>
+          <hr className="application-hr" />
           <p className="regular_orange_title">{company}</p>
           <p className="mission_title">{titleMission}</p>
         </div>
@@ -55,27 +55,42 @@ const OfferView = props => {
     }
     case "MIDDLE": {
       return (
-        <div className="OfferViewM">
-          <h3>{titleMission} </h3>
-          <h4>{company}</h4>
-          <p>{town} </p>
-          <p>début: {new Date(dateStart).toLocaleDateString()} </p>
-          <p>fin: {new Date(dateEnd).toLocaleDateString()} </p>
-          <p>{intro} </p>
+        <div className="OfferViewMiddle">
+          <div className="LogoMiddle">
+            <h4>{company}</h4>
+          </div>
+          <div className="contenueMiddle">
+            <h3 className="titleMiddle">{titleMission} </h3>
+            <p className="introMiddle">{intro}</p>
+            <div className="milieuMiddle">
+              <p className="townMiddle">{town}</p>
+              <p className="dateMiddle">
+                début: {new Date(dateStart).toLocaleDateString()} - fin:{" "}
+                {new Date(dateEnd).toLocaleDateString()}
+              </p>
+              {/* <p>fin: {new Date(dateEnd).toLocaleDateString()} </p> */}
+            </div>
+          </div>
         </div>
       );
     }
     case "FULL": {
       return (
-        <div className="OfferView">
-          <h3> {titleMission} </h3>
-          <h4>{company}</h4>
-          <p>{town} </p>
-          <p> début: {new Date(dateStart).toLocaleDateString()} </p>
-          <p> fin: {new Date(dateEnd).toLocaleDateString()} </p>
-          <p> niveau d'étude: {LevelStudy} </p>
-          <p>{intro} </p>
-          <p>{description} </p>
+        <div className="OfferViewFull">
+          <h4 className="LogoFull">{company}</h4>
+          <h3 className="titleFull"> {titleMission} </h3>
+          <p className="introFull">{intro} </p>
+          <div className="milieuFull">
+            <p className="townFull">{town} </p>
+            <p className="dateFull">
+              {" "}
+              début: {new Date(dateStart).toLocaleDateString()} - fin:{" "}
+              {new Date(dateEnd).toLocaleDateString()}
+            </p>
+            {/* <p> fin: {new Date(dateEnd).toLocaleDateString()} </p> */}
+            <p className="levelFull"> niveau d'étude: {LevelStudy} </p>
+          </div>
+          <p className="descripFull">{RenderHTML(description)} </p>
         </div>
       );
     }

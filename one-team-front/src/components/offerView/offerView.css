@@ -1,5 +1,4 @@
 .small-offerView {
-
 }
 .application-date {
   display: flex;
@@ -16,11 +15,103 @@
   border: 1px solid yellow;
 }
 .application-hr {
-    width: 100%;
+  width: 100%;
 }
 .application-paper {
-    padding: 20px;
+  padding: 20px;
 }
 .application-item {
-    margin: 15px;
+  margin: 15px;
 }
+
+/* Midddle */
+
+.OfferViewMiddle {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.LogoMiddle {
+  /* background-color: #777; */
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 3px solid orange;
+  margin-right: 10px;
+}
+
+.contenueMiddle {
+  text-align: left;
+  /* border: 1px solid brown; */
+  width: 100%;
+}
+
+.introMiddle,
+.titleMiddle {
+  text-transform: uppercase;
+}
+
+.titleMiddle {
+  color: orange;
+}
+
+.milieuMiddle {
+  display: flex;
+  font-display: row;
+}
+
+.townMiddle {
+  width: 50%;
+  /* background-image: url("../../img/"); */
+}
+
+.dateMiddle {
+  /* display: flex;
+  flex-direction: row; */
+  width: 100%;
+  /* border: 1px solid green; */
+}
+
+/* Fin Middle */
+
+/* FULL */
+
+.OfferViewFull {
+  text-align: left !important;
+  color: #000;
+}
+
+.LogoFull,
+.introFull,
+.titleFull {
+  text-transform: uppercase;
+}
+
+.LogoFull {
+  border-bottom: 3px solid orange;
+  color: #000;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.titleFull {
+  color: orange;
+}
+
+.introFull {
+  font-weight: 800;
+}
+
+.milieuFull {
+  display: flex;
+  justify-content: center;
+}
+
+.townFull,
+.dateFull {
+  margin-right: 5px;
+}
+
+/* FinFULL */
