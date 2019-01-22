@@ -80,7 +80,7 @@ class TraineeProfile extends Component {
   }
 
   onSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
     // const { id } = this.state;
     const id = sessionStorage.getItem("token");
     axios
@@ -102,6 +102,9 @@ class TraineeProfile extends Component {
       })
       .then(response => {
         console.log(response);
+        this.setState({
+          data: response.data
+        });
       })
       .catch(error => {
         console.log(error.response);
@@ -162,6 +165,7 @@ class TraineeProfile extends Component {
     if (this.state.data == null || this.state.levelstudies == null) {
       return <div>Loading</div>;
     }
+    console.log(this.state);
     return (
       <div>
         <div className="traineeProfileTitleBackGroud">
