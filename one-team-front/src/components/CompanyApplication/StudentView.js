@@ -297,62 +297,91 @@ class StudentView extends Component {
       }
       case "FULL": {
         return (
-          <div>
-            <Paper className={classes.paperFull} elevation={2}>
-              <p>Size FULL</p>
-              <ul className={classes.list}>
-                <li>
-                  <img
-                    className={classes.image}
-                    src={
-                      pictures !== null
-                        ? MakeCompletedUrl(`${pictures}`)
-                        : MakeCompletedUrl(
-                            "public/photoProfile/PhotoProfil.jpg"
-                          )
-                    }
-                    alt=""
-                  />
-                </li>
-                <li>{firstname}</li>
-                <li>{lastname}</li>
-                <li>
-                  {titre !== null ? titre : "Poste recherché : à compléter"}
-                </li>
-                <li>{school !== null ? school : "École : à compléter"}</li>
-                <li>
-                  début :
-                  {dateStart
-                    ? new Date(dateStart).toLocaleDateString()
-                    : "à compléter"}
-                </li>
-                <li>
-                  fin:
-                  {dateEnd
-                    ? new Date(dateEnd).toLocaleDateString()
-                    : "à compléter"}
-                </li>
-                <li className={classes.address}>{address}</li>
-                <li>
-                  {postalCode !== null
-                    ? postalCode
-                    : "Code postal : à compléter"}
-                </li>
-                <li> {town !== null ? town : "Ville : à compléter"}</li>
-                <li>
-                  {descriptionTrainee !== null
-                    ? descriptionTrainee
-                    : "Description: à compléter"}
-                </li>
-                <li>
-                  {LevelStudy !== null
-                    ? LevelStudy
-                    : "Niveau d'étude : à compléter"}
-                </li>
-                <li>{phone !== null ? phone : "Télephone : à compléter"}</li>
-                <li>{email}</li>
-              </ul>
-            </Paper>
+          <div className="bloc-trainee-profil">
+            {/*  BANDEAU  */}
+            <div className="bandeau-trainee-profil">
+              <div className="user-photo">
+                <img
+                  src={
+                    pictures !== null
+                      ? MakeCompletedUrl(`${pictures}`)
+                      : MakeCompletedUrl("public/photoProfile/PhotoProfil.jpg")
+                  }
+                  alt=""
+                />
+              </div>
+            </div>
+            {/* **********************  BLOC UNDER BANDEAU  **************************** */}
+            <div className="bloc-under-bandeau">
+              <p className="regular_orange_subtitle left">{firstname}</p>
+              <p className="regular_black_subtitle left">
+                {titre ? titre : "Poste recherché : à compléter"}
+              </p>
+              {/* CRITERES TRAINEE */}
+              <div className="bloc-criteres-big">
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={ageTrainee} alt="age" />
+                  </div>
+                  <p className="criteres_big">
+                    {age !== null
+                      ? `${this.getAgeTrainee(age)} ans`
+                      : "à compléter"}
+                  </p>
+                </div>
+
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={schoolTrainee} alt="école" />
+                  </div>
+                  <p className="criteres_big">
+                    {school ? school : "à compléter"}
+                  </p>
+                </div>
+
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={townTrainee} alt="ville" />
+                  </div>
+                  <p className="criteres_big">{town ? town : "à compléter"}</p>
+                </div>
+
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={calendar} alt="calendrier" />
+                  </div>
+                  <p className="criteres_big">
+                    {dateStart
+                      ? new Date(dateStart).toLocaleDateString()
+                      : "à compléter"}
+                  </p>
+                  <div className="img-student-view margin-chevron">
+                    <img src={next} alt="chevron" />
+                  </div>
+                  <p className="criteres_big">
+                    {dateEnd
+                      ? new Date(dateEnd).toLocaleDateString()
+                      : "à compléter"}
+                  </p>
+                </div>
+
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={levelTrainee} alt="ville" />
+                  </div>
+                  <p className="criteres_big">
+                    {LevelStudy !== null ? LevelStudy : "à compléter"}
+                  </p>
+                </div>
+              </div>
+              {/* FIN CRITERES TRAINEE */}
+              <p className="regular_orange_subtitle left">à propos</p>
+              <p className="regular_text left">
+                {descriptionTrainee !== null
+                  ? descriptionTrainee
+                  : "description : à compléter"}
+              </p>
+            </div>
           </div>
         );
       }
