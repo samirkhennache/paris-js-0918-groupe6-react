@@ -72,15 +72,17 @@ class CompanyApplicationsList extends Component {
           ? this.sortData(trainee).map(element => (
               <div>
                 {element.dataApplications.length !== 0 && (
-                  <div className="mission_title">
-                    <img
-                      src={write}
-                      width="18"
-                      height="18"
-                      style={{ marginRight: 5, marginBottom: -5 }}
-                      alt=""
-                    />
-                    {element.titleMission}
+                  <div>
+                    <div className="mission-title-application">
+                      <img
+                        src={write}
+                        width="25"
+                        height="25"
+                        style={{ marginRight: 5, marginBottom: -5 }}
+                        alt=""
+                      />
+                      <p className="mission_title"> {element.titleMission}</p>
+                    </div>
                     <hr className="hr_horizontal_orange" />
                   </div>
                 )}

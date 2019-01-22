@@ -99,9 +99,11 @@ class StudentView extends Component {
                   />
                 </li>
                 <li className="regular_orange_subtitle">{firstname}</li>
-                <div style={{ fontSize: 15 }}>
-                  <li>{titre !== null ? titre : "Poste : à completer"}</li>
-                  <li className={classes.address}>
+                <div>
+                  <li className="small_black_subtitle">
+                    {titre !== null ? titre : "Poste : à completer"}
+                  </li>
+                  {/* <li className={classes.address}>
                     <img
                       src={ville}
                       alt=""
@@ -110,7 +112,16 @@ class StudentView extends Component {
                       style={{ marginRight: 5 }}
                     />
                     {town !== null ? town : " à compléter"}
-                  </li>
+                  </li> */}
+
+                  <div className="icon-and-text">
+                    <div className="img-student-view">
+                      <img src={townTrainee} alt="ville" />
+                    </div>
+                    <p className="criteres_small">
+                      {town ? town : "à compléter"}
+                    </p>
+                  </div>
 
                   {/* <div>
                     <p className={classes.address}>
@@ -139,7 +150,26 @@ class StudentView extends Component {
                     </p>
                   </div> */}
 
-                  <div class="section group" style={{ fontSize: 15 }}>
+                  <div className="icon-and-text">
+                    <div className="img-student-view">
+                      <img src={calendar} alt="calendrier" />
+                    </div>
+                    <p className="criteres_small">
+                      {dateStart
+                        ? new Date(dateStart).toLocaleDateString()
+                        : "à remplir"}
+                    </p>
+                    <div className="img-student-view margin-chevron">
+                      <img src={next} alt="chevron" />
+                    </div>
+                    <p className="criteres_small">
+                      {dateEnd
+                        ? new Date(dateEnd).toLocaleDateString()
+                        : "à remplir"}
+                    </p>
+                  </div>
+
+                  {/* <div class="section group" style={{ fontSize: 15 }}>
                     <div class="col span_1_of_2">
                       <p className={classes.address}>
                         <img
@@ -168,7 +198,7 @@ class StudentView extends Component {
                           : " à compléter"}
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </ul>
             </Paper>

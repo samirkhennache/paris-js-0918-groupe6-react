@@ -48,7 +48,7 @@
 .criteres_small {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: calc(12px + 0.1vw);
+  font-size: calc(14px + 0.1vw);
   color: #494642;
   margin: 0;
 }
@@ -75,6 +75,16 @@
   text-transform: uppercase;
   margin: 0;
 }
+.small_black_subtitle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: calc(16px + 0.1vw);
+  color: black;
+  text-transform: uppercase;
+  margin: 0;
+  min-height: 50px;
+  margin-bottom: 10px;
+}
 .regular_orange_title {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
@@ -95,7 +105,7 @@
 .mission_title {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: calc(16px + 0.051vw);
+  font-size: calc(18px + 0.051vw);
   text-align: left;
   color: black;
   text-transform: uppercase;
