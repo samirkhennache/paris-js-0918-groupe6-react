@@ -5,13 +5,8 @@ import { TextField, Select, MenuItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import Grid from "@material-ui/core/Grid";
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from "@material-ui/core/styles";
+import { withStyles, createMuiTheme } from "@material-ui/core/styles";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import { MakeCompletedUrl, ConvertDate } from "../../../tools";
@@ -41,13 +36,7 @@ const styles = theme => ({
     width: "100%"
   }
 });
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#ff8900"
-    }
-  }
-});
+
 const CompanyCreateOffers = class extends React.Component {
   state = this.defaultState();
 
@@ -321,18 +310,6 @@ const CompanyCreateOffers = class extends React.Component {
                   />
                 </Grid>
                 <Grid item xs={12} justify="center">
-                  {/* <TextField
-                    placeholder="Description"
-                    name="description"
-                    label="Description"
-                    value={mission.description}
-                    onChange={this.handlerOnChange}
-                    required
-                    fullWidth
-                    // multiline
-                    // rows="5"
-                    variant="outlined"
-                  /> */}
                   <Tinymce
                     mission={this.state.mission.description}
                     handle={this.handleEditor}
@@ -349,19 +326,17 @@ const CompanyCreateOffers = class extends React.Component {
             >
               Annuler
             </Button>
-
-            <MuiThemeProvider theme={theme}>
-              <div className="btn">
-                <Button
-                  onClick={this.saveMission}
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                >
-                  {isEditMode ? "Modifier" : "Créer"}
-                </Button>
-              </div>
-            </MuiThemeProvider>
+            <div className="btn">
+              <Button
+                className="classic_button_orange"
+                onClick={this.saveMission}
+                variant="contained"
+                color="primary"
+                size="large"
+              >
+                {isEditMode ? "Modifier" : "Créer"}
+              </Button>
+            </div>
           </DialogActions>
         </Dialog>
       </div>
