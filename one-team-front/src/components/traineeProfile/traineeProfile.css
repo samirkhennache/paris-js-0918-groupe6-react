@@ -41,7 +41,7 @@
 .traineeProfileTextField {
   width: 100%;
 }
-
-.testclass {
-  border: 1px solid black;
+.btn_dialog_trainee {
+  margin: auto !important;
+  padding-bottom: 5% !important;
 }
