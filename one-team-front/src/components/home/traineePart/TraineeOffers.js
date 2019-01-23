@@ -38,13 +38,8 @@ class TraineeOffers extends Component {
     return (
       <div className="general-offers general_margin">
         {/* <h2>Parcourir les offres de stage</h2> */}
-        <h2
-          style={{ color: "white", fontWeight: "bold" }}
-          className="home_section"
-        >
-          Parcourir les offres de stage
-        </h2>
-        <div style={styles.miniHR} />
+        <h2 className="home_subsection_white">Parcourir les offres de stage</h2>
+        <hr className="hr_horizontal_white" />
 
         <div className="bloc-offers">
           {offers.map((element, index) => (
@@ -60,7 +55,7 @@ class TraineeOffers extends Component {
             //     </a>
             //   </div>
             // </Paper>
-            <Paper className="papers-offers" elevation={3}>
+            <Paper key={index} className="papers-offers" elevation={3}>
               <Grid container className="papers-offers-row">
                 <Grid
                   item
@@ -86,7 +81,7 @@ class TraineeOffers extends Component {
                       className="papers-offers-description-text"
                       // style={{ border: "2px pink solid" }}
                     >
-                      <p className="regular_orange_subtitle">{element.title}</p>
+                      <p className="titleMiddle">{element.title}</p>
                       <p>{element.content}</p>
                     </Grid>
                     <Grid
@@ -98,14 +93,17 @@ class TraineeOffers extends Component {
                         className="papers-offers-description-logo"
                         // style={{ border: "2px green solid" }}
                       >
-                        <img src="img/placeholder-filled-point.png" alt="" />
+                        <img src="img/calendar.png" alt="calendar" />
                       </div>
                       <p>{element.createdDate}</p>
                       <div
                         className="papers-offers-description-logo"
                         // style={{ border: "2px green solid" }}
                       >
-                        <img src="img/calendar.png" alt="" />
+                        <img
+                          src="img/placeholder-filled-point.png"
+                          alt="point"
+                        />
                       </div>
                       <p>{element.town}</p>
                     </Grid>

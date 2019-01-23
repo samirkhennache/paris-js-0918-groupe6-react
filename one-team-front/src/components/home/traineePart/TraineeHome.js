@@ -16,10 +16,10 @@ class TraineeHome extends Component {
         <div className="background-carrousel">
           <TraineeOffers />
         </div>
-        {/* <div className="background-goodReasons">
+        <div className="background-goodReasons">
           <GoodReasonsStudents {...this.props} />
         </div>
-        <Cursus /> */}
+        <Cursus />
       </div>
     );
   }
