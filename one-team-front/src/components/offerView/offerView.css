@@ -91,6 +91,9 @@
 }
 
 /* Midddle */
+.content-search-offers {
+  border: 1px solid red;
+}
 
 .Middle {
   /* border: 1px solid rgb(0, 70, 128); */

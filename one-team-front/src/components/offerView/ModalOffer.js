@@ -196,8 +196,6 @@ class ModalOffer extends Component {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
               onClose={this.handleClose}
-              fullWidth
-              maxWidth="lg"
               fullScreen={fullScreen}
             >
               <DialogTitle
