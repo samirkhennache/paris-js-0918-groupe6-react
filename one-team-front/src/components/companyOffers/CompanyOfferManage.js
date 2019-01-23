@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
+
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 import "./Button.css";
@@ -21,6 +23,22 @@ import townCompany from "../../img/icons/placeholder-filled-point.png";
 import school from "../../img/icons/graduate-cap.png";
 import calendar from "../../img/icons/calendar-black.png";
 import next from "../../img/icons/right-chevron(1).png";
+
+const styles = theme => ({
+  centerButton: {
+    [theme.breakpoints.up("sm")]: {
+      justifyContent: "flex-end"
+    },
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center"
+    }
+  },
+  marginButton: {
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "20px"
+    }
+  }
+});
 
 class CompanyOfferManage extends Component {
   state = {
@@ -110,14 +128,11 @@ class CompanyOfferManage extends Component {
       intro,
       isFull,
       town,
-      LevelStudy
+      LevelStudy,
+      classes
     } = this.props;
 
     const { title, content, button, open, disabled } = this.state;
-    const descriptionToShow = description.substring(0, 300);
-    // console.log("ma description ", description.substring(0, 20));
-
-    // console.log("FULL", isFull);
 
     return (
       <div className="general_margin">
@@ -125,7 +140,7 @@ class CompanyOfferManage extends Component {
 
         <Paper container className="container_company_manage">
           <Grid item container xs={12} justify="flex-start">
-            <p>LA MISSION</p>
+            <p className="regular_orange_title">LA MISSION</p>
           </Grid>
           <Grid item container xs={12} justify="flex-start">
             <p>{titleMission}</p>
@@ -133,6 +148,12 @@ class CompanyOfferManage extends Component {
           <Grid container item xs={12} className="btn_border">
             <Grid item xs={12} md={6} lg={6}>
               <div>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={townCompany} alt="ville" />
+                  </div>
+                  <p className="criteres_big">{town} </p>
+                </div>
                 <div className="icon-and-text">
                   <div className="img-student-view">
                     <img src={townCompany} alt="ville" />
@@ -169,9 +190,10 @@ class CompanyOfferManage extends Component {
               lg={6}
               md={6}
               alignItems="center"
+              className={classes.marginButton}
               spacing={8}
             >
-              <Grid item container xs={12} justify="flex-end">
+              <Grid item container xs={12} className={classes.centerButton}>
                 <Grid item lg={5} md={6} sm={4} xs={7}>
                   <Button
                     className="classic_button_orange btn_size"
@@ -181,7 +203,7 @@ class CompanyOfferManage extends Component {
                   </Button>
                 </Grid>
               </Grid>
-              <Grid item container xs={12} justify="flex-end">
+              <Grid item container xs={12} className={classes.centerButton}>
                 <Grid item lg={5} md={6} sm={4} xs={7}>
                   <ConfirmDialog
                     buttonCaption="Supprimer"
@@ -242,4 +264,4 @@ class CompanyOfferManage extends Component {
   }
 }
 
-export default CompanyOfferManage;
+export default withStyles(styles)(CompanyOfferManage);
