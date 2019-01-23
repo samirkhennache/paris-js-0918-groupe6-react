@@ -44,7 +44,7 @@ class TraineeOffers extends Component {
         >
           Parcourir les offres de stage
         </h2>
-        <div style={styles.miniHR} />
+        <hr className="hr_horizontal_white" />
 
         <div className="bloc-offers">
           {offers.map((element, index) => (

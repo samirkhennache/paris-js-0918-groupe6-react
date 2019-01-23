@@ -172,7 +172,7 @@ class CompanyOfferManage extends Component {
               spacing={8}
             >
               <Grid item container xs={12} justify="flex-end">
-                <Grid item lg={5} md={6} sm={4} xs={6}>
+                <Grid item lg={5} md={6} sm={4} xs={7}>
                   <Button
                     className="classic_button_orange btn_size"
                     onClick={this.showModal}
@@ -182,7 +182,7 @@ class CompanyOfferManage extends Component {
                 </Grid>
               </Grid>
               <Grid item container xs={12} justify="flex-end">
-                <Grid item lg={5} md={6} sm={4} xs={6}>
+                <Grid item lg={5} md={6} sm={4} xs={7}>
                   <ConfirmDialog
                     buttonCaption="Supprimer"
                     dialogTitle="Confirmation"
