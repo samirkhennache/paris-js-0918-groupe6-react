@@ -14,6 +14,7 @@ import Paper from "@material-ui/core/Paper";
 import renderHTML from "react-render-html";
 import { Grid } from "@material-ui/core";
 import Edit from "@material-ui/icons/Edit";
+import Check from "@material-ui/icons/Check";
 import { MakeCompletedUrl } from "../../tools";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
@@ -23,6 +24,8 @@ import townCompany from "../../img/icons/placeholder-filled-point.png";
 import school from "../../img/icons/graduate-cap.png";
 import calendar from "../../img/icons/calendar-black.png";
 import next from "../../img/icons/right-chevron(1).png";
+import nameCompany from "../../img/icons/three-buildings-black.png";
+import logoCompany from "../../img/three-buildings.png";
 
 const styles = theme => ({
   centerButton: {
@@ -37,6 +40,10 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       marginTop: "20px"
     }
+  },
+  marginHr: {
+    marginTop: "25px",
+    marginBottom: "15px"
   }
 });
 
@@ -129,6 +136,7 @@ class CompanyOfferManage extends Component {
       isFull,
       town,
       LevelStudy,
+      companyName,
       classes
     } = this.props;
 
@@ -139,6 +147,11 @@ class CompanyOfferManage extends Component {
         {/* ***** FICHE MISSION ***** */}
 
         <Paper container className="container_company_manage">
+          <div className="bloc-logo-company-offers">
+            <div className="logo-company-offers">
+              <img className="logo-img" src={logoCompany} alt="logo company" />
+            </div>
+          </div>
           <Grid item container xs={12} justify="flex-start">
             <p className="regular_orange_title">LA MISSION</p>
           </Grid>
@@ -156,9 +169,9 @@ class CompanyOfferManage extends Component {
                 </div>
                 <div className="icon-and-text">
                   <div className="img-student-view">
-                    <img src={townCompany} alt="ville" />
+                    <img src={nameCompany} alt="nom entreprise" />
                   </div>
-                  <p className="criteres_big">{town} </p>
+                  <p className="criteres_big">{companyName} </p>
                 </div>
                 <div className="icon-and-text">
                   <div className="img-student-view">
@@ -222,21 +235,32 @@ class CompanyOfferManage extends Component {
             </Grid>
           </Grid>
           <Grid item container xs={12} justify="center" />
+          <Grid item xs={12} className={classes.marginHr}>
+            <hr className="hr_horizontal_orange" />
+          </Grid>
           <Grid item xs={12}>
             {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
             <Team {...this.props} disabled={disabled} />
+
             {disabled || isFull ? (
-              <Button type="primary" disabled className="aws-btn validate">
-                Valider ma team
-              </Button>
+              <Grid item container xs={12} justify="center">
+                <Grid item lg={5} md={6} sm={5} xs={8}>
+                  <Button type="primary" disabled>
+                    Valider ma team
+                  </Button>
+                </Grid>
+              </Grid>
             ) : (
-              <Button
-                onClick={this.validateMission}
-                variant="contained"
-                color="primary"
-              >
-                Valider ma team
-              </Button>
+              <Grid item container xs={12} justify="center">
+                <Grid item lg={5} md={6} sm={5} xs={8}>
+                  <Button
+                    onClick={this.validateMission}
+                    className="classic_button_orange"
+                  >
+                    Valider ma team <Check />
+                  </Button>
+                </Grid>
+              </Grid>
             )}
             {/* **************** DIALOG VALIDATE ************************** */}
             <Dialog
