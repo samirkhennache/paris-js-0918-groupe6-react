@@ -12,17 +12,17 @@ export default class Example extends Component {
         <div className="section group">
           <div className="col span_1_of_2">
             <div className="list_text">
-              <li style={{ padding: 10 }}> Politique d'innovation </li>
-              <li style={{ padding: 10 }}> Business development </li>
-              <li style={{ padding: 10 }}> Growth-Hacking </li>
-              <li style={{ padding: 10 }}> Stratégie Digitale </li>
-              <li style={{ padding: 10 }}> Agilité organisationnelle </li>
-              <li style={{ padding: 10 }}> Innovation managériale </li>
-              <li style={{ padding: 10 }}> Management de projet </li>
-              <li style={{ padding: 10 }}> Ingénierie de process </li>
-              <li style={{ padding: 10 }}> Audit - Etudes </li>
-              <li style={{ padding: 10 }}> Knowledge management </li>
-              <li style={{ padding: 10 }}> Méthodes Qualité </li>
+              <li style={{ paddingBottom: 15 }}> Politique d'innovation </li>
+              <li style={{ paddingBottom: 15 }}> Business development </li>
+              <li style={{ paddingBottom: 15 }}> Growth-Hacking </li>
+              <li style={{ paddingBottom: 15 }}> Stratégie Digitale </li>
+              <li style={{ paddingBottom: 15 }}> Agilité organisationnelle </li>
+              <li style={{ paddingBottom: 15 }}> Innovation managériale </li>
+              <li style={{ paddingBottom: 15 }}> Management de projet </li>
+              <li style={{ paddingBottom: 15 }}> Ingénierie de process </li>
+              <li style={{ paddingBottom: 15 }}> Audit - Etudes </li>
+              <li style={{ paddingBottom: 15 }}> Knowledge management </li>
+              <li style={{ paddingBottom: 15 }}> Méthodes Qualité </li>
             </div>
           </div>
           <div class="col span_1_of_2">

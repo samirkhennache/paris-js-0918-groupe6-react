@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TraineeCarrousel from "./TraineeCarrousel";
 import TraineeOffers from "./TraineeOffers";
 import GoodReasonsStudents from "./GoodReasonsStudent";
-import Cursus from "./cursus";
+import Cursus from "./Cursus";
 
 class TraineeHome extends Component {
   state = {};
@@ -15,9 +15,6 @@ class TraineeHome extends Component {
         </div>
         <div className="background-carrousel">
           <TraineeOffers />
-        </div>
-        <div className="background-goodReasons">
-          <GoodReasonsStudents {...this.props} />
         </div>
         <Cursus />
       </div>

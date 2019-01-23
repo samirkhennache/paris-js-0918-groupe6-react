@@ -31,12 +31,27 @@
 
 /********************* CONTACT *********************/
 .contact-home {
-  background-color: #202020;
+  /* background-color: #202020;
   padding: 15px 0;
-  margin: 0;
-  color: whitesmoke;
+  color: whitesmoke; */
+  background-image: url("../../img/bandeau_footer_long.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 65vh;
+  z-index: 0;
 }
-
+.home-overlay {
+  position: absolute;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -5;
+}
 .social-media {
   margin: 10px;
 }
