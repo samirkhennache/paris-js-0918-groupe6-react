@@ -36,14 +36,14 @@ export default class Services extends Component {
         </div>
         <div class="section group">
           <div class="col span_1_of_2">
-            <img src={require("../../../img/services/meeting.png")} />
+            <img src={require("../../../img/services/cursor.png")} />
             <p className="icon_white_title"> Pages Vitrines </p>
             <p className="black petit_texte">
               Inclus dans le forfait de l'offre
             </p>
           </div>
           <div class="col span_1_of_2">
-            <img src={require("../../../img/services/meeting.png")} />
+            <img src={require("../../../img/services/progress.png")} />
             <p className="icon_white_title"> Coaching d'équipe </p>
             <p className="black petit_texte">
               Réalisé sur toute la période du stage par un consultant One Team
