@@ -28,7 +28,9 @@ class TeamsAdmin extends Component {
   }
 
   render() {
+
     const { fullMission, trainee } = this.state;
+    console.log(fullMission)
     return (
       <div>
         <div className="home-company">
@@ -61,9 +63,10 @@ class TeamsAdmin extends Component {
                     missionId={e.id}
                     company={e.Company.companyName}
                     description={e.description}
-                    introduction={e.intro}
+                    intro={e.intro}
                     dateStart={e.dateStart}
                     dateEnd={e.dateEnd}
+                    LevelStudy={e.LevelStudy.label}
                     town={e.town}
                     companyName={e.Company.companyName}
                     firstNameContact={e.Company.firstnameContact}

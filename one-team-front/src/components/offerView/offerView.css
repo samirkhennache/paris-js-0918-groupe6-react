@@ -213,61 +213,48 @@
 
 /* Fin Middle */
 
-/* FULL */
+/***************************************** FULL ***************************************/
 
 .OfferViewFull {
-  text-align: left !important;
-  color: #000;
+  text-align: left;
+  color: black;
 }
-
-.LogoFull,
-.titleFull {
-  text-transform: uppercase;
-}
-
-.LogoFull {
-  border-bottom: 3px solid #ff8900;
-  color: #000;
-  padding-bottom: 5px;
+.center-company-full {
   text-align: center;
 }
-
-.titleFull {
-  font-weight: 800;
-  text-transform: uppercase;
+.bloc-contact-full {
+  padding-top: 30px;
 }
-
+.contact-company-full {
+  text-align: left;
+}
 .introFull {
+  padding-bottom: 30px;
 }
 
 .milieuFull {
   display: flex;
-  justify-content: space-around;
-  align-content: center;
-  height: 50px;
+  justify-content: space-between;
   margin: 20px 0;
-  /* border: 1px solid wheat; */
 }
 
 .townFull,
 .dateFull,
 .levelFull {
-  margin-right: 5px;
   display: flex;
   align-items: center;
+  padding: 3px 0;
 }
 
 .imageFull {
-  /* border: 1px solid red; */
   height: 25px;
-  margin: 10px;
+  margin-right: 10px;
 }
 
-@media all and (min-width: 320px) and (max-width: 720px) {
+@media all and (max-width: 768px) {
   .milieuFull {
-    flex-wrap: wrap;
-    /* border: 1px dashed red; */
-    height: 100px;
+    flex-direction: column;
+    justify-content: flex-start;
   }
   .townFull,
   .dateFull,

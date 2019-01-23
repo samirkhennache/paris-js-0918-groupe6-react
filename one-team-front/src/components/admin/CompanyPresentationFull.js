@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import OfferView from "../offerView/OfferView";
+import { FULL } from "../offerView/constants";
 import Button from "@material-ui/core/Button";
 
 class CompanyPresentationFull extends Component {
@@ -17,43 +20,31 @@ class CompanyPresentationFull extends Component {
   render() {
     const {
       open,
-      titleMission,
-      company,
-      dateStart,
-      dateEnd,
-      town,
-      introduction,
-      description,
       firstNameContact,
       lastNameContact,
       companyPhone,
-      companyEmail
+      companyEmail,
+      fullScreen
     } = this.props;
     return (
       <div>
-        <Dialog
-          open={open}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="customized-dialog-title" />
+        <Dialog open={open} fullScreen={fullScreen}>
+          <DialogTitle />
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              <div>
-                <p>{titleMission}</p>
-                <p>{company}</p>
-                <p>début: {new Date(dateStart).toLocaleDateString()}</p>
-                <p>fin: {new Date(dateEnd).toLocaleDateString()}</p>
-                <p>{town}</p>
-                <p>{introduction}</p>
-                <p>{description}</p>
-              </div>
-              <div>
-                <p>Contact</p>
-                <p>{firstNameContact}</p>
-                <p>{lastNameContact}</p>
-                <p>{companyPhone}</p>
-                <p>{companyEmail}</p>
+              <OfferView size={FULL} {...this.props} />
+              <div className="bloc-contact-full">
+                <p className="regular_orange_title">Contact</p>
+                <p className="regular_black_subtitle contact-company-full">
+                  {firstNameContact} {lastNameContact}
+                </p>
+
+                <p className="criteres_big contact-company-full">
+                  {companyPhone}
+                </p>
+                <p className="criteres_big contact-company-full">
+                  {companyEmail}
+                </p>
               </div>
             </DialogContentText>
           </DialogContent>
@@ -66,4 +57,4 @@ class CompanyPresentationFull extends Component {
   }
 }
 
-export default CompanyPresentationFull;
+export default withMobileDialog()(CompanyPresentationFull);
