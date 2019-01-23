@@ -2,11 +2,11 @@
 .general_margin {
   /* width: 70%;
     margin: auto; */
-  margin: 10px calc(1px + 15vw);
+  margin: 0px calc(1px + 15vw);
 }
 @media (max-width: 425px) {
   .general_margin {
-    margin: 10px calc(10px + 2vw);
+    margin: 0px calc(10px + 2vw);
   }
 }
 .hr_horizontal_orange {
