@@ -123,7 +123,7 @@ class TraineeCarrousel extends React.Component {
           >
             Tu cherches un stage en accord avec ta génération ?
           </h3>
-          <div className={classes.miniHR} />
+          <hr className="hr_horizontal_grey" />
           <p className={classes.tmpText} style={{ color: "white" }}>
             Comme eux, intègre une team d’étudiants-stagiaires et participe à
             une expérience challengeante

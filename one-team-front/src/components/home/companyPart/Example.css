@@ -15,7 +15,6 @@
   clear: both;
   padding: 0px;
   margin: 0px;
-  font-size: 2.5vh;
 }
 
 /*  COLUMN SETUP  */
@@ -61,5 +60,31 @@
   .span_2_of_2,
   .span_1_of_2 {
     width: 100%;
+  }
+}
+
+.list_text {
+  text-align: left;
+  float: right;
+  margin-right: 15%;
+  margin-top: 5%;
+}
+
+.pos_carrousel {
+  float: left;
+  margin-left: 15%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+@media only screen and (max-width: 600px) {
+  .list_text,
+  .pos_carrousel {
+    margin-right: 0%;
+    margin-left: 0%;
+    float: none;
+  }
+  .list_text {
+    float: left;
+    margin-left: 25%;
   }
 }
