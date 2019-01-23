@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import "./App.css";
 import HomeDefault from "./components/home/home";
@@ -11,6 +11,7 @@ import Page404 from "./components/Page404";
 import OfferCompletedItem from "./components/admin/OfferCompletedItem";
 import CompanyApplications from "./components/CompanyApplication/CompanyApplications";
 import TeamsAdmin from "./components/admin/TeamsAdmin";
+import Contact from "./components/home/Contact";
 import "./components/pages.css";
 
 // HOME ROUTER -------------------------------------------------------------
@@ -101,13 +102,16 @@ const Admin = ({ match }) => {
 class App extends Component {
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/trainee" component={Trainee} />
-        <Route path="/company" component={Company} />
-        <Route path="/salutadmin" component={Admin} />
-        <Route path="/*" component={Page404} />
-      </Switch>
+      <Fragment>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/trainee" component={Trainee} />
+          <Route path="/company" component={Company} />
+          <Route path="/salutadmin" component={Admin} />
+          <Route path="/*" component={Page404} />
+        </Switch>
+        <Contact />
+      </Fragment>
     );
   }
 }

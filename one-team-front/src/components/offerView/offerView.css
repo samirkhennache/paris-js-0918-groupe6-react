@@ -10,6 +10,11 @@
   width: 25px;
   margin-right: 4px;
 }
+@media all and (max-width: 320px) {
+  .date-icon {
+    width: 17px;
+  }
+}
 .date-icon img {
   width: 100%;
 }
@@ -56,6 +61,15 @@
   align-items: center;
   justify-content: space-between;
 }
+@media all and (min-width: 600px) and (max-width: 860px) {
+  .application-date-statut {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .application-satut {
+    padding: 5px 0 0 0;
+  }
+}
 .application-hr {
   width: 100%;
 }
@@ -68,6 +82,12 @@
 
 .application-mission {
   padding-bottom: 15px;
+  max-height: 80px;
+  min-height: 80px;
+  overflow: auto;
+}
+.small-offerView {
+  margin-bottom: 20px;
 }
 
 /* Midddle */

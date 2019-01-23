@@ -111,7 +111,7 @@ class ModalOffer extends Component {
       case "SMALL": {
         return (
           <div className="ModalOffer application-item">
-            <Paper className="container_company_manage">
+            <Paper>
               <div className="application-paper">
                 <OfferView
                   key={`${missionId}-${titleMission}`}
