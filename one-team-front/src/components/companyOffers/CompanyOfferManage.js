@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
+
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 import "./Button.css";
@@ -12,6 +14,7 @@ import Paper from "@material-ui/core/Paper";
 import renderHTML from "react-render-html";
 import { Grid } from "@material-ui/core";
 import Edit from "@material-ui/icons/Edit";
+import Check from "@material-ui/icons/Check";
 import { MakeCompletedUrl } from "../../tools";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
@@ -21,6 +24,28 @@ import townCompany from "../../img/icons/placeholder-filled-point.png";
 import school from "../../img/icons/graduate-cap.png";
 import calendar from "../../img/icons/calendar-black.png";
 import next from "../../img/icons/right-chevron(1).png";
+import nameCompany from "../../img/icons/three-buildings-black.png";
+import logoCompany from "../../img/three-buildings.png";
+
+const styles = theme => ({
+  centerButton: {
+    [theme.breakpoints.up("sm")]: {
+      justifyContent: "flex-end"
+    },
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center"
+    }
+  },
+  marginButton: {
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "20px"
+    }
+  },
+  marginHr: {
+    marginTop: "25px",
+    marginBottom: "15px"
+  }
+});
 
 class CompanyOfferManage extends Component {
   state = {
@@ -110,22 +135,25 @@ class CompanyOfferManage extends Component {
       intro,
       isFull,
       town,
-      LevelStudy
+      LevelStudy,
+      companyName,
+      classes
     } = this.props;
 
     const { title, content, button, open, disabled } = this.state;
-    const descriptionToShow = description.substring(0, 300);
-    // console.log("ma description ", description.substring(0, 20));
-
-    // console.log("FULL", isFull);
 
     return (
       <div className="general_margin">
         {/* ***** FICHE MISSION ***** */}
 
         <Paper container className="container_company_manage">
+          <div className="bloc-logo-company-offers">
+            <div className="logo-company-offers">
+              <img className="logo-img" src={logoCompany} alt="logo company" />
+            </div>
+          </div>
           <Grid item container xs={12} justify="flex-start">
-            <p>LA MISSION</p>
+            <p className="regular_orange_title">LA MISSION</p>
           </Grid>
           <Grid item container xs={12} justify="flex-start">
             <p>{titleMission}</p>
@@ -138,6 +166,12 @@ class CompanyOfferManage extends Component {
                     <img src={townCompany} alt="ville" />
                   </div>
                   <p className="criteres_big">{town} </p>
+                </div>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={nameCompany} alt="nom entreprise" />
+                  </div>
+                  <p className="criteres_big">{companyName} </p>
                 </div>
                 <div className="icon-and-text">
                   <div className="img-student-view">
@@ -169,9 +203,10 @@ class CompanyOfferManage extends Component {
               lg={6}
               md={6}
               alignItems="center"
+              className={classes.marginButton}
               spacing={8}
             >
-              <Grid item container xs={12} justify="flex-end">
+              <Grid item container xs={12} className={classes.centerButton}>
                 <Grid item lg={5} md={6} sm={4} xs={7}>
                   <Button
                     className="classic_button_orange btn_size"
@@ -181,7 +216,7 @@ class CompanyOfferManage extends Component {
                   </Button>
                 </Grid>
               </Grid>
-              <Grid item container xs={12} justify="flex-end">
+              <Grid item container xs={12} className={classes.centerButton}>
                 <Grid item lg={5} md={6} sm={4} xs={7}>
                   <ConfirmDialog
                     buttonCaption="Supprimer"
@@ -200,21 +235,32 @@ class CompanyOfferManage extends Component {
             </Grid>
           </Grid>
           <Grid item container xs={12} justify="center" />
+          <Grid item xs={12} className={classes.marginHr}>
+            <hr className="hr_horizontal_orange" />
+          </Grid>
           <Grid item xs={12}>
             {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
             <Team {...this.props} disabled={disabled} />
+
             {disabled || isFull ? (
-              <Button type="primary" disabled className="aws-btn validate">
-                Valider ma team
-              </Button>
+              <Grid item container xs={12} justify="center">
+                <Grid item lg={5} md={6} sm={5} xs={8}>
+                  <Button type="primary" disabled>
+                    Valider ma team
+                  </Button>
+                </Grid>
+              </Grid>
             ) : (
-              <Button
-                onClick={this.validateMission}
-                variant="contained"
-                color="primary"
-              >
-                Valider ma team
-              </Button>
+              <Grid item container xs={12} justify="center">
+                <Grid item lg={5} md={6} sm={5} xs={8}>
+                  <Button
+                    onClick={this.validateMission}
+                    className="classic_button_green"
+                  >
+                    Valider ma team <Check />
+                  </Button>
+                </Grid>
+              </Grid>
             )}
             {/* **************** DIALOG VALIDATE ************************** */}
             <Dialog
@@ -242,4 +288,4 @@ class CompanyOfferManage extends Component {
   }
 }
 
-export default CompanyOfferManage;
+export default withStyles(styles)(CompanyOfferManage);

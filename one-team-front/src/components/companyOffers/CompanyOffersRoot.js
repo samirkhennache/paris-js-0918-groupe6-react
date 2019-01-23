@@ -84,6 +84,7 @@ class CompanyOffersRoot extends Component {
             size={FULL_RESTRICTED}
             modeRefuse={modeRefuse}
             handleCloseRefresh={this.handleCloseRefresh}
+            {...this.props}
           />
         )}
       </div>
