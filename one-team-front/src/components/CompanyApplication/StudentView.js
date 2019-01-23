@@ -7,6 +7,7 @@ import calendrier from "../../img/cardEtudiant/calendar.png";
 import chevron from "../../img/cardEtudiant/right-chevron.png";
 
 import "./StudentView.css";
+import "./ViewStudent.css";
 import "./StudentApplication.css";
 import ageTrainee from "../../img/icons/cake.png";
 import schoolTrainee from "../../img/icons/scholl.png";
@@ -202,6 +203,54 @@ class StudentView extends Component {
                 </div>
               </ul>
             </Paper>
+          </div>
+        );
+      }
+      case "SMALL_ADMIN": {
+        return (
+          <div className="item-small-admin">
+            <div className="bloc-image-name">
+              <div className="student-image-admin">
+                <img
+                  src={
+                    pictures !== null
+                      ? MakeCompletedUrl(`${pictures}`)
+                      : MakeCompletedUrl("public/photoProfile/PhotoProfil.jpg")
+                  }
+                  alt=""
+                />
+              </div>
+
+              <p className="regular_orange_subtitle">{firstname}</p>
+
+              <p className="small_black_subtitle">
+                {titre !== null ? titre : "Poste : à completer"}
+              </p>
+            </div>
+
+            <div className="icon-and-text">
+              <div className="img-student-view">
+                <img src={townTrainee} alt="ville" />
+              </div>
+              <p className="criteres_small">{town ? town : "à compléter"}</p>
+            </div>
+
+            <div className="icon-and-text">
+              <div className="img-student-view">
+                <img src={calendar} alt="calendrier" />
+              </div>
+              <p className="criteres_small">
+                {dateStart
+                  ? new Date(dateStart).toLocaleDateString()
+                  : "à remplir"}
+              </p>
+              <div className="img-student-view margin-chevron">
+                <img src={next} alt="chevron" />
+              </div>
+              <p className="criteres_small">
+                {dateEnd ? new Date(dateEnd).toLocaleDateString() : "à remplir"}
+              </p>
+            </div>
           </div>
         );
       }

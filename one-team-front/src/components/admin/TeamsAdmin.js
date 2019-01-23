@@ -73,13 +73,18 @@ class TeamsAdmin extends Component {
                   />
 
                   <div className="bloc-team-full">
-                    <Grid container justify="center">
+                    <Grid
+                      container
+                      direction="row"
+                      justify="center"
+                      spacing={24}
+                    >
                       {trainee &&
                         trainee.map(element =>
                           element.mission_id === e.id
                             ? element.dataApplications.map(student => (
-                                <div>
-                                  <Grid sm={6} md={6} lg={4}>
+                                <Grid item xs={12} sm={8} md={6} lg={4}>
+                                  <Paper elevation={4}>
                                     <StudentApplication
                                       firstname={student.Trainee.firstname}
                                       town={student.Trainee.town}
@@ -107,8 +112,8 @@ class TeamsAdmin extends Component {
                                       newDateStart={student.Trainee.dateStart}
                                       newDateEnd={student.Trainee.dateEnd}
                                     />
-                                  </Grid>
-                                </div>
+                                  </Paper>
+                                </Grid>
                               ))
                             : null
                         )}

@@ -11,7 +11,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Check from "@material-ui/icons/Check";
 
 import { loadavg } from "os";
-import { SMALL } from "./studentConstant";
+import { SMALL, SMALL_ADMIN } from "./studentConstant";
 import StudentProfilView from "./StudentProfilView";
 import StudentView from "./StudentView";
 
@@ -299,7 +299,7 @@ class StudentApplication extends Component {
                   {...this.props}
                   dateStart={this.props.newDateStart}
                   dateEnd={this.props.newDateEnd}
-                  size={SMALL}
+                  size={SMALL_ADMIN}
                 />
               </div>
               <StudentProfilView

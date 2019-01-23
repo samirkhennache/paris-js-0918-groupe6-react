@@ -21,7 +21,7 @@
   }
 }
 .bloc-team-full {
-  padding: 0 20px 20px 20px;
+  padding: 30px 40px;
 }
 .bloc-company-admin {
   padding: 0 40px 0 40px;
@@ -46,10 +46,18 @@
   height: 143px;
   width: 143px;
   position: relative;
-
-
 }
 
+.bloc-criteres-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.hr-margin-admin {
+  margin: 15px 0 15px 0;
+}
 @media (max-width: 768px) {
   .bloc-company-admin {
     padding: 0 20px;
@@ -63,5 +71,15 @@
   }
   .bloc-admin {
     margin-top: 90px;
+  }
+}
+@media (max-width: 426px) {
+  .bloc-critere-admin {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 400px) {
+  .bloc-team-full {
+    padding: 30px 20px;
   }
 }
