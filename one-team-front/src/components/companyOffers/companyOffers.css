@@ -54,10 +54,12 @@
 .bloc-company-Offres {
   padding: 0 40px 0 40px;
 }
-/* .bloc-company {
-  margin-top: 110px;
-  margin-bottom: 60px;
-} */
+.blocList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .bloc-logo-company-offers {
   display: flex;
   align-items: center;

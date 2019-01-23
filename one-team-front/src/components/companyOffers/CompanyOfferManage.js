@@ -255,7 +255,7 @@ class CompanyOfferManage extends Component {
                 <Grid item lg={5} md={6} sm={5} xs={8}>
                   <Button
                     onClick={this.validateMission}
-                    className="classic_button_orange"
+                    className="classic_button_green"
                   >
                     Valider ma team <Check />
                   </Button>
