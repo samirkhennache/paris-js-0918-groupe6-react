@@ -10,6 +10,11 @@
   width: 25px;
   margin-right: 4px;
 }
+@media all and (max-width: 320px) {
+  .date-icon {
+    width: 17px;
+  }
+}
 .date-icon img {
   width: 100%;
 }
