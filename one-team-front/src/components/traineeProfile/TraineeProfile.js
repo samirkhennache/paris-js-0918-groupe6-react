@@ -331,7 +331,7 @@ class TraineeProfile extends Component {
                       className="traineeProfileTextField"
                       type="text"
                       name="postalCode"
-                      label="Code Postal"
+                      label="Code postal"
                       defaultValue={data.postalCode}
                       margin="normal"
                       variant="outlined"
@@ -368,7 +368,7 @@ class TraineeProfile extends Component {
                     <TextField
                       className="traineeProfileTextField"
                       select
-                      label="Level"
+                      label="Niveau d'étude"
                       value={this.state.data.LevelStudyId || ""}
                       onChange={this.handleChange}
                       inputProps={{ name: "LevelStudyId" }}
@@ -391,7 +391,7 @@ class TraineeProfile extends Component {
                       className="traineeProfileTextField"
                       type="text"
                       name="titre"
-                      label="Intitulé de stage"
+                      label="Poste"
                       defaultValue={data.titre}
                       margin="normal"
                       variant="outlined"
@@ -403,7 +403,7 @@ class TraineeProfile extends Component {
                         <TextField
                           className="traineeProfileTextField"
                           name="dateStart"
-                          label="Debut stage"
+                          label="Début du stage"
                           type="date"
                           defaultValue={
                             this.state.data.dateStart !== null
@@ -419,7 +419,7 @@ class TraineeProfile extends Component {
                         <TextField
                           className="traineeProfileTextField"
                           name="dateEnd"
-                          label="Fin stage"
+                          label="Fin du stage"
                           type="date"
                           defaultValue={
                             this.state.data.dateEnd !== null
@@ -439,7 +439,7 @@ class TraineeProfile extends Component {
                       type="text"
                       multiline
                       name="description"
-                      label="Descriptions"
+                      label="Description"
                       defaultValue={data.description}
                       margin="normal"
                       variant="outlined"
