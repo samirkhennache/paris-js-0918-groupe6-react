@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 
 import axios from "axios";
-import { MakeCompletedUrl } from "../../tools";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -11,6 +10,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Check from "@material-ui/icons/Check";
 
 import { loadavg } from "os";
+import { MakeCompletedUrl } from "../../tools";
 import { SMALL } from "./studentConstant";
 import StudentProfilView from "./StudentProfilView";
 import StudentView from "./StudentView";
@@ -239,6 +239,12 @@ class StudentApplication extends Component {
         return (
           <div>
             <div>
+              {!disabled &&
+                (!isFull && (
+                  <a onClick={() => this.refuseStudent(modeRefuse)}>
+                    <p className="button-negative side-by-side" />
+                  </a>
+                ))}
               <div onClick={() => this.clickStudentSmall()}>
                 <StudentView
                   {...this.props}
@@ -247,19 +253,6 @@ class StudentApplication extends Component {
                   size={SMALL}
                 />
               </div>
-              {disabled || isFull ? (
-                <Button disabled variant="contained" color="secondary">
-                  Refuser
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => this.refuseStudent(modeRefuse)}
-                  variant="contained"
-                  color="secondary"
-                >
-                  Refuser
-                </Button>
-              )}
               <StudentProfilView
                 {...this.props}
                 dateStart={this.props.newDateStart}

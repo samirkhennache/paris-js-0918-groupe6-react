@@ -1,37 +1,27 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { MakeCompletedUrl, ConvertDate } from "../../tools";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-
+import withMobileDialog from "@material-ui/core/withMobileDialog";
 import MenuItem from "@material-ui/core/MenuItem";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import withWidth from "@material-ui/core/withWidth";
 import Grid from "@material-ui/core/Grid";
-import StudentView from "../CompanyApplication/StudentView";
-import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
+
 import RemoveEye from "@material-ui/icons/RemoveRedEye";
 import Save from "@material-ui/icons/Save";
+import StudentView from "../CompanyApplication/StudentView";
+import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
+import { MakeCompletedUrl, ConvertDate } from "../../tools";
 import "./traineeProfile.css";
-
-const theme = createMuiTheme({
-  // palette: {
-  //   primary: {
-  //     main: "rgb(0, 70, 100, 80%)"
-  //   },
-  //   secondary: {
-  //     main: "#ff8900"
-  //   }
-  // }
-});
 
 class TraineeProfile extends Component {
   state = {
     selectedFile: null,
     openTrainee: false,
-    button: "fermer"
+    button: "Fermer"
   };
 
   traineeOpenConnexion = () => {
@@ -151,11 +141,11 @@ class TraineeProfile extends Component {
     const date = new Date(data);
     let day = date.getDate();
     if (day < 10) {
-      day = "0" + day;
+      day = `0${day}`;
     }
     let month = date.getMonth() + 1;
     if (month < 10) {
-      month = "0" + month;
+      month = `0${month}`;
     }
     const year = date.getFullYear();
     return `${year}-${month}-${day}`;
@@ -169,12 +159,19 @@ class TraineeProfile extends Component {
     this.setState({ open: false });
   };
 
+  countRow(dimensions) {
+    if (dimensions !== "md" && dimensions !== "xl" && dimensions !== "lg") {
+      return "10";
+    }
+    return "30";
+  }
+
   render() {
     const { data, openTrainee, button } = this.state;
     if (this.state.data == null || this.state.levelstudies == null) {
       return <div>Loading</div>;
     }
-    console.log(this.state);
+    const { width, fullScreen } = this.props;
     return (
       <div>
         <div className="traineeProfileTitleBackGroud">
@@ -192,10 +189,11 @@ class TraineeProfile extends Component {
               direction="row"
               justify="flex-start"
               alignItems="center"
+              spacing={40}
             >
-              <Grid item xs={6}>
+              <Grid item xs={12} md={5}>
                 <div>
-                  <label for="file-input">
+                  <label htmlFor="file-input">
                     {this.state.data.pictures !== null ? (
                       <div>
                         <img
@@ -228,9 +226,9 @@ class TraineeProfile extends Component {
                   />
                 </div>
               </Grid>
-              <Grid items xs={6}>
-                <Grid container>
-                  <Grid className="testclass" item xs={12} md={6}>
+              <Grid items xs={12} md={7}>
+                <Grid container spacing={8}>
+                  <Grid item xs={12} md={6}>
                     <Button
                       className="classic_button_blue"
                       color="primary"
@@ -241,7 +239,7 @@ class TraineeProfile extends Component {
                       <RemoveEye className="traineeProfileIcon" />
                     </Button>
                   </Grid>
-                  <Grid className="testclass" item xs={12} md={6}>
+                  <Grid item xs={12} md={6}>
                     <Button
                       className="classic_button_orange"
                       color="secondary"
@@ -256,14 +254,14 @@ class TraineeProfile extends Component {
               </Grid>
             </Grid>
             <Grid container spacing={40}>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={5}>
                 <Grid container>
                   <Grid item xs={12}>
                     <TextField
                       className="traineeProfileTextField"
                       type="text"
                       name="firstname"
-                      placeholder="Prénom"
+                      label="Prénom"
                       defaultValue={data.firstname}
                       margin="normal"
                       variant="outlined"
@@ -275,7 +273,7 @@ class TraineeProfile extends Component {
                       className="traineeProfileTextField"
                       type="text"
                       name="lastname"
-                      placeholder="Nom"
+                      label="Nom"
                       defaultValue={data.lastname}
                       margin="normal"
                       variant="outlined"
@@ -288,7 +286,7 @@ class TraineeProfile extends Component {
                       disabled
                       type="email"
                       name="email"
-                      placeholder="Email"
+                      label="Email"
                       defaultValue={data.email}
                       margin="normal"
                       variant="outlined"
@@ -300,7 +298,7 @@ class TraineeProfile extends Component {
                       className="traineeProfileTextField"
                       type="text"
                       name="phone"
-                      placeholder="Phone"
+                      label="Téléphone"
                       defaultValue={data.phone}
                       margin="normal"
                       variant="outlined"
@@ -311,7 +309,7 @@ class TraineeProfile extends Component {
                       className="traineeProfileTextField"
                       type="text"
                       name="address"
-                      placeholder="Adress"
+                      label="Adresse"
                       defaultValue={data.address}
                       margin="normal"
                       variant="outlined"
@@ -322,7 +320,7 @@ class TraineeProfile extends Component {
                       className="traineeProfileTextField"
                       type="text"
                       name="town"
-                      placeholder="Ville"
+                      label="Ville"
                       defaultValue={data.town}
                       margin="normal"
                       variant="outlined"
@@ -333,7 +331,7 @@ class TraineeProfile extends Component {
                       className="traineeProfileTextField"
                       type="text"
                       name="postalCode"
-                      placeholder="Postal Code"
+                      label="Code Postal"
                       defaultValue={data.postalCode}
                       margin="normal"
                       variant="outlined"
@@ -350,9 +348,7 @@ class TraineeProfile extends Component {
                           ? ConvertDate(this.state.data.dateBirth)
                           : null
                       }
-                      InputLabelProps={{
-                        shrink: true
-                      }}
+                      InputLabelProps={{ shrink: true }}
                       margin="normal"
                       variant="outlined"
                     />
@@ -362,7 +358,7 @@ class TraineeProfile extends Component {
                       className="traineeProfileTextField"
                       type="text"
                       name="school"
-                      placeholder="École"
+                      label="École"
                       defaultValue={data.school}
                       margin="normal"
                       variant="outlined"
@@ -375,9 +371,7 @@ class TraineeProfile extends Component {
                       label="Level"
                       value={this.state.data.LevelStudyId || ""}
                       onChange={this.handleChange}
-                      inputProps={{
-                        name: "LevelStudyId"
-                      }}
+                      inputProps={{ name: "LevelStudyId" }}
                       margin="normal"
                       variant="outlined"
                     >
@@ -388,33 +382,16 @@ class TraineeProfile extends Component {
                       ))}
                     </TextField>
                   </Grid>
-
-                  {/* <FormControl>
-                  <InputLabel>Level</InputLabel>
-                  <Select
-                    value={this.state.data.LevelStudyId || ""}
-                    onChange={this.handleChange}
-                    inputProps={{
-                      name: "LevelStudyId"
-                    }}
-                  >
-                    {this.state.levelstudies.map(e => (
-                      <MenuItem key={e.id} value={e.id}>
-                        {e.label}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl> */}
                 </Grid>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={7}>
                 <Grid container>
                   <Grid item xs={12}>
                     <TextField
                       className="traineeProfileTextField"
                       type="text"
                       name="titre"
-                      placeholder="Intitulé de stage"
+                      label="Intitulé de stage"
                       defaultValue={data.titre}
                       margin="normal"
                       variant="outlined"
@@ -433,9 +410,7 @@ class TraineeProfile extends Component {
                               ? ConvertDate(this.state.data.dateStart)
                               : null
                           }
-                          InputLabelProps={{
-                            shrink: true
-                          }}
+                          InputLabelProps={{ shrink: true }}
                           margin="normal"
                           variant="outlined"
                         />
@@ -451,9 +426,7 @@ class TraineeProfile extends Component {
                               ? ConvertDate(this.state.data.dateEnd)
                               : null
                           }
-                          InputLabelProps={{
-                            shrink: true
-                          }}
+                          InputLabelProps={{ shrink: true }}
                           margin="normal"
                           variant="outlined"
                         />
@@ -466,11 +439,11 @@ class TraineeProfile extends Component {
                       type="text"
                       multiline
                       name="description"
-                      placeholder="Descriptions"
+                      label="Descriptions"
                       defaultValue={data.description}
                       margin="normal"
                       variant="outlined"
-                      rows="30"
+                      rows={this.countRow(width)}
                     />
                   </Grid>
                 </Grid>
@@ -484,6 +457,7 @@ class TraineeProfile extends Component {
           onClose={this.handleCloseTrainee}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
+          fullScreen={fullScreen}
         >
           <DialogContent>
             <StudentView
@@ -502,8 +476,13 @@ class TraineeProfile extends Component {
               size={FULL_RESTRICTED}
             />
           </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleCloseTrainee} color="primary">
+          <DialogActions className="btn_dialog_trainee">
+            <Button
+              onClick={this.handleCloseTrainee}
+              color="primary"
+              className="classic_button_blue"
+              size="large"
+            >
               {button}
             </Button>
           </DialogActions>
@@ -512,4 +491,4 @@ class TraineeProfile extends Component {
     );
   }
 }
-export default TraineeProfile;
+export default withWidth()(withMobileDialog()(TraineeProfile));

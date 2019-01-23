@@ -45,7 +45,8 @@
 .papers-offers-description {
   width: 100%;
   height: 100%;
-  /* border: 1px blue solid; */
+  border-left: 4px #ff8900 solid;
+  padding-left: 0.5vw;
 }
 .papers-offers-description-text {
   text-align: left;
@@ -56,12 +57,11 @@
   /* text-align: left; */
   max-height: 100%;
   max-width: 100%;
-  height: 33px;
+  height: 25px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-
 
   /* border: 1px blue solid; */
 
@@ -73,10 +73,11 @@
   width: 100%; */
 }
 .papers-offers-description-logos img {
-  height: 33px;
+  height: 25px;
   max-width: 100%;
-  margin-left: 0.3vw;
-  margin-right: 0.3vw;
+  /* margin-left: 0.3vw;
+  margin-right: 0.3vw; */
+  margin: 0 1vw;
 }
 
 /* .papers-offers-detail {
