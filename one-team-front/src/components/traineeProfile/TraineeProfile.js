@@ -182,7 +182,7 @@ class TraineeProfile extends Component {
             </h2>
           </div>
         </div>
-        <div className="general_margin">
+        <div className="general_margin trainee-profil-margin">
           <form onSubmit={this.onSubmit}>
             <Grid
               container
