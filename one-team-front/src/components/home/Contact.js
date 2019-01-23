@@ -17,7 +17,7 @@ const Contact = () => (
     <h2 style={{ color: "white", fontWeight: "bold" }} className="home_section">
       Contactez <span style={{ color: "#ff8900" }}>One Team</span>
     </h2>
-    <div style={styles.miniHR} />
+    <hr className="hr_horizontal_white" />
 
     <h2 style={{ color: "white", fontWeight: "normal" }}>
       Vous souhaitez en savoir plus..
