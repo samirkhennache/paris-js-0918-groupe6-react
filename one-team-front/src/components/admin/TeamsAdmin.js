@@ -79,7 +79,7 @@ class TeamsAdmin extends Component {
                           element.mission_id === e.id
                             ? element.dataApplications.map(student => (
                                 <div>
-                                  <Grid item xs={12} sm={6} md={6} lg={4}>
+                                  <Grid sm={6} md={6} lg={4}>
                                     <StudentApplication
                                       firstname={student.Trainee.firstname}
                                       town={student.Trainee.town}

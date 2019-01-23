@@ -84,19 +84,22 @@
   width: 10vw;
   height: 4px;
   border: 0;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 .hr_horizontal_white {
   background-color: #ffffff;
   width: 10vw;
   height: 4px;
   border: 0;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 .hr_horizontal_grey {
   background-color: #494642;
   width: 10vw;
   height: 4px;
   border: 0;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }

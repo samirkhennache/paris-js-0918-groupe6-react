@@ -8,6 +8,7 @@ import calendarAdmin from "../../img/icons/calendar-black.png";
 import levelTrainee from "../../img/icons/graduate-cap.png";
 import next from "../../img/icons/right-chevron(1).png";
 import teamAdmin from "../../img/icons/team.png";
+import logoCompany from "../../img/three-buildings.png";
 
 class CompanyPresentation extends Component {
   state = {
@@ -35,6 +36,12 @@ class CompanyPresentation extends Component {
     const { open } = this.state;
     return (
       <div className="bloc-company-admin">
+        <div className="bloc-logo-admin">
+          <div className="logo-company-admin">
+            <img className="logo-img" src={logoCompany} alt="logo company" />
+          </div>
+        </div>
+
         <div onClick={() => this.clickMissionSmall()}>
           <div className="icon-and-text company-admin">
             <div className="img-student-view">
