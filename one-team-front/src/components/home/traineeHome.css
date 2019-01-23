@@ -34,7 +34,7 @@
   /* background-color: #202020;
   padding: 15px 0;
   color: whitesmoke; */
-  background-image: url("../../img/Onepage2.jpg");
+  background-image: url("../../img/bandeau_footer_long.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -45,8 +45,7 @@
 }
 .home-overlay {
   position: absolute;
-  /* display: flex; */
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
   top: 0;
   bottom: 0;
   height: 100%;
