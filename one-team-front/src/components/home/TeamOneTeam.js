@@ -22,14 +22,14 @@ const styles = {
 
 const TeamOneTeam = () => (
   <div className="general_margin">
-    <h2 style={{ color: "white", fontWeight: "bold" }} className="home_section">
+    <h2 className="home_subsection_white">
       La Team <span style={{ color: "#ff8900" }}>One Team</span>
     </h2>
     <hr className="hr_horizontal_white" />
-    <Grid container className="border-test team-block" justify="center">
+    <Grid container className="team-block" justify="center">
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <div className="border-test team-item">
+        <div className=" team-item">
           <img className="img-team" src={imgAnonyme} alt="Gérard Magro" />
           <h3 className="name-team">Gérard Magro</h3>
           <p className="name-team">Fondateur</p>
@@ -37,7 +37,7 @@ const TeamOneTeam = () => (
       </Grid>
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <div className="border-test team-item">
+        <div className=" team-item">
           <img className="img-team" src={imgAnonyme} alt="Samir Khennache" />
           <h3 className="name-team">Samir Khennache</h3>
           <p className="name-team">Développeur</p>
@@ -45,7 +45,7 @@ const TeamOneTeam = () => (
       </Grid>
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <div className="border-test team-item">
+        <div className=" team-item">
           <img className="img-team" src={imgAnonyme} alt="Camille Coutens" />
           <h3 className="name-team">Camille Coutens</h3>
           <p className="name-team">Développeuse</p>
@@ -53,7 +53,7 @@ const TeamOneTeam = () => (
       </Grid>
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <div className="border-test team-item">
+        <div className=" team-item">
           <img className="img-team" src={imgAnonyme} alt="David Huveau" />
           <h3 className="name-team">David Huveau</h3>
           <p className="name-team">Développeur</p>
@@ -61,7 +61,7 @@ const TeamOneTeam = () => (
       </Grid>
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <div className="border-test team-item">
+        <div className=" team-item">
           <img className="img-team" src={imgAnonyme} alt="Mohamed Kerkeb" />
           <h3 className="name-team">Mohamed Kerkeb</h3>
           <p className="name-team">Développeur</p>
@@ -69,7 +69,7 @@ const TeamOneTeam = () => (
       </Grid>
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <div className="border-test team-item">
+        <div className=" team-item">
           <img className="img-team" src={imgAnonyme} alt="Paolo Catalani" />
           <h3 className="name-team">Paolo Catalani</h3>
           <p className="name-team">Développeur</p>
@@ -77,7 +77,7 @@ const TeamOneTeam = () => (
       </Grid>
       {/* --------------------------------------- */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <div className="border-test team-item">
+        <div className=" team-item">
           <img className="img-team" src={imgAnonyme} alt="Prudence Gaboriau" />
           <h3 className="name-team">Prudence Gaboriau</h3>
           <p className="name-team">Développeuse</p>

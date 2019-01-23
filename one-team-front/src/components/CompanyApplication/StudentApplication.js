@@ -171,7 +171,7 @@ class StudentApplication extends Component {
                 <Button
                   color="primary"
                   variant="contained"
-                  className="classic_button_orange"
+                  className="classic_button_green"
                   onClick={() => this.selectStudent(modeSelect)}
                 >
                   Ajouter
