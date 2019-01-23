@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import RemoveEye from "@material-ui/icons/RemoveRedEye";
 import CompanyPresentationFull from "./CompanyPresentationFull";
 import companyIcon from "../../img/icons/three-buildings-black.png";
 import ageTrainee from "../../img/icons/cake.png";
@@ -51,28 +53,40 @@ class CompanyPresentation extends Component {
           </div>
           <p className="mission_title">{titleMission}</p>
 
-          <div className="icon-and-text">
-            <div className="img-student-view">
-              <img src={townTrainee} alt="ville" />
+          <div className="bloc-criteres-button">
+            <div className="bloc-critere-admin">
+              <div className="icon-and-text">
+                <div className="img-student-view">
+                  <img src={townTrainee} alt="ville" />
+                </div>
+                <p className="criteres_big">{town}</p>
+              </div>
+              <div className="icon-and-text">
+                <div className="img-student-view">
+                  <img src={calendarAdmin} alt="calendrier" />
+                </div>
+                <p className="criteres_big">
+                  {new Date(dateStart).toLocaleDateString()}
+                </p>
+                <div className="img-student-view margin-chevron">
+                  <img src={next} alt="chevron" />
+                </div>
+                <p className="criteres_big">
+                  {new Date(dateEnd).toLocaleDateString()}
+                </p>
+              </div>
             </div>
-            <p className="criteres_big">{town}</p>
-          </div>
-          <div className="icon-and-text">
-            <div className="img-student-view">
-              <img src={calendarAdmin} alt="calendrier" />
-            </div>
-            <p className="criteres_big">
-              {new Date(dateStart).toLocaleDateString()}
-            </p>
-            <div className="img-student-view margin-chevron">
-              <img src={next} alt="chevron" />
-            </div>
-            <p className="criteres_big">
-              {new Date(dateEnd).toLocaleDateString()}
-            </p>
+            <Button
+              className="classic_button_blue"
+              color="primary"
+              variant="contained"
+            >
+              Voir l'offre
+              <RemoveEye className="traineeProfileIcon" />
+            </Button>
           </div>
         </div>
-        <hr className="hr_horizontal_orange" />
+        <hr className="hr_horizontal_orange hr-margin-admin" />
         <div className="icon-and-text">
           <div className="img-student-view">
             <img src={teamAdmin} alt="entreprise" />

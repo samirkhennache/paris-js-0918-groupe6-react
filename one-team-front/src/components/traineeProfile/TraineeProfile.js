@@ -1,26 +1,27 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { MakeCompletedUrl, ConvertDate } from "../../tools";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-
+import withMobileDialog from "@material-ui/core/withMobileDialog";
 import MenuItem from "@material-ui/core/MenuItem";
 import withWidth from "@material-ui/core/withWidth";
 import Grid from "@material-ui/core/Grid";
-import StudentView from "../CompanyApplication/StudentView";
-import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
+
 import RemoveEye from "@material-ui/icons/RemoveRedEye";
 import Save from "@material-ui/icons/Save";
+import StudentView from "../CompanyApplication/StudentView";
+import { FULL_RESTRICTED } from "../CompanyApplication/studentConstant";
+import { MakeCompletedUrl, ConvertDate } from "../../tools";
 import "./traineeProfile.css";
 
 class TraineeProfile extends Component {
   state = {
     selectedFile: null,
     openTrainee: false,
-    button: "fermer"
+    button: "Fermer"
   };
 
   traineeOpenConnexion = () => {
@@ -140,11 +141,11 @@ class TraineeProfile extends Component {
     const date = new Date(data);
     let day = date.getDate();
     if (day < 10) {
-      day = "0" + day;
+      day = `0${day}`;
     }
     let month = date.getMonth() + 1;
     if (month < 10) {
-      month = "0" + month;
+      month = `0${month}`;
     }
     const year = date.getFullYear();
     return `${year}-${month}-${day}`;
@@ -161,7 +162,8 @@ class TraineeProfile extends Component {
   countRow(dimensions) {
     if (dimensions !== "md" && dimensions !== "xl" && dimensions !== "lg") {
       return "10";
-    } else return "30";
+    }
+    return "30";
   }
 
   render() {
@@ -169,9 +171,7 @@ class TraineeProfile extends Component {
     if (this.state.data == null || this.state.levelstudies == null) {
       return <div>Loading</div>;
     }
-    console.log(this.state);
-    const { width } = this.props;
-    console.log(width);
+    const { width, fullScreen } = this.props;
     return (
       <div>
         <div className="traineeProfileTitleBackGroud">
@@ -182,7 +182,7 @@ class TraineeProfile extends Component {
             </h2>
           </div>
         </div>
-        <div className="general_margin">
+        <div className="general_margin trainee-profil-margin">
           <form onSubmit={this.onSubmit}>
             <Grid
               container
@@ -193,7 +193,7 @@ class TraineeProfile extends Component {
             >
               <Grid item xs={12} md={5}>
                 <div>
-                  <label for="file-input">
+                  <label htmlFor="file-input">
                     {this.state.data.pictures !== null ? (
                       <div>
                         <img
@@ -348,9 +348,7 @@ class TraineeProfile extends Component {
                           ? ConvertDate(this.state.data.dateBirth)
                           : null
                       }
-                      InputLabelProps={{
-                        shrink: true
-                      }}
+                      InputLabelProps={{ shrink: true }}
                       margin="normal"
                       variant="outlined"
                     />
@@ -373,9 +371,7 @@ class TraineeProfile extends Component {
                       label="Level"
                       value={this.state.data.LevelStudyId || ""}
                       onChange={this.handleChange}
-                      inputProps={{
-                        name: "LevelStudyId"
-                      }}
+                      inputProps={{ name: "LevelStudyId" }}
                       margin="normal"
                       variant="outlined"
                     >
@@ -414,9 +410,7 @@ class TraineeProfile extends Component {
                               ? ConvertDate(this.state.data.dateStart)
                               : null
                           }
-                          InputLabelProps={{
-                            shrink: true
-                          }}
+                          InputLabelProps={{ shrink: true }}
                           margin="normal"
                           variant="outlined"
                         />
@@ -432,9 +426,7 @@ class TraineeProfile extends Component {
                               ? ConvertDate(this.state.data.dateEnd)
                               : null
                           }
-                          InputLabelProps={{
-                            shrink: true
-                          }}
+                          InputLabelProps={{ shrink: true }}
                           margin="normal"
                           variant="outlined"
                         />
@@ -465,6 +457,7 @@ class TraineeProfile extends Component {
           onClose={this.handleCloseTrainee}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
+          fullScreen={fullScreen}
         >
           <DialogContent>
             <StudentView
@@ -483,8 +476,13 @@ class TraineeProfile extends Component {
               size={FULL_RESTRICTED}
             />
           </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleCloseTrainee} color="primary">
+          <DialogActions className="btn_dialog_trainee">
+            <Button
+              onClick={this.handleCloseTrainee}
+              color="primary"
+              className="classic_button_blue"
+              size="large"
+            >
               {button}
             </Button>
           </DialogActions>
@@ -493,4 +491,4 @@ class TraineeProfile extends Component {
     );
   }
 }
-export default withWidth()(TraineeProfile);
+export default withWidth()(withMobileDialog()(TraineeProfile));

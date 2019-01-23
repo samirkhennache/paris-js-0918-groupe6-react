@@ -27,7 +27,7 @@ class StudentApplicationList extends Component {
     const { applications, isLoaded } = this.state;
     return (
       <div className="application-bloc general_margin">
-        <Grid container justify="start">
+        <Grid container justify="center">
           {!isLoaded ? (
             <p> loading.. </p>
           ) : (

@@ -3,6 +3,7 @@ import axios from "axios";
 import { MakeCompletedUrl } from "../../tools";
 import ModalOffer from "../offerView/ModalOffer";
 import { MIDDLE } from "../offerView";
+import "../pages.css";
 
 import logoSearch from "../../img/icons8-chercher-208.png";
 
@@ -95,11 +96,11 @@ class FindOffers extends Component {
             className="Haut"
             xs
           >
-            <h3 className="titrePage">
+            <h3 className="page_title">
               Trouve la mission de stage de tes rêves !
             </h3>
 
-            <p className="count">
+            <p className="page_subtitle">
               Nombre d’offres disponibles : {count || "x"}{" "}
             </p>
             <form onSubmit={this.handleSubmit} className={classes.Form}>
@@ -129,7 +130,7 @@ class FindOffers extends Component {
               <Button
                 variant="contained"
                 type="submit"
-                className="searchButton"
+                className="searchButton classic_button_orange"
               >
                 <img
                   src={require("../../img/icons8-chercher-208.png")}

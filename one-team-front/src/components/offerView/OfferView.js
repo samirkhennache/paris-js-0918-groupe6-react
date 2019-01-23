@@ -12,6 +12,7 @@ import refuse from "../../img/icons/cross.png";
 import refuseWhite from "../../img/icons/cross(white).png";
 
 import "./Button.css";
+import "../pages.css";
 
 const OfferView = props => {
   const {
@@ -77,21 +78,22 @@ const OfferView = props => {
       return (
         <div className="OfferViewMiddle">
           <div className="LogoMiddle">
-            <h4>{company}</h4>
+            <img src="img/three-buildings-black.png" alt="building" />
           </div>
           <div className="contenueMiddle">
-            <h3 className="titleMiddle">{titleMission} </h3>
-            <p className="introMiddle">{intro}</p>
+            <h3 className="companyMiddle">{company} </h3>
+            <p className="titleMiddle">{titleMission}</p>
             <div className="milieuMiddle">
+              <p className="dateMiddle">
+                <img src="img/calendar.png" alt="calendar" />
+                {new Date(dateStart).toLocaleDateString()}
+                {/*- fin: {new Date(dateEnd).toLocaleDateString()} */}
+              </p>
               <p className="townMiddle">
                 <img src="img/placeholder-filled-point.png" alt="pointer" />
                 {town}
               </p>
-              <p className="dateMiddle">
-                <img src="img/calendar.png" alt="calendar" />
-                début: {new Date(dateStart).toLocaleDateString()}
-                {/*- fin: {new Date(dateEnd).toLocaleDateString()} */}
-              </p>
+
               {/* <p>fin: {new Date(dateEnd).toLocaleDateString()} </p> */}
             </div>
           </div>
@@ -101,19 +103,42 @@ const OfferView = props => {
     case "FULL": {
       return (
         <div className="OfferViewFull">
-          <h4 className="LogoFull">{company}</h4>
-          <h3 className="titleFull"> {titleMission} </h3>
-          <p className="introFull">{intro} </p>
+          <h4 className="regular_black_title LogoFull">{company}</h4>
+          <h3 className="regular_orange_title">La mission</h3>
+          <p className="titleFull">{titleMission}</p>
+
           <div className="milieuFull">
-            <p className="townFull">{town} </p>
+            <p className="townFull ">
+              <img
+                className="imageFull"
+                src="img/placeholder-filled-point.png"
+                alt="pointer"
+              />
+              {town}{" "}
+            </p>
             <p className="dateFull">
-              {" "}
-              début: {new Date(dateStart).toLocaleDateString()} - fin:{" "}
+              <img
+                className="imageFull"
+                src="img/calendar.png"
+                alt="calendar"
+              />
+              {new Date(dateStart).toLocaleDateString()}
+              <img
+                className="imageFull"
+                src="img/right-chevron.png"
+                alt="chevron"
+              />
               {new Date(dateEnd).toLocaleDateString()}
             </p>
             {/* <p> fin: {new Date(dateEnd).toLocaleDateString()} </p> */}
-            <p className="levelFull"> niveau d'étude: {LevelStudy} </p>
+            <p className="levelFull">
+              <img className="imageFull" src="img/graduate-cap.png" alt="" />
+              {LevelStudy}{" "}
+            </p>
           </div>
+          <h3 className="regular_orange_title">EN QUELQUES MOTS</h3>
+          <p className="introFull">{intro} </p>
+          <h3 className="regular_orange_title">DÉTAILS</h3>
           <p className="descripFull">{RenderHTML(description)} </p>
         </div>
       );
