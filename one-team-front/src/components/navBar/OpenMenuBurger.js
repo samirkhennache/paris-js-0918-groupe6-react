@@ -12,6 +12,9 @@ const styles = {
   },
   fullList: {
     width: "auto"
+  },
+  menuButton: {
+    color: "white"
   }
 };
 
@@ -72,7 +75,7 @@ class OpenMenuBurger extends React.Component {
       <div className="open-menu-burger">
         <IconButton
           className={classes.menuButton}
-          color="black"
+          color="white"
           aria-label="Menu"
           onClick={this.toggleDrawer("left", true)}
         >
