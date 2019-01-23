@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import TraineeHome from "./traineePart/TraineeHome";
 import OnePage from "./companyPart/OnePage";
-import Contact from "./Contact";
 import "./home.css";
 import "./traineeHome.css";
 import TeamOneTeam from "./TeamOneTeam";
@@ -16,9 +15,6 @@ class Home extends Component {
         <TraineeHome {...this.props} />
         <div className="background-team">
           <TeamOneTeam />
-        </div>
-        <div>
-          <Contact />
         </div>
       </div>
     );
