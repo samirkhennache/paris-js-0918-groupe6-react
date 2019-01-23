@@ -22,7 +22,7 @@ const styles = {
 
 const TeamOneTeam = () => (
   <div className="general_margin">
-    <h2 style={{ color: "white", fontWeight: "bold" }} className="home_section">
+    <h2 className="home_subsection_white">
       La Team <span style={{ color: "#ff8900" }}>One Team</span>
     </h2>
     <hr className="hr_horizontal_white" />

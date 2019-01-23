@@ -14,7 +14,7 @@ const styles = {
 
 const Contact = () => (
   <div className="contact-home general_margin">
-    <h2 style={{ color: "white", fontWeight: "bold" }} className="home_section">
+    <h2 className="home_subsection_white">
       Contactez <span style={{ color: "#ff8900" }}>One Team</span>
     </h2>
     <hr className="hr_horizontal_white" />
