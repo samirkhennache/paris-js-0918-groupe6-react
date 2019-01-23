@@ -3,3 +3,8 @@
   left: 70px;
   right: 70px;
 }
+@media only screen and (max-width: 600px) {
+  .logo-pages-size {
+    width: 100px;
+  }
+}

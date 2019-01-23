@@ -54,7 +54,12 @@ const ButtonAppBar = props => {
             <div className="logo-pages border">
               <NavLink to="/">
                 <div className="logo-pages-element">
-                  <img src={logoOneTeam} width="150" alt="Notre logo" />
+                  <img
+                    className="logo-pages-size"
+                    src={logoOneTeam}
+                    width="150"
+                    alt="Notre logo"
+                  />
                 </div>
               </NavLink>
             </div>
