@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 
-import "./Cursus.css";
+import "./cursus.css";
 import homejob from "../../../img/icons/home-job.png";
 import homemeeting from "../../../img/icons/home-meeting.png";
 import homenotebook from "../../../img/icons/home-notebook.png";
