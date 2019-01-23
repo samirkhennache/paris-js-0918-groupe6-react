@@ -53,7 +53,7 @@ class CompanyOffers extends Component {
 
   render() {
     const { missions, company } = this.state;
-    // console.log("missions", missions);
+    console.log("company", company);
 
     return (
       <div className="mesMissions">
@@ -99,7 +99,7 @@ class CompanyOffers extends Component {
               idMission={e.id}
               isFull={e.isFull}
               intro={e.intro}
-              company={company.companyName}
+              companyName={company.companyName}
               town={e.town}
               LevelStudy={e.LevelStudy.label}
               handlerUpdateMission={this.handlerUpdateMission}

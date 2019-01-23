@@ -23,6 +23,8 @@ import OfferView from "./OfferView";
 import { FULL } from "./constants";
 import ModalConfimation from "./ModalConfirmation";
 import "./offerView.css";
+import "../pages.css";
+import withMobileDialog from "@material-ui/core/withMobileDialog";
 
 const DialogTitle = withStyles(theme => ({
   root: {
@@ -104,12 +106,12 @@ class ModalOffer extends Component {
 
   render() {
     const { open, content, openToConfirm } = this.state;
-    const { size, titleMission, missionId } = this.props;
+    const { size, titleMission, missionId, fullScreen } = this.props;
     switch (size) {
       case "SMALL": {
         return (
           <div className="ModalOffer application-item">
-            <Paper>
+            <Paper className="container_company_manage">
               <div className="application-paper">
                 <OfferView
                   key={`${missionId}-${titleMission}`}
@@ -119,7 +121,7 @@ class ModalOffer extends Component {
                 <MuiThemeProvider theme={theme}>
                   <Button
                     className="classic_button_orange"
-                    color="primary"
+                    // color="primary"
                     variant="contained"
                     onClick={this.handleOpen}
                   >
@@ -194,6 +196,9 @@ class ModalOffer extends Component {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
               onClose={this.handleClose}
+              fullWidth
+              maxWidth="lg"
+              fullScreen={fullScreen}
             >
               <DialogTitle
                 id="customized-dialog-title"
@@ -243,4 +248,4 @@ const theme = createMuiTheme({
 const mapStateToProps = state => ({
   traineeId: state.student.id
 });
-export default connect(mapStateToProps)(ModalOffer);
+export default connect(mapStateToProps)(withMobileDialog()(ModalOffer));

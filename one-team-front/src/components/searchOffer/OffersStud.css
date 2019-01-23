@@ -1,5 +1,4 @@
 .searchButton {
-  background-color: #ff8900 !important;
   color: white !important;
   text-transform: initial !important;
   font-weight: 900 !important;
@@ -11,9 +10,12 @@
 
 .Haut {
   background-image: url("../../img/Onepage2.jpg");
-  background-size: center;
+  background-size: cover;
   background-repeat: no-repeat;
-  height: 250px;
+  background-position: center;
+  position: relative;
+  height: 40vh;
+  z-index: 0;
 }
 
 .titrePage {
