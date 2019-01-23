@@ -129,7 +129,7 @@ class ConnexionTrainee extends Component {
           />
           <Button
             variant="contained"
-            className="buttonCreateForm"
+            className="buttonCreateForm classic_button_orange"
             type="submit"
           >
             Se connecter
@@ -148,7 +148,11 @@ class ConnexionTrainee extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button
+              className="police_button_black"
+              onClick={this.handleClose}
+              color="primary"
+            >
               {button}
             </Button>
           </DialogActions>
