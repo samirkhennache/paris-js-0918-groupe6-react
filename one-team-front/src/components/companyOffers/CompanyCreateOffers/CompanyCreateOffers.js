@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import Grid from "@material-ui/core/Grid";
-import { withStyles, createMuiTheme } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import { MakeCompletedUrl, ConvertDate } from "../../../tools";
@@ -30,7 +30,8 @@ const styles = theme => ({
   centerButton: {
     [theme.breakpoints.down("sm")]: {
       justifyContent: "center"
-    }
+    },
+    margin: "20px"
   },
   selectControl: {
     width: "100%"
@@ -193,7 +194,7 @@ const CompanyCreateOffers = class extends React.Component {
                   lg={10}
                   md={10}
                   className={classes.marginContainer}
-                  justify="flex-end"
+                  // justify="flex-end"
                 >
                   <TextField
                     placeholder="Titre de la mission de stage"
@@ -327,17 +328,16 @@ const CompanyCreateOffers = class extends React.Component {
             >
               Annuler
             </Button>
-            <div className="btn">
-              <Button
-                className="classic_button_orange"
-                onClick={this.saveMission}
-                variant="contained"
-                color="primary"
-                size="large"
-              >
-                {isEditMode ? "Modifier" : "Créer"}
-              </Button>
-            </div>
+
+            <Button
+              className="classic_button_orange"
+              onClick={this.saveMission}
+              variant="contained"
+              color="primary"
+              size="large"
+            >
+              {isEditMode ? "Modifier" : "Créer"}
+            </Button>
           </DialogActions>
         </Dialog>
       </div>
