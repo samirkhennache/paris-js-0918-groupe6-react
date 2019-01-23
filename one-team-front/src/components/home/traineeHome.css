@@ -16,8 +16,17 @@
   margin: 5px 0;
   color: white;
 }
+.team-block {
+  /* margin: 0 40px; */
+  padding: 0 70px;
+}
+@media (max-width: 600px) {
+  .team-block {
+    padding: 0 40px;
+  }
+}
 .team-item {
-  margin: 20px 10px;
+  margin: 30px 20px;
 }
 
 /********************* CONTACT *********************/
