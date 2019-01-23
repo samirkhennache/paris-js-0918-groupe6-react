@@ -38,12 +38,7 @@ class TraineeOffers extends Component {
     return (
       <div className="general-offers general_margin">
         {/* <h2>Parcourir les offres de stage</h2> */}
-        <h2
-          style={{ color: "white", fontWeight: "bold" }}
-          className="home_section"
-        >
-          Parcourir les offres de stage
-        </h2>
+        <h2 className="home_subsection_white">Parcourir les offres de stage</h2>
         <hr className="hr_horizontal_white" />
 
         <div className="bloc-offers">

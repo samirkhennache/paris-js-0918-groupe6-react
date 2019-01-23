@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import OpenMenuBurger from "./OpenMenuBurger";
 import "./navBar.css";
-import logoOneTeam from "../../img/Logo.png";
+import logoOneTeam from "../../img/LogoSans.png";
 
 const styles = {
   root: {
@@ -54,7 +54,12 @@ const ButtonAppBar = props => {
             <div className="logo-pages border">
               <NavLink to="/">
                 <div className="logo-pages-element">
-                  <img src={logoOneTeam} width="200" alt="Notre logo" />
+                  <img
+                    className="logo-pages-size"
+                    src={logoOneTeam}
+                    width="150"
+                    alt="Notre logo"
+                  />
                 </div>
               </NavLink>
             </div>
