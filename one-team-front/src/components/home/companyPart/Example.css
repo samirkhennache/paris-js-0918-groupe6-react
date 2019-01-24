@@ -11,6 +11,10 @@
   color: white;
 }
 
+.exampleThemes {
+  padding: 5%;
+}
+
 /*  SECTIONS  */
 .section {
   clear: both;

@@ -7,8 +7,12 @@ export default class Example extends Component {
   render() {
     return (
       <div className="exampleBottle general_margin">
-        <h3 className="home_subsection_white">Exemples de thèmes de mission</h3>
-        <hr className="hr_horizontal_white" />
+        <div className="exampleThemes">
+          <h3 className="home_subsection_white">
+            Exemples de thèmes de mission
+          </h3>
+          <hr className="hr_horizontal_white" />
+        </div>
         <div className="section group">
           <div className="col span_1_of_2">
             <div className="list_text">

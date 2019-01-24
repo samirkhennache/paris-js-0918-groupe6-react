@@ -6,10 +6,12 @@ export default class Services extends Component {
   render() {
     return (
       <div className="servicesBottle general_margin">
-        <h3 className="home_subsection_white">
-          Les Services <span className="orange">One Team</span>
-        </h3>
-        <hr className="hr_horizontal_white" />
+        <div className="servicesOneTeam">
+          <h3 className="home_subsection_white">
+            Les Services <span className="orange">One Team</span>
+          </h3>
+          <hr className="hr_horizontal_white" />
+        </div>
         <div class="section group">
           <div class="col1 span_1_of_3">
             <img
