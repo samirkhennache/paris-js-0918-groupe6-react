@@ -81,8 +81,12 @@ class TraineeOffers extends Component {
                       className="papers-offers-description-text"
                       // style={{ border: "2px pink solid" }}
                     >
-                      <p className="titleMiddle">{element.title}</p>
-                      <p>{element.content}</p>
+                      <div className="blocTitleContent">
+                        <p className="titleMiddle regular_orange_title">
+                          {element.title}
+                        </p>
+                        <p>{element.content}</p>
+                      </div>
                     </Grid>
                     <Grid
                       item
@@ -93,19 +97,19 @@ class TraineeOffers extends Component {
                         className="papers-offers-description-logo"
                         // style={{ border: "2px green solid" }}
                       >
-                        <img src="img/calendar.png" alt="calendar" />
-                      </div>
-                      <p>{element.createdDate}</p>
-                      <div
-                        className="papers-offers-description-logo"
-                        // style={{ border: "2px green solid" }}
-                      >
                         <img
                           src="img/placeholder-filled-point.png"
                           alt="point"
                         />
                       </div>
                       <p>{element.town}</p>
+                      <div
+                        className="papers-offers-description-logo"
+                        // style={{ border: "2px green solid" }}
+                      >
+                        <img src="img/calendar.png" alt="calendar" />
+                      </div>
+                      <p>{element.createdDate}</p>
                     </Grid>
                   </Grid>
                 </Grid>
