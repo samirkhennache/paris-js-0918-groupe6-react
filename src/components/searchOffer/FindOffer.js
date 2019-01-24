@@ -201,13 +201,8 @@ class FindOffers extends Component {
             </form>
           </Grid> */}
         <div className="general_margin content-search-offers">
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            <Grid item xs={12}>
+          <Grid container justify="center" alignItems="center">
+            <Grid xs={12}>
               {result.map(element => (
                 <div className="bloc-modalOffers">
                   <ModalOffer

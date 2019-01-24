@@ -184,7 +184,7 @@ class ModalOffer extends Component {
       default:
         return (
           <div className="bloc-offers">
-            <Paper className="Middle">
+            <Paper className="Middle" elevation={3}>
               <div className="middle-content">
                 <Grid
                   container
