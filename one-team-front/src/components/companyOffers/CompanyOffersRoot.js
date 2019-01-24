@@ -15,7 +15,7 @@ class CompanyOffersRoot extends Component {
   componentDidMount() {
     const idCompany = sessionStorage.getItem("token");
     axios.get(MakeCompletedUrl(`company/${idCompany}`)).then(res => {
-      console.log("data", res.data);
+      // console.log("data", res.data);
       this.setState({
         missions: res.data.Missions.sort((a, b) => a - b),
         company: res.data,
@@ -70,7 +70,7 @@ class CompanyOffersRoot extends Component {
 
   render() {
     const { missions, isLoaded, trainee, company } = this.state;
-    console.log("trainee", trainee);
+    // console.log("trainee", trainee);
     return (
       <div>
         {!isLoaded ? (
