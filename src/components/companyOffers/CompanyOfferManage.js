@@ -251,7 +251,7 @@ class CompanyOfferManage extends Component {
             {disabled || isFull ? (
               <Grid item container xs={12} justify="center">
                 <Grid item lg={5} md={6} sm={5} xs={8}>
-                  <Button type="primary" disabled>
+                  <Button variant="contained" color="primary" disabled>
                     Valider ma team
                   </Button>
                 </Grid>
