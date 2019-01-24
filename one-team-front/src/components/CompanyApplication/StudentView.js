@@ -426,15 +426,6 @@ class StudentView extends Component {
                   ? descriptionTrainee
                   : "description : à compléter"}
               </p>
-              <div className="bloc-contact-full">
-                <p className="regular_orange_title">Contact</p>
-                <p className="regular_black_subtitle contact-company-full">
-                  {firstname} {lastname}
-                </p>
-
-                <p className="criteres_big contact-company-full">{phone}</p>
-                <p className="criteres_big contact-company-full">{email}</p>
-              </div>
             </div>
           </div>
         );
