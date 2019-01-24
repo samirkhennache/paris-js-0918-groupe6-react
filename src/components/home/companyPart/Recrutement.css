@@ -1,0 +1,75 @@
+.recrutTiret {
+  border: 3px #ff8900 solid;
+  margin-left: 45%;
+  margin-right: 45%;
+}
+.recrutementBottle {
+  padding-top: 5%;
+  padding-bottom: 2%;
+}
+.recrutementTitle {
+  margin-top: 0px;
+  font-size: 5vh;
+  color: #ff8900;
+}
+
+.recrutementProcess {
+  padding-bottom: 7%;
+}
+
+/*  SECTIONS  */
+.section {
+  clear: both;
+  padding: 0px;
+  margin: 0px;
+}
+
+/*  COLUMN SETUP  */
+.col {
+  display: block;
+  float: left;
+  margin: 1% 0 1% 1.3%;
+}
+.col:first-child {
+  margin-left: 0;
+}
+
+/*  GROUPING  */
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1; /* For IE 6/7 */
+}
+
+/*  GRID OF FOUR  */
+.span_4_of_4 {
+  width: 100%;
+}
+.span_3_of_4 {
+  width: 74.67%;
+}
+.span_2_of_4 {
+  width: 49.35%;
+}
+.span_1_of_4 {
+  width: 24.02%;
+}
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  .col {
+    margin: 1% 0 1% 0%;
+  }
+  .span_1_of_4,
+  .span_2_of_4,
+  .span_3_of_4,
+  .span_4_of_4 {
+    width: 100%;
+  }
+}

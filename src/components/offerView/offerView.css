@@ -1,0 +1,199 @@
+/* ***************************  APPLICATION OFFER VIEW ************************ */
+.application-bloc {
+  padding: 20px 0;
+}
+.application-date {
+  display: flex;
+  align-items: center;
+}
+.date-icon {
+  width: 25px;
+  margin-right: 4px;
+}
+@media all and (max-width: 320px) {
+  .date-icon {
+    width: 17px;
+  }
+}
+.date-icon img {
+  width: 100%;
+}
+.application-satut {
+  display: flex;
+  align-items: center;
+}
+.statut-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #494642;
+  border-radius: 60px;
+}
+.statut-icon-blue {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(0, 70, 100);
+  border-radius: 60px;
+}
+.statut-icon-red img {
+  margin-top: 5px;
+  text-align: center;
+  width: 60%;
+}
+.statut-icon-red {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(255, 0, 0);
+  border-radius: 60px;
+}
+.statut-icon-blue img {
+  width: 60%;
+  margin-top: 5px;
+  text-align: center;
+}
+.statut-icon img {
+  width: 60%;
+  opacity: 0.4;
+  margin-top: 5px;
+  text-align: center;
+}
+.application-date-statut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media all and (min-width: 600px) and (max-width: 860px) {
+  .application-date-statut {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .application-satut {
+    padding: 5px 0 0 0;
+  }
+}
+.application-hr {
+  width: 100%;
+}
+.application-paper {
+  padding: 20px;
+}
+.application-item {
+  margin: 15px;
+}
+
+.application-mission {
+  padding-bottom: 15px;
+  max-height: 80px;
+  min-height: 80px;
+  overflow: auto;
+}
+.small-offerView {
+  margin-bottom: 20px;
+}
+
+/****************************************** MIDDLE **************************************/
+.header-search {
+  margin-bottom: 60px;
+}
+.Middle {
+  margin: 0 0 40px 0;
+  padding: 10px;
+}
+.middle-content {
+  margin: 15px;
+}
+.grid-button-offers {
+  width: 100%;
+}
+.content-Middle {
+  border-left: 4px solid  #ff8900;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 200px;
+}
+.company-offer {
+  text-align: left;
+}
+.date-town-offer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.margin-date {
+  margin-right: 10px;
+}
+.LogoMiddle {
+  background-color: grey;
+  min-height: 100px;
+  min-width: 100px;
+  /* height: 100px;
+  width: 100px; */
+  border-radius: 50%;
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.LogoMiddle img {
+  width: 60%;
+
+  text-align: center;
+}
+
+
+/* Fin Middle */
+
+/***************************************** FULL ***************************************/
+
+.OfferViewFull {
+  text-align: left;
+  color: black;
+}
+.center-company-full {
+  text-align: center;
+}
+.bloc-contact-full {
+  padding-top: 30px;
+}
+.contact-company-full {
+  text-align: left;
+}
+.introFull {
+  padding-bottom: 30px;
+}
+
+.milieuFull {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.townFull,
+.dateFull,
+.levelFull {
+  display: flex;
+  align-items: center;
+  padding: 3px 0;
+}
+
+.imageFull {
+  height: 25px;
+  margin-right: 10px;
+}
+
+@media all and (max-width: 768px) {
+  .milieuFull {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .townFull,
+  .dateFull,
+  .levelFull {
+    margin: 0;
+  }
+}
+
+/* FinFULL */
