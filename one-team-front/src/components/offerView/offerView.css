@@ -126,15 +126,20 @@
 }
 .LogoMiddle {
   background-color: grey;
+  min-height: 100px;
+  min-width: 100px;
   /* height: 100px;
-  width: 100px;
-  border-radius: 50px; */
+  width: 100px; */
+  border-radius: 50%;
   border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 .LogoMiddle img {
   width: 60%;
-  height: 60%;
+
   text-align: center;
 }
 
