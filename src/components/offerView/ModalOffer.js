@@ -156,7 +156,11 @@ class ModalOffer extends Component {
               <DialogActions>
                 {size === "SMALL" ? (
                   <Grid container justify="center">
-                    <Button size="large" className="classic_button_blue">
+                    <Button
+                      size="large"
+                      className="classic_button_blue"
+                      onClick={this.handleClose}
+                    >
                       Fermer
                     </Button>
                   </Grid>
@@ -241,7 +245,12 @@ class ModalOffer extends Component {
               <DialogActions>
                 {size === "SMALL" ? (
                   <Grid container justify="center">
-                    <Button size="large" className="classic_button_blue">
+                    onClick={this.handleClose}
+                    <Button
+                      size="large"
+                      className="classic_button_blue"
+                      onClick={this.handleClose}
+                    >
                       Fermer
                     </Button>
                   </Grid>
