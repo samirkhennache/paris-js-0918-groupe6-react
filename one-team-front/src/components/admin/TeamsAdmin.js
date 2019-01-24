@@ -30,7 +30,7 @@ class TeamsAdmin extends Component {
   render() {
 
     const { fullMission, trainee } = this.state;
-    console.log(fullMission)
+    console.log(fullMission, trainee)
     return (
       <div>
         <div className="home-company">
@@ -90,6 +90,7 @@ class TeamsAdmin extends Component {
                                   <Paper elevation={4}>
                                     <StudentApplication
                                       firstname={student.Trainee.firstname}
+                                      lastname={student.Trainee.lastname}
                                       town={student.Trainee.town}
                                       pictures={student.Trainee.pictures}
                                       // dateStart={student.Trainee.dateStart}
@@ -98,6 +99,7 @@ class TeamsAdmin extends Component {
                                       descriptionTrainee={
                                         student.Trainee.description
                                       }
+                                      age={student.Trainee.dateBirth}
                                       LevelStudy={
                                         student.LevelStudy
                                           ? student.LevelStudy.label
