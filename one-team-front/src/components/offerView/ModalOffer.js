@@ -217,7 +217,12 @@ class ModalOffer extends Component {
                     postuler
                   </Button>
                 ) : (
-                  <Button onClick={this.handleClickApplicate} color="primary">
+                  <Button
+                    className="classic_button_blue"
+                    size="large"
+                    onClick={this.handleClickApplicate}
+                    color="primary"
+                  >
                     postuler
                   </Button>
                 )}
