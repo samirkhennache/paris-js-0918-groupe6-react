@@ -112,7 +112,12 @@ class Cursus extends Component {
             <TraineeCreateConnexion {...this.props} />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleCloseTrainee} color="primary">
+            <Button
+              className="classic_button_blue"
+              size="large"
+              onClick={this.handleCloseTrainee}
+              color="primary"
+            >
               {button}
             </Button>
           </DialogActions>
