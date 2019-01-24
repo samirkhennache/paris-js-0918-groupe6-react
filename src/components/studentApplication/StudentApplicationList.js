@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { MakeCompletedUrl } from "../../tools";
 import Grid from "@material-ui/core/Grid";
+import noResult from "../../img/icons/delete-button.png";
 import ModalOffer from "../offerView/ModalOffer";
 import { SMALL } from "../offerView";
 import "../offerView/offerView.css";
@@ -26,29 +27,39 @@ class StudentApplicationList extends Component {
   render() {
     const { applications, isLoaded } = this.state;
     return (
-      <div className="application-bloc general_margin">
-        <Grid container justify="center">
-          {!isLoaded ? (
-            <p> loading.. </p>
-          ) : (
-            applications.map(element => (
-              <Grid item xs={12} sm={6} md={6} lg={4}>
-                <ModalOffer
-                  size={SMALL}
-                  key={`${element.Mission.id}-${element.Mission.titleMission}`}
-                  missionId={element.Mission.id}
-                  titleMission={element.Mission.titleMission}
-                  company={element.Mission.Company.companyName}
-                  dateStart={element.Mission.dateStart}
-                  dateEnd={element.Mission.dateEnd}
-                  statusAppli={element.statusAppli}
-                  description={element.Mission.description}
-                  {...this.props}
-                />
-              </Grid>
-            ))
-          )}
-        </Grid>
+      <div>
+        {isLoaded && applications.lenght !== 0 ? (
+          <div className="application-bloc general_margin">
+            <Grid container justify="center">
+              {applications.map(element => (
+                <Grid item xs={12} sm={6} md={6} lg={4}>
+                  <ModalOffer
+                    size={SMALL}
+                    key={`${element.Mission.id}-${
+                      element.Mission.titleMission
+                    }`}
+                    missionId={element.Mission.id}
+                    titleMission={element.Mission.titleMission}
+                    company={element.Mission.Company.companyName}
+                    dateStart={element.Mission.dateStart}
+                    dateEnd={element.Mission.dateEnd}
+                    statusAppli={element.statusAppli}
+                    description={element.Mission.description}
+                    {...this.props}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+        ) : (
+          <p className="regular_text">Loading</p>
+          // <div className="noResult-trainee-applications">
+          //   <img src={noResult} alt="pas de résultat" />
+          //   <p className="noResult-search regular_text">
+          //     Tu n'a pas encore candidaté à des offres de stages
+          //   </p>
+          // </div>
+        )}
       </div>
     );
   }
