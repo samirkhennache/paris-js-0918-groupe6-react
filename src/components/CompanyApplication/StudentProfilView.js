@@ -17,7 +17,6 @@ const styles = theme => ({
 });
 
 class StudentProfilView extends Component {
-
   handleCloseFull = () => {
     const { close } = this.props;
     close();

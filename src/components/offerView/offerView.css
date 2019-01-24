@@ -202,8 +202,7 @@
 
   .milieuMiddle {
     flex-direction: column;
-    /* align-items: flex-end; */
-    justify-content: ;
+    /* align-items: flex-end;no */
     border: 1px solid red;
   }
 }
