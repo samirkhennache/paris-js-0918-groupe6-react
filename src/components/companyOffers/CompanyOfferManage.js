@@ -155,8 +155,14 @@ class CompanyOfferManage extends Component {
           <Grid item container xs={12} justify="flex-start">
             <p className="regular_orange_title">LA MISSION</p>
           </Grid>
-          <Grid item container xs={12} justify="flex-start">
-            <p>{titleMission}</p>
+          <Grid
+            item
+            container
+            xs={12}
+            justify="flex-start"
+            style={{ marginBottom: "10px" }}
+          >
+            <p className="mission_title left">{titleMission}</p>
           </Grid>
           <Grid container item xs={12} className="btn_border">
             <Grid item xs={12} md={6} lg={6}>

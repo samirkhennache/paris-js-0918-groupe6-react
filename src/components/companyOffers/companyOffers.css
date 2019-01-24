@@ -78,6 +78,11 @@
   position: relative;
 }
 
+.company-offer-manage {
+  /* border: 3px solid green; */
+  margin-bottom: 40px;
+}
+
 @media (max-width: 768px) {
   .bloc-company-Offres {
     padding: 0 20px;

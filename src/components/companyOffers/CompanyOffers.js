@@ -53,7 +53,7 @@ class CompanyOffers extends Component {
 
   render() {
     const { missions, company } = this.state;
-    console.log("company", company);
+    // console.log("company", company);
 
     return (
       <div className="mesMissions">
@@ -87,7 +87,7 @@ class CompanyOffers extends Component {
           onClose={this.showModal}
           handlerCreateMission={this.handlerCreateMission}
         />
-        <div>
+        <div className="company-offer-manage">
           {missions.map((e, index) => (
             <CompanyOfferManage
               key={index}
