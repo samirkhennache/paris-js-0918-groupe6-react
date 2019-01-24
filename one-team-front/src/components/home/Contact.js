@@ -23,12 +23,13 @@ const Contact = () => (
       <h2 style={{ color: "white", fontWeight: "normal" }}>
         Vous souhaitez en savoir plus..
       </h2>
-      <p>
-        Appelez-nous, nous serons ravis d’échanger avec vous sur vos projets.
-      </p>
       <h2 style={{ color: "white", fontWeight: "normal" }}>Gérard Magro</h2>
-      <p>06.18.44.88.20</p>
-      <p>gerard.magro@one-team.fr</p>
+      <p style={{ color: "white", fontWeight: "normal", margin: "0" }}>
+        06.18.44.88.20
+      </p>
+      <p style={{ color: "white", fontWeight: "normal", margin: "0" }}>
+        gerard.magro@one-team.fr
+      </p>
       <div style={{ marginTop: "50px" }}>
         <img className="social-media" src={facebook} alt="facebook" />
         <img className="social-media" src={twitter} alt="facebook" />
