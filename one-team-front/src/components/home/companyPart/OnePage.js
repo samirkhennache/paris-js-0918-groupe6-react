@@ -109,7 +109,12 @@ export default class OnePage extends Component {
             <TraineeCreateConnexion {...this.props} />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleCloseTrainee} color="primary">
+            <Button
+              className="classic_button_blue"
+              size="large"
+              onClick={this.handleCloseTrainee}
+              color="primary"
+            >
               {button}
             </Button>
           </DialogActions>
@@ -126,7 +131,12 @@ export default class OnePage extends Component {
             <CompanyCreateConnexion {...this.props} />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleCloseCompany} color="primary">
+            <Button
+              className="classic_button_blue"
+              size="large"
+              onClick={this.handleCloseCompany}
+              color="primary"
+            >
               {button}
             </Button>
           </DialogActions>
