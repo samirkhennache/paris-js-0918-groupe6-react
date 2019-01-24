@@ -5,13 +5,12 @@ import axios from "axios";
 import { SMALL } from "./studentConstant";
 import { MakeCompletedUrl } from "../../tools";
 
-import Grid from "@material-ui/core/Grid";
-
 import StudentApplication from "./StudentApplication";
 
 import write from "../../img/icons/writing.png";
-
+import Applications from "../../img/students-cap.svg";
 import "./ViewStudent.css";
+import "./CompanyApplicationsList.css";
 
 class CompanyApplicationsList extends Component {
   state = {
@@ -67,7 +66,10 @@ class CompanyApplicationsList extends Component {
     console.log(trainee);
     const { mode, modeRefuse, modeSelect } = this.props;
     return (
-      <div style={{ marginTop: 80 }} className="general_margin">
+      <div
+        style={{ marginTop: 80, marginBottom: 40 }}
+        className="general_margin"
+      >
         {isLoaded
           ? this.sortData(trainee).map(element => (
               <div>
@@ -120,6 +122,18 @@ class CompanyApplicationsList extends Component {
               </div>
             ))
           : "loading"}
+        {!trainee.length && (
+          <div>
+            <img
+              className="no-applications"
+              src={Applications}
+              alt="No Applications"
+            />
+            <p style={{ marginBottom: 80 }}>
+              Vous n'avez pas encore de candidats...
+            </p>
+          </div>
+        )}
       </div>
     );
   }
