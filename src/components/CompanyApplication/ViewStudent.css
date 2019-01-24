@@ -81,8 +81,10 @@
 }
 .item-small-admin {
   padding: 20px;
-
 }
 @media (max-width: 768px) {
+}
 
+.center_button {
+  margin: auto !important;
 }
