@@ -7,7 +7,6 @@ import {
 } from "@material-ui/core/styles";
 
 import axios from "axios";
-import { MakeCompletedUrl } from "../../tools";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -25,6 +24,7 @@ import ModalConfimation from "./ModalConfirmation";
 import "./offerView.css";
 import "../pages.css";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
+import { MakeCompletedUrl } from "../../tools";
 
 const DialogTitle = withStyles(theme => ({
   root: {
@@ -79,7 +79,7 @@ class ModalOffer extends Component {
 
   handleClickApplicate = () => {
     const { missionId } = this.state;
-    //const { traineeId } = this.props;
+    // const { traineeId } = this.props;
     const traineeId = sessionStorage.getItem("token");
     this.setState({ open: false });
     axios
@@ -182,7 +182,7 @@ class ModalOffer extends Component {
               />
               <Button
                 color="primary"
-                className="aws-btn remove btn"
+                className="classic_button_orange "
                 variant="contained"
                 onClick={this.handleOpen}
               >
@@ -196,8 +196,6 @@ class ModalOffer extends Component {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
               onClose={this.handleClose}
-              fullWidth
-              maxWidth="lg"
               fullScreen={fullScreen}
             >
               <DialogTitle

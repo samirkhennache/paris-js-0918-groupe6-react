@@ -140,29 +140,31 @@ class FindOffers extends Component {
               </Button>
             </form>
           </Grid>
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            {result.map(element => (
-              <ModalOffer
-                size={MIDDLE}
-                key={`${element.id}-${element.titleMission}`}
-                missionId={element.id}
-                company={element.Company.companyName}
-                titleMission={element.titleMission}
-                dateStart={element.dateStart}
-                dateEnd={element.dateEnd}
-                description={element.description}
-                intro={element.intro}
-                town={element.town}
-                LevelStudy={element.LevelStudy.label}
-                {...this.props}
-              />
-            ))}
-          </Grid>
+          <div className="general_margin content-search-offers">
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+            >
+              {result.map(element => (
+                <ModalOffer
+                  size={MIDDLE}
+                  key={`${element.id}-${element.titleMission}`}
+                  missionId={element.id}
+                  company={element.Company.companyName}
+                  titleMission={element.titleMission}
+                  dateStart={element.dateStart}
+                  dateEnd={element.dateEnd}
+                  description={element.description}
+                  intro={element.intro}
+                  town={element.town}
+                  LevelStudy={element.LevelStudy.label}
+                  {...this.props}
+                />
+              ))}
+            </Grid>
+          </div>
         </Grid>
       </div>
     );

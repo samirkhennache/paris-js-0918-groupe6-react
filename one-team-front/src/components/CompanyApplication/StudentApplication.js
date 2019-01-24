@@ -123,14 +123,21 @@ class StudentApplication extends Component {
       button,
       content
     } = this.state;
-    const { mode, modeSelect, modeRefuse, disabled, isFull } = this.props;
+    const {
+      mode,
+      modeSelect,
+      modeRefuse,
+      disabled,
+      isFull,
+      LevelStudy
+    } = this.props;
     // console.log("isFull :", isFull);
     // console.log(
     //   "StudentApplication",
     //   this.props.newDateStart,
     //   this.props.newDateEnd
     // );
-
+    console.log(LevelStudy);
     switch (mode) {
       case "APPLICATION": {
         return (

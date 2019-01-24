@@ -45,7 +45,6 @@
 }
 .home-overlay {
   position: absolute;
-  /* background-color: rgba(0, 0, 0, 0.5); */
   top: 0;
   bottom: 0;
   height: 100%;
@@ -59,7 +58,7 @@
   padding: 0;
   display: flex;
   justify-content: center;
-  margin-top: 35px;
+  margin-top: 25px;
 }
 .nav-footer li {
   list-style-type: none;
