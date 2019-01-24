@@ -112,7 +112,7 @@
   width: 100%;
 }
 .content-Middle {
-  border-left: 4px solid  #ff8900;
+  border-left: 4px solid #ff8900;
   padding: 0 10px;
   display: flex;
   flex-direction: column;
@@ -131,13 +131,40 @@
 .margin-date {
   margin-right: 10px;
 }
-
 .LogoMiddle img {
   width: 100%;
 
-  text-align: center;
+  /* Media query Middle */
 }
+@media all and (min-width: 320px) and (max-width: 720px) {
+  .Middle {
+    width: 350px;
+    /* border: #494642 1px solid; */
+  }
 
+  .OfferViewMiddle {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+    /* border: 1px solid rosybrown; */
+  }
+
+  .LogoMiddle {
+    width: 95%;
+    height: 30%;
+    border: none;
+    border-bottom: 3px solid #ff8900;
+  }
+
+  .milieuMiddle {
+    flex-direction: column;
+    /* align-items: flex-end;no */
+    border: 1px solid red;
+  }
+}
 
 
 /* Fin Middle */
@@ -193,3 +220,7 @@
 }
 
 /* FinFULL */
+
+.center_button {
+  margin: auto !important;
+}
