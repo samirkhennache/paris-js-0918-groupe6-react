@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./offerView.css";
 import RenderHTML from "react-render-html";
-//import placeholder.filled-point from "../../img/icons/placeholder.filled-point.png";
+import townFull from "../../img/icons/placeholder-filled-point.png";
+import nextFull from "../../img/icons/right-chevron(1).png";
+import levelFull from "../../img/icons/graduate-cap.png";
 import Typography from "@material-ui/core/Typography";
 import calendar from "../../img/icons/calendar-black.png";
 import loading from "../../img/icons/reload-symbol-black.png";
@@ -103,43 +105,32 @@ const OfferView = props => {
     case "FULL": {
       return (
         <div className="OfferViewFull">
-          <h4 className="regular_black_title LogoFull">{company}</h4>
-          <h3 className="regular_orange_title">La mission</h3>
-          <p className="titleFull">{titleMission}</p>
+          <p className="regular_black_title center-company-full">{company}</p>
+          <hr className="hr_horizontal_orange"/>
+          <p className="regular_orange_title">La mission</p>
+          <p className="titleFull mission_title_middle">{titleMission}</p>
 
           <div className="milieuFull">
             <p className="townFull ">
-              <img
-                className="imageFull"
-                src="img/placeholder-filled-point.png"
-                alt="pointer"
-              />
+              <img className="imageFull" src={townFull} alt="pointer" />
               {town}{" "}
             </p>
             <p className="dateFull">
-              <img
-                className="imageFull"
-                src="img/calendar.png"
-                alt="calendar"
-              />
+              <img className="imageFull" src={calendar} alt="calendar" />
               {new Date(dateStart).toLocaleDateString()}
-              <img
-                className="imageFull"
-                src="img/right-chevron.png"
-                alt="chevron"
-              />
+              <img className="imageFull" src={nextFull} alt="chevron" />
               {new Date(dateEnd).toLocaleDateString()}
             </p>
             {/* <p> fin: {new Date(dateEnd).toLocaleDateString()} </p> */}
             <p className="levelFull">
-              <img className="imageFull" src="img/graduate-cap.png" alt="" />
+              <img className="imageFull" src={levelFull} alt="" />
               {LevelStudy}{" "}
             </p>
           </div>
-          <h3 className="regular_orange_title">EN QUELQUES MOTS</h3>
-          <p className="introFull">{intro} </p>
-          <h3 className="regular_orange_title">DÉTAILS</h3>
-          <p className="descripFull">{RenderHTML(description)} </p>
+          <p className="regular_orange_title">EN QUELQUES MOTS</p>
+          <p className="regular_text introFull">{intro} </p>
+          <p className="regular_orange_title">DÉTAILS</p>
+          <p className="regular_text">{RenderHTML(description)} </p>
         </div>
       );
     }

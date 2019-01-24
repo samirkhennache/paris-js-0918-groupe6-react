@@ -62,7 +62,7 @@
 .regular_orange_subtitle {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: calc(22px + 0.1vw);
+  font-size: calc(20px + 0.1vw);
   color: #ff8900;
   text-transform: uppercase;
   margin: 0;
@@ -70,7 +70,7 @@
 .regular_black_subtitle {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  font-size: calc(20px + 0.1vw);
+  font-size: calc(18px + 0.1vw);
   color: black;
   text-transform: uppercase;
   margin: 0;

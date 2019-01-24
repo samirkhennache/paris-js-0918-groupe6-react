@@ -27,14 +27,7 @@ class CompanyPresentation extends Component {
   };
 
   render() {
-    const {
-      titleMission,
-      company,
-      introduction,
-      dateStart,
-      dateEnd,
-      town
-    } = this.props;
+    const { titleMission, company, dateStart, dateEnd, town } = this.props;
     const { open } = this.state;
     return (
       <div className="bloc-company-admin">

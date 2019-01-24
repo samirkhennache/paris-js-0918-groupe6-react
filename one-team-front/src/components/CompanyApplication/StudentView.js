@@ -83,28 +83,25 @@ class StudentView extends Component {
     switch (size) {
       case "SMALL": {
         return (
-          <div>
-            <Paper className={classes.paper} elevation={2}>
-              <ul className={classes.list}>
-                <li>
-                  <img
-                    className={classes.image}
-                    src={
-                      pictures !== null
-                        ? MakeCompletedUrl(`${pictures}`)
-                        : MakeCompletedUrl(
-                            "public/photoProfile/PhotoProfil.jpg"
-                          )
-                    }
-                    alt=""
-                  />
+          <Paper className={classes.paper} elevation={2}>
+            <ul className={classes.list}>
+              <li>
+                <img
+                  className={classes.image}
+                  src={
+                    pictures !== null
+                      ? MakeCompletedUrl(`${pictures}`)
+                      : MakeCompletedUrl("public/photoProfile/PhotoProfil.jpg")
+                  }
+                  alt=""
+                />
+              </li>
+              <li className="regular_orange_subtitle">{firstname}</li>
+              <div>
+                <li className="small_black_subtitle">
+                  {titre !== null ? titre : "Poste : à completer"}
                 </li>
-                <li className="regular_orange_subtitle">{firstname}</li>
-                <div>
-                  <li className="small_black_subtitle">
-                    {titre !== null ? titre : "Poste : à completer"}
-                  </li>
-                  {/* <li className={classes.address}>
+                {/* <li className={classes.address}>
                     <img
                       src={ville}
                       alt=""
@@ -115,16 +112,16 @@ class StudentView extends Component {
                     {town !== null ? town : " à compléter"}
                   </li> */}
 
-                  <div className="icon-and-text">
-                    <div className="img-student-view">
-                      <img src={townTrainee} alt="ville" />
-                    </div>
-                    <p className="criteres_small">
-                      {town ? town : "à compléter"}
-                    </p>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={townTrainee} alt="ville" />
                   </div>
+                  <p className="criteres_small">
+                    {town ? town : "à compléter"}
+                  </p>
+                </div>
 
-                  {/* <div>
+                {/* <div>
                     <p className={classes.address}>
                       <img
                         src={calendrier}
@@ -151,26 +148,26 @@ class StudentView extends Component {
                     </p>
                   </div> */}
 
-                  <div className="icon-and-text">
-                    <div className="img-student-view">
-                      <img src={calendar} alt="calendrier" />
-                    </div>
-                    <p className="criteres_small">
-                      {dateStart
-                        ? new Date(dateStart).toLocaleDateString()
-                        : "à remplir"}
-                    </p>
-                    <div className="img-student-view margin-chevron">
-                      <img src={next} alt="chevron" />
-                    </div>
-                    <p className="criteres_small">
-                      {dateEnd
-                        ? new Date(dateEnd).toLocaleDateString()
-                        : "à remplir"}
-                    </p>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={calendar} alt="calendrier" />
                   </div>
+                  <p className="criteres_small">
+                    {dateStart
+                      ? new Date(dateStart).toLocaleDateString()
+                      : "à remplir"}
+                  </p>
+                  <div className="img-student-view margin-chevron">
+                    <img src={next} alt="chevron" />
+                  </div>
+                  <p className="criteres_small">
+                    {dateEnd
+                      ? new Date(dateEnd).toLocaleDateString()
+                      : "à remplir"}
+                  </p>
+                </div>
 
-                  {/* <div class="section group" style={{ fontSize: 15 }}>
+                {/* <div class="section group" style={{ fontSize: 15 }}>
                     <div class="col span_1_of_2">
                       <p className={classes.address}>
                         <img
@@ -200,10 +197,9 @@ class StudentView extends Component {
                       </p>
                     </div>
                   </div> */}
-                </div>
-              </ul>
-            </Paper>
-          </div>
+              </div>
+            </ul>
+          </Paper>
         );
       }
       case "SMALL_ADMIN": {
@@ -430,6 +426,15 @@ class StudentView extends Component {
                   ? descriptionTrainee
                   : "description : à compléter"}
               </p>
+              <div className="bloc-contact-full">
+                <p className="regular_orange_title">Contact</p>
+                <p className="regular_black_subtitle contact-company-full">
+                  {firstname} {lastname}
+                </p>
+
+                <p className="criteres_big contact-company-full">{phone}</p>
+                <p className="criteres_big contact-company-full">{email}</p>
+              </div>
             </div>
           </div>
         );
