@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./offerView.css";
+
 import RenderHTML from "react-render-html";
 import townFull from "../../img/icons/placeholder-filled-point.png";
 import nextFull from "../../img/icons/right-chevron(1).png";
 import levelFull from "../../img/icons/graduate-cap.png";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import calendar from "../../img/icons/calendar-black.png";
 import loading from "../../img/icons/reload-symbol-black.png";
 import loadingWhite from "../../img/icons/reload-symbol.png";
@@ -79,26 +81,54 @@ const OfferView = props => {
     case "MIDDLE": {
       return (
         <div className="OfferViewMiddle">
-          <div className="LogoMiddle">
-            <img src="img/three-buildings-black.png" alt="building" />
-          </div>
-          <div className="contenueMiddle">
-            <h3 className="companyMiddle">{company} </h3>
-            <p className="titleMiddle">{titleMission}</p>
-            <div className="milieuMiddle">
+          <Grid container spacing={16} justify="center" alignItems="center">
+            <Grid item xs={4} sm={2} lg={2} className="logo-grid">
+              <div className="LogoMiddle">
+                <img src="img/three-buildings-black.png" alt="building" />
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={10} lg={10}>
+              <div className="content-Middle">
+                <div>
+                  <p className=" regular_orange_subtitle company-offer">
+                    {company}{" "}
+                  </p>
+                  <p className="mission_title">{titleMission}</p>
+                </div>
+
+                <div className="date-town-offer">
+                  <div className="application-date margin-date">
+                    <div className="date-icon">
+                      <img src={calendar} alt="calendar" />
+                    </div>
+                    <p className="criteres_search-offer">
+                      {new Date(dateStart).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <div className="application-date">
+                    <div className="date-icon">
+                      <img
+                        src="img/placeholder-filled-point.png"
+                        alt="calendar"
+                      />
+                    </div>
+                    <p className="criteres_search-offer">{town}</p>
+                  </div>
+                </div>
+
+                {/* <div className="milieuMiddle">
               <p className="dateMiddle">
                 <img src="img/calendar.png" alt="calendar" />
                 {new Date(dateStart).toLocaleDateString()}
-                {/*- fin: {new Date(dateEnd).toLocaleDateString()} */}
               </p>
               <p className="townMiddle">
                 <img src="img/placeholder-filled-point.png" alt="pointer" />
                 {town}
               </p>
-
-              {/* <p>fin: {new Date(dateEnd).toLocaleDateString()} </p> */}
-            </div>
-          </div>
+            </div> */}
+              </div>
+            </Grid>
+          </Grid>
         </div>
       );
     }
@@ -106,7 +136,7 @@ const OfferView = props => {
       return (
         <div className="OfferViewFull">
           <p className="regular_black_title center-company-full">{company}</p>
-          <hr className="hr_horizontal_orange"/>
+          <hr className="hr_horizontal_orange" />
           <p className="regular_orange_title">La mission</p>
           <p className="titleFull mission_title_middle">{titleMission}</p>
 

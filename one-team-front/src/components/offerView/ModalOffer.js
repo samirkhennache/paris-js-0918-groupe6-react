@@ -20,6 +20,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import OfferView from "./OfferView";
 import { FULL } from "./constants";
+import Grid from "@material-ui/core/Grid";
 import ModalConfimation from "./ModalConfirmation";
 import "./offerView.css";
 import "../pages.css";
@@ -173,21 +174,38 @@ class ModalOffer extends Component {
       }
       default:
         return (
-          <div className="ModalOffer">
+          <div className="bloc-offers">
             <Paper className="Middle">
-              <OfferView
-                key={`${missionId}-${titleMission}`}
-                {...this.props}
-                size={size}
-              />
-              <Button
-                color="primary"
-                className="classic_button_orange "
-                variant="contained"
-                onClick={this.handleOpen}
-              >
-                {size === "SMALL" ? "Consulter" : "En savoir plus"}
-              </Button>
+              <div className="middle-content">
+                <Grid
+                  container
+                  spacing={16}
+                  justify="center"
+                  alignItems="center"
+                >
+                  <Grid item xs={12} sm={12} md={9} lg={9}>
+                    <OfferView
+                      key={`${missionId}-${titleMission}`}
+                      {...this.props}
+                      size={size}
+                    />
+                  </Grid>{" "}
+                  <Grid item xs={6} sm={4} md={3} lg={3}>
+                    <Grid container>
+                      <Grid item xs={12}>
+                        <Button
+                          color="primary"
+                          className="classic_button_orange grid-button-offers"
+                          variant="contained"
+                          onClick={this.handleOpen}
+                        >
+                          {size === "SMALL" ? "Consulter" : "En savoir plus"}
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </div>
             </Paper>
 
             {/* //////////////////////////////////////////////////// */}
