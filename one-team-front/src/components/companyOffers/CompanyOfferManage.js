@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
+
 import axios from "axios";
-import { AwesomeButton } from "react-awesome-button";
 import Button from "@material-ui/core/Button";
 import "./Button.css";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,10 +10,42 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Hidden from "@material-ui/core/Hidden";
+import Paper from "@material-ui/core/Paper";
+import renderHTML from "react-render-html";
+import { Grid } from "@material-ui/core";
+import Edit from "@material-ui/icons/Edit";
+import Check from "@material-ui/icons/Check";
+import { MakeCompletedUrl } from "../../tools";
 import CompanyCreateOffers from "./CompanyCreateOffers/CompanyCreateOffers";
 import Team from "./Team";
+import ConfirmDialog from "../Dialogs/ConfirmDialog";
+import "./companyOffers.css";
+import townCompany from "../../img/icons/placeholder-filled-point.png";
+import school from "../../img/icons/graduate-cap.png";
+import calendar from "../../img/icons/calendar-black.png";
+import next from "../../img/icons/right-chevron(1).png";
+import nameCompany from "../../img/icons/three-buildings-black.png";
+import logoCompany from "../../img/three-buildings.png";
 
-const idCompany = sessionStorage.getItem("token");
+const styles = theme => ({
+  centerButton: {
+    [theme.breakpoints.up("sm")]: {
+      justifyContent: "flex-end"
+    },
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center"
+    }
+  },
+  marginButton: {
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "20px"
+    }
+  },
+  marginHr: {
+    marginTop: "25px",
+    marginBottom: "15px"
+  }
+});
 
 class CompanyOfferManage extends Component {
   state = {
@@ -26,7 +59,7 @@ class CompanyOfferManage extends Component {
 
   deleteData = () => {
     const { idMission } = this.props;
-    const API_ENDPOINT_MISSION = "http://localhost:3001/mission/";
+    const API_ENDPOINT_MISSION = MakeCompletedUrl("mission/");
     axios
       .delete(`${API_ENDPOINT_MISSION}${idMission}`, this.state)
       .then(res => {
@@ -46,7 +79,7 @@ class CompanyOfferManage extends Component {
     const missionId = idMission;
     const companyId = sessionStorage.getItem("token");
     axios
-      .put(`http://localhost:3001/mission/validate`, {
+      .put(MakeCompletedUrl(`mission/validate`), {
         missionId,
         companyId
       })
@@ -102,92 +135,163 @@ class CompanyOfferManage extends Component {
       intro,
       isFull,
       town,
-      LevelStudy
+      LevelStudy,
+      companyName,
+      classes
     } = this.props;
 
     const { title, content, button, open, disabled } = this.state;
-    const descriptionToShow = description.substring(0, 300);
-    // console.log("ma description ", description.substring(0, 20));
-
-    // console.log("FULL", isFull);
 
     return (
-      <div>
+      <div className="general_margin">
         {/* ***** FICHE MISSION ***** */}
-        <div>
-          <h3>{titleMission}</h3>
-          <h4>{this.props.company.companyName}</h4>
-          <p>{town} </p>
-          <p>{dateStart}</p>
-          <p>{dateEnd}</p>
-          <p> niveau d'étude: {LevelStudy} </p>
-          <p>{intro} </p>
-          <Hidden xsDown>
-            <p>{`${descriptionToShow} ...`}</p>
-          </Hidden>
-        </div>
-        {/* ***** BOUTONS MODIF & SUPPRIMER MISSIONS ***** */}
-        <AwesomeButton
-          type="primary"
-          className="aws-btn edit"
-          action={this.showModal}
-        >
-          Modifier
-        </AwesomeButton>
-        <br />
-        <AwesomeButton
-          type="primary"
-          className="aws-btn remove"
-          action={this.deleteData}
-        >
-          Supprimer
-        </AwesomeButton>
-        <CompanyCreateOffers
-          open={this.state.show}
-          onClose={this.showModal}
-          handlerUpdateMission={this.props.handlerUpdateMission}
-          modifMission={modifMission}
-        />
-        <br />
-        <hr align="center" width="50%" color="midnightblue" size="1" />
-        {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
-        <Team {...this.props} disabled={disabled} />
-        {disabled || isFull ? (
-          <AwesomeButton type="primary" disabled className="aws-btn validate">
-            Valider ma team
-          </AwesomeButton>
-        ) : (
-          <AwesomeButton
-            action={this.validateMission}
-            type="primary"
-            className="aws-btn validate"
+
+        <Paper container className="container_company_manage">
+          <div className="bloc-logo-company-offers">
+            <div className="logo-company-offers">
+              <img className="logo-img" src={logoCompany} alt="logo company" />
+            </div>
+          </div>
+          <Grid item container xs={12} justify="flex-start">
+            <p className="regular_orange_title">LA MISSION</p>
+          </Grid>
+          <Grid
+            item
+            container
+            xs={12}
+            justify="flex-start"
+            style={{ marginBottom: "10px" }}
           >
-            Valider ma team
-          </AwesomeButton>
-        )}
-        <hr align="center" width="90%" color="midnightblue" size="1" />
-        {/* **************** DIALOG VALIDATE ************************** */}
-        <Dialog
-          open={open}
-          onClose={this.handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              {content}
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              {button}
-            </Button>
-          </DialogActions>
-        </Dialog>
+            <p className="mission_title left">{titleMission}</p>
+          </Grid>
+          <Grid container item xs={12} className="btn_border">
+            <Grid item xs={12} md={6} lg={6}>
+              <div>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={townCompany} alt="ville" />
+                  </div>
+                  <p className="criteres_big">{town} </p>
+                </div>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={nameCompany} alt="nom entreprise" />
+                  </div>
+                  <p className="criteres_big">{companyName} </p>
+                </div>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={school} alt="école" />
+                  </div>
+                  <p className="criteres_big">{LevelStudy}</p>
+                </div>
+                <div className="icon-and-text">
+                  <div className="img-student-view">
+                    <img src={calendar} alt="calendrier" />
+                  </div>
+                  <p className="criteres_big">{dateStart}</p>
+                  <div className="img-student-view margin-chevron">
+                    <img src={next} alt="chevron" />
+                  </div>
+                  <p className="criteres_big">{dateEnd}</p>
+                </div>
+
+                {/* <p>{intro} </p>
+                <Hidden xsDown>
+                  <p>r{renderHTML(`${descriptionToShow} ...`)}</p>
+                </Hidden> */}
+              </div>
+            </Grid>
+            <Grid
+              item
+              container
+              xs={12}
+              lg={6}
+              md={6}
+              alignItems="center"
+              className={classes.marginButton}
+              spacing={8}
+            >
+              <Grid item container xs={12} className={classes.centerButton}>
+                <Grid item lg={5} md={6} sm={4} xs={7}>
+                  <Button
+                    className="classic_button_orange btn_size"
+                    onClick={this.showModal}
+                  >
+                    Modifier <Edit className="icon_Edit" />
+                  </Button>
+                </Grid>
+              </Grid>
+              <Grid item container xs={12} className={classes.centerButton}>
+                <Grid item lg={5} md={6} sm={4} xs={7}>
+                  <ConfirmDialog
+                    buttonCaption="Supprimer"
+                    dialogTitle="Confirmation"
+                    dialogQuestion="Voulez-vous supprimer cette offre?"
+                    handleOk={this.deleteData}
+                  />
+                  <CompanyCreateOffers
+                    open={this.state.show}
+                    onClose={this.showModal}
+                    handlerUpdateMission={this.props.handlerUpdateMission}
+                    modifMission={modifMission}
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item container xs={12} justify="center" />
+          <Grid item xs={12} className={classes.marginHr}>
+            <hr className="hr_horizontal_orange" />
+          </Grid>
+          <Grid item xs={12}>
+            {/* ****** ESPACE TEAM POUR L'ENTREPRISE ***** */}
+            <Team {...this.props} disabled={disabled} />
+
+            {disabled || isFull ? (
+              <Grid item container xs={12} justify="center">
+                <Grid item lg={5} md={6} sm={5} xs={8}>
+                  <Button type="primary" disabled>
+                    Valider ma team
+                  </Button>
+                </Grid>
+              </Grid>
+            ) : (
+              <Grid item container xs={12} justify="center">
+                <Grid item lg={5} md={6} sm={5} xs={8}>
+                  <Button
+                    onClick={this.validateMission}
+                    className="classic_button_green"
+                  >
+                    Valider ma team <Check />
+                  </Button>
+                </Grid>
+              </Grid>
+            )}
+            {/* **************** DIALOG VALIDATE ************************** */}
+            <Dialog
+              open={open}
+              onClose={this.handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  {content}
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.handleClose} color="primary">
+                  {button}
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </Grid>
+        </Paper>
       </div>
     );
   }
 }
 
-export default CompanyOfferManage;
+export default withStyles(styles)(CompanyOfferManage);

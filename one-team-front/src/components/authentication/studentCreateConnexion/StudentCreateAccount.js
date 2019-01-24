@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import axios from "axios";
+import { MakeCompletedUrl } from "../../../tools";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -46,7 +47,7 @@ class StudentCreateAccount extends Component {
       password
     };
     axios
-      .post("http://localhost:3001/trainee", postFormStudent)
+      .post(MakeCompletedUrl("trainee"), postFormStudent)
       .then(result => {
         props.selectStudent(result.data.id);
         sessionStorage.setItem("token", result.data.id);
@@ -80,7 +81,7 @@ class StudentCreateAccount extends Component {
             type="text"
             className="textField"
             name="firstname"
-            placeholder="Prénom"
+            label="Prénom"
             onChange={this.onChange}
             margin="normal"
             variant="outlined"
@@ -90,7 +91,7 @@ class StudentCreateAccount extends Component {
             type="text"
             className="textField"
             name="lastname"
-            placeholder="Nom"
+            label="Nom"
             onChange={this.onChange}
             margin="normal"
             variant="outlined"
@@ -101,7 +102,7 @@ class StudentCreateAccount extends Component {
             type="email"
             className="textField"
             name="email"
-            placeholder="Email"
+            label="Email"
             onChange={this.onChange}
             margin="normal"
             variant="outlined"
@@ -112,7 +113,7 @@ class StudentCreateAccount extends Component {
             type="password"
             className="textField"
             name="password"
-            placeholder="Mot de passe"
+            label="Mot de passe"
             onChange={this.onChange}
             margin="normal"
             variant="outlined"
@@ -120,7 +121,7 @@ class StudentCreateAccount extends Component {
           />
           <Button
             variant="contained"
-            className="buttonCreateForm"
+            className="buttonCreateForm classic_button_orange"
             type="submit"
           >
             {`S'inscrire`}
@@ -139,7 +140,11 @@ class StudentCreateAccount extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button
+              className="police_button_black"
+              onClick={this.handleClose}
+              color="primary"
+            >
               {button}
             </Button>
           </DialogActions>

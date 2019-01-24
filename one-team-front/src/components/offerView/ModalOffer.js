@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core/styles";
+import {
+  withStyles,
+  createMuiTheme,
+  MuiThemeProvider
+} from "@material-ui/core/styles";
+
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,11 +15,16 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import { AwesomeButton } from "react-awesome-button";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import IconButton from "@material-ui/core/IconButton";
+import Paper from "@material-ui/core/Paper";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import OfferView from "./OfferView";
 import { FULL } from "./constants";
 import ModalConfimation from "./ModalConfirmation";
+import "./offerView.css";
+import "../pages.css";
+import withMobileDialog from "@material-ui/core/withMobileDialog";
+import { MakeCompletedUrl } from "../../tools";
 
 const DialogTitle = withStyles(theme => ({
   root: {
@@ -69,11 +79,11 @@ class ModalOffer extends Component {
 
   handleClickApplicate = () => {
     const { missionId } = this.state;
-    //const { traineeId } = this.props;
+    // const { traineeId } = this.props;
     const traineeId = sessionStorage.getItem("token");
     this.setState({ open: false });
     axios
-      .post("http://localhost:3001/application", {
+      .post(MakeCompletedUrl("application"), {
         missionId,
         traineeId
       })
@@ -96,66 +106,149 @@ class ModalOffer extends Component {
 
   render() {
     const { open, content, openToConfirm } = this.state;
-    const { size, titleMission, missionId } = this.props;
-
-    return (
-      <div className="ModalOffer">
-        <OfferView
-          key={`${missionId}-${titleMission}`}
-          {...this.props}
-          size={size}
-        />
-        <AwesomeButton
-          type="primary"
-          className="aws-btn remove"
-          action={this.handleOpen}
-        >
-          {size === "SMALL" ? "Consulter" : "En savoir plus"}
-        </AwesomeButton>
-        {/* //////////////////////////////////////////////////// */}
-        <Dialog
-          open={open}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-          onClose={this.handleClose}
-        >
-          <DialogTitle
-            id="customized-dialog-title"
-            onClose={this.handleClose}
-          />
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+    const { size, titleMission, missionId, fullScreen } = this.props;
+    switch (size) {
+      case "SMALL": {
+        return (
+          <div className="ModalOffer application-item">
+            <Paper>
+              <div className="application-paper">
+                <OfferView
+                  key={`${missionId}-${titleMission}`}
+                  {...this.props}
+                  size={size}
+                />
+                <MuiThemeProvider theme={theme}>
+                  <Button
+                    className="classic_button_orange"
+                    // color="primary"
+                    variant="contained"
+                    onClick={this.handleOpen}
+                  >
+                    {size === "SMALL" ? "Voir l'offre" : "En savoir plus"}
+                  </Button>
+                </MuiThemeProvider>
+              </div>
+            </Paper>
+            {/* //////////////////////////////////////////////////// */}
+            <Dialog
+              open={open}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+              onClose={this.handleClose}
+            >
+              <DialogTitle
+                id="customized-dialog-title"
+                onClose={this.handleClose}
+              />
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  <OfferView
+                    key={`${missionId}-${titleMission}`}
+                    {...this.props}
+                    size={FULL}
+                  />
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                {size === "SMALL" ? (
+                  <Button disabled color="primary">
+                    postuler
+                  </Button>
+                ) : (
+                  <Button onClick={this.handleClickApplicate} color="primary">
+                    postuler
+                  </Button>
+                )}
+              </DialogActions>
+            </Dialog>
+            <ModalConfimation
+              openConfirmation={openToConfirm}
+              content={content}
+              close={this.handleClose}
+              {...this.props}
+            />
+          </div>
+        );
+      }
+      default:
+        return (
+          <div className="ModalOffer">
+            <Paper className="Middle">
               <OfferView
                 key={`${missionId}-${titleMission}`}
                 {...this.props}
-                size={FULL}
+                size={size}
               />
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            {size === "SMALL" ? (
-              <Button disabled color="primary">
-                postuler
+              <Button
+                color="primary"
+                className="classic_button_orange "
+                variant="contained"
+                onClick={this.handleOpen}
+              >
+                {size === "SMALL" ? "Consulter" : "En savoir plus"}
               </Button>
-            ) : (
-              <Button onClick={this.handleClickApplicate} color="primary">
-                postuler
-              </Button>
-            )}
-          </DialogActions>
-        </Dialog>
-        <ModalConfimation
-          openConfirmation={openToConfirm}
-          content={content}
-          close={this.handleClose}
-          {...this.props}
-        />
-      </div>
-    );
+            </Paper>
+
+            {/* //////////////////////////////////////////////////// */}
+            <Dialog
+              open={open}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+              onClose={this.handleClose}
+              fullScreen={fullScreen}
+            >
+              <DialogTitle
+                id="customized-dialog-title"
+                onClose={this.handleClose}
+              />
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  <OfferView
+                    key={`${missionId}-${titleMission}`}
+                    {...this.props}
+                    size={FULL}
+                  />
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                {size === "SMALL" ? (
+                  <Button disabled color="primary">
+                    postuler
+                  </Button>
+                ) : (
+                  <Button
+                    className="classic_button_blue"
+                    size="large"
+                    onClick={this.handleClickApplicate}
+                    color="primary"
+                  >
+                    postuler
+                  </Button>
+                )}
+              </DialogActions>
+            </Dialog>
+            <ModalConfimation
+              openConfirmation={openToConfirm}
+              content={content}
+              close={this.handleClose}
+              {...this.props}
+            />
+          </div>
+        );
+    }
   }
 }
+
+const theme = createMuiTheme({
+  // palette: {
+  //   primary: {
+  //     main: "#ff8900"
+  //   }
+  // }
+});
 
 const mapStateToProps = state => ({
   traineeId: state.student.id
 });
-export default connect(mapStateToProps)(ModalOffer);
+export default connect(mapStateToProps)(withMobileDialog()(ModalOffer));

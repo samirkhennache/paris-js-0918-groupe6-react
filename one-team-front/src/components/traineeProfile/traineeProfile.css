@@ -1,6 +1,50 @@
+.trainee-profil-margin {
+  margin-top: 40px;
+}
 .createForm {
   margin-bottom: 50px;
 }
 .profileTextField {
   width: 100%;
+}
+
+.traineeProfileTitle {
+  text-align: left;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.traineeProfileTitleBackGroud {
+  background-image: url(../../img/bandeau_trainee_long.jpg);
+  background-repeat: no-repeat;
+  border-top: 0.1px solid #4a4641;
+  margin-bottom: 10px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.traineeProfileImage {
+  border-radius: 50%;
+  height: 150px;
+}
+
+.traineeProfileIcon {
+  margin-left: 10px;
+  color: white;
+}
+
+.pageProfile {
+  border: 1px solid black;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.traineeProfileTextField {
+  width: 100%;
+}
+.btn_dialog_trainee {
+  margin: auto !important;
+  padding-bottom: 5% !important;
 }

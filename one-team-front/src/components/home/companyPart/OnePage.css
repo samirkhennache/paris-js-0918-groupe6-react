@@ -48,31 +48,19 @@
   }
 }
 
-.textCentral {
-  margin-top: 17%;
-  color: white;
-  font-size: 50px;
-}
-@media (max-width: 768px) {
-  .textCentral {
-    margin-top: 57%;
-    margin-right: 5%;
-    margin-left: 5%;
-    font-size: 30px;
-  }
-}
 .buttonConnexion {
   width: 23%;
   height: 10%;
   background-color: #ff8900 !important;
   color: white !important;
   text-transform: initial !important;
-  font-size: 17px !important;
+  font-size: 20px !important;
   font-weight: 900 !important;
 }
 @media (max-width: 768px) {
   .buttonConnexion {
     width: 70%;
+    margin-top: 10% !important;
   }
 }
 
@@ -83,13 +71,13 @@
   color: white !important;
   margin-left: 2% !important;
   text-transform: initial !important;
-  font-size: 17px !important;
+  font-size: 20px !important;
   font-weight: 900 !important;
 }
 @media (max-width: 768px) {
   .buttonConnexion2 {
     width: 70%;
-    margin-top: 2% !important;
+    margin-top: 10% !important;
     margin-right: 2% !important;
   }
 }
@@ -101,4 +89,10 @@
 
 .titleduO:hover {
   background: black;
+}
+
+@media (max-width: 768px) {
+  .home_title {
+    margin-top: 10%;
+  }
 }

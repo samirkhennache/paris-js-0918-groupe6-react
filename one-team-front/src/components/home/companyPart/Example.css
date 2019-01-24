@@ -1,0 +1,95 @@
+.exampleBottle {
+  background-color: #494642;
+  color: white;
+  padding-bottom: 5%;
+}
+.exampleTitle {
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 2%;
+  font-size: 5vh;
+  color: white;
+}
+
+.exampleThemes {
+  padding: 5%;
+}
+
+/*  SECTIONS  */
+.section {
+  clear: both;
+  padding: 0px;
+  margin: 0px;
+}
+
+/*  COLUMN SETUP  */
+.col {
+  display: block;
+  float: left;
+  margin: 1% 0 1% 1.6%;
+}
+.col:first-child {
+  margin-left: 0;
+}
+
+/*  GROUPING  */
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1; /* For IE 6/7 */
+}
+
+/*  GRID OF TWO  */
+.span_2_of_2 {
+  width: 100%;
+}
+.span_1_of_2 {
+  width: 69.2%;
+}
+
+/*  GO FULL WIDTH AT LESS THAN 600 PIXELS */
+
+@media only screen and (max-width: 600px) {
+  .col {
+    margin: 1% 0 1% 0%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .span_2_of_2,
+  .span_1_of_2 {
+    width: 100%;
+  }
+}
+
+.list_text {
+  text-align: left;
+  float: right;
+  margin-right: 15%;
+  margin-top: 10%;
+}
+
+.pos_carrousel {
+  float: left;
+  margin-left: 15%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+@media only screen and (max-width: 600px) {
+  .list_text,
+  .pos_carrousel {
+    margin-right: 0%;
+    margin-left: 0%;
+    float: none;
+  }
+  .list_text {
+    float: left;
+    margin-left: 25%;
+  }
+}

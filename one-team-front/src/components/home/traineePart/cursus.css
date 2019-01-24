@@ -1,13 +1,37 @@
 .rules-item {
-    margin: 25px 25px;
+  margin: 25px 10px;
 }
 .rules-bloc {
-    padding: 0 calc(5px + 10vw);
+  margin: 0 calc(5px + 10vw);
+  padding-top: 5%;
+  padding-bottom: 8%;
 }
 .rules-line {
-    height: 1px;
-    width: 30px;
-    background-color: black;
-    padding: 0;
-    margin: 55px 0 0 0;
+  height: 1px;
+  width: 30px;
+  background-color: black;
+  padding: 0;
+  margin: 55px 0 0 0;
+}
+.cursusImage {
+  width: 64px;
+  height: 64px;
+}
+
+.buttonTrainee {
+  margin: 2% !important;
+  background-color: #ff8900 !important;
+  color: white !important;
+  width: 25% !important;
+  height: 50px !important;
+  font-size: 17px !important;
+  font-weight: 900 !important;
+  text-transform: initial !important;
+  margin-bottom: 5% !important;
+  border: 1px black solid;
+}
+@media (max-width: 574px) {
+  .buttonTrainee {
+    width: 80% !important;
+  }
 }

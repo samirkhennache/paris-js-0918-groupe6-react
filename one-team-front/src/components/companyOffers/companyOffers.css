@@ -1,0 +1,100 @@
+.home-company {
+  background-image: url("../../img/Onepage2.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 40vh;
+  z-index: 0;
+  border-top: solid #494642 0.1px;
+}
+.compnay-overlay {
+  position: absolute;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-top: solid #494642 0.1px;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -5;
+}
+.block-company {
+  position: relative;
+  margin: auto;
+}
+.btn-add-offers {
+  margin-top: 40px;
+}
+.btn_see_application {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.container_company_manage {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  margin-top: 100px;
+  /* border: black solid 2 px; */
+}
+
+.div_btn_size {
+  width: 200px;
+  margin: auto;
+}
+.btn_size {
+  width: 100% !important;
+}
+.icon_Delete {
+  margin-left: 15px;
+}
+.icon_Edit {
+  margin-left: 30px;
+}
+/*****************************/
+.bloc-company-Offres {
+  padding: 0 40px 0 40px;
+}
+.blocList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.bloc-logo-company-offers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1px;
+  padding-bottom: 65px;
+}
+.logo-company-offers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: #c8c8c8;
+  height: 143px;
+  width: 143px;
+  position: relative;
+}
+
+.company-offer-manage {
+  /* border: 3px solid green; */
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .bloc-company-Offres {
+    padding: 0 20px;
+  }
+  .logo-company-offers {
+    height: 100px;
+    width: 100px;
+  }
+  .bloc-logo-company-offers {
+    padding-bottom: 55px;
+  }
+  .container_company_manage {
+    margin-top: 80px;
+  }
+}

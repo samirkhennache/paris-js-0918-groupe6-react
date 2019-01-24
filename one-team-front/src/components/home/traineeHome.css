@@ -1,0 +1,81 @@
+/********************** TEAM ************************/
+.logo-team {
+  width: calc(90px + 30vw);
+  margin-bottom: 20px;
+}
+
+.blocOneTeam {
+  padding-top: 5%;
+  padding-bottom: 10%;
+}
+.white-color {
+  color: white;
+}
+.h2-team {
+  padding: 5px;
+}
+.img-team {
+  width: 100%;
+}
+.name-team {
+  margin: 5px 0;
+  color: white;
+}
+.team-block {
+  /* margin: 0 40px; */
+  padding: 0 70px;
+}
+@media (max-width: 600px) {
+  .team-block {
+    padding: 0 40px;
+  }
+}
+.team-item {
+  margin: 30px 20px;
+}
+
+/********************* CONTACT *********************/
+.contact-home {
+  /* background-color: #202020;
+  padding: 15px 0;
+  color: whitesmoke; */
+  background-image: url("../../img/bandeau_footer_long.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 85vh;
+  z-index: 0;
+}
+.home-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -5;
+}
+.social-media {
+  margin: 10px;
+}
+.nav-footer {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+.nav-footer li {
+  list-style-type: none;
+  margin: 5px 10px;
+  padding: 0;
+}
+.nav-footer a {
+  color: whitesmoke;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.nav-footer a:hover {
+  color: #ff8900;
+}

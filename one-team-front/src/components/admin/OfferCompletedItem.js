@@ -5,8 +5,8 @@ import "./OfferCompletedItem.css";
 export default class OfferCompletedItem extends Component {
   render() {
     return (
-      <div className="offersForAdmin" style={{ height: 641 }}>
-        <div className="miniMarge">
+      <div className="background-admin">
+        <div className="connexion-admin">
           <ConnexionTrainee {...this.props} />
         </div>
       </div>

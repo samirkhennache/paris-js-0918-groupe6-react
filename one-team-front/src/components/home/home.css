@@ -1,66 +1,105 @@
-h2 {
+/* ********************* HOME TEXT CLASS *************************/
+.home_title {
+  margin-top: 17%;
+  color: white;
+  font-size: calc(20px + 3vw);
+}
+@media (max-width: 768px) {
+  .home_title {
+    margin-top: 27%;
+    margin-right: 5%;
+    margin-left: 5%;
+    font-size: calc(20px + 3vw);
+  }
+}
+.home_section {
+  font-weight: 900;
+  font-family: apple-system, "Ubuntu", sans-serif;
+  color: white;
+  letter-spacing: 0.05cm;
   font-size: calc(20px + 1vw);
   padding: 30px 0 30px 0;
   margin: 0 5px;
 }
-/********************** TEAM ************************/
-.logo-team {
-  width: calc(90px + 30vw);
-  margin-bottom: 20px;
-}
-.white-color {
-  color: white;
-}
-.h2-team {
-  padding: 5px;
-}
-.teamOneTeam {
-  background-color: #494642;
-  padding: 30px 0;
-  margin: 0;
-}
-.img-team {
-  width: 100%;
-}
-.name-team {
-  margin: 5px 0;
-  color: white;
-}
-.team-item {
-  margin: 20px 40px;
-}
-.team-block {
-  padding: 0 calc(10px + 10vw);
-}
-
-/********************* CONTACT *********************/
-.contact-home {
-  background-color: #202020;
-  padding: 15px 0;
-  margin: 0;
-  color: whitesmoke;
-}
-
-.social-media {
-  margin: 10px;
-}
-.nav-footer {
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  margin-top: 35px;
-}
-.nav-footer li {
-  list-style-type: none;
-  margin: 5px 10px;
-  padding: 0;
-}
-.nav-footer a {
-  color: whitesmoke;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.nav-footer a:hover {
+.home_subsection_orange {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: calc(15px + 1vw);
   color: #ff8900;
+  margin: 40px 0 10px 0;
+}
+.home_subsection_white {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: calc(15px + 1vw);
+  color: white;
+  margin: 40px 0 10px 0;
+}
+.home_subsection_grey {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: calc(15px + 1vw);
+  color: #494642;
+  margin: 40px 0 10px 0;
+}
+.icon_white_title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: calc(18px + 0.3vw);
+  color: white;
+  margin: 0;
+}
+.icon_orange_title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: calc(18px + 0.3vw);
+  color: #ff8900;
+  margin: 0;
+}
+
+/* *********************** BACKGROUND GENERAUX **********************/
+.background-carrousel {
+  background-color: #ffdfa0;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
+}
+.background-carrousel-company {
+  background-color: #494642;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
+}
+.background-services {
+  background-color: #6c6b68;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
+}
+.background-goodReasons {
+  background-color: #494642;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
+}
+.background-team {
+  background-color: #494642;
+  border: 0.1px solid rgba(0, 0, 0, 0.01);
+}
+
+.hr_horizontal_orange_home {
+  background-color: #ff8900;
+  width: 10vw;
+  height: 4px;
+  border: 0;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.hr_horizontal_white {
+  background-color: #ffffff;
+  width: 10vw;
+  height: 4px;
+  border: 0;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+.hr_horizontal_grey {
+  background-color: #494642;
+  width: 10vw;
+  height: 4px;
+  border: 0;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }

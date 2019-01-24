@@ -7,11 +7,15 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Check from "@material-ui/icons/Check";
 
 import { loadavg } from "os";
-import { SMALL } from "./studentConstant";
+import { MakeCompletedUrl } from "../../tools";
+import { SMALL, SMALL_ADMIN } from "./studentConstant";
 import StudentProfilView from "./StudentProfilView";
 import StudentView from "./StudentView";
+
+import "./StudentApplication.css";
 
 class StudentApplication extends Component {
   state = {
@@ -34,7 +38,7 @@ class StudentApplication extends Component {
   selectStudent = mode => {
     const { missionId, traineeId, firstname } = this.props;
     axios
-      .put(`http://localhost:3001/application`, {
+      .put(MakeCompletedUrl(`application`), {
         missionId,
         traineeId,
         mode
@@ -68,15 +72,15 @@ class StudentApplication extends Component {
 
   refuseStudent = mode => {
     const { missionId, traineeId, firstname } = this.props;
-    console.log("onclick", missionId, traineeId, mode);
+    // console.log("onclick", missionId, traineeId, mode);
     axios
-      .put(`http://localhost:3001/application`, {
+      .put(MakeCompletedUrl(`application`), {
         missionId,
         traineeId,
         mode
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           openMessageRefuse: true,
           title: `Trainee deleted`,
@@ -85,7 +89,7 @@ class StudentApplication extends Component {
         });
       })
       .catch(error => {
-        console.log(error.response);
+        // console.log(error.response);
         if (error.response.status === 404) {
           this.setState({
             openMessageSelect: true,
@@ -119,39 +123,80 @@ class StudentApplication extends Component {
       button,
       content
     } = this.state;
-    const { mode, modeSelect, modeRefuse, disabled, isFull } = this.props;
-    console.log("isFull :", isFull);
-
+    const {
+      mode,
+      modeSelect,
+      modeRefuse,
+      disabled,
+      isFull,
+      LevelStudy
+    } = this.props;
+    // console.log("isFull :", isFull);
+    // console.log(
+    //   "StudentApplication",
+    //   this.props.newDateStart,
+    //   this.props.newDateEnd
+    // );
+    console.log(LevelStudy);
     switch (mode) {
       case "APPLICATION": {
         return (
           <div>
             <div>
+              <a onClick={() => this.refuseStudent(modeRefuse)}>
+                <p className="button-negative side-by-side" />
+              </a>
               <div onClick={this.clickStudentSmall}>
-                <StudentView {...this.props} size={SMALL} open={open} />
+                <StudentView
+                  {...this.props}
+                  dateStart={this.props.newDateStart}
+                  dateEnd={this.props.newDateEnd}
+                  size={SMALL}
+                  open={open}
+                />
               </div>
               {isFull ? (
-                <Button variant="contained" disabled>
-                  Ajouter
+                // <Button variant="contained" disabled>
+                //   Ajouter
+                // </Button>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  className="classic_button_orange"
+                >
+                  Aperçu profil
+                  <Check className="traineeProfileIcon color-orange classic_button_orange " />
                 </Button>
               ) : (
+                // <Button
+                //   onClick={() => this.selectStudent(modeSelect)}
+                //   variant="contained"
+                //   color="primary"
+                // >
+                //   Ajouter
+                // </Button>
                 <Button
-                  onClick={() => this.selectStudent(modeSelect)}
-                  variant="contained"
                   color="primary"
+                  variant="contained"
+                  className="classic_button_green"
+                  onClick={() => this.selectStudent(modeSelect)}
                 >
                   Ajouter
+                  <Check className="traineeProfileIcon color-orange" />
                 </Button>
               )}
-              <Button
+              {/* <Button
                 onClick={() => this.refuseStudent(modeRefuse)}
                 variant="contained"
                 color="secondary"
               >
-                Refuser
-              </Button>
+                Refuser{" "}
+              </Button> */}
+
               <StudentProfilView
                 {...this.props}
+                dateStart={this.props.newDateStart}
+                dateEnd={this.props.newDateEnd}
                 open={open}
                 close={this.clickClose}
               />
@@ -201,24 +246,24 @@ class StudentApplication extends Component {
         return (
           <div>
             <div>
+              {!disabled &&
+                (!isFull && (
+                  <a onClick={() => this.refuseStudent(modeRefuse)}>
+                    <p className="button-negative side-by-side" />
+                  </a>
+                ))}
               <div onClick={() => this.clickStudentSmall()}>
-                <StudentView {...this.props} size={SMALL} />
+                <StudentView
+                  {...this.props}
+                  dateStart={this.props.newDateStart}
+                  dateEnd={this.props.newDateEnd}
+                  size={SMALL}
+                />
               </div>
-              {disabled || isFull ? (
-                <Button disabled variant="contained" color="secondary">
-                  Refuser
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => this.refuseStudent(modeRefuse)}
-                  variant="contained"
-                  color="secondary"
-                >
-                  Refuser
-                </Button>
-              )}
               <StudentProfilView
                 {...this.props}
+                dateStart={this.props.newDateStart}
+                dateEnd={this.props.newDateEnd}
                 open={open}
                 close={this.clickClose}
               />
@@ -250,10 +295,17 @@ class StudentApplication extends Component {
           <div>
             <div>
               <div onClick={() => this.clickStudentSmall()}>
-                <StudentView {...this.props} size={SMALL} />
+                <StudentView
+                  {...this.props}
+                  dateStart={this.props.newDateStart}
+                  dateEnd={this.props.newDateEnd}
+                  size={SMALL_ADMIN}
+                />
               </div>
               <StudentProfilView
                 {...this.props}
+                dateStart={this.props.newDateStart}
+                dateEnd={this.props.newDateEnd}
                 open={open}
                 close={this.clickClose}
               />
