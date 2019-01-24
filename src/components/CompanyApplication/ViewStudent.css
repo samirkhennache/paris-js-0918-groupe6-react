@@ -84,3 +84,7 @@
 }
 @media (max-width: 768px) {
 }
+
+.center_button {
+  margin: auto !important;
+}

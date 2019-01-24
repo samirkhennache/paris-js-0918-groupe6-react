@@ -224,3 +224,7 @@
 }
 
 /* FinFULL */
+
+.center_button {
+  margin: auto !important;
+}

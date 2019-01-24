@@ -153,12 +153,16 @@ class ModalOffer extends Component {
               </DialogContent>
               <DialogActions>
                 {size === "SMALL" ? (
-                  <Button disabled color="primary">
-                    postuler
+                  <Button disabled color="primary" className="center_button">
+                    Postuler
                   </Button>
                 ) : (
-                  <Button onClick={this.handleClickApplicate} color="primary">
-                    postuler
+                  <Button
+                    onClick={this.handleClickApplicate}
+                    color="primary"
+                    className="classic_button_blue center_button"
+                  >
+                    Postuler
                   </Button>
                 )}
               </DialogActions>
@@ -231,12 +235,16 @@ class ModalOffer extends Component {
               </DialogContent>
               <DialogActions>
                 {size === "SMALL" ? (
-                  <Button disabled color="primary">
-                    postuler
+                  <Button disabled color="primary" className="center_button">
+                    Postuler
                   </Button>
                 ) : (
-                  <Button onClick={this.handleClickApplicate} color="primary">
-                    postuler
+                  <Button
+                    onClick={this.handleClickApplicate}
+                    color="primary"
+                    className="classic_button_blue center_button"
+                  >
+                    Postuler
                   </Button>
                 )}
               </DialogActions>

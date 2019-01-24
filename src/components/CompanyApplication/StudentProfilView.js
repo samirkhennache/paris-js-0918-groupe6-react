@@ -43,7 +43,12 @@ class StudentProfilView extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleCloseFull}>fermer</Button>
+            <Button
+              onClick={this.handleCloseFull}
+              className="center_button classic_button_blue"
+            >
+              Fermer
+            </Button>
           </DialogActions>
         </Dialog>
       </div>
