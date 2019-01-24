@@ -90,93 +90,57 @@
   margin-bottom: 20px;
 }
 
-/* Midddle */
-.content-search-offers {
-  border: 1px solid red;
+/****************************************** MIDDLE **************************************/
+.header-search {
+  margin-bottom: 60px;
 }
-
 .Middle {
-  /* border: 1px solid rgb(0, 70, 128); */
-  text-align: right;
-  width: 960px;
-  margin: 10px auto;
-  padding: 5px 5px;
+  margin: 0 0 40px 0;
+  padding: 10px;
 }
-
-.btn {
-  width: 150px;
-  position: absolute;
+.middle-content {
+  margin: 15px;
 }
-
-.OfferViewMiddle {
-  display: flex;
-  flex-direction: row;
+.grid-button-offers {
   width: 100%;
-  /* border: 1px solid red; */
 }
-
+.content-Middle {
+  border-left: 4px solid #ff8900;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 200px;
+}
+.company-offer {
+  text-align: left;
+}
+.date-town-offer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.margin-date {
+  margin-right: 10px;
+}
 .LogoMiddle {
-  /* background-color: #777; */
-  width: 30%;
+  background-color: grey;
+  min-height: 100px;
+  min-width: 100px;
+  /* height: 100px;
+  width: 100px; */
+  border-radius: 50%;
+  border: 1px solid green;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 3px solid #ff8900;
-  margin-right: 10px;
-  color: #000;
 }
+.LogoMiddle img {
+  width: 60%;
 
-.contenueMiddle {
-  text-align: left;
-  /* border: 1px solid brown; */
-  width: 100%;
+  /* Media query Middle */
 }
-
-.companyMiddle,
-.titleMiddle {
-  text-transform: uppercase;
-}
-
-.companyMiddle {
-  color: #ff8900;
-}
-
-.milieuMiddle {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.townMiddle {
-  /* width: 50%; */
-  font-weight: 400;
-  font-size: 1.25rem;
-  /* border: 1px solid red; */
-  margin-left: 10px;
-}
-
-.townMiddle > img {
-  height: 25px;
-  margin-right: 5px;
-}
-
-.dateMiddle {
-  /* display: flex;
-  flex-direction: row; */
-  /* width: 100%; */
-  font-weight: 400;
-  font-size: 1.25rem;
-  /* border: 1px solid green; */
-}
-
-.dateMiddle > img {
-  height: 25px;
-  margin-right: 5px;
-}
-
-/* Media query Middle */
-
 @media all and (min-width: 320px) and (max-width: 720px) {
   .Middle {
     width: 350px;
@@ -204,12 +168,6 @@
     flex-direction: column;
     /* align-items: flex-end;no */
     border: 1px solid red;
-  }
-}
-
-@media all and (min-width: 720px) and (max-width: 960px) {
-  .Middle {
-    width: 720px;
   }
 }
 

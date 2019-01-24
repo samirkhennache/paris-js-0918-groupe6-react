@@ -2,10 +2,13 @@
   color: white !important;
   text-transform: initial !important;
   font-weight: 900 !important;
-  margin-top: 5px !important;
-  margin-left: 5px !important;
-  padding: 12px !important ;
-  border-radius: 10px !important  ;
+  width: 100%;
+  height: 100%;
+  padding: 12px !important;
+  border-radius: 7px !important;
+}
+.container-bloc {
+  padding-top: 15px;
 }
 
 .Haut {
@@ -17,6 +20,10 @@
   height: 40vh;
   z-index: 0;
 }
+/* .header-search {
+  padding: 10px 30px 20px 30px;
+
+} */
 
 .titrePage {
   color: #fff;
@@ -49,8 +56,8 @@
     justify-content: center;
   } */
 
-  .searchButton {
+  /* .searchButton {
     margin-left: 3px !important;
     margin-right: 3px !important;
-  }
+  } */
 }
