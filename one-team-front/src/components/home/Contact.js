@@ -13,8 +13,8 @@ const styles = {
 };
 
 const Contact = () => (
-  <div className="contact-home">
-    <div className="home-overlay">
+  <div className="contact-home" style={{ paddingTop: 50, paddingBottom: 50 }}>
+    <div className="home-overlay" style={{ paddingTop: 50, paddingBottom: 50 }}>
       <h2 className="home_subsection_white">
         Contactez <span style={{ color: "#ff8900" }}>One Team</span>
       </h2>

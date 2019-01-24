@@ -3,6 +3,11 @@
   width: calc(90px + 30vw);
   margin-bottom: 20px;
 }
+
+.blocOneTeam {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
 .white-color {
   color: white;
 }

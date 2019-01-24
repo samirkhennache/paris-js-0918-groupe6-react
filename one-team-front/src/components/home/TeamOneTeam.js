@@ -21,7 +21,7 @@ const styles = {
 };
 
 const TeamOneTeam = () => (
-  <div className="general_margin">
+  <div className="general_margin blocOneTeam">
     <h2 className="home_subsection_white">
       La Team <span style={{ color: "#ff8900" }}>One Team</span>
     </h2>
