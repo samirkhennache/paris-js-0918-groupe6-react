@@ -6,6 +6,7 @@ import RenderHTML from "react-render-html";
 import townFull from "../../img/icons/placeholder-filled-point.png";
 import nextFull from "../../img/icons/right-chevron(1).png";
 import levelFull from "../../img/icons/graduate-cap.png";
+import buildingCircle from "../../img/icons/building_circle.png";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import calendar from "../../img/icons/calendar-black.png";
@@ -84,7 +85,7 @@ const OfferView = props => {
           <Grid container spacing={16} justify="center" alignItems="center">
             <Grid item xs={4} sm={2} lg={2} className="logo-grid">
               <div className="LogoMiddle">
-                <img src="img/three-buildings-black.png" alt="building" />
+                <img src={buildingCircle} alt="building" />
               </div>
             </Grid>
             <Grid item xs={12} sm={10} lg={10}>
