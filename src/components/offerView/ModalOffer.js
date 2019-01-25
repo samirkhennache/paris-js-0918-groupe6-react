@@ -18,9 +18,9 @@ import IconButton from "@material-ui/core/IconButton";
 import Paper from "@material-ui/core/Paper";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import OfferView from "./OfferView";
 import { FULL } from "./constants";
-import Grid from "@material-ui/core/Grid";
 import ModalConfimation from "./ModalConfirmation";
 import "./offerView.css";
 import "../pages.css";
@@ -122,9 +122,10 @@ class ModalOffer extends Component {
                 <MuiThemeProvider theme={theme}>
                   <Button
                     className="classic_button_orange"
-                    // color="primary"
                     variant="contained"
-                    onClick={this.handleOpen}
+                    onClick={
+                      this.handleOpen // color="primary"
+                    }
                   >
                     {size === "SMALL" ? "Voir l'offre" : "En savoir plus"}
                   </Button>
@@ -137,6 +138,7 @@ class ModalOffer extends Component {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
               onClose={this.handleClose}
+              fullScreen={fullScreen}
             >
               <DialogTitle
                 id="customized-dialog-title"
@@ -153,12 +155,23 @@ class ModalOffer extends Component {
               </DialogContent>
               <DialogActions>
                 {size === "SMALL" ? (
-                  <Button disabled color="primary">
-                    postuler
-                  </Button>
+                  <Grid container justify="center">
+                    <Button
+                      size="large"
+                      className="classic_button_blue"
+                      onClick={this.handleClose}
+                    >
+                      Fermer
+                    </Button>
+                  </Grid>
                 ) : (
-                  <Button onClick={this.handleClickApplicate} color="primary">
-                    postuler
+                  <Button
+                    size="large"
+                    onClick={this.handleClickApplicate}
+                    color="primary"
+                    className="classic_button_blue center_button"
+                  >
+                    Postuler
                   </Button>
                 )}
               </DialogActions>
@@ -175,7 +188,7 @@ class ModalOffer extends Component {
       default:
         return (
           <div className="bloc-offers">
-            <Paper className="Middle">
+            <Paper className="Middle" elevation={3}>
               <div className="middle-content">
                 <Grid
                   container
@@ -231,12 +244,24 @@ class ModalOffer extends Component {
               </DialogContent>
               <DialogActions>
                 {size === "SMALL" ? (
-                  <Button disabled color="primary">
-                    postuler
-                  </Button>
+                  <Grid container justify="center">
+                    onClick={this.handleClose}
+                    <Button
+                      size="large"
+                      className="classic_button_blue"
+                      onClick={this.handleClose}
+                    >
+                      Fermer
+                    </Button>
+                  </Grid>
                 ) : (
-                  <Button onClick={this.handleClickApplicate} color="primary">
-                    postuler
+                  <Button
+                    size="large"
+                    onClick={this.handleClickApplicate}
+                    color="primary"
+                    className="classic_button_blue center_button"
+                  >
+                    Postuler
                   </Button>
                 )}
               </DialogActions>
@@ -257,7 +282,7 @@ const theme = createMuiTheme({
   // palette: {
   //   primary: {
   //     main: "#ff8900"
-  //   }
+  //   }c
   // }
 });
 

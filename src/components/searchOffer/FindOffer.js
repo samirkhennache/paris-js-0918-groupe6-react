@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import noResult from "../../img/icons/delete-button.png";
 import { MakeCompletedUrl } from "../../tools";
 import ModalOffer from "../offerView/ModalOffer";
 import { MIDDLE } from "../offerView";
@@ -60,7 +61,7 @@ class FindOffers extends Component {
     axios
       .get(url)
       .then(res => {
-        this.setState({ result: res.data });
+        this.setState({ result: res.data, isLoad: true });
       })
       .catch(err => {
         if (err.response.status === 304) {
@@ -75,7 +76,7 @@ class FindOffers extends Component {
   };
 
   render() {
-    const { result, count } = this.state;
+    const { result, count, isLoad } = this.state;
     const { classes } = this.props;
     console.log(result);
     return (
@@ -153,82 +154,40 @@ class FindOffers extends Component {
           </div>
         </div>
 
-        {/* <Grid xs direction="column" justify="center" alignItems="center">
-          <Grid
-            item
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-            className="Haut"
-            xs
-          >
-            <form onSubmit={this.handleSubmit} className={classes.Form}>
-              <TextField
-                name="search"
-                label="Recherche"
-                margin="normal"
-                variant="outlined"
-                className={classes.TextField}
-                id="search"
-                type="search"
-                placeholder="Stage"
-                onChange={this.handleChange}
-              />
-              <TextField
-                type="search"
-                name="town"
-                id="town"
-                placeholder="ville"
-                onChange={this.handleChange}
-                label="Town"
-                margin="normal"
-                variant="outlined"
-                className={classes.TextField}
-              />
-
-              <Button
-                variant="contained"
-                type="submit"
-                className="searchButton classic_button_orange"
-              >
-                <img
-                  src={require("../../img/icons8-chercher-208.png")}
-                  width="30"
-                  height="30"
-                />
-              </Button>
-            </form>
-          </Grid> */}
-        <div className="general_margin content-search-offers">
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            <Grid item xs={12}>
-              {result.map(element => (
-                <div className="bloc-modalOffers">
-                  <ModalOffer
-                    size={MIDDLE}
-                    key={`${element.id}-${element.titleMission}`}
-                    missionId={element.id}
-                    company={element.Company.companyName}
-                    titleMission={element.titleMission}
-                    dateStart={element.dateStart}
-                    dateEnd={element.dateEnd}
-                    description={element.description}
-                    intro={element.intro}
-                    town={element.town}
-                    LevelStudy={element.LevelStudy.label}
-                    {...this.props}
-                  />
-                </div>
-              ))}
+        {isLoad ? (
+          <div className="general_margin content-search-offers">
+            <Grid container justify="center" alignItems="center">
+              <Grid xs={12}>
+                {result.map(element => (
+                  <div className="bloc-modalOffers">
+                    <ModalOffer
+                      size={MIDDLE}
+                      key={`${element.id}-${element.titleMission}`}
+                      missionId={element.id}
+                      company={element.Company.companyName}
+                      titleMission={element.titleMission}
+                      dateStart={element.dateStart}
+                      dateEnd={element.dateEnd}
+                      description={element.description}
+                      intro={element.intro}
+                      town={element.town}
+                      LevelStudy={element.LevelStudy.label}
+                      {...this.props}
+                    />
+                  </div>
+                ))}
+              </Grid>
             </Grid>
-          </Grid>
-        </div>
+          </div>
+        ) : null}
+        {isLoad && !result.length && (
+          <div>
+            <img src={noResult} alt="pas de résultat" />
+            <p className="noResult-search regular_text">
+              Il n'y a pas de résultats pour cette recherche
+            </p>
+          </div>
+        )}
       </div>
     );
   }

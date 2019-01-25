@@ -6,6 +6,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
+import withMobileDialog from "@material-ui/core/withMobileDialog";
 
 import TraineeCreateConnexion from "../../authentication/studentCreateConnexion/TraineeCreateConnexion";
 import CompanyCreateConnexion from "../../authentication/companyCreateConnexion/CompanyCreateConnexion";
@@ -13,11 +14,11 @@ import CompanyCreateConnexion from "../../authentication/companyCreateConnexion/
 import logo from "../../../img/Logo.png";
 import "./OnePage.css";
 
-export default class OnePage extends Component {
+class OnePage extends Component {
   state = {
     openTrainee: false,
     openCompany: false,
-    button: "fermer"
+    button: "Fermer"
   };
 
   traineeOpenConnexion = () => {
@@ -42,7 +43,7 @@ export default class OnePage extends Component {
 
   render() {
     const { openTrainee, openCompany, button } = this.state;
-    console.log(this.props, "props onepage");
+    const { fullScreen } = this.props;
 
     return (
       // Header //
@@ -54,8 +55,8 @@ export default class OnePage extends Component {
               <Link
                 activeClass="active"
                 to="section1"
-                spy={true}
-                smooth={true}
+                spy
+                smooth
                 offset={-70}
                 duration={500}
               >
@@ -67,8 +68,8 @@ export default class OnePage extends Component {
               <Link
                 activeClass="active"
                 to="section2"
-                spy={true}
-                smooth={true}
+                spy
+                smooth
                 offset={-70}
                 duration={500}
               >
@@ -104,6 +105,7 @@ export default class OnePage extends Component {
           onClose={this.handleCloseTrainee}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
+          fullScreen={fullScreen}
         >
           <DialogContent>
             <TraineeCreateConnexion {...this.props} />
@@ -126,6 +128,7 @@ export default class OnePage extends Component {
           onClose={this.handleCloseCompany}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
+          fullScreen={fullScreen}
         >
           <DialogContent>
             <CompanyCreateConnexion {...this.props} />
@@ -146,3 +149,4 @@ export default class OnePage extends Component {
     );
   }
 }
+export default withMobileDialog()(OnePage);
