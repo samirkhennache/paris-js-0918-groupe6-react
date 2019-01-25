@@ -13,10 +13,10 @@ export const ConvertDate = data => {
 };
 
 export const MakeCompletedUrl = url => {
-  const server = "https://oneteam6.herokuapp.com";
+  const server = "http://localhost";
   const rootAPI = "/api/v1";
   const port = 3001;
 
   if (!url) throw Error("Parameter [url] is not defined.");
-  return `${server}${rootAPI}/${url}`;
+  return `${server}:${port}${rootAPI}/${url}`;
 };

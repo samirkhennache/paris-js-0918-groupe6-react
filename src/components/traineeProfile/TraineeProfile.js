@@ -91,7 +91,7 @@ class TraineeProfile extends Component {
         LevelStudyId: e.target.LevelStudyId.value
       })
       .then(response => {
-        console.log(response);
+        // console.log(response.data);
         this.setState({
           data: response.data
         });
@@ -467,7 +467,12 @@ class TraineeProfile extends Component {
               town={data.town}
               pictures={data.pictures}
               descriptionTrainee={data.description}
-              LevelStudy={data.LevelStudy ? data.LevelStudy.label : null}
+              LevelStudy={
+                this.state.data.LevelStudyId
+                  ? this.state.levelstudies[this.state.data.LevelStudyId - 1]
+                      .label
+                  : null
+              }
               age={data.dateBirth}
               school={data.school}
               titre={data.titre}
