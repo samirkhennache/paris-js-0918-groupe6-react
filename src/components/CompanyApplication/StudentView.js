@@ -80,6 +80,8 @@ class StudentView extends Component {
       age
     } = this.props;
 
+    console.log(LevelStudy);
+
     switch (size) {
       case "SMALL": {
         return (
