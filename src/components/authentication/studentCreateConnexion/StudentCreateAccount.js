@@ -141,7 +141,7 @@ class StudentCreateAccount extends Component {
           </DialogContent>
           <DialogActions>
             <Button
-              className="police_button_black"
+              //className="police_button_black"
               onClick={this.handleClose}
               color="primary"
             >

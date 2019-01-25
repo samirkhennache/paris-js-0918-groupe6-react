@@ -15,6 +15,7 @@ class TraineeCreateConnexion extends Component {
   clickConnexion = () => {
     this.setState({ connexion: true });
   };
+
   render() {
     const { connexion } = this.state;
     return (
@@ -41,7 +42,7 @@ class TraineeCreateConnexion extends Component {
             !
           </p>
         )}
-        {/* 
+        {/*
         <StudentCreateAccount {...this.props} />
         <ConnexionTrainee {...this.props} /> */}
       </div>

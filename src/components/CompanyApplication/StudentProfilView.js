@@ -6,8 +6,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from "@material-ui/core/Button";
-import StudentView from "./StudentView";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
+import StudentView from "./StudentView";
 import { FULL } from "./studentConstant";
 
 const styles = theme => ({
@@ -46,6 +46,7 @@ class StudentProfilView extends Component {
             <Button
               onClick={this.handleCloseFull}
               className="center_button classic_button_blue"
+              size="large"
             >
               Fermer
             </Button>
