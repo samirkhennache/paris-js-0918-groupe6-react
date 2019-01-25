@@ -61,7 +61,7 @@ class FindOffers extends Component {
     axios
       .get(url)
       .then(res => {
-        this.setState({ result: res.data });
+        this.setState({ result: res.data, isLoad: true });
       })
       .catch(err => {
         if (err.response.status === 304) {
@@ -76,7 +76,7 @@ class FindOffers extends Component {
   };
 
   render() {
-    const { result, count } = this.state;
+    const { result, count, isLoad } = this.state;
     const { classes } = this.props;
     console.log(result);
     return (
@@ -154,7 +154,7 @@ class FindOffers extends Component {
           </div>
         </div>
 
-        {result.length !== 0 ? (
+        {isLoad ? (
           <div className="general_margin content-search-offers">
             <Grid container justify="center" alignItems="center">
               <Grid xs={12}>
@@ -179,7 +179,8 @@ class FindOffers extends Component {
               </Grid>
             </Grid>
           </div>
-        ) : (
+        ) : null}
+        {isLoad && !result.length && (
           <div>
             <img src={noResult} alt="pas de résultat" />
             <p className="noResult-search regular_text">

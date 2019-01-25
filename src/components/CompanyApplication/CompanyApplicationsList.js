@@ -122,7 +122,7 @@ class CompanyApplicationsList extends Component {
               </div>
             ))
           : "loading"}
-        {!trainee.length && (
+        {isLoaded && !trainee.length && (
           <div>
             <img
               className="no-applications"

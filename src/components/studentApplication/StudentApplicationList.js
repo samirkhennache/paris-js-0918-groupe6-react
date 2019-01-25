@@ -26,9 +26,11 @@ class StudentApplicationList extends Component {
 
   render() {
     const { applications, isLoaded } = this.state;
+    console.log(isLoaded, applications, applications.length);
+
     return (
       <div>
-        {isLoaded && applications.lenght !== 0 ? (
+        {isLoaded && applications.length !== 0 ? (
           <div className="application-bloc general_margin">
             <Grid container justify="center">
               {applications.map(element => (
@@ -51,14 +53,14 @@ class StudentApplicationList extends Component {
               ))}
             </Grid>
           </div>
-        ) : (
-          <p className="regular_text">Loading</p>
-          // <div className="noResult-trainee-applications">
-          //   <img src={noResult} alt="pas de résultat" />
-          //   <p className="noResult-search regular_text">
-          //     Tu n'a pas encore candidaté à des offres de stages
-          //   </p>
-          // </div>
+        ) : null}
+        {isLoaded && !applications.length && (
+          <div className="noResult-trainee-applications">
+            <img src={noResult} alt="pas de résultat" />
+            <p className="noResult-search regular_text">
+              Tu n'as pas encore candidaté à des offres de stages
+            </p>
+          </div>
         )}
       </div>
     );
