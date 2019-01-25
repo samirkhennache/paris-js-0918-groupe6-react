@@ -100,6 +100,8 @@
 .bloc-offers {
   padding-bottom: 20px;
   width: 100%;
+  margin: auto;
+
 }
 .Middle {
   margin: 0 0 10px 0;
@@ -136,10 +138,9 @@
 
   /* Media query Middle */
 }
-@media all and (min-width: 320px) and (max-width: 720px) {
+/* @media all and (min-width: 320px) and (max-width: 720px) {
   .Middle {
     width: 350px;
-    /* border: #494642 1px solid; */
   }
 
   .OfferViewMiddle {
@@ -149,7 +150,6 @@
     text-align: center;
     margin: 0;
     width: 100%;
-    /* border: 1px solid rosybrown; */
   }
 
   .LogoMiddle {
@@ -161,10 +161,9 @@
 
   .milieuMiddle {
     flex-direction: column;
-    /* align-items: flex-end;no */
     border: 1px solid red;
   }
-}
+} */
 
 
 /* Fin Middle */
