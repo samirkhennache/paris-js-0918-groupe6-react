@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import "./offerView.css";
 
 import RenderHTML from "react-render-html";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import townFull from "../../img/icons/placeholder-filled-point.png";
 import nextFull from "../../img/icons/right-chevron(1).png";
 import levelFull from "../../img/icons/graduate-cap.png";
 import buildingCircle from "../../img/icons/building_circle.png";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import calendar from "../../img/icons/calendar-black.png";
 import loading from "../../img/icons/reload-symbol-black.png";
 import loadingWhite from "../../img/icons/reload-symbol.png";
@@ -32,6 +32,8 @@ const OfferView = props => {
     town,
     LevelStudy
   } = props;
+  console.log("town et level", town, LevelStudy);
+
   switch (size) {
     case "SMALL": {
       return (

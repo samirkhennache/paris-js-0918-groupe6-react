@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { MakeCompletedUrl } from "../../tools";
 import Grid from "@material-ui/core/Grid";
+import { MakeCompletedUrl } from "../../tools";
 import noResult from "../../img/icons/delete-button.png";
 import ModalOffer from "../offerView/ModalOffer";
 import { SMALL } from "../offerView";
@@ -20,6 +20,8 @@ class StudentApplicationList extends Component {
     axios
       .get(MakeCompletedUrl(`trainee/${traineeId}/application`))
       .then(res => {
+        console.log(res.data);
+
         this.setState({ applications: res.data, isLoaded: true });
       });
   }
@@ -42,6 +44,8 @@ class StudentApplicationList extends Component {
                     }`}
                     missionId={element.Mission.id}
                     titleMission={element.Mission.titleMission}
+                    town={element.Mission.town}
+                    LevelStudy={element.Mission.LevelStudy.label}
                     company={element.Mission.Company.companyName}
                     dateStart={element.Mission.dateStart}
                     dateEnd={element.Mission.dateEnd}
