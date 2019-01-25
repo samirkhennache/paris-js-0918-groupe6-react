@@ -458,6 +458,8 @@ class TraineeProfile extends Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
           fullScreen={fullScreen}
+          fullWidth
+          maxWidth="md"
         >
           <DialogContent>
             <StudentView
