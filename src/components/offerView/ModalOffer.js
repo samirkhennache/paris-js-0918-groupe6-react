@@ -18,6 +18,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Paper from "@material-ui/core/Paper";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import OfferView from "./OfferView";
 import { FULL } from "./constants";
 import ModalConfimation from "./ModalConfirmation";
@@ -121,9 +122,10 @@ class ModalOffer extends Component {
                 <MuiThemeProvider theme={theme}>
                   <Button
                     className="classic_button_orange"
-                    // color="primary"
                     variant="contained"
-                    onClick={this.handleOpen}
+                    onClick={
+                      this.handleOpen // color="primary"
+                    }
                   >
                     {size === "SMALL" ? "Voir l'offre" : "En savoir plus"}
                   </Button>
@@ -136,6 +138,7 @@ class ModalOffer extends Component {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
               onClose={this.handleClose}
+              fullScreen={fullScreen}
             >
               <DialogTitle
                 id="customized-dialog-title"
@@ -152,12 +155,23 @@ class ModalOffer extends Component {
               </DialogContent>
               <DialogActions>
                 {size === "SMALL" ? (
-                  <Button disabled color="primary">
-                    postuler
-                  </Button>
+                  <Grid container justify="center">
+                    <Button
+                      size="large"
+                      className="classic_button_blue"
+                      onClick={this.handleClose}
+                    >
+                      Fermer
+                    </Button>
+                  </Grid>
                 ) : (
-                  <Button onClick={this.handleClickApplicate} color="primary">
-                    postuler
+                  <Button
+                    size="large"
+                    onClick={this.handleClickApplicate}
+                    color="primary"
+                    className="classic_button_blue center_button"
+                  >
+                    Postuler
                   </Button>
                 )}
               </DialogActions>
@@ -173,21 +187,38 @@ class ModalOffer extends Component {
       }
       default:
         return (
-          <div className="ModalOffer">
-            <Paper className="Middle">
-              <OfferView
-                key={`${missionId}-${titleMission}`}
-                {...this.props}
-                size={size}
-              />
-              <Button
-                color="primary"
-                className="classic_button_orange "
-                variant="contained"
-                onClick={this.handleOpen}
-              >
-                {size === "SMALL" ? "Consulter" : "En savoir plus"}
-              </Button>
+          <div className="bloc-offers">
+            <Paper className="Middle" elevation={3}>
+              <div className="middle-content">
+                <Grid
+                  container
+                  spacing={16}
+                  justify="center"
+                  alignItems="center"
+                >
+                  <Grid item xs={12} sm={12} md={9} lg={9}>
+                    <OfferView
+                      key={`${missionId}-${titleMission}`}
+                      {...this.props}
+                      size={size}
+                    />
+                  </Grid>{" "}
+                  <Grid item xs={6} sm={4} md={3} lg={3}>
+                    <Grid container>
+                      <Grid item xs={12}>
+                        <Button
+                          color="primary"
+                          className="classic_button_orange grid-button-offers"
+                          variant="contained"
+                          onClick={this.handleOpen}
+                        >
+                          {size === "SMALL" ? "Consulter" : "En savoir plus"}
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </div>
             </Paper>
 
             {/* //////////////////////////////////////////////////// */}
@@ -213,17 +244,24 @@ class ModalOffer extends Component {
               </DialogContent>
               <DialogActions>
                 {size === "SMALL" ? (
-                  <Button disabled color="primary">
-                    postuler
-                  </Button>
+                  <Grid container justify="center">
+                    onClick={this.handleClose}
+                    <Button
+                      size="large"
+                      className="classic_button_blue"
+                      onClick={this.handleClose}
+                    >
+                      Fermer
+                    </Button>
+                  </Grid>
                 ) : (
                   <Button
-                    className="classic_button_blue"
                     size="large"
                     onClick={this.handleClickApplicate}
                     color="primary"
+                    className="classic_button_blue center_button"
                   >
-                    postuler
+                    Postuler
                   </Button>
                 )}
               </DialogActions>
@@ -244,7 +282,7 @@ const theme = createMuiTheme({
   // palette: {
   //   primary: {
   //     main: "#ff8900"
-  //   }
+  //   }c
   // }
 });
 

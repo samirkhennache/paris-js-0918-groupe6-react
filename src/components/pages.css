@@ -18,10 +18,11 @@
 }
 .hr_vertical_orange {
   background-color: #ff8900;
-  width: 4px;
   border: 0;
+  width: 4px;
   height: 100%;
 }
+
 
 /* *********************** PAGES TEXT CLASSES **********************/
 
@@ -56,6 +57,13 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-size: calc(16px + 0.1vw);
+  color: #494642;
+  margin: 0;
+}
+.criteres_search-offer {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: calc(18px + 0.1vw);
   color: #494642;
   margin: 0;
 }

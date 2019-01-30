@@ -5,9 +5,10 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import Button from "@material-ui/core/Button";
+import { Grid } from "@material-ui/core";
 import OfferView from "../offerView/OfferView";
 import { FULL } from "../offerView/constants";
-import Button from "@material-ui/core/Button";
 
 class CompanyPresentationFull extends Component {
   state = {};
@@ -49,7 +50,15 @@ class CompanyPresentationFull extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleCloseFull}>fermer</Button>
+            <Grid container justify="center">
+              <Button
+                className="classic_button_blue"
+                size="large"
+                onClick={this.handleCloseFull}
+              >
+                fermer
+              </Button>
+            </Grid>
           </DialogActions>
         </Dialog>
       </div>
