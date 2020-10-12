@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component, Fragment } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import "./App.css";
@@ -13,6 +14,7 @@ import CompanyApplications from "./components/CompanyApplication/CompanyApplicat
 import TeamsAdmin from "./components/admin/TeamsAdmin";
 import Contact from "./components/home/Contact";
 import "./components/pages.css";
+import Chat from "./Chat";
 
 // HOME ROUTER -------------------------------------------------------------
 const Home = ({ match }) => (
@@ -50,6 +52,13 @@ const Trainee = ({ match }) => {
           component={TraineeApplications}
         />
         <Route exact path={`${match.url}/profile`} component={Profil} />
+        <Route exact path={`${match.url}/chat`}>
+          <Chat
+          // userId={dataUser.id}
+          // nickname={dataUser.firstname}
+          // theme={config.theme}
+          />
+        </Route>
       </Switch>
     </div>
   );
@@ -74,6 +83,9 @@ const Company = ({ match }) => {
           path={`${match.url}/mytrainees`}
           component={CompanyApplications}
         />
+        <Route exact path={`${match.url}/chat`}>
+          <Chat />
+        </Route>
       </Switch>
     </div>
   );
@@ -100,6 +112,10 @@ const Admin = ({ match }) => {
 
 // CLASS APP -------------------------------------------------------------
 class App extends Component {
+  componentDidMount() {
+    console.log("token", sessionStorage.getItem("token"));
+  }
+
   render() {
     return (
       <Fragment>
@@ -108,6 +124,7 @@ class App extends Component {
           <Route path="/trainee" component={Trainee} />
           <Route path="/company" component={Company} />
           <Route path="/salutadmin" component={Admin} />
+
           <Route path="/*" component={Page404} />
         </Switch>
         <Contact />

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Axios from "axios";
-import { MakeCompletedUrl } from "../../../tools";
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
@@ -14,6 +13,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { MakeCompletedUrl } from "../../../tools";
 import { selectStudent } from "../../../actions/getIdAction";
 
 import "../authentication.css";
@@ -51,6 +51,21 @@ class ConnexionTrainee extends Component {
       .then(result => {
         props.selectStudent(result.data.id);
         sessionStorage.setItem("token", result.data.id);
+        sessionStorage.setItem("data", JSON.stringify(result.data));
+
+        Axios.get(
+          `https://api-D36ADF40-475A-46DF-98B5-38BD1182C989.sendbird.com/v3/users/${
+            result.data.id
+          }`,
+          {
+            headers: {
+              "Api-Token": "ae51ca6f1fdd389af9019fb2d3e54f09711d1893"
+            }
+          }
+        ).then(res =>
+          sessionStorage.setItem("access_token", res.data.access_token)
+        );
+
         console.log("admin", this.props.location.pathname);
 
         if (this.props.location.pathname === `/salutadmin`) {
@@ -102,7 +117,7 @@ class ConnexionTrainee extends Component {
             label="Email"
             onChange={this.onChange}
             // margin="normal"
-            variant="outlined" //sessionStorage.setItem("token", result.data.id);
+            variant="outlined" // sessionStorage.setItem("token", result.data);
             required
           />
           <TextField
@@ -149,7 +164,7 @@ class ConnexionTrainee extends Component {
           </DialogContent>
           <DialogActions>
             <Button
-              //className="police_button_black"
+              // className="police_button_black"
               onClick={this.handleClose}
               color="primary"
             >

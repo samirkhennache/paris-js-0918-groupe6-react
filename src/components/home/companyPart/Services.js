@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from "react";
 
 import "./Services.css";
@@ -12,8 +14,8 @@ export default class Services extends Component {
           </h3>
           <hr className="hr_horizontal_white" />
         </div>
-        <div class="section group">
-          <div class="col1 span_1_of_3">
+        <div className="section group">
+          <div className="col1 span_1_of_3">
             <img
               src={require("../../../img/services/offres.png")}
               width="70"
@@ -25,7 +27,7 @@ export default class Services extends Component {
               Inclus dans le forfait de l'offre
             </p>
           </div>
-          <div class="col1 span_1_of_3">
+          <div className="col1 span_1_of_3">
             <img
               src={require("../../../img/services/profils.png")}
               width="70"
@@ -37,8 +39,9 @@ export default class Services extends Component {
               Par vous-même ou par un consultant One Team
             </p>
           </div>
-          <div class="col1 span_1_of_3">
+          <div className="col1 span_1_of_3">
             <img
+              // eslint-disable-next-line global-require
               src={require("../../../img/services/meeting.png")}
               width="70"
               height="70"
@@ -51,8 +54,8 @@ export default class Services extends Component {
             </p>
           </div>
         </div>
-        <div class="section group">
-          <div class="col span_1_of_2">
+        <div className="section group">
+          <div className="col span_1_of_2">
             <img
               src={require("../../../img/services/cursor.png")}
               width="70"
@@ -64,7 +67,7 @@ export default class Services extends Component {
               Inclus dans le forfait de l'offre
             </p>
           </div>
-          <div class="col span_1_of_2">
+          <div className="col span_1_of_2">
             <img
               src={require("../../../img/services/progress.png")}
               width="70"

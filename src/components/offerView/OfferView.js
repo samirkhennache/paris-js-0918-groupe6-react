@@ -1,10 +1,16 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./offerView.css";
+import { Link } from "react-router-dom";
 
 import RenderHTML from "react-render-html";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import {
+  sendBirdSelectors,
+  withSendBird,
+  SendBirdProvider
+} from "sendbird-uikit";
 import townFull from "../../img/icons/placeholder-filled-point.png";
 import nextFull from "../../img/icons/right-chevron(1).png";
 import levelFull from "../../img/icons/graduate-cap.png";
@@ -19,6 +25,71 @@ import refuseWhite from "../../img/icons/cross(white).png";
 import "./Button.css";
 import "../pages.css";
 
+const CustomLink = ({ createChannel, sdk, connect, companyId }) => (
+  // eslint-disable-next-line no-shadow
+  // const [channelUrl, setChannelUrl] = useState("");
+
+  <>
+    <Link
+      to="trainee/chat"
+      onClick={() => {
+        const params = new sdk.GroupChannelParams();
+        connect(
+          sessionStorage.getItem("token"),
+          sessionStorage.getItem("access_token")
+        ).then(user => {
+          console.log("USER", user);
+
+          params.isPublic = true;
+          params.isEphemeral = false;
+          params.isDistinct = false;
+          params.addUserIds([
+            sessionStorage.getItem("token"),
+            companyId.toString()
+            // companyId.toString()
+          ]);
+          params.operatorUserIds = [sessionStorage.getItem("token")];
+          params.name = JSON.parse(sessionStorage.getItem("data")).firstname;
+          console.log("params", params);
+          createChannel(params)
+            .then(c => {
+              sessionStorage.setItem("chanelUrl", c.url);
+            })
+            .catch(c => console.warn(c));
+        });
+      }}
+    >
+      {" "}
+      Create channel
+    </Link>
+  </>
+);
+// const MyComponentConnecxion = props => (
+//   <button
+//     type="button"
+//     onClick={() =>
+//       props
+//         .connect(
+//           sessionStorage.getItem("token"),
+//           "370bc5c3e531b131bb7c29ce39a2b1c7170e06af"
+//         )
+//         .then(user => console.log("USER", user))
+//     }
+//   >
+//     Connect to chat
+//   </button>
+// );
+
+// const CustomComponentConnexion = withSendBird(MyComponentConnecxion, state => ({
+//   // Mapping context state to props
+//   connect: sendBirdSelectors.getConnect(state)
+// }));
+const CustomLinkWithSendBird = withSendBird(CustomLink, state => {
+  const connect = sendBirdSelectors.getConnect(state);
+  const createChannel = sendBirdSelectors.getCreateChannel(state);
+  const sdk = sendBirdSelectors.getSdk(state);
+  return { createChannel, sdk, connect };
+});
 const OfferView = props => {
   const {
     size,
@@ -32,7 +103,7 @@ const OfferView = props => {
     town,
     LevelStudy
   } = props;
-  console.log("town et level", town, LevelStudy);
+  console.log("props", props);
 
   switch (size) {
     case "SMALL": {
@@ -116,6 +187,14 @@ const OfferView = props => {
                       />
                     </div>
                     <p className="criteres_search-offer">{town}</p>
+                    <SendBirdProvider
+                      appId="D36ADF40-475A-46DF-98B5-38BD1182C989"
+                      accessToken={sessionStorage.getItem("access_token")}
+                      userId={sessionStorage.getItem("token")}
+                    >
+                      <CustomLinkWithSendBird {...props} />
+                      {/* <CustomComponentConnexion /> */}
+                    </SendBirdProvider>
                   </div>
                 </div>
 

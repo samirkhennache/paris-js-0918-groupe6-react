@@ -165,6 +165,7 @@ class FindOffers extends Component {
                       key={`${element.id}-${element.titleMission}`}
                       missionId={element.id}
                       company={element.Company.companyName}
+                      companyId={element.Company.id}
                       titleMission={element.titleMission}
                       dateStart={element.dateStart}
                       dateEnd={element.dateEnd}

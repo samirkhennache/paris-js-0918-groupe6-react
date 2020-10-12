@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Axios from "axios";
-import { MakeCompletedUrl } from "../../../tools";
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
@@ -14,6 +13,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { MakeCompletedUrl } from "../../../tools";
 import "../authentication.css";
 import { selectCompany } from "../../../actions/getIdAction";
 
@@ -50,6 +50,20 @@ class ConnexionCompany extends Component {
       .then(result => {
         props.selectCompany(result.data.id);
         sessionStorage.setItem("token", result.data.id);
+        sessionStorage.setItem("data", JSON.stringify(result.data));
+        Axios.get(
+          `https://api-D36ADF40-475A-46DF-98B5-38BD1182C989.sendbird.com/v3/users/${
+            result.data.id
+          }`,
+          {
+            headers: {
+              "Api-Token": "ae51ca6f1fdd389af9019fb2d3e54f09711d1893"
+            }
+          }
+        ).then(res =>
+          sessionStorage.setItem("access_token", res.data.access_token)
+        );
+
         props.history.push("/company");
       })
       .catch(error => {
